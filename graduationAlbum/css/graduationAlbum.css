@@ -1,0 +1,63 @@
+a {
+    text-decoration: none;
+}
+
+/* .animate__bounce { display: inline-block; margin: 0 0.5rem; animation: bounceIn; animation-duration: 2s; padding: 10px 0; 
+    background: linear-gradient(90deg, rgba(199,116,212,1) 0%, rgba(141,7,224,1) 35%, rgba(71,7,190,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  } */
+
+.btn-sm {
+    font-size: 18px;
+}
+
+.card {
+    border: #58129F 2px;
+}
+
+.card-header {
+    background-color: #eecef8;
+}
+
+.card:hover {
+    border-color: rgb(132, 201, 111);
+    background-color: rgb(248, 248, 221);
+}
+
+.card img {
+    transform: scale(1, 1);
+    transition: all .5s ease-out;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card img:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.card-text {
+    text-align: center;
+    font-size: 14px;
+}
+
+.card-title {
+    color: #fff;
+    background-color: rgb(237, 170, 240);
+}
+
+.card .SM {
+    overflow: hidden;
+}
+
+.container {
+    padding: 20px 0;
+    width: 80%;
+}
+
+.Title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    text-align: left;
+}
