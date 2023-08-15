@@ -1,0 +1,70 @@
+.BackHome {
+  position: fixed;
+  top: 30px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid red;
+  background: red;
+  opacity: .7;
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 60px;
+  font-size: 1em;
+  z-index: 99;
+}
+
+img {
+  border: 1px green dashed;
+}
+
+.card {
+  display: block;
+  margin: auto;
+  border: none;
+}
+
+.card-text {
+  text-align: center;
+}
+
+.container {
+  margin-top: 30px;
+  padding: 0 20px 0 20px;
+  width: 85%;
+  border-radius: .5%;
+}
+
+::-moz-selection {
+  background: #41ad4f;
+  color: #fff;
+}
+
+.row {
+  /* row-gap: 10px; */
+  padding: 0 0 10px 0;
+}
+
+::selection {
+  background: #41ad4f;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .col-md-1-5 {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .BackHome {
+    top: 10px !important;
+    right: 10px !important;
+    width: 50px !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    font-size: 0.8em !important;
+  }
+}
