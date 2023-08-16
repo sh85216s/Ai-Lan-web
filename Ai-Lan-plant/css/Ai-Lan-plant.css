@@ -1,4 +1,4 @@
-.BackHome {
+/* .BackHome {
   position: fixed;
   top: 30px;
   right: 25px;
@@ -14,7 +14,7 @@
   line-height: 60px;
   font-size: 1em;
   z-index: 99;
-}
+} */
 
 img {
   border: 1px green dashed;
@@ -58,7 +58,7 @@ img {
   }
 }
 
-@media screen and (max-width: 1023px) {
+/* @media screen and (max-width: 1023px) {
   .BackHome {
     top: 10px !important;
     right: 10px !important;
@@ -67,4 +67,141 @@ img {
     line-height: 50px !important;
     font-size: 0.8em !important;
   }
+} */
+
+/* Side menu */
+html,
+body {
+  height: 100%;
 }
+
+body {
+  background-color: #d1d1d1;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 300;
+
+  &:hover {
+    color: yellow;
+  }
+}
+
+a,
+label {
+  cursor: pointer;
+}
+
+.side-menu {
+  z-index: 999999;
+  opacity: .8;
+  width: 300px;
+  height: 100%;
+  padding: 0 0 50px 0;
+  box-sizing: border-box;
+  background: linear-gradient(45deg, #3381b0, #c2196c);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 0px 10px hsla(240, 50%, 20%, .6);
+  position: fixed;
+  transform: translateX(-100%);
+  transition: .3s;
+}
+
+.side-menu label {
+  position: absolute;
+  width: 30px;
+  height: 50px;
+  background: #000;
+  color: #fff;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: -30px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 0 10px 10px 0;
+}
+
+#side-menu-switch {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+#side-menu-switch:checked+.side-menu {
+  transform: translateX(0);
+}
+
+#side-menu-switch:checked+.side-menu label {
+  transform: scaleX(-1)
+}
+
+/* .side-menu form {
+  display: flex;
+  margin: 0 10px 50px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, .4);
+} */
+
+/* .side-menu input,
+.side-menu button {
+  border: none;
+  padding: 5px 10px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.side-menu input:focus,
+.side-menu button:focus {
+  outline: none;
+}
+
+.side-menu input::placeholder {
+  color: #fff;
+} */
+
+/* .side-menu input {
+  width: 230px;
+} */
+
+/* .side-menu button {
+  width: 50px;
+} */
+
+nav {
+  column-count: 2;
+  overflow-y: scroll;
+}
+
+nav a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+
+/* 若設定一般border會把整塊貼滿，不好看 */
+nav a+a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 10px;
+  left: 10px;
+  border-top: 1px solid rgba(255, 255, 255, .4);
+}
+
+nav a .tou {
+  margin-right: -1.1em;
+  transform: scale(0);
+  transition: .3s;
+}
+
+nav a:hover .tou {
+  margin-right: 0em;
+  transform: scale(1);
+}
+
+/* Side menu */
