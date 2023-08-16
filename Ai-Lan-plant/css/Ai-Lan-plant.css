@@ -1,21 +1,3 @@
-/* .BackHome {
-  position: fixed;
-  top: 30px;
-  right: 25px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 1px solid red;
-  background: red;
-  opacity: .7;
-  padding: 0px;
-  cursor: pointer;
-  text-align: center;
-  line-height: 60px;
-  font-size: 1em;
-  z-index: 99;
-} */
-
 img {
   border: 1px green dashed;
 }
@@ -43,7 +25,6 @@ img {
 }
 
 .row {
-  /* row-gap: 10px; */
   padding: 0 0 10px 0;
 }
 
@@ -57,17 +38,6 @@ img {
     width: 20%;
   }
 }
-
-/* @media screen and (max-width: 1023px) {
-  .BackHome {
-    top: 10px !important;
-    right: 10px !important;
-    width: 50px !important;
-    height: 50px !important;
-    line-height: 50px !important;
-    font-size: 0.8em !important;
-  }
-} */
 
 /* Side menu */
 html,
@@ -96,7 +66,7 @@ label {
 .side-menu {
   z-index: 999999;
   opacity: .8;
-  width: 300px;
+  width: 400px;
   height: 100%;
   padding: 0 0 50px 0;
   box-sizing: border-box;
@@ -138,40 +108,8 @@ label {
   transform: scaleX(-1)
 }
 
-/* .side-menu form {
-  display: flex;
-  margin: 0 10px 50px;
-  border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, .4);
-} */
-
-/* .side-menu input,
-.side-menu button {
-  border: none;
-  padding: 5px 10px;
-  background-color: transparent;
-  color: #fff;
-}
-
-.side-menu input:focus,
-.side-menu button:focus {
-  outline: none;
-}
-
-.side-menu input::placeholder {
-  color: #fff;
-} */
-
-/* .side-menu input {
-  width: 230px;
-} */
-
-/* .side-menu button {
-  width: 50px;
-} */
-
 nav {
-  column-count: 2;
+  column-count: 3;
   overflow-y: scroll;
 }
 
