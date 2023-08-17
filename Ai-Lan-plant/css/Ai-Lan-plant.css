@@ -1,7 +1,3 @@
-img {
-  border: 1px green dashed;
-}
-
 .card:target {
   border: 2px;
   border-style: dashed;
@@ -11,7 +7,7 @@ img {
 .card {
   display: block;
   margin: auto;
-  border: none;
+  border: 1px green dashed;
 }
 
 .card-text {
