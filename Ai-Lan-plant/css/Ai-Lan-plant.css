@@ -2,6 +2,12 @@ img {
   border: 1px green dashed;
 }
 
+.card:target {
+  border: 2px;
+  border-style: dashed;
+  border-color: red;
+}
+
 .card {
   display: block;
   margin: auto;
