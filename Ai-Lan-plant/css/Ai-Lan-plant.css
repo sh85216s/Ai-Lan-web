@@ -97,10 +97,18 @@ label {
   border-radius: 0 10px 10px 0;
 }
 
-#side-menu-switch {
+/* #side-menu-switch {
   position: absolute;
   z-index: -1;
   opacity: 0;
+} */
+
+#side-menu-switch {
+  position: fixed;
+  z-index: -1;
+  opacity: 0;
+  top: 0px;
+  left: 0px;
 }
 
 #side-menu-switch:checked+.side-menu {
