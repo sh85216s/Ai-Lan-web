@@ -68,7 +68,7 @@ label {
 }
 
 .side-menu {
-  z-index: 999999;
+  z-index: 99;
   opacity: .8;
   width: 300px;
   height: 100%;
