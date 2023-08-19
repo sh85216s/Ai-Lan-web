@@ -8,13 +8,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../css/scrolltotop_arrow_style.css">
     <link rel="stylesheet" href="../../css/AiLanAlbum.css">
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
-
     <title>愛蘭國小影音館</title>
 </head>
 
 <body>
+    <!--START!!! This is START of the ScrollToTop Arrow, you need to copy this part into the body tag of your html document.-->
+    <div id="scrolltotop_parent" class="scrolltotop_hide_onload">
+        <div tabindex="0" id="scrolltotop_arrow">
+        </div>
+    </div>
+    <!--END!!! This is the END of the ScrollToTop Arrow, do not copy anything below it.-->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <span class="navbar-brand" style="font-size: 24px;"><a href="../../index.html"
@@ -191,6 +198,7 @@
 
 
     </div>
+    <script type="text/javascript" src="../../js/scrolltotop_arrow_code.js"></script>
     <script>
         click_resize = () => {
             if (document.documentElement.clientWidth > 768) {
