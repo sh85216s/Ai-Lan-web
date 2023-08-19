@@ -1,0 +1,73 @@
+.container {
+    padding-top: 60px;
+}
+
+nav {
+    overflow-y: visible;
+    z-index: 100;
+}
+
+.navbar {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background: linear-gradient(118deg, #2774e0, #a548f1);
+    z-index: 70;
+}
+
+.card .SM {
+    overflow: hidden;
+}
+
+.card:hover {
+    border-color: rgb(203, 166, 247);
+    /* background-color: rgb(248, 248, 221); */
+    background-color: rgb(231, 229, 248);
+}
+
+.card img {
+    transform: scale(1, 1);
+    transition: all .5s ease-out;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card img:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.card-text {
+    font-size: .9em;
+}
+
+.dropdown-menu.Link {
+    left: auto;
+    right: 0;
+}
+
+#gotop {
+    z-index: 88;
+    opacity: .7;
+}
+
+@media screen and (min-width: 768px) {
+    .col-md-1-5 {
+        width: 20%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .ElementaryAlbum {
+        height: 600px;
+        overflow: scroll;
+    }
+
+    /* .KindergartenAlbum {
+        height: 600px;
+        overflow: scroll;
+    } */
+}
