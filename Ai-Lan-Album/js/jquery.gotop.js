@@ -26,7 +26,7 @@
 
     var defaults = {
         background: '#3971dc', // Background color
-        color: '#fff', // Icon color        
+        color: '#ffffff', // Icon color        
         rounded: true, // if true make the button rounded
         width: '45px',
         height: '45px',
