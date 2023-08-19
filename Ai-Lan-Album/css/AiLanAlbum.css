@@ -46,6 +46,8 @@ nav {
 }
 
 #gotop {
+    background: #3971dc;
+    color: #fff;
     z-index: 88;
     opacity: .7;
 }
