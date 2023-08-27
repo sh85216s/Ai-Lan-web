@@ -13,10 +13,6 @@
         http://www.gnu.org/licenses/gpl.html
     Copyright (c) 2016 - Qassim Hassan
 */
-/* .carousel-item img {
-    width: 100%;
-    height: 300px;
-} */
 
 .card .SM {
     overflow: hidden;
@@ -29,7 +25,7 @@
 
 .card img {
     transform: scale(1, 1);
-    transition: all .5s ease-out;
+    transition: all .2s ease-out;
     height: 100%;
     object-fit: cover;
 }
