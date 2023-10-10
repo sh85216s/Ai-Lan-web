@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>每週一句英文</title>
+    <!-- <link rel="stylesheet" href="css/WeekSentence.css"> -->
+</head>
+
+<body>
+    <style>
+        span {
+            font-size: 16px;
+        }
+    </style>
+    <div class="container">
+        <p>
+            <span id="date"></span><span>《每週一句英文》</span>
+            <span id="quote"></span>
+
+        </p>
+        <!-- <script src="js/WeekSentence.js"></script> -->
+    </div>
+    <script>
+        // 取得當天日期
+        function getToday() {
+            var today = new Date();
+            var week = today.getDay();
+            if (week === 1) {
+                return quotes[quoteIndex];
+            } else {
+                return "";
+            }
+        }
+
+        // 取得每日一句英文
+        function getQuote() {
+            var quotes = [
+                "The best way to predict the future is to create it.",
+                "The journey of a thousand miles begins with a single step.",
+                "The only way to do great work is to love what you do.",
+                "The only thing that is constant is change.",
+                "The only thing that is impossible is the thing you don't try.(唯一不可能的事就是你不去嘗試的事。)",
+            ];
+            return quotes[Math.floor(Math.random() * quotes.length)];
+        }
+
+        // 更新每日一句英文
+        function updateQuote() {
+            document.getElementById("quote").innerHTML = getQuote();
+            document.getElementById("date").innerHTML = getToday();
+        }
+
+        // 初始化
+        var quoteIndex = 0;
+        window.onload = updateQuote;
+
+        // 每週更新一句英文
+        setInterval(function () {
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+            updateQuote();
+        }, 7 * 24 * 60 * 60 * 1000);
+
+    </script>
+</body>
+
+</html>

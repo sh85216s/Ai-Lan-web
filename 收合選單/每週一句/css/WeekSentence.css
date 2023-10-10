@@ -1,0 +1,21 @@
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.container {
+    /* width: 500px; */
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    margin-top: 20px;
+}
+
+span {
+    font-size: 24px;
+}
