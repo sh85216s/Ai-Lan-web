@@ -67,6 +67,15 @@
             font-size: 26px;
         }
 
+        a {
+            text-decoration: none;
+            text-align: right;
+        }
+
+        a:hover {
+            color: red
+        }
+
         @media (max-width: 768px) {
             .TITLE {
                 font-size: 1.1rem;
@@ -107,6 +116,11 @@
                     <label for="studentName1" class="Lable">第2位參賽學生姓名</label>
                     <input type="text" name="studentName2" placeholder="填入第2位參賽學生姓名.." title="填入第2位參賽學生姓名"><br>
                     <input type="submit" value="送出報名資料" onclick="submitForm()">
+                    <div class="row">
+                        <a href="https://docs.google.com/spreadsheets/d/1NBepOydjdfryHUGxGonKpusXwFO-j6oNFdaoYJ5lZlI/edit?usp=drive_link"
+                            target="_blank" style="line-height: 40px;">查看報名結果</a>
+                    </div>
+
                 </form>
             </div>
             <div class="col-md-3">
