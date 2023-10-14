@@ -59,12 +59,18 @@
         .container {
             /* width: 90%; */
             border-radius: 5px;
-            background-color: #f2f2f2;
+            /* background-color: #f2f2f2; */
             padding: 30px 30px;
         }
 
+        .col-md-6 {
+            background-color: #f2f2f2;
+            padding: 50px 40px;
+            border-radius: 5px;
+        }
+
         .TITLE {
-            font-size: 26px;
+            font-size: 25px;
         }
 
         a {
@@ -79,6 +85,10 @@
         @media (max-width: 768px) {
             .TITLE {
                 font-size: 1.1rem;
+            }
+
+            .col-md-6 {
+                padding: 30px 10px;
             }
         }
     </style>
@@ -115,6 +125,9 @@
                     <input type="text" name="studentName1" placeholder="填入第1位參賽學生姓名.." title="填入第1位參賽學生姓名"><br>
                     <label for="studentName1" class="Lable">第2位參賽學生姓名</label>
                     <input type="text" name="studentName2" placeholder="填入第2位參賽學生姓名.." title="填入第2位參賽學生姓名"><br>
+                    <div class="row">
+
+                    </div>
                     <input type="submit" value="送出報名資料" onclick="submitForm()">
                     <div class="row">
                         <a href="https://docs.google.com/spreadsheets/d/1NBepOydjdfryHUGxGonKpusXwFO-j6oNFdaoYJ5lZlI/edit?usp=drive_link"
@@ -124,7 +137,6 @@
                 </form>
             </div>
             <div class="col-md-3">
-
             </div>
         </div>
     </div>
