@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-
+    KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-
+    U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+    <title>
+        愛蘭國小112學年度資訊競賽線上報名
+    </title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+            color: #757575;
+
+        }
+
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 10px 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .Lable {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .container {
+            /* width: 90%; */
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 30px 30px;
+        }
+
+        .TITLE {
+            font-size: 26px;
+        }
+
+        @media (max-width: 768px) {
+            .TITLE {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                <p class="TITLE">愛蘭國小112學年度校內資訊競賽線上報名</p>
+                <iframe name="hidden_iframe" style="display:none;"></iframe>
+                <form method="post" target="hidden_iframe" id="MyForm">
+                    <input type="hidden" name="method" value="write">
+                    <label for="grade" class="Lable">年級</label>
+                    <select id="grade" name="grade">
+                        <option value="">請選擇年級..</option>
+                        <option value="三">三</option>
+                        <option value="四">四</option>
+                        <option value="五">五</option>
+                        <option value="六">六</option>
+                    </select>
+
+                    <label for="classNumber" class="Lable">班別</label>
+                    <select id="classNumber" name="classNumber">
+                        <option value="">請選擇班別..</option>
+                        <option value="甲">甲</option>
+                        <option value="乙">乙</option>
+                        <option value="丙">丙</option>
+                    </select>
+                    <label for="studentName1" class="Lable">第1位參賽學生姓名</label>
+                    <input type="text" name="studentName1" placeholder="填入第1位參賽學生姓名.." title="填入第1位參賽學生姓名"><br>
+                    <label for="studentName1" class="Lable">第2位參賽學生姓名</label>
+                    <input type="text" name="studentName2" placeholder="填入第2位參賽學生姓名.." title="填入第2位參賽學生姓名"><br>
+                    <input type="submit" value="送出報名資料" onclick="submitForm()">
+                </form>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+        <div class="row">
+            <table>
+                <tr>
+                    <td>
+                        
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        function submitForm() {
+            data = {
+                method: "write",
+                grade: $('select[name="grade"]').val(),
+                classNumber: $('select[name="classNumber"]').val(),
+                studentName1: $('input[name="studentName1"]').val(),
+                studentName2: $('input[name="studentName2"]').val(),
+            };
+
+            if (data.grade == "" || data.classNumber == "" || data.studentName1 == "" || data.studentName2 == "") {
+                alert("欄位不可空白");
+                return;
+            }
+
+            $.post(
+                "https://script.google.com/macros/s/AKfycbxWwdG4WFCLZsfWSRsVNWEWIKqQdmiGLLgtkweq0R03Wf4P94M1LAoFj_ZvNbFwSRrD/exec",
+                data
+            ).always(function () {
+                alert("我們已經收到報名，謝謝你！");
+                document.getElementById("MyForm").reset();
+            });
+        }
+    </script>
+</body>
+
+</html>
