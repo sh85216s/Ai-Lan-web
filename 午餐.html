@@ -13,7 +13,6 @@
             text-align: center;
             background: #e5ecf9;
             border-radius: 5px;
-            padding-top: 0 !important;
         }
 
         #currentTime {
@@ -32,6 +31,11 @@
         .border-bottom {
             font-size: 1em;
             color: #3572f3;
+        }
+
+        .shadow-sm.bg-white.rounded {
+            border: 1px solid #585454;
+            border-radius: 5px;
         }
     </style>
     <div id="lunchApp">
@@ -56,7 +60,7 @@
                 <span v-if="dish.DishType !== undefined">{{dish.DishType}} :</span> {{dish.DishName}}
             </div>
 
-            <button @click="queryDetail" type="button" class="shadow-sm bg-white rounded">《查看詳細資料》</button>
+            <button @click="queryDetail" type="button" class="shadow-sm bg-white rounded">查看詳細資料</button>
         </div>
         <div v-else>
             <span class="border-bottom">本日無菜單</span>
