@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#studentAccount').DataTable({
+    $('#table_id').DataTable({
 
         // 中文化
 
