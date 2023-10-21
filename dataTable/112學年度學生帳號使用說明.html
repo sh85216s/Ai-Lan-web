@@ -11,6 +11,10 @@
         crossorigin="anonymous"></script>
     <title>帳號使用說明</title>
     <style>
+        body {
+            background-color: #eee;
+        }
+
         .container {
             padding-top: 30px;
         }
@@ -21,8 +25,20 @@
 
         .counselAccount {
             font-size: 1.2em;
-            animation: rainbow 1.5s ease-in-out infinite;
+            animation: rainbow 0.8s ease-in-out infinite;
 
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul>li>a:hover {
+            animation: rainbow 1.5s ease-in-out infinite;
+        }
+
+        ul>li>a>span:hover {
+            animation: rainbow 1.5s ease-in-out infinite;
         }
 
         .Info-A {
@@ -37,9 +53,25 @@
             /* 設定列高 */
         }
 
+        table {
+            color: #333333;
+            border-collapse: collapse;
+            text-align: center;
+            border: 1px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+        }
+
+        table,
+        tr,
+        td {
+            border: 1px #dbd9d9 solid;
+        }
+
         @keyframes rainbow {
             0% {
-                color: indigo;
+                color: green;
             }
 
             100% {
@@ -52,8 +84,8 @@
 
 <body>
     <div class="container">
-        <p><span class="Info">學生帳號使用說明</span><span class="counselAccount">(<a href="https://bit.ly/401oDzW"
-                    target="_blank" class="Info-A">查詢學生各類帳號</a>)</span></p>
+        <p><span class="Info">學生帳號使用說明</span><span class="counselAccount">(<a href="https://bit.ly/46GRtrW"
+                    target="_blank" class=" Info-A">查詢學生各類帳號</a>)</span></p>
         <div class="row">
 
             <div class="card mb-3">
@@ -87,8 +119,13 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h4>因材網</h4>
-                    <li><a href="https://adl.edu.tw/login.php" target="_blank"><span
-                                style=" color: red; font-weight: bolder;">前往《因材網》</span></a></li>
+                    <ul>
+                        <li><a href="https://adl.edu.tw/login.php" target="_blank"><span
+                                    style=" color: red; font-weight: bolder;">前往《因材網》</span></a></li>
+                        <li>
+                            登入頁面 ➾ 學校：選擇「南投縣」、「埔里鎮」、「愛蘭國小」
+                        </li>
+                    </ul>
 
                 </div>
             </div>
@@ -97,99 +134,120 @@
                 <div class="card-body">
                     <h4>LoiloNote帳號</h4>
                     <ul>
-                        <li>1~6年級班級教室已經先建立好了(<a href="#ClassCode"
-                                style="color: #f00; font-weight: bold;">查詢班級代碼</a>)，教師<a
-                                href="https://loilonote.app/login?hl=zh-Hant" target="_blank"
+                        <li>1~6年級班級教室已經先建立好了(如下)，教師<a href="https://loilonote.app/login?hl=zh-Hant" target="_blank"
                                 style="color: #f00; font-weight: bold;">登入
                                 LoiloNote</a>後 ⇒ 輸入課程名稱 ⇒ 選擇班級名稱 ⇒ 選取小朋友加入該班級，或是告知小朋友「班級名稱」和「班級代碼」，邀請小朋友加入。</li>
                         <li>資訊組今年只先幫忙一年級新生和轉學生建立帳號(舊生已有帳號)，其他年級的小朋友或老師，如有帳號相關問題，可以洽資訊組協助處理。</li>
-                        <li>112學年度LoiloNote教室參加代碼<br>
-                            <table cellspacing="0" cellpadding="4" rules="all"
-                                style=" color:#333333; width:55%; border-collapse:collapse; text-align: center; border: 1px; margin-left:auto; margin-right:auto;">
-                                <tr id="ClassCode">
-                                    <td colspan="2"
-                                        style="text-align: left; background-color: #fff !important; border: none !important;">
-                                        <h3>112學年度LoiloNote教室參加代碼</h3>
-                                    </td>
-                                </tr>
-                                <tr style=" color:White; background-color:#990000; font-weight:bold;">
-                                    <td>班級名稱</td>
-                                    <td>參加代碼</td>
-                                </tr>
-                                <tr>
-                                    <td>112-一甲</td>
-                                    <td>03227</td>
-                                </tr>
-                                <tr>
-                                    <td>112-一乙</td>
-                                    <td>99918</td>
-                                </tr>
-                                <tr>
-                                    <td>112-一丙</td>
-                                    <td>11866</td>
-                                </tr>
-                                <tr>
-                                    <td>112-二甲</td>
-                                    <td>56269</td>
-                                </tr>
-                                <tr>
-                                    <td>112-二乙</td>
-                                    <td>91213</td>
-                                </tr>
-                                <tr>
-                                    <td>112-二丙</td>
-                                    <td>02372</td>
-                                </tr>
-                                <tr>
-                                    <td>112-三甲</td>
-                                    <td>35233</td>
-                                </tr>
-                                <tr>
-                                    <td>112-三乙</td>
-                                    <td>84518</td>
-                                </tr>
-                                <tr>
-                                    <td>112-三丙</td>
-                                    <td>74203</td>
-                                </tr>
-                                <tr>
-                                    <td>112-四甲</td>
-                                    <td>91897</td>
-                                </tr>
-                                <tr>
-                                    <td>112-四乙</td>
-                                    <td>56618</td>
-                                </tr>
-                                <tr>
-                                    <td>112-四丙</td>
-                                    <td>13576</td>
-                                </tr>
-                                <tr>
-                                    <td>112-五甲</td>
-                                    <td>58609</td>
-                                </tr>
-                                <tr>
-                                    <td>112-五乙</td>
-                                    <td>44020</td>
-                                </tr>
-                                <tr>
-                                    <td>112-五丙</td>
-                                    <td>11024</td>
-                                </tr>
-                                <tr>
-                                    <td>112-六甲</td>
-                                    <td>28752</td>
-                                </tr>
-                                <tr>
-                                    <td>112-六乙</td>
-                                    <td>34063</td>
-                                </tr>
-                                <tr>
-                                    <td>112-六丙</td>
-                                    <td>85003</td>
-                                </tr>
-                            </table>
-                        </li>
+                        <!-- 以下-教室代碼 -->
+                        <div class="container">
+                            <div class="row">
+                                <h5><span
+                                        style=" background-color: #54aa3f; color: #fff; padding: 3px 6px; border-radius: 1px;">112學年度LoiloNote教室參加代碼</span>
+                                </h5>
+                                <hr>
+                                <div class="col-md-4">
+                                    <table cellspacing="0" cellpadding="4" rules="all">
+                                        <tr style=" color:White; background-color:#990000; font-weight:bold;">
+                                            <td>班級名稱</td>
+                                            <td>參加代碼</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-一甲</td>
+                                            <td>03227</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-一乙</td>
+                                            <td>99918</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-一丙</td>
+                                            <td>11866</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-二甲</td>
+                                            <td>56269</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-二乙</td>
+                                            <td>91213</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-二丙</td>
+                                            <td>02372</td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <table cellspacing="0" cellpadding="4" rules="all">
+                                        <tr style=" color:White; background-color:#990000; font-weight:bold;">
+                                            <td>班級名稱</td>
+                                            <td>參加代碼</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-三甲</td>
+                                            <td>35233</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-三乙</td>
+                                            <td>84518</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-三丙</td>
+                                            <td>74203</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-四甲</td>
+                                            <td>91897</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-四乙</td>
+                                            <td>56618</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-四丙</td>
+                                            <td>13576</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-4">
+                                    <table cellspacing="0" cellpadding="4" rules="all">
+                                        <tr style=" color:White; background-color:#990000; font-weight:bold;">
+                                            <td>班級名稱</td>
+                                            <td>參加代碼</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-五甲</td>
+                                            <td>58609</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-五乙</td>
+                                            <td>44020</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-五丙</td>
+                                            <td>11024</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>112-六甲</td>
+                                            <td>28752</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-六乙</td>
+                                            <td>34063</td>
+                                        </tr>
+                                        <tr>
+                                            <td>112-六丙</td>
+                                            <td>85003</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 以上-教室代碼 -->
+
+
                     </ul>
                 </div>
             </div>
@@ -197,21 +255,18 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h4>學生google帳號</h4>
-                    <p>
-                        使用學校配發的 google 帳號登入時，需先輸入帳號，接著再輸入<span
-                            style=" color: red; font-weight: bolder;">@alps.ntct.edu.tw</span>
-                    </p>
-                    <p>
-                        ➾<a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%2F&ec=GAZAmgQ&hl=zh-TW&hd=alps.ntct.edu.tw&ifkv=AYZoVhft_9reQ2kj75xLc4AJca_OUG2adfqwWrvUDWjVplaQhQBHfAoqEc9UqSO6bEkrunxwU9xj&passive=true&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-16730160%3A1695082525122087&theme=glif"
-                            target="_blank"><span style=" color: red; font-weight: bolder;">點我快速登入「學校配發的
-                                google 帳號」</span></a><br>
-                    </p>
+                    <ul>
+                        <li>使用學校配發的 google 帳號登入時，需先輸入帳號，接著再輸入<span
+                                style=" color: red; font-weight: bolder;">@alps.ntct.edu.tw</span></li>
+                        <li>➾<a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%2F&ec=GAZAmgQ&hl=zh-TW&hd=alps.ntct.edu.tw&ifkv=AYZoVhft_9reQ2kj75xLc4AJca_OUG2adfqwWrvUDWjVplaQhQBHfAoqEc9UqSO6bEkrunxwU9xj&passive=true&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-16730160%3A1695082525122087&theme=glif"
+                                target="_blank"><span style=" color: red; font-weight: bolder;">點我快速登入「學校配發的
+                                    google 帳號」</span></a></li>
+                        <li>小朋友常常會鍵錯資料，建議將這個連結加入瀏覽器的書籤當中，除了能夠快速登入之外，也可以減少發生錯誤。</li>
+                    </ul>
                 </div>
             </div>
         </div>
-
-    </div>
-
+    </div><br><br>
 </body>
 
 </html>
