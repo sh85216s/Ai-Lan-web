@@ -48,13 +48,8 @@
             </p>
             <span id="currentTime"></span>
             <br>
-            <script>
-                const now = new Date();
-                const formattedTime = now.getFullYear() + "-" +
-                    (now.getMonth() + 1) + "-" +
-                    now.getDate();
-                document.getElementById("currentTime").innerHTML = formattedTime;
-            </script>
+            <span>{{getDateTime}}</span><br>
+
             {{getBatchdata}}
             <div v-if="menu.data.length !=0" class="border-bottom" v-for="dish in menu.data" style=" padding: 0 20px;">
                 <span v-if="dish.DishType !== undefined">{{dish.DishType}} :</span> {{dish.DishName}}
@@ -63,6 +58,7 @@
             <button @click="queryDetail" type="button" class="shadow-sm bg-white rounded">查看詳細資料</button>
         </div>
         <div v-else>
+            <span>{{getDateTime}}</span><br>
             <span class="border-bottom">本日無菜單</span>
         </div>
     </div>
@@ -120,6 +116,14 @@
 
                     }
 
+                },
+
+                getDateTime: function () {
+                    const now = new Date();
+                    const formattedTime = now.getFullYear() + "-" +
+                        (now.getMonth() + 1) + "-" +
+                        now.getDate();
+                    return formattedTime;
                 }
             },
             methods: {
