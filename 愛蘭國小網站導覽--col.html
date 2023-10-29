@@ -9,36 +9,50 @@
 </head>
 
 <body>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         .webMapSubjectTitle {
             font-weight: bold;
-            font-size: 1.2rem;
         }
 
-        .col-md-2 a {
+        .row.rowWebMap {
+            --bs-gutter-x: 1.5rem;
+            --bs-gutter-y: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: calc(-1 * var(--bs-gutter-y));
+        }
+
+        .row.rowWebMap>* {
+            margin: 0 auto !important;
+
+        }
+
+        .col-md-2.colWebMap {
+            flex: 0 0 auto;
+        }
+
+        .col-md-2.colWebMap a {
             color: #776f6f;
             text-decoration: none;
-            font-size: 0.9rem;
         }
 
-        .col-md-2 a:hover {
-            color: #fff;
-            background-color: rgb(125, 142, 240);
-            border: 1px dotted rgb(54, 50, 50);
+        .col-md-2.colWebMap a:hover {
+            color: #f00;
             text-decoration: none;
         }
 
         @media (max-width: 768px) {
-            .col-md-2 {
-                width: 50% !important;
+            .col-md-2.colWebMap {
+                width: 33.33% !important;
+                /* font-size: 1.1rem; */
+                padding-top: 10px;
             }
         }
     </style>
     <div class="container">
-        <div class="row g-3">
-            <div class="col-md-2">
+        <div class="row g-3 rowWebMap">
+            <div class="col-md-2 colWebMap">
                 <div class="webMapSubjectTitle">認識愛蘭</div>
                 <a href="https://alps.ntct.edu.tw/p/412-1051-14767.php?Lang=zh-tw">校史沿革</a><br>
                 <a href="https://alps.ntct.edu.tw/p/412-1051-1273.php">地理位置</a><br>
@@ -51,7 +65,7 @@
                 <a href="https://alps.ntct.edu.tw/p/412-1051-14693.php">歷任校長</a>
 
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 colWebMap">
                 <div class="webMapSubjectTitle">行政組織</div>
                 <a href="https://alps.ntct.edu.tw/p/412-1051-1276.php">校長室</a><br>
                 <a href="https://alps.ntct.edu.tw/p/412-1051-3388.php">教務處</a><br>
@@ -62,7 +76,7 @@
                 <a href="https://alps.ntct.edu.tw/p/412-1051-5177.php">人事室</a><br>
                 <a href="https://alps.ntct.edu.tw/p/412-1051-5178.php">會計室</a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 colWebMap">
                 <div class="webMapSubjectTitle">E化行政</div>
                 <a href="https://eschool.ntct.edu.tw/" target="_blank">校務行政系統</a><br>
                 <a href="https://gdms.nantou.gov.tw/">公文整合系統</a><br>
@@ -80,7 +94,7 @@
                 <a href="https://csrc.edu.tw/" target="_blank">校安暨災害防救中心</a><br>
                 <a href="https://www.ntct.edu.tw/" target="_blank">南投縣教務處</a>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 colWebMap">
                 <div class="webMapSubjectTitle">愛蘭成果網</div>
                 <a href="https://sites.google.com/a/alps.ntct.edu.tw/jiao-tong-an-quan-jiao-yu-wang/"
                     target="_blank">交通安區雸教育網</a><br>
@@ -104,7 +118,7 @@
 
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-2 colWebMap">
                 <div class="webMapSubjectTitle">公開課</div>
                 <a href="https://drive.google.com/drive/folders/1Eoy1huvfHskYNPLYKALTt3YSlCzDKbqe?usp=share_link"
                     target="_blank">公開課</a><br><br>
@@ -120,7 +134,7 @@
                 <a href="https://go.k12cc.tw/" target="_blank">教育部雲端帳號申請</a>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-2 colWebMap">
                 <div class="webMapSubjectTitle">愛蘭園地</div>
                 <a href="https://read.moe.edu.tw/084619/library" target="_blank">愛蘭圖書館</a><br>
                 <a href="https://sh85216s.github.io/Ai-Lan-web/Ai-Lan-plant/index.html" target="_blank">愛蘭森情樹說</a><br>
