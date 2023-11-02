@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Bootstrap Example</title>
+</head>
+
+<body>
+    <style>
+        input,
+        select,
+        textarea,
+        optgroup,
+        button {
+            background: transparent;
+            border: 0;
+            font: inherit;
+        }
+
+        .js-To_Expand[aria-hidden=true],
+        .js-To_Expand[data-Hidden=true] {
+            display: none;
+        }
+
+        .ExpandMore__button[aria-Expanded=false]>.ExpandMore__symbol:before,
+        .ExpandMore__button[data-Expanded=false]>.ExpandMore__symbol:before {
+            content: '+ ';
+        }
+
+        .ExpandMore__button[aria-Expanded=true]>.ExpandMore__symbol:before,
+        .ExpandMore__button[data-Expanded=true]>.ExpandMore__symbol:before {
+            content: '− ';
+        }
+
+        .ExpandMore__button {
+            background: none;
+            font-size: inherit;
+            color: inherit;
+        }
+
+        .js-To_Expand {
+            background: #e5ecf8;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+        }
+
+        .js-ExpandMore {
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .js-To_Expand a:hover {
+            color: red;
+        }
+
+        .js-To_Expand a {
+            text-decoration: none;
+        }
+
+        .webMapSubjectTitle {
+            font-weight: bold;
+        }
+
+        /* .row.rowWebMap {
+            display: flex;
+        } */
+        .row.rowWebMap {
+            --bs-gutter-x: 1.5rem;
+            --bs-gutter-y: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: calc(-1 * var(--bs-gutter-y));
+        }
+
+        .row.rowWebMap>* {
+            margin: 0 auto !important;
+
+        }
+
+        .col-md-1-6.colWebMap a {
+            color: #776f6f;
+            text-decoration: none;
+        }
+
+        .col-md-1-6.colWebMap {
+            flex: 0 0 auto;
+        }
+
+        .col-md-1-6.colWebMap a:hover {
+            color: #f00;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .col-md-1-6.colWebMap {
+                width: 50% !important;
+                padding-left: 30px;
+            }
+        }
+    </style>
+    <div>
+        <div>
+            <p class="js-ExpandMore mt mt-title">
+                收合-網站導覽
+            </p>
+            <div class="js-To_Expand is-Opened">
+                <div class="row g-3 rowWebMap">
+                    <div class="col-md-1-6 colWebMap">
+                        <div class="webMapSubjectTitle">認識愛蘭</div>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-14767.php?Lang=zh-tw">校史沿革</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-1273.php">地理位置</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-3808.php">學校特色</a><br>
+                        <a href="https://eschool.ntct.edu.tw/jsp/stdbasicmgt/stdcount.jsp?schno=084619"
+                            target="_blank">學生人數</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-4873.php">校徽與校歌</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-9315.php">家長會長章程</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-14694.php">歷任家長會長</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-14693.php">歷任校長</a>
+
+                    </div>
+                    <div class="col-md-1-6 colWebMap">
+                        <div class="webMapSubjectTitle">行政組織</div>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-1276.php">校長室</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-3388.php">教務處</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-3406.php">學務處</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-3414.php">總務處</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-9114.php">輔導室</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-5746.php">幼兒園</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-5177.php">人事室</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/412-1051-5178.php">會計室</a>
+                    </div>
+                    <div class="col-md-1-6 colWebMap">
+                        <div class="webMapSubjectTitle">E化行政</div>
+                        <a href="https://eschool.ntct.edu.tw/" target="_blank">校務行政系統</a><br>
+                        <a href="https://gdms.nantou.gov.tw/">公文整合系統</a><br>
+                        <a href="https://www2.inservice.edu.tw/" target="_blank">教師進修網</a><br>
+                        <a href="https://sso.ntct.edu.tw/NewLogins/Login.aspx" target="_blank">單一入口網</a><br>
+                        <a href="https://webitr.nantou.gov.tw/WebITR" target="_blank">WebITR差勤系統</a><br>
+                        <a href="https://drive.google.com/file/d/1F56kwCDYlDTm5TUzGKIOpBypQnuDWdpD/view?usp=drive_link"
+                            target="_blank">課表查詢</a><br>
+                        <a href="https://eschool.ntct.edu.tw/web-maintain/templates/maintain_pub.html?schno=084619"
+                            target="_blank">維修通報</a><br>
+                        <a href="https://eschool.ntct.edu.tw/web-classmgt/template/pub/pubmain.html?schno=084619"
+                            target="_blank">教室預約</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/403-1051-3188.php">文件下載區</a><br>
+                        <a href="https://exam.tcte.edu.tw/tbt_html/" target="_blank">學習扶助科技化評量</a><br>
+                        <a href="https://csrc.edu.tw/" target="_blank">校安暨災害防救中心</a><br>
+                        <a href="https://www.ntct.edu.tw/" target="_blank">南投縣教務處</a>
+                    </div>
+                    <div class="col-md-1-6 colWebMap">
+                        <div class="webMapSubjectTitle">愛蘭成果網</div>
+                        <a href="https://sites.google.com/a/alps.ntct.edu.tw/jiao-tong-an-quan-jiao-yu-wang/"
+                            target="_blank">交通安全教育網</a><br>
+                        <a href="https://sites.google.com/alps.ntct.edu.tw/3-1/%E9%A6%96%E9%A0%81"
+                            target="_blank">性別平等教育網</a><br>
+                        <a href="https://sites.google.com/a/alps.ntct.edu.tw/fang-zai-jiao-yu-wang/"
+                            target="_blank">防災教育網</a><br>
+                        <a href="https://sites.google.com/alps.ntct.edu.tw/family/111%E5%AD%B8%E5%B9%B4%E5%BA%A6%E6%84%9B%E8%98%AD%E5%9C%8B%E5%B0%8F%E5%AE%B6%E5%BA%AD%E6%95%99%E8%82%B2%E6%88%90%E6%9E%9C%E7%B6%B2"
+                            target="_blank">家庭教育網</a><br>
+                        <a href="https://drive.google.com/drive/folders/1V3ZU43oDf9IKH_P6ERcp-1Or6qwdH6ZV?usp=sharing"
+                            target="_blank">教育優先區</a><br>
+                        <a href="https://sites.google.com/a/alps.ntct.edu.tw/ai-lan-guo-xiao105xue-nian-du-tui-dong-yue-du-cheng-xiao-cheng-guo-wang/"
+                            target="_blank">閱讀磐石成果網</a><br><br>
+                        <div class="webMapSubjectTitle">課程計畫</div>
+                        <a href="https://reminiscent-legend-2b8.notion.site/608d5064a18b416aa72488e88f20e33b?pvs=4"
+                            target="_blank">112學年度</a><br>
+                        <a href="https://drive.google.com/file/d/1SSsfdy3dkwURNkue75DOcUCdQUeclqp0/view?usp=sharing"
+                            target="_blank">111學年度</a><br>
+                        <a href="https://drive.google.com/drive/folders/1tPFtJmlzlAOVqlN_Z1wSL6QPi1RQ5BR_?usp=sharing"
+                            target="_blank">110學年度</a>
+
+                    </div>
+
+                    <div class="col-md-1-6 colWebMap">
+                        <div class="webMapSubjectTitle">公開授課</div>
+                        <a href="https://drive.google.com/drive/folders/1Eoy1huvfHskYNPLYKALTt3YSlCzDKbqe?usp=share_link"
+                            target="_blank">公開課</a><br><br>
+                        <div class="webMapSubjectTitle">資訊服務</div>
+                        <a href="https://drive.google.com/drive/u/1/folders/1QITOmH49TliKdJUY6ynyOEJmv9ssGcLc"
+                            target="_blank">愛蘭雲端共用硬碟</a><br>
+                        <a href="https://reurl.cc/4W3OgK" target="_blank">登入學校google帳號</a><br>
+                        <a href="https://bit.ly/46GRtrW" target="_blank">學生各類帳號</a><br>
+                        <a href="https://sh85216s.github.io/Ai-Lan-web/dataTable/112%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%AD%B8%E7%94%9F%E5%B8%B3%E8%99%9F%E4%BD%BF%E7%94%A8%E8%AA%AA%E6%98%8E.html"
+                            target="_blank">學生帳號使用說明</a><br>
+                        <a href="https://sh85216s.github.io/Ai-Lan-web//112-資訊教學資源.html" target="_blank">資訊教學資源</a><br>
+                        <a href="https://drive.google.com/file/d/1aCetp90XFgBDNE2BnF9z6DFbl23b5m4_/view?usp=drive_link"
+                            target="_blank">愛蘭線上教室</a><br>
+                        <a href="https://go.k12cc.tw/" target="_blank">教育部雲端帳號申請</a>
+                    </div>
+
+                    <div class="col-md-1-6 colWebMap">
+                        <div class="webMapSubjectTitle">愛蘭園地</div>
+                        <a href="https://read.moe.edu.tw/084619/library" target="_blank">愛蘭圖書館</a><br>
+                        <a href="https://sh85216s.github.io/Ai-Lan-web/Ai-Lan-plant/index.html"
+                            target="_blank">愛蘭森情樹說</a><br>
+                        <a href="/p/403-1051-3305.php?Lang=zh-tw" target="_blank">報導愛蘭</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/403-1051-1620.php">愛蘭悅報</a><br>
+                        <a href="https://alps.ntct.edu.tw/p/403-1051-3185-1.php?Lang=zh-tw">活動照片</a><br>
+                        <a href="https://www.youtube.com/@Ai-LanPrimarySchool/videos" target="_blank">活動影音</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var attr_control = 'data-Controls',
+            attr_expanded = 'aria-Expanded',
+            attr_labelledby = 'data-Labelledby',
+            attr_hidden = 'data-Hidden',
+            $ExpandMore = $('.js-ExpandMore'),
+            $body = $('body'),
+            delay = 1500,
+            hash = window.location.hash.replace("#", ""),
+            multiexpandable = true,
+            Expand_all_text = 'Expand All',
+            collapse_all_text = 'Collapse All';
+
+
+        if ($ExpandMore.length) { // if there are at least one :)
+            $ExpandMore.each(function (index_to_expand) {
+                var $this = $(this),
+                    index_lisible = index_to_expand + 1,
+                    options = $this.data(),
+                    $hideshow_prefix_classes = typeof options.hideshowPrefixClass !== 'undefined' ? options.hideshowPrefixClass + '-' : '',
+                    not_all_expands = typeof options.notAllExpands !== 'undefined' ? true : false,
+                    $to_expand = $this.next(".js-To_Expand"),
+                    $ExpandMore_text = $this.html();
+
+                $this.html('<button type="button" class="' + $hideshow_prefix_classes + 'ExpandMore__button js-ExpandMore-button"' + (not_all_expands ? 'data-Not-All-Expands="true"' : '') + '><span class="' + $hideshow_prefix_classes + 'ExpandMore__symbol" aria-hidden="true"></span>' + $ExpandMore_text + '</button>');
+                var $button = $this.children('.js-ExpandMore-button');
+
+                $to_expand.addClass($hideshow_prefix_classes + 'ExpandMore__to_expand').stop().delay(delay).queue(function () {
+                    var $this = $(this);
+                    if ($this.hasClass('js-first_load')) {
+                        $this.removeClass('js-first_load');
+                    }
+                });
+
+                $button.attr('id', 'label_Expand_' + index_lisible);
+                $button.attr(attr_control, 'Expand_' + index_lisible);
+                $button.attr(attr_expanded, 'false');
+
+                $to_expand.attr('id', 'Expand_' + index_lisible);
+                $to_expand.attr(attr_hidden, 'true');
+                $to_expand.attr(attr_labelledby, 'label_Expand_' + index_lisible);
+
+                if (not_all_expands) {
+                    $to_expand.attr('data-Not-All-Expands', 'true');
+                }
+
+                // quick tip to open (if it has class is-Opened or if hash is in expand)
+                if ($to_expand.hasClass('is-Opened') || (hash !== "" && $to_expand.find($("#" + hash)).length)) {
+                    $button.addClass('is-Opened').attr(attr_expanded, 'true');
+                    $to_expand.removeClass('is-Opened').removeAttr(attr_hidden);
+                }
+
+
+            });
+
+
+        }
+
+
+        $body.on('click', '.js-ExpandMore-button', function (event) {
+            var $this = $(this),
+                $destination = $('#' + $this.attr(attr_control));
+
+            if ($this.attr(attr_expanded) === 'false') {
+
+                if (multiexpandable === false) {
+                    $('.js-ExpandMore-button').removeClass('is-Opened').attr(attr_expanded, 'false');
+                    $('.js-To_Expand').attr(attr_hidden, 'true');
+                }
+
+                $this.addClass('is-Opened').attr(attr_expanded, 'true');
+                $destination.removeAttr(attr_hidden);
+            } else {
+                $this.removeClass('is-Opened').attr(attr_expanded, 'false');
+                $destination.attr(attr_hidden, 'true');
+            }
+
+            event.preventDefault();
+
+        });
+
+        $body.on('click keydown', '.js-ExpandMore', function (event) {
+            var $this = $(this),
+                $target = $(event.target),
+                $button_in = $this.find('.js-ExpandMore-button');
+
+            if (!$target.is($button_in) && !$target.closest($button_in).length) {
+
+                if (event.type === 'click') {
+                    $button_in.trigger('click');
+                    return false;
+                }
+                if (event.type === 'keydown' && (event.keyCode === 13 || event.keyCode === 32)) {
+                    $button_in.trigger('click');
+                    return false;
+                }
+
+            }
+
+
+        });
+
+        $body.on('click', '.js-ExpandMore-All', function (event) {
+            var $this = $(this),
+                options = $this.data(),
+                is_expanded = $this.attr('data-Expand'),
+                txt_Expand_all = typeof options.textExpandAll !== 'undefined' ? options.textExpandAll : Expand_all_text,
+                txt_collapse_all = typeof options.textCloseAll !== 'undefined' ? options.textCloseAll : collapse_all_text,
+                $all_buttons = $('.js-ExpandMore-button:not([data-Not-All-Expands])'),
+                $all_destinations = $('.js-To_Expand:not([data-Not-All-Expands])');
+
+            if (is_expanded === 'true') {
+                $all_buttons.addClass('is-Opened').attr(attr_expanded, 'true');
+                $all_destinations.removeAttr(attr_hidden);
+                $this.attr('data-Expand', 'false').html(txt_collapse_all);
+            } else {
+                $all_buttons.removeClass('is-Opened').attr(attr_expanded, 'false');
+                $all_destinations.attr(attr_hidden, 'true');
+                $this.attr('data-Expand', 'true').html(txt_Expand_all);
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>
