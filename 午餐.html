@@ -9,10 +9,7 @@
 
 <body>
 
-
-
-
-
+    <!-- 愛蘭國小營養午餐模組程式碼-112.11.04 12:11更新版 -->
     <style>
         #lunchApp {
             text-align: center;
@@ -52,16 +49,10 @@
             <p id="KitchenName" class="form-control form-control-sm" v-model="selectedBatchdataId">
                 <span v-for="option in info.data" v-bind:value="option.BatchDataId">
                     {{option.KitchenName}}
+
                 </span>
             </p>
-            <span id="currentTime"></span><br>
-            <script>
-                const now = new Date();
-                const formattedTime = now.getFullYear() + "-" +
-                    (now.getMonth() + 1) + "-" +
-                    now.getDate();
-                document.getElementById("currentTime").innerHTML = formattedTime;
-            </script>
+            <span id="currentTime">{{getTodayDate}}</span><br>
             {{getBatchdata}}
             <div v-if="menu.data.length !=0" class="border-bottom" v-for="dish in menu.data" style=" padding: 0 20px;">
                 <span v-if="dish.DishType !== undefined">{{dish.DishType}} :</span> {{dish.DishName}}
@@ -70,13 +61,14 @@
             <button @click="queryDetail" type="button" class="shadow-sm bg-white rounded">查看詳細資料</button>
         </div>
         <div v-else>
+            <span id="currentTime">{{getTodayDate}}</span><br>
             <span class="border-bottom">本日無菜單</span>
         </div>
     </div>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- <script src="/var/file/51/1051/img/2047/vue.global.js"></script>
-        <script src="/var/file/51/1051/img/2047/axios.min.js"></script> -->
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+    <script src="/var/file/51/1051/img/2047/vue.global.js"></script>
+        <script src="/var/file/51/1051/img/2047/axios.min.js"></script>
     <script>
         let SchoolId = "64738357";// 請將"64738357"換成貴校的 SchoolId
         let Today = new Date();
@@ -127,6 +119,12 @@
 
                     }
 
+                },
+                getTodayDate: function () {
+                    const now = new Date();
+                    const formattedTime = now.getFullYear() + "-" +
+                        (now.getMonth() + 1) + "-" + now.getDate();
+                    return formattedTime;
                 }
             },
             methods: {
@@ -151,6 +149,7 @@
             }
         }).mount('#lunchApp')
     </script>
+    <!-- 以上-愛蘭國小營養午餐模組 -->
 
 </body>
 
