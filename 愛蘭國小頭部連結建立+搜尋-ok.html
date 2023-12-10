@@ -334,42 +334,6 @@
             $(this).toggleClass('open');
         });
     </script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var a = [];
-            a.push({ name: 'SelectCg', value: encodeURIComponent('') })
-            a.push({ name: 'Sch_field1', value: encodeURIComponent('') })
-            a.push({ name: 'Sch_txt1', value: encodeURIComponent('') })
-            a.push({ name: 'Sch_field2', value: encodeURIComponent('') })
-            a.push({ name: 'Sch_txt2', value: encodeURIComponent('') })
-            a.push({ name: 'Sort', value: encodeURIComponent('') })
-            a.push({ name: 'Direct', value: encodeURIComponent('') })
-            a.push({ name: 'SchKey', value: encodeURIComponent('') })
-            var option = {
-                pageMode: '0',
-                currentPage: 1,
-                flag: 0,
-                over: 0,
-                url: '/app/index.php?Action=mobileptsearch',
-                urlPrefix: '/app/index.php?Action=mobileptsearch&Page=PAGE&SchKey=',
-                totalPage: 139,
-                Op: 'getpartlist',
-                param: a,
-                pageListObj: $("#pageptlist"),
-                nextPageObj: $("#_schlist_next_page")
-            }
-
-            var schpagelist = new HvPagelist();
-            schpagelist.init(option);
-            schpagelist.loadPage();
-            window.onscroll = function () {
-                schpagelist.loadPage();
-            }
-
-        });
-
-    </script>
     <!-- 以上-搜尋 -->
 </body>
 
