@@ -23,11 +23,21 @@
         }
 
         .head_search>a,
-        .head_search>a:focus,
-        .head_search>a:hover {
+        .head_search>a:focus {
+            vertical-align: -0.125em;
             padding: 0;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
+            border-radius: 100px;
+            background: #69a7f3 url(/var/file/51/1051/img/search.png) no-repeat center;
+            text-indent: -9999px;
+            overflow: hidden;
+        }
+        .head_search>a:hover { 
+            vertical-align: -0.125em; 
+            padding: 0;
+            width: 20px;
+            height: 20px;
             border-radius: 100px;
             background: #fff url(/var/file/51/1051/img/search.png) no-repeat center;
             text-indent: -9999px;
@@ -159,6 +169,10 @@
 
         .headlogo img:hover {
             transform: scale(1.01);
+        }
+
+        .header {
+            margin-bottom: 0 !important;
         }
 
         @media screen and (min-width: 768px) {
