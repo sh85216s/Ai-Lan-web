@@ -1,0 +1,351 @@
+<!--頭部連結 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<style>
+    /* 以下-搜尋 */
+    /* .head_search {
+            display: block;
+            vertical-align: middle;
+        } */
+
+    .head_search>a.open {
+        background-image: url(/var/file/51/1051/img/search_close.png) !important;
+    }
+
+    .head_search>a,
+    .head_search>a:focus {
+        vertical-align: -0.125em;
+        padding: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 100px;
+        background: #69a7f3 url(/var/file/51/1051/img/search.png) no-repeat center;
+        text-indent: -9999px;
+        overflow: hidden;
+    }
+
+    .head_search>a:hover {
+        vertical-align: -0.125em;
+        padding: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 100px;
+        background: #fff url(/var/file/51/1051/img/search.png) no-repeat center;
+        text-indent: -9999px;
+        overflow: hidden;
+    }
+
+    .msearch .input-group .input-group-btn>.btn {
+        text-indent: -9999px;
+        overflow: hidden;
+        border: 0;
+        background: #fff url(/var/file/51/1051/img/search.png) no-repeat center;
+    }
+
+    .msearch .input-group .input-group-btn>.btn {
+        height: 30px;
+    }
+
+    .msearch .input-group>.form-control {
+        height: 30px;
+    }
+
+    /* 以上-搜尋 */
+
+    .input-group {
+        width: 10em !important;
+    }
+
+    div.hdsearch {
+        display: flex;
+        flex-direction: row-reverse;
+        padding-bottom: 5px;
+    }
+
+    button.sch-toggle {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    @media (min-width: 1024px) {
+        .dropdown-menu {
+            min-width: 176px;
+        }
+    }
+
+    .listImg .d-txt>.mtitle {
+        font-size: .9em;
+    }
+
+    .mt-title {
+        text-align: center;
+    }
+
+    .mt .mt-title {
+        font-size: 1em;
+    }
+
+    .md_style1 .mt .mt-title {
+        padding: 4px 8px;
+    }
+
+    .navbar-fixed-top ul.navbar-nav {
+        margin-top: 0px;
+    }
+
+    .hdmenu {
+        padding: 2px 0;
+    }
+
+    .nav>li>a {
+        padding: 5px 10px;
+    }
+
+    .mpgtitle .hdline {
+        padding: 4px 0 4px 20px;
+        font-size: 1em;
+    }
+
+    .DivRight {
+        padding-left: 50px;
+
+    }
+
+    .DivRight ul li {
+        display: inline;
+        list-style: none;
+    }
+
+    .DivRight ul .Icon1 a {
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+        padding-right: 3px;
+        transition: 0.1s;
+        text-decoration: none;
+
+    }
+
+    .DivRight ul li a:hover {
+        color: #f00;
+    }
+
+    .DivRight ul .Icon2 {
+        padding-right: 8px;
+    }
+
+    .DivRight ul .Icon2 a {
+        color: #fff;
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+        text-align: center;
+        border-radius: 50%;
+        transition: 0.1s;
+        transition-property: color;
+    }
+
+    .DivRight ul .Icon2 a:hover {
+        color: #69a7f3;
+    }
+
+    .mcontainer {
+        display: flex;
+        align-items: center;
+    }
+
+    .mcontainer .mlogo {
+        padding-left: 20px;
+    }
+
+    .headlogo img:hover {
+        transform: scale(1.01);
+    }
+
+    .header {
+        margin-bottom: 0 !important;
+    }
+
+    @media screen and (min-width: 768px) {
+        .mnavbar {
+            margin-bottom: 0px !important;
+        }
+
+        .navbar-nav {
+            text-align: center;
+        }
+
+        #collapseExample {
+            position: absolute;
+            right: 65px;
+            z-index: 70;
+        }
+
+    }
+
+    @media screen and (max-width: 767px) {
+        .mcontainer {
+            display: flex;
+            width: 100%;
+            flex-direction: column !important;
+            padding-top: 10px;
+        }
+
+        .mcontainer .mlogo {
+            padding-left: 0px;
+        }
+
+        .mcontainer .mlogo img {
+            width: 90%;
+            height: 90%;
+        }
+
+        /* .DivRight {
+                display: inline;
+            } */
+        .DivRight {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            padding-left: 0px;
+            padding-bottom: 15px;
+        }
+
+        .DivRight .Icon1 {
+            font-size: 10px;
+        }
+
+        .DivRight ul .Icon2 {
+            left: 0;
+            padding-right: 5px;
+        }
+
+        /* #Hln_8049.dropdown-menu {
+            overflow-y: scroll !important;
+            height: 36em !important;
+        } */
+
+        .dropdown-menu li a {
+            color: #000 !important;
+        }
+
+        /* .navbar-fixed-top ul.navbar-nav {
+                position: sticky !important;
+
+            } */
+
+        .navbar-fixed-top {
+            position: sticky !important;
+        }
+
+        .header.navbar-fixed-top.animated.fadeInDown {
+            position: fixed;
+        }
+
+        #Dyn_head {
+            height: auto !important;
+        }
+
+        /* 搜尋框 */
+        #collapseExample {
+            position: absolute;
+            right: 15px;
+            z-index: 70;
+        }
+
+    }
+
+    .badge {
+        color: #f00 !important;
+    }
+</style>
+<!-- 第一列 -->
+<div class="mcontainer">
+    <div class="col-md-8">
+        <div class="mlogo">
+            <a class="headlogo" href="/index.php" title="回首頁"><img src="/var/file/51/1051/img/554/Ai-LanLogo2.png"
+                    width="360" height="103" alt="歡迎光臨南投縣愛蘭國民小學全球資訊網~ Welcome to Ai-Lan Primary School ~"></a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="DivRight">
+            <ul style="list-style:outside; padding: 0px !important;">
+                <li class="Icon2"><a
+                        href="https://www.youtube.com/@Ai-LanPrimarySchool/videos?view=0&sort=dd&shelf_id=0"
+                        target="_blank" title="愛蘭國小Youtube影片"><i class="bi bi-camera-reels-fill"></i></a></li>
+                <li class="Icon2"><a href="https://www.facebook.com/AiLanPrimarySchool/" target="_blank"
+                        title="愛蘭國小fb粉絲頁"><i class="bi bi-facebook"></i></a></li>
+                <li class="Icon1"><a href="mailto:sh85216s@gmail.com" target="_blank" title="聯絡我們(另開新視窗)">聯絡我們</a>
+                </li>
+                <!-- <li class="Icon1"><a href="/p/17-1051.php" title="網站導覽">網站導覽</a></li> -->
+
+                <li class="Icon1"><a href="https://alps.ntct.edu.tw/platform/" title="登入">登入</a>
+                </li>
+                <li class="Icon1"><a href="/index.php" title="回首頁">回首頁</a></li>
+
+                <!--搜尋-->
+                <li class="head_search"><a aria-controls="collapseExample" aria-expanded="false"
+                        class="btn btn-primary navbar-toggle1" data-toggle="collapse" href="#collapseExample"
+                        role="button">搜尋
+                    </a>
+
+                    <div class="collapse" id="collapseExample">
+                        <div id="hd_search">&nbsp;</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--第二列-->
+<div class="mnavbar mn-collapse">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-toggle">
+        <span class="glyphicons show_lines">Menu</span>
+    </button>
+    <div class="nav-toggle collapse navbar-collapse iosScrollToggle">
+        <!-- <div class="top_s"> -->
+        <div class="mainmenu">%CustMenu_mainmenu%</div>
+        <!-- </div> -->
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $(".mnavbar .navbar-toggle").click(function () {
+            $(this).toggleClass("open");
+        });
+        $('.iosScrollToggle').on('shown.bs.collapse', function () {
+            var togglePos = $(this).css('position');
+            if (togglePos !== 'static') {
+                ModalHelper.afterOpen();
+            }
+
+        });
+
+        $('.iosScrollToggle').on('hide.bs.collapse', function () {
+            var togglePos = $(this).css('position');
+            if (togglePos !== 'static') {
+                ModalHelper.beforeClose();
+            }
+
+        });
+
+    });
+
+</script>
+<!-- 以下-搜尋 -->
+<script>
+    $(document).ready(function () {
+        $.hajaxOpenUrl("/app/index.php?Action=mobileloadmod&Type=mobile_sz_mstr&Nbr=262", '#banner');
+        $.hajaxOpenUrl("/app/index.php?Action=mobileloadmod&Type=mobilesch&Nbr=0", '#hd_search');
+    });
+
+    $('.navbar-toggle1[href="#collapseExample"]').click(function () {
+        $(this).toggleClass('open');
+    });
+
+    $('.navbar-toggle[data-target=".nav-toggle"]').click(function () {
+        $(this).toggleClass('open');
+    });
+</script>
+<!-- 以上-搜尋 -->
