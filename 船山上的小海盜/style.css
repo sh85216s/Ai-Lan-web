@@ -116,3 +116,7 @@ img {
     text-decoration: underline;
     text-underline-offset: 0.1rem;
 }
+
+h3 {
+    text-align: center;
+}
