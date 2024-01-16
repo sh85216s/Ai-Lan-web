@@ -1,0 +1,157 @@
+.card:target {
+  border: 2px;
+  border-style: dashed;
+  border-color: red;
+}
+
+.card {
+  display: block;
+  margin: auto;
+  border: 1px green dashed;
+}
+
+.card-text {
+  font-size: 14px;
+  text-align: center;
+}
+
+.container {
+  margin-top: 30px;
+  padding: 0 20px 0 20px;
+  width: 85%;
+  border-radius: .5%;
+}
+
+::-moz-selection {
+  background: #41ad4f;
+  color: #fff;
+}
+
+.row {
+  padding: 0 0 10px 0;
+}
+
+::selection {
+  background: #41ad4f;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .col-md-1-5 {
+    width: 20%;
+  }
+}
+
+
+/* Side menu */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #d1d1d1;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 300;
+
+  &:hover {
+    color: yellow;
+  }
+}
+
+a,
+label {
+  cursor: pointer;
+}
+
+.side-menu {
+  z-index: 99;
+  opacity: .8;
+  width: 250px;
+  height: 100%;
+  padding: 0 0 50px 0;
+  box-sizing: border-box;
+  background: linear-gradient(45deg, #3381b0, #c2196c);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 0px 10px hsla(240, 50%, 20%, .6);
+  position: fixed;
+  transform: translateX(-100%);
+  transition: .3s;
+}
+
+.side-menu label {
+  position: absolute;
+  width: 30px;
+  height: 50px;
+  background: #000;
+  color: #fff;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: -30px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 0 10px 10px 0;
+}
+
+/* #side-menu-switch {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+} */
+
+#side-menu-switch {
+  position: fixed;
+  z-index: -1;
+  opacity: 0;
+  top: 0px;
+  left: 0px;
+}
+
+#side-menu-switch:checked+.side-menu {
+  transform: translateX(0);
+}
+
+#side-menu-switch:checked+.side-menu label {
+  transform: scaleX(-1)
+}
+
+nav {
+  column-count: 2;
+  overflow-y: scroll;
+}
+
+nav a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+
+/* 若設定一般border會把整塊貼滿，不好看 */
+nav a+a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 10px;
+  left: 10px;
+  border-top: 1px solid rgba(255, 255, 255, .4);
+}
+
+nav a .tou {
+  margin-right: -1.1em;
+  transform: scale(0);
+  transition: .3s;
+}
+
+nav a:hover .tou {
+  margin-right: 0em;
+  transform: scale(1);
+}
+
+/* Side menu */
