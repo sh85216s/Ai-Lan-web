@@ -57,13 +57,17 @@ body {
   background-color: #d1d1d1;
 }
 
+h3>a:hover {
+  color: green;
+}
+
 a {
   text-decoration: none;
   font-weight: 300;
 
-  &:hover {
+  /* &:hover {
     color: green;
-  }
+  } */
 }
 
 a,
@@ -135,6 +139,11 @@ nav a {
   color: #fff;
   text-decoration: none;
   position: relative;
+}
+
+nav a:hover {
+  font-weight: bold;
+  color: #000;
 }
 
 /* 若設定一般border會把整塊貼滿，不好看 */
