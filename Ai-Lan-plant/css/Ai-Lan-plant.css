@@ -10,6 +10,10 @@
   border: 1px green dashed;
 }
 
+.card-body {
+  background-color: #DFFFDF;
+}
+
 .card-text {
   font-size: 14px;
   text-align: center;
@@ -58,7 +62,7 @@ a {
   font-weight: 300;
 
   &:hover {
-    color: yellow;
+    color: green;
   }
 }
 

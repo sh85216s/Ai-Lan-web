@@ -27,7 +27,7 @@
 }
 
 ::-moz-selection {
-  background: #41ad4f;
+  background: #930093;
   color: #fff;
 }
 
@@ -36,7 +36,7 @@
 }
 
 ::selection {
-  background: #41ad4f;
+  background: #930093;
   color: #fff;
 }
 
@@ -54,7 +54,7 @@ body {
 }
 
 body {
-  background-color: #FFE6FF;
+  background-color: #FFF7FF;
 }
 
 a {
@@ -62,7 +62,7 @@ a {
   font-weight: 300;
 
   &:hover {
-    color: yellow;
+    color: red;
   }
 }
 
