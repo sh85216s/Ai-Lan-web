@@ -7,11 +7,11 @@
 .card {
   display: block;
   margin: auto;
-  border: 1px rgb(233, 80, 80) dashed;
+  /* border: 1px rgb(233, 80, 80) dashed; */
 }
 
 .card-body {
-  background-color: #f3dcdc;
+  background-color: #FFD0FF;
 }
 
 .card-text {
@@ -54,7 +54,7 @@ body {
 }
 
 body {
-  background-color: #d1d1d1;
+  background-color: #FFE6FF;
 }
 
 a {
