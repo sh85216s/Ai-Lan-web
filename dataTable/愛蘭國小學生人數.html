@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    table,
+    tr,
+    th,
+    td {
+        border: 1px solid #eee;
+        border-collapse: separate;
+        text-align: center;
+    }
+
+    th {
+        background-color: #009879;
+        color: #ffffff;
+        font-size: 1.2rem;
+        width: 25vw;
+        height: 40px;
+    }
+
+    td {
+        background-color: #ffffff;
+        width: 25vw;
+        height: 30px;
+        text-align: center;
+    }
+
+    tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+
+    tr:nth-of-type(even) td {
+        background-color: #f3f3f3;
+    }
+
+    tr:hover td {
+        background-color: #bebbbb;
+        transition: all 0.3s ease-in-out;
+    }
+</style>
+
+<body>
+    <table width="80%">
+        <tr>
+            <th>年級</th>
+            <th>男生人數</th>
+            <th>女生人數</th>
+            <th>班級總人數</th>
+            <th>年級總人數</th>
+        </tr>
+        <tr>
+            <td>　一年甲班　</td>
+            <td>　8　</td>
+            <td>　10　</td>
+            <td>　18　</td>
+            <td rowspan="3">58</td>
+        </tr>
+        <tr>
+            <td>　一年乙班　</td>
+            <td>　10　</td>
+            <td>　10　</td>
+            <td>　20　</td>
+        </tr>
+        <tr>
+            <td>　一年丙班　</td>
+            <td>　10　</td>
+            <td>　10　</td>
+            <td>　20　</td>
+        </tr>
+        <tr>
+            <td>　二年甲班　</td>
+            <td>　10　</td>
+            <td>　7　</td>
+            <td>　17　</td>
+            <td rowspan="3">58</td>
+        </tr>
+        <tr>
+            <td>　二年乙班　</td>
+            <td>　8　</td>
+            <td>　12　</td>
+            <td>　20　</td>
+        </tr>
+        <tr>
+            <td>　二年丙班　</td>
+            <td>　10　</td>
+            <td>　11　</td>
+            <td>　21　</td>
+        </tr>
+        <tr>
+            <td>　三年甲班　</td>
+            <td>　10　</td>
+            <td>　11　</td>
+            <td>　21　</td>
+            <td rowspan="3">67</td>
+        </tr>
+        <tr>
+            <td>　三年乙班　</td>
+            <td>　10　</td>
+            <td>　13　</td>
+            <td>　23　</td>
+        </tr>
+        <tr>
+            <td>　三年丙班　</td>
+            <td>　12　</td>
+            <td>　11　</td>
+            <td>　23　</td>
+        </tr>
+        <tr>
+            <td>　四年甲班　</td>
+            <td>　10　</td>
+            <td>　9　</td>
+            <td>　19　</td>
+            <td rowspan="3">58</td>
+        </tr>
+        <tr>
+            <td>　四年乙班　</td>
+            <td>　11　</td>
+            <td>　10　</td>
+            <td>　21　</td>
+        </tr>
+        <tr>
+            <td>　四年丙班　</td>
+            <td>　10　</td>
+            <td>　8　</td>
+            <td>　18　</td>
+        </tr>
+        <tr>
+            <td>　五年甲班　</td>
+            <td>　16　</td>
+            <td>　9　</td>
+            <td>　25　</td>
+            <td rowspan="3">76</td>
+        </tr>
+        <tr>
+            <td>　五年乙班　</td>
+            <td>　15　</td>
+            <td>　11　</td>
+            <td>　26　</td>
+        </tr>
+        <tr>
+            <td>　五年丙班　</td>
+            <td>　16　</td>
+            <td>　9　</td>
+            <td>　25　</td>
+        </tr>
+        <tr>
+            <td>　六年甲班　</td>
+            <td>　11　</td>
+            <td>　11　</td>
+            <td>　22　</td>
+            <td rowspan="3">69</td>
+        </tr>
+        <tr>
+            <td>　六年乙班　</td>
+            <td>　12　</td>
+            <td>　12　</td>
+            <td>　24　</td>
+        </tr>
+        <tr>
+            <td>　六年丙班　</td>
+            <td>　11　</td>
+            <td>　12　</td>
+            <td>　23　</td>
+        </tr>
+        <tr>
+            <td colspan="5">全校學生總人數：386</td>
+    </table>
+</body>
+
+</html>
