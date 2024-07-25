@@ -9,7 +9,7 @@
 
 <body>
 
-    <!-- 愛蘭國小營養午餐模組程式碼-112.11.04 12:11更新版 -->
+    <!-- 愛蘭國小營養午餐模組程式碼-113.07.24 17:16更新版 -->
     <style>
         #lunchApp {
             text-align: center;
@@ -62,13 +62,14 @@
         </div>
         <div v-else>
             <span id="currentTime">{{getTodayDate}}</span><br>
-            <span class="border-bottom">本日無菜單</span>
+            <span class="border-bottom">本日無菜單</span><br>
+            <button @click="queryDetail" type="button" class="shadow-sm bg-white rounded">查看詳細資料</button>
         </div>
     </div>
     <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
     <script src="/var/file/51/1051/img/2047/vue.global.js"></script>
-        <script src="/var/file/51/1051/img/2047/axios.min.js"></script>
+    <script src="/var/file/51/1051/img/2047/axios.min.js"></script>
     <script>
         let SchoolId = "64738357";// 請將"64738357"換成貴校的 SchoolId
         let Today = new Date();
