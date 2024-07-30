@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 原頁面底部程式碼-以下 -->
+    <!-- <span style="color:hsl(0, 0%, 100%);">南投縣埔里鎮愛蘭國民小學 | 54546 南投縣埔里鎮鐵山路7號</span><br />
+    <span style="color:hsl(0, 0%, 100%);">電話：(049)291-2514 | 傳真：(049)291-6514&nbsp;| 統一編號：61810087</span><br />
+    <span style="color:hsl(0, 0%, 100%);">網站維護：<a href="mailto:gb@alps.ntct.edu.tw" title="Mail to us">教務處資訊組 </a>|
+        Copyright &copy; 2021.All Right Reserved.</span> -->
+    <!-- 原頁面底部程式碼-以上 -->
+
+<style>
+    .container-100 {
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 10px 30px 0px 30px;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 10px;
+        /* Add margin for mobile view */
+    }
+
+    .image-container img {
+        width: 70px;
+        height: 70px;
+        opacity: 0.5;
+        transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .image-container img:hover {
+        transform: scale(1.1);
+        opacity: 1;
+        animation-iteration-count: 1;
+    }
+
+    @media (min-width: 769px) {
+        .container-100 {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        .image-container {
+            margin-bottom: 0;
+            /* Remove margin for desktop view */
+            margin-left: 20px;
+            /* Add some spacing between text and images */
+        }
+
+        .image-container img {
+            margin: 0;
+            /* Remove margin for desktop view */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .image-container img {
+            margin: 0 5px;
+            /* Add 5px margin for mobile view */
+            width: 50px;
+            /* Set image width to 50px for mobile view */
+            height: 50px;
+            /* Set image height to 50px for mobile view */
+        }
+
+        .container-100 {
+            padding: 10px 10px 0px 10px;
+        }
+    }
+</style>
+<div class="container-100">
+    <div class="col-md-6">
+        <p style="text-align: left; left: 10px;">
+            南投縣埔里鎮愛蘭國民小學 | 54546 南投縣埔里鎮鐵山路7號<br>
+            電話：(049)291-2514 | 傳真：(049)291-6514 | 統一編號：61810087<br>
+            網站維護：教務處資訊組 | Copyright © 2021.All Right Reserved.
+        </p>
+    </div>
+    <div class="col-md-6">
+        <div class="image-container">
+            <div class="WebBottom">
+                <a href="https://www.google.com/maps/dir/%E5%9C%8B%E9%81%936%E8%99%9F/%E5%8D%97%E6%8A%95%E7%B8%A3%E5%9F%94%E9%87%8C%E9%8E%AE%E6%84%9B%E8%98%AD%E5%9C%8B%E6%B0%91%E5%B0%8F%E5%AD%B8+545%E5%8D%97%E6%8A%95%E7%B8%A3%E5%9F%94%E9%87%8C%E9%8E%AE%E9%90%B5%E5%B1%B1%E8%B7%AF7%E8%99%9F/@23.985795,120.88835,12z/data=!4m14!4m13!1m5!1m1!1s0x3469265f59cdaf2b:0x6492178b463d7df0!2m2!1d120.8326212!2d24.0032981!1m5!1m1!1s0x3468d9ab029922c7:0x7494e031678fab99!2m2!1d120.943992!2d23.9738549!3e0?hl=zh-TW&entry=ttu"
+                    target="_blank">
+                    <img src="/var/file/51/1051/img/554/google_maps_to_ailan.png" title="導航到愛蘭國小" alt="Google Maps">
+                </a>
+            </div>
+            <div class="WebBottom">
+                <a href="https://alps.ntct.edu.tw/p/403-1051-3185-1.php?Lang=zh-tw">
+                    <img src="/var/file/51/1051/img/554/photo.png" title="愛蘭國小活動相簿" alt="School gallery">
+                </a>
+            </div>
+            <div class="WebBottom">
+                <a href="https://www.facebook.com/AiLanPrimarySchool/" target="_blank">
+                    <img src="/var/file/51/1051/img/554/SchoolFacebook.png" title="愛蘭國小fb粉絲頁" alt="School facebook">
+                </a>
+            </div>
+            <div class="WebBottom">
+                <a href="https://www.youtube.com/@Ai-LanPrimarySchool/videos" target="_blank">
+                    <img src="/var/file/51/1051/img/554/SchoolYouTube.png" title="愛蘭國小YouTube頻道"
+                        alt="School YouTube chanel">
+                </a>
+            </div>
+            <div class="WebBottom">
+                <img src="/var/file/51/1051/img/554/SchoolWeb.png" title="愛蘭國小網站QR-Code" alt="school website">
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
