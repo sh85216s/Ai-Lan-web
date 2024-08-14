@@ -74,6 +74,16 @@
             border: 1px #dbd9d9 solid;
         }
 
+        /* 學習吧圖片設定 */
+        .image-stack {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-gap+.image-gap {
+            margin-top: 5px;
+        }
+
         @keyframes rainbow {
             0% {
                 color: green;
@@ -120,129 +130,38 @@
                                     style=" color: red; font-weight: bolder;">前往《學習吧》</span></a></li>
                         <li>學習吧學生帳號，3 ~ 6 級是 alps + 學號； 1~2 年級的帳號是 OpenID。</li>
                         <li> 1 ~ 6 年級登入密碼請洽各班導師或資訊組向老師。</li>
-                        <li>老師們可以先建立課程，接著到底下的班級中提取學生的資料並將學生加入課程中。</li>
+                        <li>老師們可以先建立課程，再透過邀請碼、QRcode或課程連結，請學生自行加入課程；也可以點擊「課堂成員」來主動加入學生。</li>
+                        <div class="row">
+                            <div class="col">
+                                <img src="../img/learnmode/learnmode-invite.png" alt="課程邀請" class="img-fluid">
+                            </div>
+                            <div class="col">
+                                <div class="image-stack">
+                                    <img src="../img/learnmode/learnmode-AddAccount.png" alt="加入附屬帳號成員"
+                                        class="img-fluid image-gap">
+                                    <img src="../img/learnmode/learnmode-search.png" alt="搜尋成員"
+                                        class="img-fluid image-gap">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <img src="../img/learnmode/learnmodeSerchChooseAdd.png" alt="加入附屬帳號成員"
+                                    class="img-fluid">
+                            </div>
+                        </div>
+
+                        <li>學生登入學習吧說明：<br>
+                            <p>先切換到「附屬帳號」，接著輸入帳號、密碼，再按下登入。</p>
+                        </li>
+
+                        <!-- 以下-登入學習吧說明 -->
+                        <div class="row">
+                            <div class="col-md-7">
+                                <img style=" width: 100%;" src="../img/學習吧登入.png" alt="">
+                            </div>
+                        </div>
+                        <!-- 以上-登入學習吧說明 -->
                     </ul>
-
-                    <!-- 以下-班級名稱 -->
-                    <div class="row">
-                        <h5><span
-                                style=" background-color: #54aa3f; color: #fff; padding: 3px 6px; border-radius: 1px;">113學年度《學習吧》班級名稱</span>
-                        </h5>
-                        <hr>
-                        <div class="col-md-2">
-                            <table cellspacing="0" cellpadding="4" rules="all">
-                                <tr style=" color:White; background-color:#990000; font-weight:bold;">
-                                    <td>班級名稱</td>
-                                </tr>
-                                <tr>
-                                    <td>112-一甲</td>
-                                </tr>
-                                <tr>
-                                    <td>112-一乙</td>
-                                </tr>
-                                <tr>
-                                    <td>112-一丙</td>
-                                </tr>
-                            </table>
-
-                        </div>
-                        <div class="col-md-2">
-                            <table cellspacing="0" cellpadding="4" rules="all">
-                                <tr style=" color:White; background-color:#990000; font-weight:bold;">
-                                    <td>班級名稱</td>
-                                </tr>
-                                <tr>
-                                    <td>112-二甲</td>
-                                </tr>
-                                <tr>
-                                    <td>112-二乙</td>
-                                </tr>
-                                <tr>
-                                    <td>112-二丙</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-2">
-                            <table cellspacing="0" cellpadding="4" rules="all">
-                                <tr style=" color:White; background-color:#990000; font-weight:bold;">
-                                    <td>班級名稱</td>
-                                </tr>
-                                <tr>
-                                    <td>112-三甲</td>
-                                </tr>
-                                <tr>
-                                    <td>112-三乙</td>
-                                </tr>
-                                <tr>
-                                    <td>112-三丙</td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div class="col-md-2">
-                            <table cellspacing="0" cellpadding="4" rules="all">
-                                <tr style=" color:White; background-color:#990000; font-weight:bold;">
-                                    <td>班級名稱</td>
-                                </tr>
-                                <tr>
-                                    <td>112-四甲</td>
-                                </tr>
-                                <tr>
-                                    <td>112-四乙</td>
-                                </tr>
-                                <tr>
-                                    <td>112-四丙</td>
-                                </tr>
-                            </table>
-
-                        </div>
-                        <div class="col-md-2">
-                            <table cellspacing="0" cellpadding="4" rules="all">
-                                <tr style=" color:White; background-color:#990000; font-weight:bold;">
-                                    <td>班級名稱</td>
-                                </tr>
-                                <tr>
-                                    <td>112-五甲</td>
-                                </tr>
-                                <tr>
-                                    <td>112-五乙</td>
-                                </tr>
-                                <tr>
-                                    <td>112-五丙</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-2">
-                            <table cellspacing="0" cellpadding="4" rules="all">
-                                <tr style=" color:White; background-color:#990000; font-weight:bold;">
-                                    <td>班級名稱</td>
-                                </tr>
-                                <tr>
-                                    <td>112-六甲</td>
-                                </tr>
-                                <tr>
-                                    <td>112-六乙</td>
-                                </tr>
-                                <tr>
-                                    <td>112-六丙</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
                 </div>
-                <ul>
-                    <li>學生登入學習吧說明：<br>
-                        <p>先切換到「附屬帳號」，接著輸入帳號、密碼，再按下登入。</p>
-                    </li>
-
-                    <!-- 以下-登入學習吧說明 -->
-                    <div class="row">
-                        <div class="col-md-7">
-                            <img style=" width: 100%;" src="../img/學習吧登入.png" alt="">
-                        </div>
-                    </div>
-                    <!-- 以上-登入學習吧說明 -->
-                </ul>
                 <br>
             </div>
 
@@ -451,6 +370,11 @@
                     </ul>
                 </div>
             </div>
+        </div>
+        <!-- Modal -->
+        <div id="imageModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
         </div>
     </div><br><br>
 </body>
