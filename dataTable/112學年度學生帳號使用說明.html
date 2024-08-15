@@ -74,6 +74,10 @@
             border: 1px #dbd9d9 solid;
         }
 
+        tr {
+            height: 2em;
+        }
+
         /* 學習吧圖片設定 */
         .image-stack {
             display: flex;
@@ -92,6 +96,71 @@
             100% {
                 color: violet;
             }
+        }
+
+        /* Basic styling */
+        .card {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col {
+            flex: 1;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Mobile-specific styling */
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+
+            .col {
+                margin-bottom: 5px;
+            }
+        }
+
+        /* Modal for image enlargement */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            /* 80% transparency */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .modal.active {
+            display: flex;
         }
     </style>
 
@@ -127,43 +196,43 @@
                     <h4>學習吧帳號</h4>
                     <ul>
                         <li><a href="https://www.learnmode.net/home/" target="_blank"><span
-                                    style=" color: red; font-weight: bolder;">前往《學習吧》</span></a></li>
+                                    style="color: red; font-weight: bolder;">前往《學習吧》</span></a></li>
                         <li>學習吧學生帳號，3 ~ 6 級是 alps + 學號； 1~2 年級的帳號是 OpenID。</li>
                         <li> 1 ~ 6 年級登入密碼請洽各班導師或資訊組向老師。</li>
                         <li>老師們可以先建立課程，再透過邀請碼、QRcode或課程連結，請學生自行加入課程；也可以點擊「課堂成員」來主動加入學生。</li>
                         <div class="row">
                             <div class="col">
-                                <img src="../img/learnmode/learnmode-invite.png" alt="課程邀請" class="img-fluid">
+                                <img src="../img/learnmode/learnmode-invite.png" alt="課程邀請" class="img-fluid"
+                                    onclick="enlargeImage(this)">
                             </div>
                             <div class="col">
-                                <div class="image-stack">
-                                    <img src="../img/learnmode/learnmode-AddAccount.png" alt="加入附屬帳號成員"
-                                        class="img-fluid image-gap">
-                                    <img src="../img/learnmode/learnmode-search.png" alt="搜尋成員"
-                                        class="img-fluid image-gap">
-                                </div>
+                                <img src="../img/learnmode/learnmode-AddAccount.png" alt="加入附屬帳號成員" class="img-fluid"
+                                    onclick="enlargeImage(this)">
                             </div>
                             <div class="col">
-                                <img src="../img/learnmode/learnmodeSerchChooseAdd.png" alt="加入附屬帳號成員"
-                                    class="img-fluid">
+                                <img src="../img/learnmode/learnmodeSerchChooseAdd.png" alt="加入附屬帳號成員" class="img-fluid"
+                                    onclick="enlargeImage(this)">
                             </div>
                         </div>
-
                         <li>學生登入學習吧說明：<br>
                             <p>先切換到「附屬帳號」，接著輸入帳號、密碼，再按下登入。</p>
                         </li>
-
-                        <!-- 以下-登入學習吧說明 -->
                         <div class="row">
                             <div class="col-md-7">
-                                <img style=" width: 100%;" src="../img/學習吧登入.png" alt="">
+                                <img style="width: 100%;" src="../img/learnmode/學習吧登入.png" alt="登入學習吧" class="img-fluid"
+                                    onclick="enlargeImage(this)">
                             </div>
                         </div>
-                        <!-- 以上-登入學習吧說明 -->
                     </ul>
                 </div>
-                <br>
             </div>
+
+            <!-- Modal for enlarged image -->
+            <div class="modal" id="imageModal">
+                <img id="modalImage" src="#" alt="">
+            </div>
+
+
 
             <div class="card mb-3">
                 <div class="card-body">
@@ -178,10 +247,12 @@
                         <!-- 以下-登入因材網說明 -->
                         <div class="row">
                             <div class="col-md-8">
-                                <img style=" width: 100%;" src="../img/因材網登入-01.png" alt="">
+                                <img style=" width: 100%;" src="../img/因材網登入-01.png" alt="" class="img-fluid"
+                                    onclick="enlargeImage(this)">
                             </div>
                             <div class="col-md-3">
-                                <img style=" width: 93%;" src="../img/因材網登入-02.png" alt="">
+                                <img style=" width: 93%;" src="../img/因材網登入-02.png" alt="" class="img-fluid"
+                                    onclick="enlargeImage(this)">
                             </div>
                         </div>
                         <!-- 以上-登入因材網說明 -->
@@ -204,10 +275,12 @@
                         <!-- 以下-登入 LoiloNote 說明 -->
                         <div class="row">
                             <div class="col-md-3">
-                                <img style=" width: 100%;" src="../img/LoiloNote登入-01.png" alt="">
+                                <img style=" width: 100%;" src="../img/LoiloNote登入-01.png" alt="" class="img-fluid"
+                                    onclick="enlargeImage(this)">
                             </div>
                             <div class="col-md-5">
-                                <img style=" width: 93%;" src="../img/LoiloNote登入-02.png" alt="">
+                                <img style=" width: 93%;" src="../img/LoiloNote登入-02.png" alt="" class="img-fluid"
+                                    onclick="enlargeImage(this)">
                             </div>
                         </div>
                         <!-- 以上-登入 LoiloNote 說明 -->
@@ -215,7 +288,7 @@
                         <!-- 以下-教室代碼 -->
                         <div class="row">
                             <h5><span
-                                    style=" background-color: #54aa3f; color: #fff; padding: 3px 6px; border-radius: 1px;">112學年度LoiloNote教室參加代碼</span>
+                                    style=" background-color: #54aa3f; color: #fff; padding: 3px 6px; border-radius: 1px;">113學年度LoiloNote教室參加代碼</span>
                             </h5>
                             <hr>
                             <div class="col-md-4">
@@ -225,28 +298,28 @@
                                         <td>參加代碼</td>
                                     </tr>
                                     <tr>
-                                        <td>112-一甲</td>
-                                        <td>03227</td>
+                                        <td>113-一甲</td>
+                                        <td>38573</td>
                                     </tr>
                                     <tr>
-                                        <td>112-一乙</td>
-                                        <td>99918</td>
+                                        <td>113-一乙</td>
+                                        <td>72896</td>
                                     </tr>
                                     <tr>
-                                        <td>112-一丙</td>
-                                        <td>11866</td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
-                                        <td>112-二甲</td>
-                                        <td>56269</td>
+                                        <td>113-二甲</td>
+                                        <td>13688</td>
                                     </tr>
                                     <tr>
-                                        <td>112-二乙</td>
-                                        <td>91213</td>
+                                        <td>113-二乙</td>
+                                        <td>73820</td>
                                     </tr>
                                     <tr>
-                                        <td>112-二丙</td>
-                                        <td>02372</td>
+                                        <td>113-二丙</td>
+                                        <td>85452</td>
                                     </tr>
                                 </table>
 
@@ -258,28 +331,28 @@
                                         <td>參加代碼</td>
                                     </tr>
                                     <tr>
-                                        <td>112-三甲</td>
-                                        <td>35233</td>
+                                        <td>113-三甲</td>
+                                        <td>07502</td>
                                     </tr>
                                     <tr>
-                                        <td>112-三乙</td>
-                                        <td>84518</td>
+                                        <td>113-三乙</td>
+                                        <td>25276</td>
                                     </tr>
                                     <tr>
-                                        <td>112-三丙</td>
-                                        <td>74203</td>
+                                        <td>113-三丙</td>
+                                        <td>51950</td>
                                     </tr>
                                     <tr>
-                                        <td>112-四甲</td>
-                                        <td>91897</td>
+                                        <td>113-四甲</td>
+                                        <td>46471</td>
                                     </tr>
                                     <tr>
-                                        <td>112-四乙</td>
-                                        <td>56618</td>
+                                        <td>113-四乙</td>
+                                        <td>72616</td>
                                     </tr>
                                     <tr>
-                                        <td>112-四丙</td>
-                                        <td>13576</td>
+                                        <td>113-四丙</td>
+                                        <td>62491</td>
                                     </tr>
                                 </table>
                             </div>
@@ -290,36 +363,36 @@
                                         <td>參加代碼</td>
                                     </tr>
                                     <tr>
-                                        <td>112-五甲</td>
-                                        <td>58609</td>
+                                        <td>113-五甲</td>
+                                        <td>98399</td>
                                     </tr>
                                     <tr>
-                                        <td>112-五乙</td>
-                                        <td>44020</td>
+                                        <td>113-五乙</td>
+                                        <td>70096</td>
                                     </tr>
                                     <tr>
-                                        <td>112-五丙</td>
-                                        <td>11024</td>
+                                        <td>113-五丙</td>
+                                        <td>51770</td>
                                     </tr>
 
                                     <tr>
-                                        <td>112-六甲</td>
-                                        <td>28752</td>
+                                        <td>113-六甲</td>
+                                        <td>90908</td>
                                     </tr>
                                     <tr>
-                                        <td>112-六乙</td>
-                                        <td>34063</td>
+                                        <td>113-六乙</td>
+                                        <td>07557</td>
                                     </tr>
                                     <tr>
-                                        <td>112-六丙</td>
-                                        <td>85003</td>
+                                        <td>113-六丙</td>
+                                        <td>07557</td>
                                     </tr>
                                 </table>
                             </div>
                         </div><br>
                         <!-- 以上-教室代碼 -->
                         <h5>《補充說明》</h5>
-                        <li>1~6年級班級教室已經先建立好了(如下)，教師<a href="https://loilonote.app/login?hl=zh-Hant" target="_blank"
+                        <li>1~6年級班級教室已經預先建立好了(如下)，教師<a href="https://loilonote.app/login?hl=zh-Hant" target="_blank"
                                 style="color: #f00; font-weight: bold;">登入
                                 LoiloNote</a>後 ⇒ 輸入課程名稱 ⇒ 選擇班級名稱 ⇒ 選取小朋友加入該班級，或是告知小朋友「班級名稱」和「班級代碼」，邀請小朋友加入。</li>
                         <li>資訊組今年只先幫忙一年級新生和轉學生建立帳號(舊生已有帳號)，其他年級的小朋友或老師，如有帳號相關問題，可以洽資訊組協助處理。</li>
@@ -341,13 +414,16 @@
                         <!-- 以下-登入PaGamO說明 -->
                         <div class="row">
                             <div class="col-md-4">
-                                <img style=" width: 100%;" src="../img/PaGamO登入-01.png" alt="">
+                                <img style=" width: 100%;" src="../img/PaGamO登入-01.png" alt="" class="img-fluid"
+                                    onclick="enlargeImage(this)">
                             </div>
                             <div class="col-md-4">
-                                <img style=" width: 100%;" src="../img/PaGamO登入-02.png" alt="">
+                                <img style=" width: 100%;" src="../img/PaGamO登入-02.png" alt="" class="img-fluid"
+                                    onclick="enlargeImage(this)">
                             </div>
                             <div class="col-md-4">
-                                <img style=" width: 100%;" src="../img/PaGamO登入-03.png" alt="">
+                                <img style=" width: 100%;" src="../img/PaGamO登入-03.png" alt="" class="img-fluid"
+                                    onclick="enlargeImage(this)">
                             </div>
                         </div>
                         <!-- 以上-登入PaGamO說明 -->
@@ -367,16 +443,26 @@
                                     style=" color: red; font-weight: bolder; border: 1px solid #000;">點我快速登入「學校配發的
                                     google 帳號」</span></a></li>
                         <li>小朋友常常會鍵錯資料，建議將這個連結加入瀏覽器的書籤當中，除了能夠快速登入之外，也可以減少發生錯誤。</li>
+                        <li>學校配發的 google 帳號，每一位小朋友的容量均為5G，僅提供在校生學習上的需求；學生畢業後，校方有權刪除帳號。</li>
+                        <li>使用google帳號時，請遵守<a href="https://www.google.com/intl/zh-TW/policies/terms/archive/20131111/" target="_blank">google服務條款</a>，如有違背條款，校方有權即刻將帳號停權。</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <!-- Modal -->
-        <div id="imageModal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="img01">
-        </div>
     </div><br><br>
+    <script>
+        function enlargeImage(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+
+            modalImg.src = img.src;
+            modal.classList.add('active');
+        }
+
+        document.getElementById('imageModal').addEventListener('click', function () {
+            this.classList.remove('active');
+        });
+    </script>
 </body>
 
 </html>
