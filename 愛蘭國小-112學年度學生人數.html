@@ -1,184 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+    table {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    table,
+    tr,
+    th,
+    td {
+        border: 1px solid #9c9696;
+        border-collapse: collapse;
+        text-align: center;
+    }
 
-<body>
-    <style>
-        table {
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .TH th {
+        background-color: #2c52fa;
+        color: #ffffff;
+        font-size: 1.1em;
+        width: 20vw;
+        height: 40px;
+    }
 
-        table,
-        tr,
-        th,
-        td {
-            border: 1px solid #9c9696;
-            border-collapse: collapse;
-            text-align: center;
-        }
+    td {
+        background-color: #ffffff;
+        width: 20vw;
+        height: 30px;
+        text-align: center;
+    }
 
-        .TH th {
-            background-color: #2c52fa;
-            color: #ffffff;
-            font-size: 1.1em;
-            width: 20vw;
-            height: 40px;
-        }
+    tr {
+        border-bottom: 1px solid #dddddd;
+    }
 
-        td {
-            background-color: #ffffff;
-            width: 20vw;
-            height: 30px;
-            text-align: center;
-        }
+    tr:nth-of-type(odd) td {
+        background-color: #dde2f5;
+    }
 
-        tr {
-            border-bottom: 1px solid #dddddd;
-        }
-
-        tr:nth-of-type(odd) td {
-            background-color: #dde2f5;
-        }
-
-        tr:hover td {
-            background-color: #f5e5f1;
-            transition: all 0.3s ease-in-out;
-        }
-    </style>
-    <table>
-        <tr class="TH">
-            <th>年級</th>
-            <th>男生人數</th>
-            <th>女生人數</th>
-            <th>班級總人數</th>
-            <th>年級總人數</th>
-        </tr>
-        <tr>
-            <td>一甲</td>
-            <td>8</td>
-            <td>10</td>
-            <td>18</td>
-            <th rowspan="3">1年級58人</th>
-        </tr>
-        <tr>
-            <td>一乙</td>
-            <td>10</td>
-            <td>10</td>
-            <td>20</td>
-        </tr>
-        <tr>
-            <td>一丙</td>
-            <td>10</td>
-            <td>10</td>
-            <td>20</td>
-        </tr>
-        <tr>
-            <td>二甲</td>
-            <td>11</td>
-            <td>7</td>
-            <td>18</td>
-            <th rowspan="3">2年級59人</th>
-        </tr>
-        <tr>
-            <td>二乙</td>
-            <td>8</td>
-            <td>12</td>
-            <td>20</td>
-        </tr>
-        <tr>
-            <td>二丙</td>
-            <td>10</td>
-            <td>11</td>
-            <td>21</td>
-        </tr>
-        <tr>
-            <td>三甲</td>
-            <td>10</td>
-            <td>11</td>
-            <td>21</td>
-            <th rowspan="3">3年級67人</th>
-        </tr>
-        <tr>
-            <td>三乙</td>
-            <td>10</td>
-            <td>13</td>
-            <td>23</td>
-        </tr>
-        <tr>
-            <td>三丙</td>
-            <td>12</td>
-            <td>11</td>
-            <td>23</td>
-        </tr>
-        <tr>
-            <td>四甲</td>
-            <td>10</td>
-            <td>9</td>
-            <td>19</td>
-            <th rowspan="3">4年級58人</th>
-        </tr>
-        <tr>
-            <td>四乙</td>
-            <td>11</td>
-            <td>10</td>
-            <td>21</td>
-        </tr>
-        <tr>
-            <td>四丙</td>
-            <td>10</td>
-            <td>8</td>
-            <td>18</td>
-        </tr>
-        <tr>
-            <td>五甲</td>
-            <td>16</td>
-            <td>9</td>
-            <td>25</td>
-            <th rowspan="3">5年級77人</th>
-        </tr>
-        <tr>
-            <td>五乙</td>
-            <td>15</td>
-            <td>11</td>
-            <td>26</td>
-        </tr>
-        <tr>
-            <td>五丙</td>
-            <td>16</td>
-            <td>10</td>
-            <td>26</td>
-        </tr>
-        <tr>
-            <td>六甲</td>
-            <td>11</td>
-            <td>11</td>
-            <td>22</td>
-            <th rowspan="3">6年級69人</th>
-        </tr>
-        <tr>
-            <td>六乙</td>
-            <td>12</td>
-            <td>12</td>
-            <td>24</td>
-        </tr>
-        <tr>
-            <td>六丙</td>
-            <td>11</td>
-            <td>12</td>
-            <td>23</td>
-        </tr>
-        <tr>
-            <td colspan="5">全校學生總人數：388人</td>
-        </tr>
-    </table>
-    <br>
-</body>
-
-</html>
+    tr:hover td {
+        background-color: #f5e5f1;
+        transition: all 0.3s ease-in-out;
+    }
+</style>
+<table>
+    <tr class="TH">
+        <th>年級</th>
+        <th>男生人數</th>
+        <th>女生人數</th>
+        <th>班級總人數</th>
+        <th>年級總人數</th>
+    </tr>
+    <tr>
+        <td>一甲</td>
+        <td>16</td>
+        <td>9</td>
+        <td>25</td>
+        <th rowspan="2">1年級48人</th>
+    </tr>
+    <tr>
+        <td>一乙</td>
+        <td>14</td>
+        <td>9</td>
+        <td>23</td>
+    </tr>
+    <!--<tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr> -->
+    <tr>
+        <td>二甲</td>
+        <td>9</td>
+        <td>8</td>
+        <td>17</td>
+        <th rowspan="3">2年級57人</th>
+    </tr>
+    <tr>
+        <td>二乙</td>
+        <td>10</td>
+        <td>10</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td>二丙</td>
+        <td>10</td>
+        <td>10</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td>三甲</td>
+        <td>12</td>
+        <td>10</td>
+        <td>22</td>
+        <th rowspan="3">3年級64人</th>
+    </tr>
+    <tr>
+        <td>三乙</td>
+        <td>10</td>
+        <td>11</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td>三丙</td>
+        <td>10</td>
+        <td>11</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td>四甲</td>
+        <td>10</td>
+        <td>11</td>
+        <td>21</td>
+        <th rowspan="3">4年級66人</th>
+    </tr>
+    <tr>
+        <td>四乙</td>
+        <td>9</td>
+        <td>13</td>
+        <td>22</td>
+    </tr>
+    <tr>
+        <td>四丙</td>
+        <td>12</td>
+        <td>11</td>
+        <td>23</td>
+    </tr>
+    <tr>
+        <td>五甲</td>
+        <td>11</td>
+        <td>9</td>
+        <td>20</td>
+        <th rowspan="3">5年級60人</th>
+    </tr>
+    <tr>
+        <td>五乙</td>
+        <td>10</td>
+        <td>9</td>
+        <td>19</td>
+    </tr>
+    <tr>
+        <td>五丙</td>
+        <td>11</td>
+        <td>10</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td>六甲</td>
+        <td>16</td>
+        <td>9</td>
+        <td>25</td>
+        <th rowspan="3">6年級76人</th>
+    </tr>
+    <tr>
+        <td>六乙</td>
+        <td>15</td>
+        <td>10</td>
+        <td>25</td>
+    </tr>
+    <tr>
+        <td>六丙</td>
+        <td>16</td>
+        <td>10</td>
+        <td>26</td>
+    </tr>
+    <tr>
+        <td colspan="5">全校學生總人數：369人</td>
+    </tr>
+</table>
+<br>
