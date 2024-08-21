@@ -1522,9 +1522,12 @@
         }
 
         .square {
-            width: 100px;  /* 正方形的寬度 */
-            height: 100px; /* 正方形的高度 */
-            border: 1px solid black; /* 黑色邊線 */
+            width: 100px;
+            /* 正方形的寬度 */
+            height: 100px;
+            /* 正方形的高度 */
+            border: 1px solid black;
+            /* 黑色邊線 */
         }
 
         @media print {
@@ -1533,7 +1536,7 @@
             }
 
             @page {
-                margin: 0.5cm;
+                margin: 0.2cm 0.5cm 0 0.5cm;
                 size: A4 portrait;
             }
 
@@ -1549,36 +1552,48 @@
 
     <table cellspacing="0" cellpadding="0"
         style="width:512pt; margin-right:auto; margin-left:auto; border-collapse:collapse">
-
-        <!-- <tr style=" height:25pt">
-            <td colspan="15" style=" vertical-align:middle">
-                <span
-                    style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:14pt; font-family:標楷體; font-weight:bold; color:#333333;">中華民國114年（西元2025年）政府行政機關辦公日曆表
-                </span>
-            </td>
-            <td style=" vertical-align:middle">
-                <span
-                    style="font-family:標楷體; font-weight:bold; color:#333333; margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;">
-                    <form class=" noPrint">
-                        <input name="print" type="button" value="列印此頁" onclick="varitext()">
-                    </form>
-                </span>
-            </td>
-        </tr> -->
-        <tr style="height:25pt">
+        <!-- <tr style="height:25pt">
             <td colspan="20" style="vertical-align:middle;">
-                <div style="width:100%; overflow:hidden;">
-                    <div style="float:left; font-size:14pt; font-family:標楷體; font-weight:bold; color:#333333;">
+                <div style="width:100%; display:flex; justify-content:space-between; align-items:center;">
+                    <div style="font-size:14pt; font-family:標楷體; font-weight:bold; color:#333333;">
                         中華民國114年（西元2025年）政府行政機關辦公日曆表
                     </div>
-                    <div style="float:right; font-size:12pt; font-family:標楷體; font-weight:bold; color:#333333;">
+                    <div style="font-size:12pt; font-family:標楷體; font-weight:bold; color:#333333;">
                         <form class="noPrint">
                             <input name="print" type="button" value="列印此頁" onclick="varitext()">
                         </form>
                     </div>
                 </div>
             </td>
+        </tr> -->
+ 
+        <tr style="height:25pt">
+            <td colspan="22" style="vertical-align:middle;">
+                <div style="width:100%; display:flex; justify-content:space-between; align-items:center;">
+                    <div style="font-size:14pt; font-family:標楷體; font-weight:bold; color:#333333;">
+                        中華民國114年（西元2025年）政府行政機關辦公日曆表
+                    </div>
+                    <div style="display:flex; align-items:center;">
+                        <div style="display:flex; align-items:center; margin-right: 20px;">
+                            <div class="square"
+                                style="width: 15px; height: 15px; background-color: #FFFFFF; border: 1px solid black; margin-right: 5px; margin-left: 30px;">
+                            </div>
+                            <span style="font-size:12pt; font-family:標楷體; color:#333333;">上班日</span>
+                            <div class="square"
+                                style="width: 15px; height: 15px; background-color: #FF99FF; border: 1px solid black; margin-left: 10px; margin-right: 5px;">
+                            </div>
+                            <span style="font-size:12pt; font-family:標楷體; color:#333333;">放假日</span>
+                        </div>
+                        <div style="font-size:12pt; font-family:標楷體; font-weight:bold; color:#333333;">
+                            <form class="noPrint">
+                                <input name="print" type="button" value="列印此頁" onclick="varitext()">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </td>
         </tr>
+    
 
         <tr height='25' style='mso-height-source:userset;height:18.75pt'>
             <td height='25' class='x65' style='height:18.75pt;'></td>
@@ -2231,7 +2246,7 @@
             <td class='x88'></td>
             <td colspan='3' class='x127' style='mso-ignore:colspan;'></td>
         </tr>
-        <tr height='18' class='x123' style='mso-height-source:userset;height:14.1pt'>
+        <!-- <tr height='18' class='x123' style='mso-height-source:userset;height:14.1pt'>
             <td height='18' class='x123' style='height:14.1pt;'></td>
             <td class='x86'></td>
             <td class='x76'></td>
@@ -2255,8 +2270,8 @@
             <td class='x76'></td>
             <td class='x89'></td>
             <td colspan='3' class='x123' style='mso-ignore:colspan;'></td>
-        </tr>
-        <tr height='18' class='x127' style='mso-height-source:userset;height:14.1pt'>
+        </tr> -->
+        <!-- <tr height='18' class='x127' style='mso-height-source:userset;height:14.1pt'>
             <td height='18' class='x127' style='height:14.1pt;'></td>
             <td class='x99'></td>
             <td class='x90'></td>
@@ -2280,7 +2295,7 @@
             <td class='x95'></td>
             <td class='x96'></td>
             <td colspan='3' class='x127' style='mso-ignore:colspan;'></td>
-        </tr>
+        </tr> -->
         <tr height='25' style='mso-height-source:userset;height:18.75pt'>
             <td height='25' class='x65' style='height:18.75pt;'></td>
             <td class='x100'></td>
@@ -2985,35 +3000,6 @@
         <tr height='22' style='mso-height-source:userset;height:16.5pt'>
             <td colspan='25' height='22' style='mso-ignore:colspan;height:16.5pt;'></td>
         </tr>
-        <tr height='22' style='mso-height-source:userset;height:16.5pt'>
-            <td colspan='3' height='22' style='mso-ignore:colspan;height:16.5pt;'></td>
-            <td class='x74'></td>
-            <td class='x72'></td>
-            <td colspan='2' class='x141'>上班日</td>
-            <td class='x72'></td>
-            <td class='x72'></td>
-            <td class='x75'></td>
-            <td class='x72'></td>
-            <td colspan='2' class='x141'>放假日</td>
-            <td class='x72'></td>
-            <td class='x72'></td>
-            <td class='x72'></td>
-            <td class='x72'></td>
-            <td class='x72'></td>
-            <td class='x72'></td>
-            <td class='x72'></td>
-            <td colspan='5' class='x73' style='mso-ignore:colspan;'></td>
-        </tr>
-        <![if supportMisalignedColumns]>
-        <tr height='0' style='display:none'>
-            <td width='11' style='width:8.25pt;'></td>
-            <td width='589' colspan='19' style='width:441.75pt;mso-ignore:colspan;'></td>
-            <td width='62' colspan='2' style='width:46.5pt;mso-ignore:colspan;'></td>
-            <td width='87' colspan='3' style='width:65.25pt;mso-ignore:colspan;'></td>
-        </tr>
-        <![endif]>
-
-
 </body>
 
 </html>
