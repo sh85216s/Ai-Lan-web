@@ -6,217 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        table {
+        .Student {
             width: 80%;
-            margin-left: auto;
-            margin-right: auto;
+
+        }
+        iframe {
+            border: none;
+            overflow: hidden;
         }
 
-        table,
-        tr,
-        th,
-        td {
-            border: 1px solid #9c9696;
-            border-collapse: collapse;
-            text-align: center;
-        }
-
-        .TH th {
-            background-color: #2c52fa;
-            color: #ffffff;
-            font-size: 1.1em;
-            width: 20vw;
-            height: 40px;
-        }
-
-        td {
-            background-color: #ffffff;
-            width: 20vw;
-            height: 30px;
-            text-align: center;
-        }
-
-        tr {
-            border-bottom: 1px solid #dddddd;
-        }
-
-        tr:nth-of-type(odd) td {
-            background-color: #dde2f5;
-        }
-
-        tr:hover td {
-            background-color: #f5e5f1;
-            transition: all 0.3s ease-in-out;
+        @media (max-width: 768px) {
+            .Student {
+                width: 95vw;
+            }
         }
     </style>
-    <script src="https://apis.google.com/js/api.js"></script>
 </head>
 
 <body>
-    <table>
-        <tr class="TH">
-            <th>年級</th>
-            <th>男生人數</th>
-            <th>女生人數</th>
-            <th>班級總人數</th>
-            <th>年級總人數</th>
-        </tr>
-        <tr>
-            <td>一甲</td>
-            <td id="B2"></td>
-            <td id="C2"></td>
-            <td id="D2"></td>
-            <th id="E2" rowspan="2"></th>
-        </tr>
-        <tr>
-            <td>一乙</td>
-            <td id="B3"></td>
-            <td id="C3"></td>
-            <td id="D3"></td>
-        </tr>
-        <tr>
-            <td>二甲</td>
-            <td id="B4"></td>
-            <td id="C4"></td>
-            <td id="D4"></td>
-            <th id="E4" rowspan="3"></th>
-        </tr>
-        <tr>
-            <td>二乙</td>
-            <td id="B5"></td>
-            <td id="C5"></td>
-            <td id="D5"></td>
-        </tr>
-        <tr>
-            <td>二丙</td>
-            <td id="B6"></td>
-            <td id="C6"></td>
-            <td id="D6"></td>
-        </tr>
-        <tr>
-            <td>三甲</td>
-            <td id="B7"></td>
-            <td id="C7"></td>
-            <td id="D7"></td>
-            <th id="E7" rowspan="3"></th>
-        </tr>
-        <tr>
-            <td>三乙</td>
-            <td id="B8"></td>
-            <td id="C8"></td>
-            <td id="D8"></td>
-        </tr>
-        <tr>
-            <td>三丙</td>
-            <td id="B9"></td>
-            <td id="C9"></td>
-            <td id="D9"></td>
-        </tr>
-        <tr>
-            <td>四甲</td>
-            <td id="B10"></td>
-            <td id="C10"></td>
-            <td id="D10"></td>
-            <th id="E10" rowspan="3"></th>
-        </tr>
-        <tr>
-            <td>四乙</td>
-            <td id="B11"></td>
-            <td id="C11"></td>
-            <td id="D11"></td>
-        </tr>
-        <tr>
-            <td>四丙</td>
-            <td id="B12"></td>
-            <td id="C12"></td>
-            <td id="D12"></td>
-        </tr>
-        <tr>
-            <td>五甲</td>
-            <td id="B13"></td>
-            <td id="C13"></td>
-            <td id="D13"></td>
-            <th id="E13" rowspan="3"></th>
-        </tr>
-        <tr>
-            <td>五乙</td>
-            <td id="B14"></td>
-            <td id="C14"></td>
-            <td id="D14"></td>
-        </tr>
-        <tr>
-            <td>五丙</td>
-            <td id="B15"></td>
-            <td id="C15"></td>
-            <td id="D15"></td>
-        </tr>
-        <tr>
-            <td>六甲</td>
-            <td id="B16"></td>
-            <td id="C16"></td>
-            <td id="D16"></td>
-            <th id="E16" rowspan="3"></th>
-        </tr>
-        <tr>
-            <td>六乙</td>
-            <td id="B17"></td>
-            <td id="C17"></td>
-            <td id="D17"></td>
-        </tr>
-        <tr>
-            <td>六丙</td>
-            <td id="B18"></td>
-            <td id="C18"></td>
-            <td id="D18"></td>
-        </tr>
-        <tr>
-            <td colspan="5">全校學生總人數：<span id="B20"></span></td>
-        </tr>
-    </table>
+    <iframe
+        src="https://script.google.com/macros/s/AKfycbw2sVBlwSc6uB7IVTpqOOa0_vsKgyIkUKaRspD_aKoh3jd9IX3lEZJRKESCzGN1loeO6g/exec"
+        frameborder="0" width="100%" height="500px"></iframe>
+    <div class="row Student">
+        <iframe src="https://docs.google.com/spreadsheets/d/1pqdtQECwRajyufq6bvhKFOsosfQiyFkWwH4T0NpXsUs/pubhtml"
+            width="560" height="520"></iframe>
+    </div>
 
     <script>
-        async function fetchGoogleSheetData() {
-            const sheetId = '1-G0vZzug9EciqOcLQErs09x920gzc-BUmuTQrzqvv7g'; // 替換為您的Google Sheet ID
-            const apiKey = 'AIzaSyDZCQ1UyQSb9U72L00vGRfudKpPgqjag0c'; // 替換為您的API密鑰
-            const range = 'Sheet1!B2:E20'; // 您想要獲取的範圍
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-                const values = data.values;
-
-                // 檢查是否有數據
-                if (!values || values.length === 0) {
-                    console.error('No data found.');
-                    return;
-                }
-
-                // 更新表格中的數值
-                document.getElementById('B2').textContent = values[0][0] || '';
-                document.getElementById('C2').textContent = values[0][1] || '';
-                document.getElementById('D2').textContent = values[0][2] || '';
-                document.getElementById('E2').textContent = values[0][3] || '';
-
-                document.getElementById('B3').textContent = values[1][0] || '';
-                document.getElementById('C3').textContent = values[1][1] || '';
-                document.getElementById('D3').textContent = values[1][2] || '';
-
-                document.getElementById('B4').textContent = values[2][0] || '';
-                document.getElementById('C4').textContent = values[2][1] || '';
-                document.getElementById('D4').textContent = values[2][2] || '';
-                document.getElementById('E4').textContent = values[2][3] || '';
-
-                // 繼續為其他儲存格更新數值...
-
-                document.getElementById('B20').textContent = values[18][0] || ''; // 全校學生總人數
-
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
-
-        fetchGoogleSheetData();
+        const iframe = document.querySelector('iframe');
+        iframe.contentWindow.document.body.style.overflow = 'hidden';
+        iframe.contentWindow.document.addEventListener('dragstart', (event) => {
+            event.preventDefault();
+        });
     </script>
+
 </body>
 
 </html>
