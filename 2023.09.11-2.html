@@ -143,7 +143,8 @@
     }
 
     .nav>li>a {
-        padding: 5px 10px;
+        /* padding: 5px 10px; */
+        padding: 3px 6px;
     }
 
     .mpgtitle .hdline {
@@ -211,6 +212,17 @@
         margin-bottom: 0 !important;
     }
 
+    /* 當頁面向下滑動，top不會固定在頁面上方 */
+    .navbar-fixed-top {
+        position: sticky !important;
+    }
+
+    .header.navbar-fixed-top.animated.fadeInDown {
+        position: fixed;
+    }
+
+    /* 當頁面向下滑動，top不會固定在頁面上方 */
+
     @media screen and (min-width: 768px) {
         .mnavbar {
             margin-bottom: 0px !important;
@@ -274,13 +286,13 @@
 
             } */
 
-        .navbar-fixed-top {
+        /* .navbar-fixed-top {
             position: sticky !important;
-        }
+        } */
 
-        .header.navbar-fixed-top.animated.fadeInDown {
+        /* .header.navbar-fixed-top.animated.fadeInDown {
             position: fixed;
-        }
+        } */
 
         #Dyn_head {
             height: auto !important;
