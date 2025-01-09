@@ -1,13 +1,7 @@
-        /* div {
-            margin: auto;
-            width: 95%
-        } */
-
         .table-container {
             margin: auto;
-            width: 95%;
+            width: 90%;
             overflow: hidden;
-            /* 確保不出現多餘滾動條 */
         }
 
         table {
@@ -16,6 +10,7 @@
             margin-right: auto;
             border-collapse: collapse;
             font-size: 1rem;
+            table-layout: fixed;
         }
 
         th,
@@ -23,6 +18,8 @@
             border: 1px solid #d9bee9;
             padding: 8px;
             text-align: center;
+            word-wrap: break-word;
+            word-break: break-all;
         }
 
         th {
@@ -33,8 +30,63 @@
             background-color: #f1e3f7;
         }
 
+        .T1 {
+            width: 5%;
+        }
+
+        .T2 {
+            width: 10%;
+        }
+
+        .T3 {
+            width: 13%;
+        }
+
+        .T4 {
+            width: 13%;
+        }
+
+        .T5 {
+            width: 27%;
+        }
+
+        .T6 {
+            width: 16%;
+        }
+
+        .T7 {
+            width: 16%;
+        }
+
+        .Seat {
+            width: 8%;
+        }
+
+        .NewName {
+            width: 12%;
+        }
+
+        .OriginalName {
+            width: 14%;
+        }
+
+        .Model {
+            width: 30%;
+        }
+
+        .MacAdress {
+            width: 18%;
+        }
+
+        .SerialNumber {
+            width: 18%;
+        }
+
+
+
         @media (max-width: 768px) {
             table {
+                width: 100%;
                 font-size: 0.9rem;
             }
 
@@ -49,6 +101,7 @@
 
         @media (max-width: 480px) {
             table {
+                width: 100%;
                 font-size: 0.8rem;
             }
 
