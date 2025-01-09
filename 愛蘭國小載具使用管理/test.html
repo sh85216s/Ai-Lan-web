@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>響應式等比例縮放表格</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow: hidden;
+            /* 確保不出現多餘滾動條 */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 1rem;
+            /* 基本字體大小 */
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        /* 當螢幕寬度縮小時，字體及表格比例自動縮小 */
+        @media (max-width: 768px) {
+            table {
+                font-size: 0.9rem;
+                /* 縮小字體 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            table {
+                font-size: 0.8rem;
+                /* 進一步縮小字體 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>名稱</th>
+                    <th>年級</th>
+                    <th>人數</th>
+                    <th>備註</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>班級 A</td>
+                    <td>五年級</td>
+                    <td>30</td>
+                    <td>無</td>
+                </tr>
+                <tr>
+                    <td>班級 B</td>
+                    <td>六年級</td>
+                    <td>25</td>
+                    <td>體育班</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

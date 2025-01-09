@@ -1,11 +1,21 @@
-        div {
+        /* div {
             margin: auto;
             width: 95%
+        } */
+
+        .table-container {
+            margin: auto;
+            width: 95%;
+            overflow: hidden;
+            /* 確保不出現多餘滾動條 */
         }
 
         table {
             width: 100%;
+            margin-left: auto;
+            margin-right: auto;
             border-collapse: collapse;
+            font-size: 1rem;
         }
 
         th,
@@ -21,4 +31,32 @@
 
         tr:hover {
             background-color: #f1e3f7;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            table {
+                font-size: 0.8rem;
+            }
+
+            h1 {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 0.9rem;
+            }
         }
