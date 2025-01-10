@@ -10,68 +10,16 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <title>愛蘭國小載具管理</title>
+  <link rel="stylesheet" href="AilanPad.css">
 </head>
-<style>
-  body {
-    background-image: linear-gradient(120deg, #f1d7f9 0%, #cde4f0 100%);
-    background-repeat: no-repeat;
-  }
-
-  .container {
-    margin-top: 30px;
-    width: 95%;
-  }
-
-  .card-title {
-    font-weight: 600;
-  }
-
-  ul {
-    list-style-position: inside;
-  }
-
-  ul li {
-    text-indent: 1em;
-  }
-
-  a {
-    color: #0d6efd;
-    text-decoration: none;
-  }
-
-  .a_link:hover {
-    color: #f30;
-    text-decoration: none;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23ff3300' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
-    background-size: 20px auto;
-    animation: waveMove 1s infinite linear;
-  }
-
-  @keyframes waveMove {
-    from {
-      background-position: 0 100%;
-    }
-
-    to {
-      background-position: -20px 100%;
-    }
-  }
-
-  #lastModified {
-    color: red;
-  }
-</style>
-
 <body>
-
   <div>
     <div class="container">
       <div class="row" style="display: flex; align-items: center; height: 100px;">
         <p><img src="../img/SchoolBadge.png" alt="愛蘭國小校徽"
             style="display:inline; vertical-align:middle; margin-right:5px; height: 2.5em; object-fit: contain; position: relative; top: -12px;"><span
             style=" font-size: 2em; line-height: 2em;">愛蘭國小載具管理</span>&nbsp;<span
-            style=" line-height: 2em; object-fit: contain; position: relative; top: -6px;">(<a class="a_link"
-              href="https://mdm.edu.tw/" target="_blank" title="目前只有教務主任和資訊組可以查看">查看平板使用情形</a>)</span></p>
+            style=" line-height: 2em; object-fit: contain; position: relative; top: -6px;"></span></p>
       </div>
       <!-- 第1列 -->
       <div class="row row-cols-1 row-cols-md-5 g-4">
@@ -432,6 +380,7 @@
         <ul>
           <li>學校自購平板23台，目前二年乙班蒂妮師(Alps-H)保管20台，另外3台由一年乙班慧霖師保管。</li>
           <li>除了學校自購的平板外，其餘計畫內的平板，都要有 KPI，麻煩各班老師，能多加留意平板的使用情形。</li>
+          <li>「「教務主任」或「資訊組長」<a class="a_link" href="https://mdm.edu.tw/" target="_blank" title="目前只有教務主任和資訊組可以查看">查看平板使用情形</a></li>
           <li>最新修正日期：<span id="lastModified"></span></li>
         </ul>
         <!-- 以下--顯示最後修改時間 -->
@@ -441,10 +390,6 @@
           document.getElementById("lastModified").textContent = formattedDateTime;
         </script>
         <!-- 以上--顯示最後修改時間 -->
-
-
-
-
       </div>
     </div>
   </div>

@@ -1,115 +1,164 @@
-        .table-container {
-            margin: auto;
-            width: 95%;
-            overflow: hidden;
-        }
+  body {
+      background-image: linear-gradient(120deg, #f1d7f9 0%, #cde4f0 100%);
+      background-repeat: no-repeat;
+  }
 
-        table {
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            border-collapse: collapse;
-            font-size: 1rem;
-            table-layout: fixed;
-        }
+  .container {
+      margin-top: 30px;
+      width: 95%;
+  }
 
-        th,
-        td {
-            border: 1px solid #d9bee9;
-            padding: 8px;
-            text-align: center;
-            word-wrap: break-word;
-            word-break: break-all;
-        }
+  .card-title {
+      font-weight: 600;
+  }
 
-        th {
-            background-color: #f1e3f7;
-        }
+  ul {
+      list-style-position: inside;
+  }
 
-        tr:hover {
-            background-color: #f1e3f7;
-        }
+  ul li {
+      text-indent: 1em;
+  }
 
-        .T1 {
-            width: 5%;
-        }
+  a {
+      color: #0d6efd;
+      text-decoration: none;
+  }
 
-        .T2 {
-            width: 10%;
-        }
+  .a_link:hover {
+      color: #f30;
+      text-decoration: none;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%23ff3300' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
+      background-size: 20px auto;
+      animation: waveMove 1s infinite linear;
+  }
 
-        .T3 {
-            width: 13%;
-        }
+  @keyframes waveMove {
+      from {
+          background-position: 0 100%;
+      }
 
-        .T4 {
-            width: 13%;
-        }
+      to {
+          background-position: -20px 100%;
+      }
+  }
 
-        .T5 {
-            width: 27%;
-        }
+  #lastModified {
+      color: red;
+  }
 
-        .T6 {
-            width: 16%;
-        }
+  .table-container {
+      margin: auto;
+      width: 95%;
+      overflow: hidden;
+  }
 
-        .T7 {
-            width: 16%;
-        }
+  table {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      border-collapse: collapse;
+      font-size: 1rem;
+      table-layout: fixed;
+  }
 
-        .Seat {
-            width: 8%;
-        }
+  th,
+  td {
+      border: 1px solid #d9bee9;
+      padding: 8px;
+      text-align: center;
+      word-wrap: break-word;
+      word-break: break-all;
+  }
 
-        .NewName {
-            width: 12%;
-        }
+  th {
+      background-color: #f1e3f7;
+  }
 
-        .OriginalName {
-            width: 14%;
-        }
+  tr:hover {
+      background-color: #f1e3f7;
+  }
 
-        .Model {
-            width: 30%;
-        }
+  .T1 {
+      width: 5%;
+  }
 
-        .MacAdress {
-            width: 18%;
-        }
+  .T2 {
+      width: 10%;
+  }
 
-        .SerialNumber {
-            width: 18%;
-        }
+  .T3 {
+      width: 13%;
+  }
+
+  .T4 {
+      width: 13%;
+  }
+
+  .T5 {
+      width: 27%;
+  }
+
+  .T6 {
+      width: 16%;
+  }
+
+  .T7 {
+      width: 16%;
+  }
+
+  .Seat {
+      width: 8%;
+  }
+
+  .NewName {
+      width: 12%;
+  }
+
+  .OriginalName {
+      width: 14%;
+  }
+
+  .Model {
+      width: 30%;
+  }
+
+  .MacAdress {
+      width: 18%;
+  }
+
+  .SerialNumber {
+      width: 18%;
+  }
 
 
 
-        @media (max-width: 768px) {
-            table {
-                width: 100%;
-                font-size: 0.9rem;
-            }
+  @media (max-width: 768px) {
+      table {
+          width: 100%;
+          font-size: 0.9rem;
+      }
 
-            h1 {
-                font-size: 1.1rem;
-            }
+      h1 {
+          font-size: 1.1rem;
+      }
 
-            h2 {
-                font-size: 1rem;
-            }
-        }
+      h2 {
+          font-size: 1rem;
+      }
+  }
 
-        @media (max-width: 480px) {
-            table {
-                width: 100%;
-                font-size: 0.8rem;
-            }
+  @media (max-width: 480px) {
+      table {
+          width: 100%;
+          font-size: 0.8rem;
+      }
 
-            h1 {
-                font-size: 1rem;
-            }
+      h1 {
+          font-size: 1rem;
+      }
 
-            h2 {
-                font-size: 0.9rem;
-            }
-        }
+      h2 {
+          font-size: 0.9rem;
+      }
+  }
