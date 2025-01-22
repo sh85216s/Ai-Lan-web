@@ -1,404 +1,434 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-  <title>愛蘭國小載具管理</title>
-  <link rel="stylesheet" href="AilanPad.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>愛蘭國小平板管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="AilanPad.css">
 </head>
+<!-- <style>
+    .menu-item {
+        background-color: #eee;
+        padding: 10px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .menu-item.selected,
+    .menu-item:hover {
+        background-color: rgb(188, 174, 247) !important;
+    }
+
+    .menu-content {
+        display: none;
+        padding: 10px;
+        border-top: 1px solid #ddd;
+    }
+
+    .page-title {
+        text-align: left;
+        margin-bottom: 20px;
+        font-size: 2.5em;
+        font-weight: bold;
+    }
+</style> -->
+
 <body id="index_bg">
-  <div>
-    <div class="container">
-      <div class="row" style="display: flex; align-items: center; height: 100px;">
-        <p><img src="../img/SchoolBadge.png" alt="愛蘭國小校徽"
-            style="display:inline; vertical-align:middle; margin-right:5px; height: 2.5em; object-fit: contain; position: relative; top: -12px;"><span
-            style=" font-size: 2em; line-height: 2em;">愛蘭國小載具管理</span>&nbsp;<span
-            style=" line-height: 2em; object-fit: contain; position: relative; top: -6px;"></span></p>
-      </div>
-      <!-- 第1列 -->
-      <div class="row row-cols-1 row-cols-md-5 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">一甲(Alps-i)</h5>
-              <p class="card-text">
-                班級導師：佳蕙師<br>
-                學生平板名稱：<br>Alps-i-01~Alps-i-26
-                <br>
-                充電線：Lightning
-                <br>
-                備註：<span style=" color: #f00;">Alps-i-24 移出</span>
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：25台(<a class="a_link"
-                  href="一甲.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
+    <div class="container mt-5">
+        <div class="page-title"><img src="../img/SchoolBadge.png" alt="愛蘭國小校徽"
+                style="display:inline; vertical-align:middle; margin-right:5px; height: 1.2em; object-fit: contain; position: relative; top: -5px;">愛蘭國小平板管理
         </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">一乙(Alps-O)</h5>
-              <p class="card-text">
-                班級導師：慧霖師<br>
-                學生平板名稱：<br>Alps-O-01~Alps-O-21
-                <br>
-                充電線：Lightning(1~5號)+Type C(6~21號)
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：21台(<a class="a_link"
-                  href="一乙.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">二甲(Alps-P)</h5>
-              <p class="card-text">
-                班級導師：裁霞師<br>
-                學生平板名稱：<br>Alps-P-01~Alps-P-16
-                <br>
-                充電線：Type C
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：16台(<a class="a_link"
-                  href="二甲.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">二乙(Alps-H)</h5>
-              <p class="card-text">
-                班級導師：蒂妮師<br>
-                學生平板名稱：<br>Alps-H-01~Alps-H-20
-                <br>
-                充電線：Lightning
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：20台(<a class="a_link"
-                  href="二乙.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">二丙(Alps-D)</h5>
-              <p class="card-text">
-                班級導師：依葵師<br>
-                學生平板名稱：<br>Alps-D-01~Alps-D-16
-                <br>
-                充電線：Lightning
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：20台(<a class="a_link"
-                  href="二丙.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-      </div><br>
-      <!-- 第2列 -->
-      <div class="row row-cols-1 row-cols-md-5 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">三甲(Alps-N)</h5>
-              <p class="card-text">
-                班級導師：慶濱師<br>
-                學生平板名稱：<br>Alps-N-01~Alps-N-22
-                <br>
-                充電線：Type C
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：22台(<a class="a_link"
-                  href="三甲.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">三乙(Alps-A)</h5>
-              <p class="card-text">
-                班級導師：益彰師<br>
-                學生平板名稱：<br>Alps-A-01~Alps-A-23
-                <br>
-                充電線：Lightning
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：23台(<a class="a_link"
-                  href="三乙.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">三丙(Alps-F)</h5>
-              <p class="card-text">
-                班級導師：玥彤師<br>
-                學生平板名稱：<br>Alps-F-01~Alps-F-23
-                <br>
-                充電線：Lightning
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：23台(<a class="a_link"
-                  href="三丙.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">四甲(Alps-L)</h5>
-              <p class="card-text">
-                班級導師：上容師<br>
-                學生平板名稱：<br>Alps-L-01~Alps-L-22
-                <br>
-                充電線：Lightning
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：22台(<a class="a_link"
-                  href="四甲.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">四乙(Alps-Q)</h5>
-              <p class="card-text">
-                班級導師：聿復師<br>
-                學生平板名稱：<br>Alps-Q-01~Alps-Q-22<br>
-                充電線：Type C
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：22台(<a class="a_link"
-                  href="四乙.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-      </div><br>
-      <!-- 第3列 -->
-      <div class="row row-cols-1 row-cols-md-5 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">四丙(Alps-E)</h5>
-              <p class="card-text">
-                班級導師：真玲師<br>
-                學生平板名稱：<br>Alps-E-01~Alps-E-23
-                <br>
-                充電線：Lightning
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：23台(<a class="a_link"
-                  href="四丙.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">五甲(Alps-M)</h5>
-              <p class="card-text">
-                班級導師：櫻蘭師<br>
-                學生平板名稱：<br>Alps-M-01~Alps-M-19
-                <br>
-                充電線：Type C
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：19台(<a class="a_link"
-                  href="五甲.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">五乙(Alps-J)</h5>
-              <p class="card-text">
-                班級導師：彥妮師<br>
-                學生平板名稱：<br>Alps-J-01~Alps-J-18
-                <br>
-                充電線：Lightning
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：18台(<a class="a_link"
-                  href="五乙.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">五丙(Alps-C)</h5>
-              <p class="card-text">
-                班級導師：思婷師<br>
-                學生平板名稱：<br>Alps-C-01~Alps-C-21
-                <br>
-                充電線：Lightning
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：21台(<a class="a_link"
-                  href="五丙.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">六甲(Alps-K)</h5>
-              <p class="card-text">
-                班級導師：桂枝師<br>
-                學生平板名稱：<br>Alps-K-01~Alps-K-25
-                <br>
-                充電線：Type C
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：25台(<a class="a_link"
-                  href="六甲.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-      </div><br>
-      <!-- 第4列 -->
-      <div class="row row-cols-1 row-cols-md-5 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">六乙(Alps-G)</h5>
-              <p class="card-text">
-                班級導師：明杰師<br>
-                學生平板名稱：<br>Alps-G-01~Alps-G-25
-                <br>
-                充電線：Lightning
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：25台(<a class="a_link"
-                  href="六乙.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">六丙(Alps-B)</h5>
-              <p class="card-text">
-                班級導師：麗敏師<br>
-                學生平板名稱：<br>Alps-B-01~Alps-B-26
-                <br>
-                充電線：Lightning
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：26台(<a class="a_link"
-                  href="六丙.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">教師用平板</h5>
-              <p class="card-text">
-                平板名稱：依教師名字命名
-                <br>
-                充電線：除了外師的是Lightning之外，其餘都是 Type C。
-              </p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">
-                數量：17台&nbsp;(<a class="a_link"
-                  href="教師用平板.html"
-                  target="_blank">詳情</a>)</small>
-            </div>
-          </div>
-        </div>
-      </div><br>
+        <div class="menu-item" onclick="toggleMenu(this)">平板分配</div>
+        <div class="menu-content" id="distribution">
+            <!-- 第1列 -->
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">一甲(Alps-i)</h5>
+                            <p class="card-text">
+                                班級導師：佳蕙師<br>
+                                學生平板名稱：<br>Alps-i-01~Alps-i-26
+                                <br>
+                                充電線：Lightning
+                                <br>
+                                備註：<span style=" color: #f00;">Alps-i-24 移出</span>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：25台(<a class="a_link" href="一甲.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">一乙(Alps-O)</h5>
+                            <p class="card-text">
+                                班級導師：慧霖師<br>
+                                學生平板名稱：<br>Alps-O-01~Alps-O-21
+                                <br>
+                                充電線：Lightning(1~5號)+Type C(6~21號)
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：21台(<a class="a_link" href="一乙.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">二甲(Alps-P)</h5>
+                            <p class="card-text">
+                                班級導師：裁霞師<br>
+                                學生平板名稱：<br>Alps-P-01~Alps-P-16
+                                <br>
+                                充電線：Type C
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：16台(<a class="a_link" href="二甲.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">二乙(Alps-H)</h5>
+                            <p class="card-text">
+                                班級導師：蒂妮師<br>
+                                學生平板名稱：<br>Alps-H-01~Alps-H-20
+                                <br>
+                                充電線：Lightning
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：20台(<a class="a_link" href="二乙.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">二丙(Alps-D)</h5>
+                            <p class="card-text">
+                                班級導師：依葵師<br>
+                                學生平板名稱：<br>Alps-D-01~Alps-D-16
+                                <br>
+                                充電線：Lightning
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：20台(<a class="a_link" href="二丙.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+            <!-- 第2列 -->
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">三甲(Alps-N)</h5>
+                            <p class="card-text">
+                                班級導師：慶濱師<br>
+                                學生平板名稱：<br>Alps-N-01~Alps-N-22
+                                <br>
+                                充電線：Type C
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：22台(<a class="a_link" href="三甲.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">三乙(Alps-A)</h5>
+                            <p class="card-text">
+                                班級導師：益彰師<br>
+                                學生平板名稱：<br>Alps-A-01~Alps-A-23
+                                <br>
+                                充電線：Lightning
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：23台(<a class="a_link" href="三乙.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">三丙(Alps-F)</h5>
+                            <p class="card-text">
+                                班級導師：玥彤師<br>
+                                學生平板名稱：<br>Alps-F-01~Alps-F-23
+                                <br>
+                                充電線：Lightning
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：23台(<a class="a_link" href="三丙.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">四甲(Alps-L)</h5>
+                            <p class="card-text">
+                                班級導師：上容師<br>
+                                學生平板名稱：<br>Alps-L-01~Alps-L-22
+                                <br>
+                                充電線：Lightning
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：22台(<a class="a_link" href="四甲.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">四乙(Alps-Q)</h5>
+                            <p class="card-text">
+                                班級導師：聿復師<br>
+                                學生平板名稱：<br>Alps-Q-01~Alps-Q-22<br>
+                                充電線：Type C
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：22台(<a class="a_link" href="四乙.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+            <!-- 第3列 -->
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">四丙(Alps-E)</h5>
+                            <p class="card-text">
+                                班級導師：真玲師<br>
+                                學生平板名稱：<br>Alps-E-01~Alps-E-23
+                                <br>
+                                充電線：Lightning
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：23台(<a class="a_link" href="四丙.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">五甲(Alps-M)</h5>
+                            <p class="card-text">
+                                班級導師：櫻蘭師<br>
+                                學生平板名稱：<br>Alps-M-01~Alps-M-19
+                                <br>
+                                充電線：Type C
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：19台(<a class="a_link" href="五甲.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">五乙(Alps-J)</h5>
+                            <p class="card-text">
+                                班級導師：彥妮師<br>
+                                學生平板名稱：<br>Alps-J-01~Alps-J-18
+                                <br>
+                                充電線：Lightning
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：18台(<a class="a_link" href="五乙.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">五丙(Alps-C)</h5>
+                            <p class="card-text">
+                                班級導師：思婷師<br>
+                                學生平板名稱：<br>Alps-C-01~Alps-C-21
+                                <br>
+                                充電線：Lightning
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：21台(<a class="a_link" href="五丙.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">六甲(Alps-K)</h5>
+                            <p class="card-text">
+                                班級導師：桂枝師<br>
+                                學生平板名稱：<br>Alps-K-01~Alps-K-25
+                                <br>
+                                充電線：Type C
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：25台(<a class="a_link" href="六甲.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+            <!-- 第4列 -->
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">六乙(Alps-G)</h5>
+                            <p class="card-text">
+                                班級導師：明杰師<br>
+                                學生平板名稱：<br>Alps-G-01~Alps-G-25
+                                <br>
+                                充電線：Lightning
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：25台(<a class="a_link" href="六乙.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">六丙(Alps-B)</h5>
+                            <p class="card-text">
+                                班級導師：麗敏師<br>
+                                學生平板名稱：<br>Alps-B-01~Alps-B-26
+                                <br>
+                                充電線：Lightning
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：26台(<a class="a_link" href="六丙.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">教師用平板</h5>
+                            <p class="card-text">
+                                平板名稱：依教師名字命名
+                                <br>
+                                充電線：除了外師的是Lightning之外，其餘都是 Type C。
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                數量：17台&nbsp;(<a class="a_link" href="教師用平板.html" target="_blank">詳情</a>)</small>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+        </div>       
 
+        <div class="menu-item" onclick="toggleMenu(this)">充電車使用說明</div>
+        <div class="menu-content" id="ChargingCartInstructions">
+            <p>這裡是充電車使用說明。</p>
+        </div>
 
-      <div class="row">
-        <h4>《說明》</h4>
-        <ul>
-          <li>學校自購平板23台，目前二年乙班蒂妮師(Alps-H)保管20台，另外3台由一年乙班慧霖師保管。</li>
-          <li>除了學校自購的平板外，其餘計畫內的平板，都要有 KPI，麻煩各班老師，能多加留意平板的使用情形。</li>
-          <li>THSD 計畫的平板需要有「課中」、「課後」的連線資料，每週至少上線各5分鐘。</li>
-          <li>「教務主任」或「資訊組長」<a class="a_link" href="https://mdm.edu.tw/" target="_blank" title="目前只有教務主任和資訊組可以查看">查看平板使用情形</a></li>
-          <li>最新修正日期：<span id="lastModified"></span></li>
-        </ul>
-        <!-- 以下--顯示最後修改時間 -->
-        <script>
-          const lastModified = new Date(document.lastModified);
-          const formattedDateTime = `${lastModified.getFullYear()}-${lastModified.getMonth() + 1}-${String(lastModified.getDate()).padStart(2, '0')} ${String(lastModified.getHours()).padStart(2, '0')}:${String(lastModified.getMinutes()).padStart(2, '0')}:${String(lastModified.getSeconds()).padStart(2, '0')}`;
-          document.getElementById("lastModified").textContent = formattedDateTime;
-        </script>
-        <!-- 以上--顯示最後修改時間 -->
-      </div>
+        <div class="menu-item" onclick="toggleMenu(this)">申請APP</div>
+        <div class="menu-content" id="app">
+            <p>這裡是申請APP的內容。</p>
+        </div>
+
+        <div class="menu-item" onclick="toggleMenu(this)">KPI</div>
+        <div class="menu-content" id="kpi">
+            <ol>
+                <li>平板須持續連線5分鐘以上，才會有上線紀錄。</li>
+                <li>平板未規定要連上什麼網站，大家可以自由運用。</li>
+                <li>THSD 計畫的平板需要有「<span style=" color: red;">課中</span>」、「<span
+                        style=" color: red;">課後</span>」的連線資料，<span style=" color: red;">每週至少上線各5分鐘</span></li>
+                <li>非THSD的平板每月需要有上線記錄。(上線時間需要5分鐘以上)</li>
+                <li>學校自購平板23台，目前二年乙班蒂妮師(Alps-H)保管20台，另外3台由一年乙班慧霖師保管。這些學校自購的平板不需要KPI。</li>
+            </ol>
+        </div>
+
+        <div class="menu-item" onclick="toggleMenu(this)">注意事項</div>
+        <div class="menu-content" id="notes">
+            <ul>
+                <li>平板連上教室內AP，訊號應該是滿格的，否則就請聯繫資訊組處理。</li>
+            </ul>
+        </div>
+        <br><br>
+        <div class="footer">
+            <div class="col">
+                「教務主任」或「資訊組長」<a class="a_link" href="https://mdm.edu.tw/" target="_blank"
+                    title="目前只有教務主任和資訊組可以查看">查看平板使用情形</a>&nbsp;&nbsp;‖&nbsp;&nbsp;最新修正日期：<span id="lastModified"></span>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <br>
+    <script>
+        function toggleMenu(element) {
+            const isActive = element.classList.contains('selected');
+            if (isActive) {
+                element.classList.remove('selected');
+                element.nextElementSibling.style.display = 'none';
+            } else {
+                document.querySelectorAll('.menu-item').forEach(item => {
+                    item.classList.remove('selected');
+                });
+                document.querySelectorAll('.menu-content').forEach(content => {
+                    content.style.display = 'none';
+                });
 
+                element.classList.add('selected');
+                element.nextElementSibling.style.display = 'block';
+            }
+        }
+    </script>
+
+    <!-- 以下--顯示最後修改時間 -->
+    <script>
+        const lastModified = new Date(document.lastModified);
+        const formattedDateTime = `${lastModified.getFullYear()}-${lastModified.getMonth() + 1}-${String(lastModified.getDate()).padStart(2, '0')} ${String(lastModified.getHours()).padStart(2, '0')}:${String(lastModified.getMinutes()).padStart(2, '0')}:${String(lastModified.getSeconds()).padStart(2, '0')}`;
+        document.getElementById("lastModified").textContent = formattedDateTime;
+    </script>
+    <!-- 以上--顯示最後修改時間 -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

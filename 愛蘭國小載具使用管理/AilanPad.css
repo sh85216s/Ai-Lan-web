@@ -1,12 +1,12 @@
   #index_bg {
       background-image: linear-gradient(120deg, #f1d7f9 0%, #cde4f0 100%);
-      background-repeat: no-repeat;
+      background-repeat: repeat;
   }
 
-  .container {
+  /* .container {
       margin-top: 30px;
       width: 95%;
-  }
+  } */
 
   .card-title {
       font-weight: 600;
@@ -131,7 +131,46 @@
       width: 18%;
   }
 
+  h2 {
+      font-size: 1.5em;
+  }
 
+  .menu-item {
+      background-color: #eee;
+      padding: 10px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background-color 0.3s ease;
+  }
+
+  .menu-item.selected,
+  .menu-item:hover {
+      background-color: rgb(188, 174, 247) !important;
+  }
+
+  .menu-content {
+      display: none;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+  }
+
+  .page-title {
+      text-align: left;
+      margin-bottom: 20px;
+      font-size: 2.5em;
+      font-weight: bold;
+  }
+
+  .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      background-color: #f8f9fa;
+      padding: 5px 0 5px 0;
+      font-size: 1.2em;
+  }
 
   @media (max-width: 768px) {
       table {
@@ -140,11 +179,11 @@
       }
 
       h1 {
-          font-size: 1.1rem;
+          font-size: 2rem;
       }
 
       h2 {
-          font-size: 1rem;
+          font-size: 1.5rem;
       }
   }
 
