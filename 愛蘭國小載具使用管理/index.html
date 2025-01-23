@@ -6,16 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>愛蘭國小平板管理</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="AilanPad.css">
+    <style>
+        .menu-item {
+            position: relative;
+            cursor: pointer;
+            padding-right: 30px;
+            /* 增加空間以放置圖示 */
+        }
+
+        .menu-item i {
+            position: absolute;
+            right: 10px;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .menu-content {
+            display: none;
+        }
+    </style>
 </head>
 
 <body id="index_bg">
     <div class="container mt-5">
-        <div class="page-title"><img src="../img/SchoolBadge.png" alt="愛蘭國小校徽"
+        <div class="page-title">
+            <img src="../img/SchoolBadge.png" alt="愛蘭國小校徽"
                 style="display:inline; vertical-align:middle; margin-right:5px; height: 1.2em; object-fit: contain; position: relative; top: -5px;">愛蘭國小平板管理
         </div>
-        <div class="menu-item" onclick="toggleMenu(this)">平板分配</div>
-        <div class="menu-content" id="distribution">
+        <div class="menu-item" onclick="toggleMenu(this)">平板分配
+            <i class="bi bi-chevron-double-down"></i>
+        </div>
+        <div class="menu-content" id="TabletAllocation">
             <!-- 第1列 -->
             <div class="row row-cols-1 row-cols-md-5 g-4">
                 <div class="col">
@@ -334,19 +357,37 @@
                     </div>
                 </div>
             </div><br>
-        </div>       
-
-        <div class="menu-item" onclick="toggleMenu(this)">充電車使用說明</div>
-        <div class="menu-content" id="ChargingCartInstructions">
-            <p>這裡是充電車使用說明。</p>
         </div>
 
-        <div class="menu-item" onclick="toggleMenu(this)">申請APP</div>
+        <div class="menu-item" onclick="toggleMenu(this)">行動充電車使用說明
+            <i class="bi bi-chevron-double-down"></i>
+        </div>
+        <div class="menu-content" id="ChargingCartInstructions">
+        <ol>
+            <li>充電車請記得前後都上鎖</li>
+            <li>如果老師有用粉筆寫黑板，建議充電車不要放置在黑板附近。</li>
+            <li>請至少指派2位學生協助處理平板：
+                <ul>
+                    <li>接線或拔除線時一手扶著平板一手抓著接頭。</li>
+                    <li>1位負責取下(放好)平板及拔(接)線，另1位負責檢查平板是否破損、缺東西或亂畫。</li>
+                </ul>
+            <li>平板充飽電時記得充電車電源要關閉（怕電壓不穩時傷及設備）</li>
+            <li>平板開口朝下放進充電車（怕保護殼開口笑）</li>
+            <li>平板放進充電車時請留意充電線避免硬擠進去(怕傷害平板)</li>
+            <li>假期前一天請記得關閉充電車之電源及拔除電源線</li>
+        </ol>
+        </div>
+
+        <div class="menu-item" onclick="toggleMenu(this)">申請APP
+            <i class="bi bi-chevron-double-down"></i>
+        </div>
         <div class="menu-content" id="app">
             <p>這裡是申請APP的內容。</p>
         </div>
 
-        <div class="menu-item" onclick="toggleMenu(this)">KPI</div>
+        <div class="menu-item" onclick="toggleMenu(this)">KPI
+            <i class="bi bi-chevron-double-down"></i>
+        </div>
         <div class="menu-content" id="kpi">
             <ol>
                 <li>平板未規定要連上什麼網站，只要持續連線5分鐘以上，就會有上線記錄。</li>
@@ -357,7 +398,9 @@
             </ol>
         </div>
 
-        <div class="menu-item" onclick="toggleMenu(this)">注意事項</div>
+        <div class="menu-item" onclick="toggleMenu(this)">注意事項
+            <i class="bi bi-chevron-double-down"></i>
+        </div>
         <div class="menu-content" id="notes">
             <ul>
                 <li>平板連上教室內AP，訊號應該是滿格的，否則就請聯繫資訊組處理。</li>
@@ -375,18 +418,23 @@
     <script>
         function toggleMenu(element) {
             const isActive = element.classList.contains('selected');
+            const icon = element.querySelector('i');
+
             if (isActive) {
                 element.classList.remove('selected');
+                icon.classList.replace('bi-chevron-double-up', 'bi-chevron-double-down');
                 element.nextElementSibling.style.display = 'none';
             } else {
                 document.querySelectorAll('.menu-item').forEach(item => {
                     item.classList.remove('selected');
+                    item.querySelector('i').classList.replace('bi-chevron-double-up', 'bi-chevron-double-down');
                 });
                 document.querySelectorAll('.menu-content').forEach(content => {
                     content.style.display = 'none';
                 });
 
                 element.classList.add('selected');
+                icon.classList.replace('bi-chevron-double-down', 'bi-chevron-double-up');
                 element.nextElementSibling.style.display = 'block';
             }
         }

@@ -13,11 +13,21 @@
   }
 
   ul {
-      list-style-position: inside;
+      list-style-position: outside;
   }
 
   ul li {
-      text-indent: 1em;
+      text-indent: -0.5em;
+      list-style-position: outside;
+  }
+
+  ol li {
+      list-style-position: outside;
+  }
+
+  ol li ul li {
+      list-style-position: outside;
+      text-indent: -0.5em;
   }
 
   a {
