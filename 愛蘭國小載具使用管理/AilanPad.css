@@ -2,7 +2,7 @@
   body {
       margin: 0;
       padding: 0;
-      height: 100% !important;
+      height: 100%;
   }
 
   #index_bg {
@@ -11,11 +11,6 @@
       background-size: cover;
       background-attachment: fixed;
   }
-
-  /* .container {
-      margin-top: 30px;
-      width: 95%;
-  } */
 
   .card-title {
       font-weight: 600;
@@ -26,7 +21,7 @@
   }
 
   ul li {
-      text-indent: -0.5em;
+      text-indent: -0.3em;
       list-style-position: outside;
   }
 
@@ -36,7 +31,7 @@
 
   ol li ul li {
       list-style-position: outside;
-      text-indent: -0.5em;
+      text-indent: -0.3em;
   }
 
   a {
@@ -68,7 +63,7 @@
 
   .table-container {
       margin: auto;
-      width: 95%;
+      width: 100%;
       overflow: hidden;
   }
 
@@ -153,10 +148,13 @@
   .menu-item {
       background-color: #eee;
       font-size: 1.05em;
-      padding: 10px;
+      padding: 10px 20px 10px 20px;
       cursor: pointer;
       margin-bottom: 10px;
       transition: background-color 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
   }
 
   .menu-item.selected,
