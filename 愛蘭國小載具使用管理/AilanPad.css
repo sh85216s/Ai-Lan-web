@@ -80,6 +80,10 @@
       table-layout: fixed;
   }
 
+  .PadH1,.PadH2 {
+    padding-left: 2.5%;
+  }
+
   th,
   td {
       border: 1px solid #d9bee9;
@@ -193,8 +197,8 @@
   }
 
   #BLUE {
-    color: blue;
-    font-weight: bold;
+      color: blue;
+      font-weight: bold;
   }
 
   @media (max-width: 768px) {
