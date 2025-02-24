@@ -67,12 +67,12 @@
 
   .table-container {
       margin: auto;
-      width: 100%;
+      width: 95%;
       overflow: hidden;
   }
 
   table {
-      width: 100%;
+      width: 95%;
       margin-left: auto;
       margin-right: auto;
       border-collapse: collapse;
