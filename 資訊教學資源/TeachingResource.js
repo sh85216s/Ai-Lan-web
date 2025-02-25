@@ -30,7 +30,7 @@ const contents = {
         <li>想學習遊戲開發的愛好者</li>
     </ul>
 
-    <p>MakeCode Arcade <span class="highlight">降低了遊戲開發的門檻</span>，讓學生能夠快速製作可運行的遊戲，適合作為 <strong>程式設計社團</strong> 的教學工具！ 🎮✨
+    <p>✨MakeCode Arcade <span class="highlight">降低了遊戲開發的門檻</span>，讓學生能夠快速製作可運行的遊戲，適合作為 <strong>程式設計社團</strong> 的教學工具！ 🎮
     </p>
     `,
     contentMicrobit: `
@@ -145,7 +145,7 @@ const contents = {
             <li><strong>個人作品展示</strong>：設計個人簡歷、作品集或專案提案。</li>
         </ul>
 
-        <p>Gamma 透過 AI 技術，讓使用者能夠高效產出高品質的視覺化內容，是簡報與文件製作的最佳選擇！💡🚀</p>
+        <p>💡Gamma 透過 AI 技術，讓使用者能夠高效產出高品質的視覺化內容，是簡報與文件製作的最佳選擇！🚀</p>
      `
 
     ,
@@ -167,7 +167,7 @@ const contents = {
             <li><strong>教師與教育機構：</strong> 作為 STEM/STEAM 教學工具，幫助學生動手實作。</li>
         </ul>
 
-        <p>Tinkercad 介面簡單直覺，適合無經驗者學習 <strong>3D 設計、電子電路、Arduino 與程式設計</strong>，是入門創客與數位製造的理想工具。 🚀</p>
+        <p>Tinkercad 介面簡單直覺，適合無經驗者學習 <strong>3D 設計、電子電路、Arduino 與程式設計</strong>，是入門創客與數位製造的理想工具。 </p>
      `
 };
 
