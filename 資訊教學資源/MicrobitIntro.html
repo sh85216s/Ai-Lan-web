@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro:bit 簡介</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: attr(data-icon);
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎛️ Micro:bit 簡介</h1>
+    <p>Micro:bit 是一款由 <strong>BBC</strong> 開發的 <strong>教育型微型控制器（microcontroller）</strong>，
+        主要用於程式設計與電子實驗，適合初學者學習程式設計與物聯網（IoT）。
+        它最初於 2016 年發表，並廣泛應用於全球的教育場域，
+        特別是在國小和國中的 STEM（科學、技術、工程、數學）課程中。
+    </p>
+
+    <h2 data-icon="⚙️">Micro:bit 主要規格</h2>
+    <ul>
+        <li><strong>處理器：</strong> Nordic nRF52833（V2 版）或 nRF51822（V1 版）</li>
+        <li><strong>LED 矩陣：</strong> 5×5 LED 陣列，可用於顯示圖案或文字</li>
+        <li><strong>按鈕：</strong> 2 顆可編程按鈕（A、B 鍵）</li>
+        <li><strong>感測器：</strong> 內建加速度計、磁力計（指南針）、溫度感測器</li>
+        <li><strong>無線通訊：</strong> 支援 Bluetooth Low Energy（BLE）與 2.4GHz 無線通訊</li>
+        <li><strong>I/O 端口：</strong> 3 個大針腳 + 20 個小針腳，可與外部電子元件連接</li>
+        <li><strong>音訊功能：</strong> V2 版本新增內建喇叭與麥克風</li>
+    </ul>
+
+    <h2 data-icon="💻">程式開發環境</h2>
+    <p>Micro:bit 支援多種程式設計語言，包括：</p>
+    <ul>
+        <li><strong>MakeCode</strong>（圖形化積木編程）—— 適合初學者</li>
+        <li><strong>Python</strong>（MicroPython）—— 適合進階學習者</li>
+        <li><strong>JavaScript</strong> —— 可在 MakeCode 中使用</li>
+    </ul>
+
+    <h2 data-icon="🔧">Micro:bit 的應用</h2>
+    <ul>
+        <li><strong>程式設計入門 🎮：</strong> 透過 MakeCode 設計互動遊戲或控制 LED 顯示</li>
+        <li><strong>感測器應用 📡：</strong> 使用加速度計偵測運動、指南針偵測方向</li>
+        <li><strong>無線通訊 📶：</strong> 兩個 Micro:bit 之間傳送訊息</li>
+        <li><strong>機器人控制 🤖：</strong> 結合馬達與感測器製作簡單機器人</li>
+        <li><strong>智慧生活應用 🏡：</strong> 溫度監測、環境感測、簡單自動化控制</li>
+    </ul>
+
+    <h2 data-icon="🎯">結論</h2>
+    <p>Micro:bit 以 <strong>簡單易用、多感測器整合、支援多種編程語言</strong> 的特點，
+        成為 STEM 教育的理想工具，幫助學生從基礎學習到創新應用，
+        培養運算思維與動手實作能力。
+    </p>
+</body>
+
+</html>

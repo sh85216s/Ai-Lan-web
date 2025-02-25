@@ -1,0 +1,122 @@
+        body {
+            background-color: #eee;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding-top: 30px;
+        }
+
+        .Info {
+            font-size: 2em;
+        }
+
+        .counselAccount {
+            font-size: 1.2em;
+
+        }
+
+        .card {
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .Intro:hover {
+            animation: rainbow 1.5s ease-in-out infinite;
+            border: 1px red dashed;
+        }
+
+        ul>li>a:hover {
+            animation: rainbow 1.5s ease-in-out infinite;
+            border: 1px red dashed;
+        }
+
+        ul>li>a>span:hover {
+            animation: rainbow 1.5s ease-in-out infinite;
+        }
+
+        ul>.row>.col-md-3>li>a:hover {
+            border: 1px red dashed;
+            animation: rainbow 1.5s ease-in-out infinite;
+        }
+
+        ul>.row>.col>li>a:hover {
+            border: 1px red dashed;
+            animation: rainbow 1.5s ease-in-out infinite;
+        }
+
+        ul {
+            display: block;
+            list-style-position: outside;
+            margin: 5px;
+            /* 設定列高 */
+        }
+
+        table {
+            color: #333333;
+            border-collapse: collapse;
+            text-align: center;
+            border: 1px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+        }
+
+        table,
+        tr,
+        td {
+            border: 1px #dbd9d9 solid;
+        }
+
+        @keyframes rainbow {
+            0% {
+                color: green;
+            }
+
+            100% {
+                color: violet;
+            }
+        }
+
+        #modalOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 半透明背景 */
+            backdrop-filter: blur(5px);
+            /* 模糊背景 */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #modalBox {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            /* max-width: 500px; */
+            margin: 0 25%;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #closeModal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        #closeModal:hover {
+            color: red;
+        }

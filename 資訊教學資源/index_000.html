@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="TeachingResource.css">
+    <title>資訊教學資源</title>
+
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        transition: backdrop-filter 0.3s ease;
+    }
+
+    #modalOverlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* 半透明背景 */
+        backdrop-filter: blur(5px);
+        /* 模糊背景 */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    #modalBox {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 500px;
+        width: 90%;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #closeModal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 20px;
+    }
+
+    #closeModal:hover {
+        color: red;
+    }
+</style>
+<body>
+    <div class="container">
+
+        <div class="row">
+            <p><span class="Info">資訊教學資源</span></p>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4><i class="bi bi-keyboard-fill"></i>&nbsp;打字練習</h4>
+                    <ul>
+                        <li>TypingClub&nbsp;( <a href="https://www.typingclub.com/"
+                                target="_blank">https://www.typingclub.com/</a>)</li>
+                        <li>中、英文打字練習( swf 程式)&nbsp;( <a href="https://reurl.cc/1XOE1G"
+                                target="_blank">https://reurl.cc/1XOE1G</a>)</li>
+                        <li>中打基本功-注音鍵盤篇&nbsp;( <a href="https://worldofkeyboards.com/bopomofo"
+                                target="_blank">https://worldofkeyboards.com/bopomofo</a>)</li>
+                        <li>標點符號輸入大考驗&nbsp;( <a
+                                href="https://www2.lhps.kh.edu.tw/html/win10/games/punctuation_exam/index.html"
+                                target="_blank">https://www2.lhps.kh.edu.tw/html/win10/games/punctuation_exam/index.html</a>)
+                        </li>
+                        <li>輕鬆學會嘸蝦米&nbsp;( <a href="https://boshiamy.com/LiuCAI/main.html"
+                                target="_blank">https://boshiamy.com/LiuCAI/main.html</a>)
+                        </li>
+                        <li>倉頡速成練習&nbsp;( <a href="https://www.hkcards.com/cj/exercise-list"
+                                target="_blank">https://www.hkcards.com/cj/exercise-list</a>)
+                        </li>
+                        <li>打字GAME&nbsp;( <a href="http://tgame.eduweb.com.tw/TGame/index.html"
+                                target="_blank">http://tgame.eduweb.com.tw/TGame/index.html</a>)</li>
+                        <li>花蓮縣打字練習網&nbsp;( <a href="https://contest.hlc.edu.tw/typing/"
+                                target="_blank">https://contest.hlc.edu.tw/typing/</a>)</li>
+                        <li>臺中市中小學資訊網路應用競賽－打字競賽網&nbsp;( <a href="https://game.tc.edu.tw/typing/"
+                                target="_blank">https://game.tc.edu.tw/typing/</a>)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4><img src="../img/scratch.svg">SCRATCH</h4>
+                    <ul>
+                        <li>Scratch 官網&nbsp;( <a href="https://scratch.mit.edu/"
+                                target="_blank">https://scratch.mit.edu/</a>)
+                        </li>
+                        <li>Scratch 3基礎課程 Blocks&nbsp;( <a
+                                href="https://sites.google.com/site/scratch3jichukechengblocks/"
+                                target="_blank">https://sites.google.com/site/scratch3jichukechengblocks/</a>)
+                        </li>
+                        <li>Scratch 3.0 基本技巧
+                            &nbsp;( <a href="https://sites.google.com/site/scratch30jibenjiqiao/"
+                                target="_blank">https://sites.google.com/site/scratch30jibenjiqiao/</a>)
+                        </li>
+                        <li>The Bézier Game(鋼筆工具練習網站)
+                            &nbsp;( <a href="https://bezier.method.ac/" target="_blank">https://bezier.method.ac/</a>)
+                        </li>
+                        <li>SHAPE TYPE(字母塑形遊戲)
+                            &nbsp;( <a href="https://shape.method.ac/" target="_blank">https://shape.method.ac/</a>)
+                        </li>
+                        <li>STEAM 教育學習網-Scratch 教學&nbsp;( <a
+                                href="https://steam.oxxostudio.tw/category/scratch/index.html"
+                                target="_blank">https://steam.oxxostudio.tw/category/scratch/index.html</a>)
+                        </li>
+                        <li>均一教育平台－Scratch玩程式&nbsp;( <a
+                                href="https://www.junyiacademy.org/computing/programming/scratch"
+                                target="_blank">https://www.junyiacademy.org/computing/programming/scratch</a>)
+                        </li>
+                        <li>創益編程－CreatiCode: Scratch + Al + 3D&nbsp;( <a href="https://www.creaticode.com/"
+                                target="_blank">https://www.creaticode.com/</a>)
+                        </li>
+                        <li>OSEP Scratch 線上編輯器&nbsp;( <a href="https://sites.google.com/view/scratch-web-serial-api/"
+                                target="_blank">https://sites.google.com/view/scratch-web-serial-api/</a>)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4><img width="32" src="../img/MakecodeArcade.png">&nbsp;Makecode Arcade( <a class="Intro"
+                            href="makeCodeIntro.html" target="_blank">簡介</a>)</h4>
+                    <ul>
+                        <li>Makecode Arcade官網&nbsp;( <a href="https://arcade.makecode.com/"
+                                target="_blank">https://arcade.makecode.com/</a>)
+                        </li>
+                        <li>Makecode Arcade 跨平台遊戲設計講義&nbsp;( <a href="https://reurl.cc/DKp0XN"
+                                target="_blank">https://reurl.cc/DKp0XN</a>)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4><img width="32" src="../img/microbit.png">&nbsp;Micro:bit( <a class="Intro"
+                            href="MicrobitIntro.html" target="_blank">簡介</a>)</h4>
+                    <ul>
+                        <li>Micro:bit 官網&nbsp;( <a href="https://makecode.microbit.org/?lang=zh-TW"
+                                target="_blank">https://makecode.microbit.org/?lang=zh-TW</a>)
+                        </li>
+                        <li>STEAM 教育學習網&nbsp;micro:bit&nbsp;教學&nbsp;( <a
+                                href="https://steam.oxxostudio.tw/category/microbit/index.html"
+                                target="_blank">https://steam.oxxostudio.tw/category/microbit/index.html</a>)
+                        </li>
+                        <li>Micro:bit&nbsp;完整教學課程&nbsp;( <a
+                                href="https://www.youtube.com/playlist?list=PLGvDmN7CFT8cfHC0P-Vhy0NIqnUlIWGV_"
+                                target="_blank">https://www.youtube.com/playlist?list=PLGvDmN7CFT8cfHC0P-Vhy0NIqnUlIWGV_</a>)
+                        </li>
+                        <li>碧華國小程式教育中心&nbsp;micro:bit&nbsp;( <a
+                                href="https://sites.google.com/bhes.ntpc.edu.tw/program/steam科技教育/microbit?authuser=0"
+                                target="_blank">https://sites.google.com/bhes.ntpc.edu.tw/program/steam科技教育/microbit?authuser=0</a>)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4><img width="32" src="../img/3d-printing.png">&nbsp;3D 列印</h4>
+                    <ul>
+                        <li>Tinkercad官網&nbsp;( <a href="https://www.tinkercad.com/"
+                                target="_blank">https://www.tinkercad.com/</a>)
+                        </li>
+                        <li>SJS的3D列印筆記&nbsp;( <a href="https://sites.google.com/view/shiangs-3dp-notes/"
+                                target="_blank">https://sites.google.com/view/shiangs-3dp-notes/</a>)
+                        </li>
+                        <li>五大3D模型庫&nbsp;( <a
+                                href="https://3dmart.com.tw/news/top-5-free-stl-files-3d-printer-models-webs"
+                                target="_blank">https://3dmart.com.tw/news/top-5-free-stl-files-3d-printer-models-webs</a>)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4><img width="32" src="../img/Canva.png">&nbsp;Canva</h4>
+                    <ul>
+                        <li>Canva官網&nbsp;( <a href="https://www.canva.com/zh_tw/"
+                                target="_blank">https://www.canva.com/zh_tw/</a>)
+                        </li>
+                        <li>Canva教學(STEAM 教育學習網)&nbsp;( <a
+                                href="https://steam.oxxostudio.tw/category/canva/design/ppt.html"
+                                target="_blank">https://steam.oxxostudio.tw/category/canva/design/ppt.html</a>)
+                        </li>
+                        <li>5分鐘Canva教學&nbsp;( <a href="https://geniushub.cc/how-to-use-canva/"
+                                target="_blank">https://geniushub.cc/how-to-use-canva/</a>)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4><img width="32" src="../img/Gamma.png">&nbsp;Gamma</h4>
+                    <ul>
+                        <li>Gamma官網&nbsp;( <a href="https://gamma.app/" target="_blank">https://gamma.app/</a>)
+                        </li>
+                        <li>Gamma團隊的建議和解答&nbsp;( <a href="https://help.gamma.app/zh-TW/"
+                                target="_blank">https://help.gamma.app/zh-TW/</a>)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4><img width="32" src="../img/AI/artificial-intelligence.png">&nbsp;AI 專區</h4>
+                    <ul>
+                        <li>ChatGPT&nbsp;( <a href="https://chatgpt.com/" target="_blank">https://chatgpt.com/</a>)
+                        </li>
+                        <li>ChatGPT For Mobile & For Desktop&nbsp;( <a href="https://openai.com/chatgpt/download/"
+                                target="_blank">https://openai.com/chatgpt/download/</a>)
+                        </li>
+                        <li>Grok(x.ai)&nbsp;( <a href="https://x.ai/" target="_blank">https://x.ai/</a>)
+                        </li>
+                        <li>DeepSeek&nbsp;( <a href="https://www.deepseek.com/"
+                                target="_blank">https://www.deepseek.com/</a>)
+                        </li>
+                        <li>Perplexity&nbsp;( <a href="https://www.perplexity.ai/"
+                                target="_blank">https://www.perplexity.ai/</a>)
+                        </li>
+                        <li>NotebookLM&nbsp;( <a href="https://notebooklm.google.com/"
+                                target="_blank">https://notebooklm.google.com/</a>)
+                        </li>
+                        <li>Gamma&nbsp;( <a href="https://gamma.app/" target="_blank">https://gamma.app/</a>)
+                        </li>
+                        <li>Claude.ai&nbsp;( <a href="https://claude.ai/" target="_blank">https://claude.ai/</a>)
+                        </li>
+                        <li>Websim.ai&nbsp;( <a href="https://websim.ai/" target="_blank">https://websim.ai/</a>)
+                        </li>
+
+                        <li>Midjourney&nbsp;( <a href="https://www.midjourney.com/"
+                                target="_blank">https://www.midjourney.com/</a>)
+                        </li>
+                        <li>沉浸式翻譯&nbsp;( <a href="https://immersivetranslate.com/"
+                                target="_blank">https://immersivetranslate.com/</a>)
+                        </li>
+                        <li>PicWish一站式圖片創作&nbsp;( <a href="https://picwish.com/tw/"
+                                target="_blank">https://picwish.com/tw/</a>)
+                        </li>
+                        <li>虎尾科技大學陳國益教授-AI生成技術&nbsp;( <a href="https://reurl.cc/9445rv"
+                                target="_blank">https://reurl.cc/9445rv</a>)
+                        </li>
+                        <li>科技領域中央輔導團徐臺屏老師-AI Agent Marketplace&nbsp;( <a href="https://reurl.cc/GpxjRy"
+                                target="_blank">https://reurl.cc/GpxjRy</a>)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4><img width="32" src="../img/pencil.png">&nbsp;交作業</h4>
+                    <p>
+                        《提醒事項》上傳的檔案名稱格式須為「<span style=" color: red;">日期</span>」-「<span
+                            style=" color: blue;">班級</span>」-「<span style=" color: green;">座號</span>」-「<span
+                            style=" color: purple;">作品名稱</span>」。如：
+                        <span style=" color: red;">112.11.20</span>-<span style=" color: blue;">501</span>-<span
+                            style=" color: green;">02</span>-<span style=" color: purple;">菱形筆筒</span>。
+                    </p>
+                    <ul>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <li><a href="https://script.google.com/macros/s/AKfycbys_P2YS72Xc2Jz3vicMNOPkdwIqGyDGlI_TapkEH9lqshSQXwPiTisHnU7yljDF8DXSg/exec"
+                                        target="_blank">三甲-學生交作業</a>
+                                </li>
+                                <li><a href="https://script.google.com/macros/s/AKfycbw_0gZd3O9erZMVhcUMnQT_1jX978ZnxIVjoaKB6W_WZnJEL4-S922T7tu2gzbqJgjNAg/exec"
+                                        target="_blank">三乙-學生交作業</a>
+                                </li>
+                                <li><a href="https://script.google.com/macros/s/AKfycbzLDs9EknSIV-jFhBa7LFUUkXxxCLMA_HH1Hznb3KEW3gppNcAca1nr5KZb_hXjgERvdw/exec"
+                                        target="_blank">三丙-學生交作業</a>
+                                </li>
+                            </div>
+                            <div class="col-md-3">
+                                <li><a href="https://script.google.com/macros/s/AKfycbxGTtEMYkj0Zax6twXCFQ4VWi9uk5297MRCByAZqkdgIgRgFRXNnsvB9lplvzZXatrxfg/exec"
+                                        target="_blank">四甲-學生交作業</a>
+                                </li>
+                                <li><a href="https://script.google.com/macros/s/AKfycbyhAsK7pJOe7SXBmta6qyvyd74E4jkg0Yz-J3oncES05CGf8XGeyOHVB3RpdHpo3Ay_XQ/exec"
+                                        target="_blank">四乙-學生交作業</a>
+                                </li>
+                                <li><a href="https://script.google.com/macros/s/AKfycbwfuHw0Wxq_YtpWH8MsYgVWqRCxSOgsNEjqF8e54a94BxgyHeGKA7rAXiJuJhFgWE3vCg/exec"
+                                        target="_blank">四丙-學生交作業</a>
+                                </li>
+                            </div>
+                            <div class="col-md-3">
+                                <li><a href="https://script.google.com/macros/s/AKfycbwf8Zm8D8MAujGBXo5z-BVOTyptfSeRraoWRvKmvueAXBEc8FlKXNbAUI8kAVzOmy6QxQ/exec"
+                                        target="_blank">五甲-學生交作業</a>
+                                </li>
+                                <li><a href="https://script.google.com/macros/s/AKfycbzEgMbjddZQgrWUr1d9trfgjVnJGZr4J1EwbrFlnTzg79CrpafSObR8HT3lN6NDqzFaXQ/exec"
+                                        target="_blank">五乙-學生交作業</a>
+                                </li>
+                                <li><a href="https://script.google.com/macros/s/AKfycbxjfZE44x0_FPY-0Jrhf6U93qUHM7Ct0GsTYqzweQT-v_GvMSTlJiYFsYUmfcwUtFS7/exec"
+                                        target="_blank">五丙-學生交作業</a>
+                                </li>
+                            </div>
+                            <div class="col-md-3">
+                                <li><a href="https://script.google.com/macros/s/AKfycbyAp5teLEm-GfShzQ4pEd6JXcq-uZLwoRoV2weDDPmJIOlHPDQj-wG-sxqcDNScFKbCcA/exec"
+                                        target="_blank">六甲-學生交作業</a>
+                                </li>
+                                <li><a href="https://script.google.com/macros/s/AKfycbw9RX6wW310vN0hpKl8StWYdFYXzZEFVhQW_AwrWUlsOCaDSuTlHmN-hMIumyG7RVn0/exec"
+                                        target="_blank">六乙-學生交作業</a>
+                                </li>
+                                <li><a href="https://script.google.com/macros/s/AKfycby0mR4GkaDpJHNltNnxMXgxQBMOVebi9UgbDFhhhS4qgosz17rAH5FbL8R-bzFN2CBReg/exec"
+                                        target="_blank">六丙-學生交作業</a>
+                                </li>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <li><a href="https://script.google.com/macros/s/AKfycbwDB_B-zE51hFLcLGiRLBcreg_s5dn8qyeIoFbrpSfcbe8zj3WuSZPwsPPEwG490yWW/exec"
+                                        target="_blank">Scratch 進階社團-學生交作業</a>
+                                </li>
+                            </div>
+                            <div class="col-md-3">
+                                <li><a href="https://forms.gle/Y4XeRAW5Xw5nxVTA7" target="_blank">六年級Gamma簡報-學生交作業</a>
+                                </li>
+                            </div>
+                            <div class="col-md-3">
+                                <li><a href="https://docs.google.com/spreadsheets/d/1v3enkQ3usYFXxjSZwdCUcb77l4irEZROJcCUJMM4pDA/edit?usp=sharing"
+                                        target="_blank">六年級Gamma簡報-繳交情形</a>
+                                </li>
+                            </div>
+                        </div>
+
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4><img width="32" src="../img/good.png">&nbsp;好用資源</h4>
+                    <ul>
+                        <li>南投縣高國中小專用線上課程&nbsp;( <a href="https://eduweb.ntct.edu.tw/"
+                                target="_blank">https://eduweb.ntct.edu.tw/</a>)
+                        </li>
+                        <li>台中市資訊教育市本課程&nbsp;( <a href="https://sites.google.com/tc.edu.tw/ictxedu/plan/資訊教育市本課程"
+                                target="_blank">https://sites.google.com/tc.edu.tw/ictxedu/plan/資訊教育市本課程</a>)
+                        </li>
+                        <li>工具邦&nbsp;( <a href="https://tw.piliapp.com/label/all/"
+                                target="_blank">https://tw.piliapp.com/label/all/</a>)
+                        </li>
+                        <li>HTML Color Picker(線上色碼挑選)&nbsp;( <a
+                                href="https://www.w3schools.com/colors/colors_picker.asp"
+                                target="_blank">https://www.w3schools.com/colors/colors_picker.asp</a>)
+                        </li>
+                        <li>免費商用字體&nbsp;( <a href="https://chushin-creative.com/2023font-free/"
+                                target="_blank">https://chushin-creative.com/2023font-free/</a>)
+                        </li>
+                        <li>10分鐘信箱&nbsp;( <a href="https://10minutemail.net/?lang=zh-tw"
+                                target="_blank">https://10minutemail.net/?lang=zh-tw</a>)
+                        </li>
+                        <li>Temp Mail&nbsp;( <a href="https://temp-mail.org/"
+                                target="_blank">https://temp-mail.org/</a>)
+                        </li>
+                        <li>iconfinder&nbsp;( <a href="https://www.iconfinder.com/"
+                                target="_blank">https://www.iconfinder.com/</a>)
+                        </li>
+                        <li>iLovepdf(PDF愛好者的在線工具)&nbsp;( <a href="https://www.ilovepdf.com/zh-tw"
+                                target="_blank">https://www.ilovepdf.com/zh-tw</a>)
+                        </li>
+                        <li>DriveUploader(繳交作業或上傳檔案到雲端硬碟)&nbsp;( <a href="https://driveuploader.com/"
+                                target="_blank">https://driveuploader.com/</a>)
+                        </li>
+                        <li>小森平的免費下載音效&nbsp;( <a href="https://taira-komori.jpn.org/freesoundtw.html"
+                                target="_blank">https://taira-komori.jpn.org/freesoundtw.html</a>)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><br><br>
+</body>
+
+</html>
