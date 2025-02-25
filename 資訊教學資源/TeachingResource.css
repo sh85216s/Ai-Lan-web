@@ -122,3 +122,9 @@
         #closeModal:hover {
             color: red;
         }
+
+        @media (max-width: 600px) {
+            #modalBox {
+                margin: 0 5%;
+            }
+        }
