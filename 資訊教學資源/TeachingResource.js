@@ -169,6 +169,42 @@ const contents = {
 
         <p>Tinkercad 介面簡單直覺，適合無經驗者學習 <strong>3D 設計、電子電路、Arduino 與程式設計</strong>，是入門創客與數位製造的理想工具。 </p>
      `
+    ,
+    contentAIStudio: `
+        
+            <style>
+        a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container-AIStudio {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        ol {
+            margin-top: 10px;
+        }
+    </style>
+    <div class="container-AIStudio">    
+        <h1>使用 Google AI Studio 整理影片逐字稿</h1>
+        <p>
+            <strong>Google AI Studio</strong> (<a href="https://aistudio.google.com/" target="_blank">https://aistudio.google.com/</a>)
+            終於有模型可以直接觀看沒有字幕的影片了！這代表所有的均一平台國高中小教學影片，即使沒有字幕，也能作為先備知識！
+        </p>
+        <h2>操作步驟：</h2>
+        <ol>
+            <li>在右側選擇 <strong>Gemini 2.0 Pro Experimental 02-05</strong> 模型。</li>
+            <li>貼上 YouTube 影片網址，即使沒有字幕也沒關係。</li>
+            <li>輸入指令：「整理出影片的逐字稿，並區分不同說話的人。」</li>
+        </ol>
+        <p><資料來源：虎尾科技大學陳國益教授></p>
+    </div>
+     `
 };
 
 // 獲取所有超連結
