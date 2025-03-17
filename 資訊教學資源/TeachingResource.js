@@ -193,11 +193,11 @@ const contents = {
     <div class="container-AIStudio">    
         <h1>使用 Google AI Studio 整理影片逐字稿</h1>
         <p>
-            <strong>Google AI Studio</strong> (<a href="https://aistudio.google.com/" target="_blank">https://aistudio.google.com/</a>)
-            終於有模型可以直接觀看沒有字幕的影片了！這代表所有的均一平台國高中小教學影片，即使沒有字幕，也能作為先備知識！
+          終於有模型可以直接觀看沒有字幕的影片了！這代表所有的均一平台國高中小教學影片，即使沒有字幕，也能作為先備知識！
         </p>
         <h2>操作步驟：</h2>
         <ol>
+            <li>進入Google AI Studio</strong> (<a href="https://aistudio.google.com/" target="_blank">https://aistudio.google.com/</a></li>
             <li>在右側選擇 <strong>Gemini 2.0 Pro Experimental 02-05</strong> 模型。</li>
             <li>貼上 YouTube 影片網址，即使沒有字幕也沒關係。</li>
             <li>輸入指令：「整理出影片的逐字稿，並區分不同說話的人。」</li>
