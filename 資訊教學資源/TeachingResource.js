@@ -197,7 +197,7 @@ const contents = {
         </p>
         <h2>操作步驟：</h2>
         <ol>
-            <li>進入Google AI Studio</strong> (<a href="https://aistudio.google.com/" target="_blank">https://aistudio.google.com/</a></li>
+            <li>進入Google AI Studio</strong> (<a href="https://aistudio.google.com/" target="_blank">https://aistudio.google.com/</a>)</li>
             <li>在右側選擇 <strong>Gemini 2.0 Pro Experimental 02-05</strong> 模型。</li>
             <li>貼上 YouTube 影片網址，即使沒有字幕也沒關係。</li>
             <li>輸入指令：「整理出影片的逐字稿，並區分不同說話的人。」</li>
