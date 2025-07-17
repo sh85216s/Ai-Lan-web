@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暑假學習扶助名單及時間</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .class-card {
+            /* margin-bottom: 30px; */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .class-header1 {
+            background-color: #cdf7de;
+            padding: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .class-header2 {
+            background-color: #eed7f4;
+            padding: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .class-header3 {
+            background-color: #f6dfcc;
+            padding: 10px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .class-title {
+            margin: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        .class-info {
+            padding: 15px 0 0 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .table-responsive {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .time-info {
+            background-color: #d6dbf4;
+            text-align: center;
+            padding: 15px 0 1px 0;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        /* 新增手機專用樣式 */
+        .mobile-time-info {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-time-info {
+                display: none;
+            }
+
+            .mobile-time-info {
+                display: block;
+            }
+
+            .mobile-time-info p {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-3">
+        <h1 class="text-center mb-3">暑假學習扶助名單及時間</h1>
+
+        <!-- 桌面版顯示 (一行) -->
+        <div class="time-info desktop-time-info">
+            <p><strong>上課日期：</strong> 114年8月4日~114年8月16日&nbsp;&nbsp;&nbsp;<strong>上課時間：</strong> 08:35~11:50
+                (不提供用餐)&nbsp;&nbsp;&nbsp;<span style=" color:red;">~請直接至各班教室上課~</span></p>
+        </div>
+
+        <!-- 手機版顯示 (三行) -->
+        <div class="time-info mobile-time-info">
+            <p><strong>上課日期：</strong> 114年8月4日~114年8月16日</p>
+            <p><strong>上課時間：</strong> 08:35~11:50 (不提供用餐)</p>
+            <p style="color:red;">~請直接至各班教室上課~</p>
+        </div>
+
+        <div class="row">
+            <!-- 低年級學習扶助班 -->
+            <div class="col-md-4">
+                <!-- <div class="class-card"> -->
+                <div class="class-header1">
+                    <h2 class="class-title">低年級學習扶助班</h2>
+                </div>
+                <div class="class-info">
+                    <p><strong>教師：</strong> 吉真玲老師&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>教室：</strong> 原一年甲班</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>編號</th>
+                                    <th>113班級</th>
+                                    <th>姓名</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>二乙</td>
+                                    <td>孫0</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>一甲</td>
+                                    <td>詹0使</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>二甲</td>
+                                    <td>黃0核</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>一乙</td>
+                                    <td>詹0以</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>二乙</td>
+                                    <td>張0心</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>二乙</td>
+                                    <td>賴0里</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>二甲</td>
+                                    <td>葉0萱</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>二甲</td>
+                                    <td>石0佑</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>一甲</td>
+                                    <td>石0芸</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>一乙</td>
+                                    <td>郭0薇</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+
+            <!-- 中年級學習扶助班 -->
+            <div class="col-md-4">
+                <!-- <div class="class-card"> -->
+                <div class="class-header2">
+                    <h2 class="class-title">中年級學習扶助班</h2>
+                </div>
+                <div class="class-info">
+                    <p><strong>教師：</strong> 翁幸復老師&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>教室：</strong> 原四年乙班</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>編號</th>
+                                    <th>113班級</th>
+                                    <th>姓名</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>三甲</td>
+                                    <td>王0輔</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>三甲</td>
+                                    <td>楊0森</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>三丙</td>
+                                    <td>徐0樂</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>四乙</td>
+                                    <td>王0琦</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>四乙</td>
+                                    <td>劉0嘉</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>四乙</td>
+                                    <td>談0峰</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>三甲</td>
+                                    <td>張0寧</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>三乙</td>
+                                    <td>謝0恒</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>三丙</td>
+                                    <td>張0瑞</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>四甲</td>
+                                    <td>詹0晰</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+
+            <!-- 五年級學習扶助班 -->
+            <div class="col-md-4">
+                <!-- <div class="class-card"> -->
+                <div class="class-header3">
+                    <h2 class="class-title">五年級學習扶助班</h2>
+                </div>
+                <div class="class-info">
+                    <p><strong>教師：</strong> 林櫻蘭老師&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>教室：</strong> 原五年甲班</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>編號</th>
+                                    <th>113班級</th>
+                                    <th>姓名</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>三甲</td>
+                                    <td>王0輔</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>三甲</td>
+                                    <td>楊0森</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>三丙</td>
+                                    <td>徐0樂</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>四乙</td>
+                                    <td>王0琦</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>四乙</td>
+                                    <td>劉0嘉</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>四乙</td>
+                                    <td>談0峰</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>三甲</td>
+                                    <td>張0寧</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>三乙</td>
+                                    <td>謝0恒</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>三丙</td>
+                                    <td>張0瑞</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>四甲</td>
+                                    <td>詹0晰</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
