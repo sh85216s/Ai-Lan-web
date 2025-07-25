@@ -9,30 +9,40 @@
 
 <body>
 
-    <!-- 愛蘭國小營養午餐模組程式碼-113.07.24 17:16更新版 -->
+    <!-- 愛蘭國小營養午餐模組程式碼-114.07.254更新版 -->
     <style>
         #lunchApp {
             text-align: center;
             background: #e5ecf9;
             border-radius: 5px;
+            height: 290px;
+            overflow: auto;
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
         #currentTime {
             line-height: 20px;
+            /*padding: 0 22%;*/
         }
 
         #KitchenName {
             font-size: 1em;
+            padding: 5px 0;
         }
 
         .shadow-sm {
             font-size: 0.8em !important;
-            margin: 5px 0 10px 0;
+            margin: 5px 0;
         }
 
         .border-bottom {
             font-size: 1em;
             color: #3572f3;
+            width: 85%;
+            margin: 0 auto;
+            text-align: left;
+            line-height: 1.6;
         }
 
         /* 貴校的"查看詳細資料"如果原本顯示就沒問題，可以刪除底下的CSS設定 */
@@ -54,10 +64,11 @@
             </p>
             <span id="currentTime">{{getTodayDate}}</span><br>
             {{getBatchdata}}
-            <div v-if="menu.data.length !=0" class="border-bottom" v-for="dish in menu.data" style=" padding: 0 20px;">
+            <!-- 菜單顯示 -->
+            <div v-if="menu.data.length !=0" class="border-bottom" v-for="dish in menu.data" style=" padding: 0 15%;">
                 <span v-if="dish.DishType !== undefined">{{dish.DishType}} :</span> {{dish.DishName}}
             </div>
-
+            <!-- 菜單顯示 -->
             <button @click="queryDetail" type="button" class="shadow-sm bg-white rounded">查看詳細資料</button>
         </div>
         <div v-else>
