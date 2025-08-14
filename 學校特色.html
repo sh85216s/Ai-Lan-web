@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>愛蘭國小｜發掘孩子的無限可能</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: 採用主題式單頁滾動佈局。頂部設有導航欄，可快速跳轉至四大核心支柱：「學術與探索」、「身心與品格」、「環境與美感」、「關懷與成長」。這種結構將原始的九個要點重新分類，使其更有邏輯性且易於理解。中間穿插一個雷達圖，直觀展示學校均衡發展的理念。最後整合一個「榮譽榜」區塊，突顯學校成就。此設計旨在引導使用者（如家長）以更清晰的視角，從宏觀到微觀地了解學校的全面特色，而非簡單的線性閱讀。 -->
+    <!-- Visualization & Content Choices: 
+        1. 雷達圖 (Chart.js): 目標-比較/告知。將四大核心支柱視覺化，展示學校在各方面的均衡投入。互動-滑鼠懸停時顯示支柱名稱。理由-雷達圖能有效傳達多維度的平衡與優勢，比條列式文字更具吸引力與說服力。
+        2. 核心支柱卡片 (HTML/Tailwind): 目標-組織/告知。將各特色內容以卡片形式呈現，每張卡片包含圖標、標題和說明。互動-滑鼠懸停時有細微的放大效果。理由-卡片式設計能將大量文字模組化，降低閱讀壓力，圖標則提供快速的視覺引導。
+        3. 榮譽榜 (HTML/Tailwind): 目標-告知。將原文中散落的獎項集中展示。互動-無。理由-將成就集中呈現，能有效提升專業形象與信任感。
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #FFFAF0;
+            /* FloralWhite */
+        }
+
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 40vh;
+            width: 90vw;
+            max-width: 500px;
+            max-height: 500px;
+        }
+
+        .nav-button {
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+            border: 1px solid #F5DEB3;
+            /* Wheat */
+        }
+
+        .feature-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border-color: #D2B48C;
+            /* Tan */
+        }
+    </style>
+</head>
+
+<body class="text-stone-800">
+
+    <header class="text-center py-12 md:py-20 bg-cover bg-center" style="background-color: #FAEBD7;">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-900">南投縣愛蘭國民小學</h1>
+            <p class="mt-4 text-lg md:text-xl text-stone-700">一所充滿愛、活力與夢想的快樂學園</p>
+        </div>
+    </header>
+
+    <nav class="sticky top-0 bg-white/80 backdrop-blur-md z-10 shadow-md py-3">
+        <div class="max-w-5xl mx-auto px-4">
+            <div id="nav-container" class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto p-4 md:p-8">
+
+        <section id="intro" class="text-center my-12 md:my-16">
+            <h2 class="text-3xl font-bold text-amber-800 mb-4">全人教育的實踐家</h2>
+            <p class="text-lg text-stone-700 max-w-3xl mx-auto">
+                愛蘭國小深信每個孩子都擁有獨特的潛能。我們致力於打造一個多元、均衡且充滿支持的學習環境，透過精心設計的課程與活動，引導孩子在學術、品格、健康與美感等各個面向均衡發展，成為一個完整的「全人」。
+            </p>
+            <div class="chart-container mt-8">
+                <canvas id="schoolFeaturesChart"></canvas>
+            </div>
+            <p class="text-sm text-stone-500 mt-2">滑鼠移至圖表角落可查看各項核心指標。</p>
+        </section>
+
+        <div id="content-sections" class="space-y-16">
+        </div>
+
+        <section id="awards" class="my-12 md:my-20">
+            <h2 class="text-3xl font-bold text-amber-800 text-center mb-8">我們的榮譽</h2>
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8 border border-amber-200">
+                <ul id="awards-list" class="space-y-4">
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-800 text-white text-center py-6 mt-16">
+        <p>&copy; 愛蘭國民小學 特色介紹</p>
+        <p class="text-sm text-stone-400 mt-1">為更好的體驗而設計</p>
+    </footer>
+
+    <script>
+        const schoolData = {
+            pillars: [
+                {
+                    id: 'academics',
+                    title: '學術與探索',
+                    icon: '📚',
+                    description: '我們透過系統性的閱讀推廣與在地化的主題課程，奠定學生的基礎能力，並激發他們對知識的好奇心與自主學習的動力。',
+                    features: [
+                        { title: '閱讀悅讀．終身閱讀', text: '推動身教式持續性寧靜閱讀(MSSR)，以身教式範，鼓勵學生大量閱讀，培養其閱讀習慣；並激勵學生「想讀･願讀･樂讀･好讀｣以達終身讀的目標。' },
+                        { title: '主題課程．走讀愛蘭', text: '結合學區資源，發展在地探索主題課程，規劃多元走讀活動，增進學生對社區了解並進而認同社區，展現愛鄉情操。' }
+                    ]
+                },
+                {
+                    id: 'character',
+                    title: '身心與品格',
+                    icon: '💖',
+                    description: '我們重視學生的身心健康與品格塑造，從健康的飲食、活力的運動到日常生活的實踐，培養孩子正向積極的人生觀。',
+                    features: [
+                        { title: '健康校園．幸福愛蘭', text: '提倡健康活力校園，重視體育課和課間活動，積極推動學生健康飲食，培養孩子健康的身體。' },
+                        { title: '生活校園．快樂愛蘭', text: '重視「做中學」的體驗學習，倡導「愛有守好/能有守善｣的生活教育，融入課程和活動，激勵學生多元學習和成長。' },
+                        { title: '品格校園．特色愛蘭', text: '著重品格教育，適性揚才，發展多元社團活動與藝文展演，讓孩子找到自己的優勢能力及自信心。' }
+                    ]
+                },
+                {
+                    id: 'environment',
+                    title: '環境與美感',
+                    icon: '🌳',
+                    description: '愛蘭的美麗校園本身就是一本活教材。我們引導孩子親近土地與自然，從豐富的生態中學習共生，並從四季變換中發現美的眼睛。',
+                    features: [
+                        { title: '生態校園．活力愛蘭', text: '校園中樹種繁複的花、果、葉可供孩子賞玩，豐富的動物生態偶而在校園中某個角落出現，總會讓孩子驚喜連連。' },
+                        { title: '美感校園．氣質愛蘭', text: '愛蘭校園是座美麗的樹林，植栽景色隨季節舞動四季之美。善用學校生態美學讓孩子更親近土地和大自然，激發孩子美感的潛能。' }
+                    ]
+                },
+                {
+                    id: 'support',
+                    title: '關懷與成長',
+                    icon: '👨‍👩‍👧‍👦',
+                    description: '我們建立緊密的親師生溝通橋樑，提供溫馨的關懷與適性的輔導，並為幼兒園的孩子們提供啟發性的課程，讓每個孩子都在愛與榮譽中自信成長。',
+                    features: [
+                        { title: '完善輔導．全人愛蘭', text: '建立親師生溝通管道，著重親師溝通，適性輔導，溫馨關懷及多元學習。透過校長小客人和榮譽獎章等活動，培養學生榮譽心，並建立自信心和成就感。' },
+                        { title: '繽紛童年．愛蘭附幼', text: '透過主題課程，培養幼兒思考、討論溝通、解決問題能力，並結合戶外走讀教育，讓幼兒快樂成長。' }
+                    ]
+                }
+            ],
+            awards: [
+                '全國數位閱讀夥伴績優學校',
+                '全縣閱讀磐石複選績優學校',
+                '全縣課程計畫績優學校',
+                '南投縣衛生統合視導金質獎',
+                '環境教育考評特優'
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const navContainer = document.getElementById('nav-container');
+            const contentSections = document.getElementById('content-sections');
+            const awardsList = document.getElementById('awards-list');
+
+            schoolData.pillars.forEach(pillar => {
+                const navButton = document.createElement('a');
+                navButton.href = `#${pillar.id}`;
+                navButton.className = 'nav-button bg-amber-100 text-amber-800 font-semibold py-2 px-3 rounded-lg shadow-sm hover:bg-amber-200';
+                navButton.textContent = pillar.title;
+                navContainer.appendChild(navButton);
+
+                const section = document.createElement('section');
+                section.id = pillar.id;
+                section.className = "scroll-mt-20";
+
+                let featuresHTML = '';
+                pillar.features.forEach(feature => {
+                    featuresHTML += `
+                        <div class="feature-card bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="text-xl font-bold text-amber-700">${feature.title}</h4>
+                            <p class="mt-2 text-stone-600">${feature.text}</p>
+                        </div>
+                    `;
+                });
+
+                section.innerHTML = `
+                    <div class="text-center mb-8">
+                        <span class="text-5xl">${pillar.icon}</span>
+                        <h2 class="text-3xl font-bold text-amber-800 mt-2">${pillar.title}</h2>
+                        <p class="mt-3 text-lg text-stone-700 max-w-2xl mx-auto">${pillar.description}</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        ${featuresHTML}
+                    </div>
+                `;
+                contentSections.appendChild(section);
+            });
+
+            schoolData.awards.forEach(award => {
+                const listItem = document.createElement('li');
+                listItem.className = 'flex items-center text-lg text-stone-700';
+                listItem.innerHTML = `<span class="text-amber-500 mr-3">🏆</span> ${award}`;
+                awardsList.appendChild(listItem);
+            });
+
+            const ctx = document.getElementById('schoolFeaturesChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: schoolData.pillars.map(p => p.title),
+                    datasets: [{
+                        label: '愛蘭國小發展核心',
+                        data: [5, 5, 5, 5],
+                        fill: true,
+                        backgroundColor: 'rgba(217, 119, 6, 0.2)',
+                        borderColor: 'rgb(217, 119, 6)',
+                        pointBackgroundColor: 'rgb(217, 119, 6)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(217, 119, 6)'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    elements: {
+                        line: {
+                            borderWidth: 3
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(120, 113, 108, 0.3)'
+                            },
+                            grid: {
+                                color: 'rgba(120, 113, 108, 0.3)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 14,
+                                    family: "'Noto Sans TC', sans-serif"
+                                },
+                                color: '#44403c'
+                            },
+                            ticks: {
+                                display: false,
+                                beginAtZero: true,
+                                max: 5,
+                                min: 0,
+                                stepSize: 1
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return context.dataset.label + ': 均衡發展';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
