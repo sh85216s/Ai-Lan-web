@@ -1,382 +1,351 @@
     <style>
-        .container-114winter {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
+        /* body {
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 10px;
+        } */
 
-        .Header114winter {
-            background-color: #2c5aa0;
-            color: white;
-            padding: 25px 20px;
+        .H2114Winter {
             text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
         }
 
-        .H1_114winter {
-            font-size: 28px;
-            text-align: center;
-            color: #fff;
-            margin-bottom: 5px;
-        }
-
-        .Subtitle114winter {
-            font-size: 18px;
-            opacity: 0.9;
+        .period {
+            color: #2980b9;
+            font-size: 0.9em;
         }
 
         .Table114Winter {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin-top: 20px;
+            background: #fff;
         }
 
-        .Th114winter,
-        .Td114Winte {
-            border: 1px solid #ddd;
-            padding: 12px 15px;
-            text-align: left;
-            vertical-align: top;
-        }
-
-        .Th114winter {
-            background-color: #2c5aa0;
+        .Th114Winter {
+            background-color: #34495e;
             color: white;
             font-weight: bold;
+            padding: 12px;
+            border: 1px solid #ddd;
             text-align: center;
+        }
+
+        .Td114Winter {
+            padding: 10px;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+        }
+
+        .Td114Winter:nth-child(1),
+        .Td114Winter:nth-child(2),
+        .Td114Winter:nth-child(4),
+        .Td114Winter:nth-child(5) {
+            text-align: center;
+        }
+
+        .Td114Winter:nth-child(3) {
+            text-align: left;
         }
 
         .Tr114Winter:nth-child(even) {
-            background-color: #f8fafd;
+            background-color: #f9f9f9;
         }
 
         .Tr114Winter:hover {
-            background-color: #eef5ff;
-        }
-
-        .date-col {
-            width: 100px;
-        }
-
-        .day-col {
-            width: 70px;
-            text-align: center;
-        }
-
-        .events-col {
-            min-width: 300px;
-        }
-
-        .staff-col,
-        .worker-col {
-            width: 120px;
+            background-color: #f1f1f1;
         }
 
         .holiday {
-            background-color: #fff0f0;
-            color: #b30000;
+            color: #e74c3c;
             font-weight: bold;
         }
 
-        .weekend {
-            background-color: #f0f8ff;
-        }
-
-        .special-event {
-            background-color: #f0fff0;
-        }
-
-        .Footer114winter {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 14px;
-            border-top: 1px solid #eee;
-            margin-top: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .Th114Winterth,
-            .Td114Wintertd {
-                padding: 8px 10px;
-                font-size: 14px;
-            }
-
-            .container-114winter {
-                border-radius: 5px;
-            }
+        .duty {
+            font-size: 0.9em;
+            color: #555;
         }
     </style>
 
-    <div class="container-114winter">
-        <header class="Header114winter">
-            <h1 class="H1_114winter">南投縣愛蘭國民小學114學年度寒假行事曆</h1>
-            <div class="Subtitle114winter">寒假期間：114年1月20日至2月22日</div>
-        </header>
-        <table class="Table114Winter">
-            <thead>
-                <tr class="Tr114Winter">
-                    <th class="date-col Th114winter">日期</th>
-                    <th class="day-col Th114winter">星期</th>
-                    <th class="events-col Th114winter">行事</th>
-                    <th class="staff-col Th114winter">值日人員</th>
-                    <th class="worker-col Th114winter">值日工友</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="Tr114Winter">
-                    <td class="date-col Td114Winter">1月20日</td>
-                    <td class="day-col Td114Winter">二</td>
-                    <td class="events-col Td114Winter">修業式</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="Tr114Winter">
-                    <td class="Td114Winter">1月21日</td>
-                    <td class="Td114Winter">三</td>
-                    <td class="Td114Winter">上下學期課程</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="Tr114Winter">
-                    <td class="Td114Winter">1月22日</td>
-                    <td class="Td114Winter">四</td>
-                    <td class="Td114Winter">上下學期課程<br />與志工、家長會聯誼(一人一菜)</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="Tr114Winter">
-                    <td class="Td114Winter">1月23日</td>
-                    <td class="Td114Winter">五</td>
-                    <td class="Td114Winter">上下學期課程</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="weekend">
-                    <td class="Td114Winter">1月24日</td>
-                    <td class="Td114Winter">六</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="weekend">
-                    <td class="Td114Winter">1月25日</td>
-                    <td class="Td114Winter">日</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">1月26日</td>
-                    <td class="Td114Winter">一</td>
-                    <td class="Td114Winter">1. Makecode Arcade 遊戲設計寒假營隊<br />2. 足球冬令營<br />3. 幼兒園辦理寒假延長照顧服務 01/26-01/30<br />(混齡班-油桐花;
-                        幼幼班-鹿角樹)</td>
-                    <td class="Td114Winter">江振賢</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">1月27日</td>
-                    <td class="Td114Winter">二</td>
-                    <td class="Td114Winter">1. Makecode Arcade 遊戲設計寒假營隊<br />2. 足球冬令營<br />＊校園環境整潔維護<br />＊校舍設備維修<br />＊消防機房維護及發電機發動</td>
-                    <td class="Td114Winter">羅萬達</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">1月28日</td>
-                    <td class="Td114Winter">三</td>
-                    <td class="Td114Winter">1. Makecode Arcade 遊戲設計寒假營隊<br />2. 新北市學共輔導團跨縣市交流活動<br />3. 足球冬令營</td>
-                    <td class="Td114Winter">許瑞欣</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">1月29日</td>
-                    <td class="Td114Winter">四</td>
-                    <td class="Td114Winter">1. Makecode Arcade 遊戲設計寒假營隊<br />2. 足球冬令營</td>
-                    <td class="Td114Winter">陳韻捷</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">1月30日</td>
-                    <td class="Td114Winter">五</td>
-                    <td class="Td114Winter">1. Makecode Arcade 遊戲設計寒假營隊<br />2. 足球冬令營</td>
-                    <td class="Td114Winter">蔡慈玉</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="weekend">
-                    <td class="Td114Winter">1月31日</td>
-                    <td class="Td114Winter">六</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter">李滄鈞</td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="weekend">
-                    <td class="Td114Winter">2月1日</td>
-                    <td class="Td114Winter">日</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter">李滄鈞</td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">2月2日</td>
-                    <td class="Td114Winter">一</td>
-                    <td class="Td114Winter">1. 足球冬令營<br />2. 幼兒園辦理寒假延長照顧服務 02/02-02/06<br />(混齡班-貝殼杉; 幼幼班-鹿角樹)</td>
-                    <td class="Td114Winter">卓雨瑩</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">2月3日</td>
-                    <td class="Td114Winter">二</td>
-                    <td class="Td114Winter">1. 足球冬令營<br />＊校園青苔高壓機清洗<br />＊校園除草</td>
-                    <td class="Td114Winter">洪妙芬</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">2月4日</td>
-                    <td class="Td114Winter">三</td>
-                    <td class="Td114Winter">1. 足球冬令營<br />＊電風扇冷氣濾網清洗<br />＊花草樹木維護</td>
-                    <td class="Td114Winter">謝雅合</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">2月5日</td>
-                    <td class="Td114Winter">四</td>
-                    <td class="Td114Winter">1. 足球冬令營<br />＊清理水溝<br />＊校園除蟻</td>
-                    <td class="Td114Winter">謝靜怡</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">2月6日</td>
-                    <td class="Td114Winter">五</td>
-                    <td class="Td114Winter">1. 足球冬令營</td>
-                    <td class="Td114Winter">蘇郁云</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="weekend">
-                    <td class="Td114Winter">2月7日</td>
-                    <td class="Td114Winter">六</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter">李滄鈞</td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="weekend">
-                    <td class="Td114Winter">2月8日</td>
-                    <td class="Td114Winter">日</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter">李滄鈞</td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">2月9日</td>
-                    <td class="Td114Winter">一</td>
-                    <td class="Td114Winter">幼兒園全園備課日暨課程發展會議</td>
-                    <td class="Td114Winter">蔡宏祥</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="special-event">
-                    <td class="Td114Winter">2月10日</td>
-                    <td class="Td114Winter">二</td>
-                    <td class="Td114Winter">幼兒園全園備課日暨課程發展會議<br />＊校園清潔消毒<br />＊校舍建築管理檢核表<br />＊落葉堆肥區整理、枯枝碎枝<br />＊校園安全檢查表</td>
-                    <td class="Td114Winter">廖淑靜</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="Tr114Winter">
-                    <td class="Td114Winter">2月11日</td>
-                    <td class="Td114Winter">三</td>
-                    <td class="Td114Winter">02/11 原定開學日<br />配合農曆春節假期，調整115年2月11日、12日及13日<br />(開學第1週)為放假日<br />2.足球冬令營</td>
-                    <td class="Td114Winter">紀明輝</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="Tr114Winter">
-                    <td class="Td114Winter">2月12日</td>
-                    <td class="Td114Winter">四</td>
-                    <td class="Td114Winter">配合農曆春節假期放假<br />2.足球冬令營</td>
-                    <td class="Td114Winter">陳奕瑄</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="Tr114Winter">
-                    <td class="Td114Winter">2月13日</td>
-                    <td class="Td114Winter">五</td>
-                    <td class="Td114Winter">1.足球冬令營</td>
-                    <td class="Td114Winter">林素玉</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-                <tr class="holiday">
-                    <td class="Td114Winter">2月14日</td>
-                    <td class="Td114Winter">六</td>
-                    <td class="Td114Winter">農曆春節</td>
-                    <td class="Td114Winter">李滄鈞</td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="holiday">
-                    <td class="Td114Winter">2月15日</td>
-                    <td class="Td114Winter">日</td>
-                    <td class="Td114Winter">農曆春節</td>
-                    <td class="Td114Winter">李滄鈞</td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="holiday">
-                    <td class="Td114Winter">2月16日</td>
-                    <td class="Td114Winter">一</td>
-                    <td class="Td114Winter">農曆除夕</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="holiday">
-                    <td class="Td114Winter">2月17日</td>
-                    <td class="Td114Winter">二</td>
-                    <td class="Td114Winter">初一春節放假</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="holiday">
-                    <td class="Td114Winter">2月18日</td>
-                    <td class="Td114Winter">三</td>
-                    <td class="Td114Winter">初二春節放假</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="holiday">
-                    <td class="Td114Winter">2月19日</td>
-                    <td class="Td114Winter">四</td>
-                    <td class="Td114Winter">初三春節放假</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="holiday">
-                    <td class="Td114Winter">2月20日</td>
-                    <td class="Td114Winter">五</td>
-                    <td class="Td114Winter">初四春節放假</td>
-                    <td class="Td114Winter"></td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="holiday">
-                    <td class="Td114Winter">2月21日</td>
-                    <td class="Td114Winter">六</td>
-                    <td class="Td114Winter">初五春節放假</td>
-                    <td class="Td114Winter">李滄鈞</td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="holiday">
-                    <td class="Td114Winter">2月22日</td>
-                    <td class="Td114Winter">日</td>
-                    <td class="Td114Winter">初六春節放假</td>
-                    <td class="Td114Winter">李滄鈞</td>
-                    <td class="Td114Winter"></td>
-                </tr>
-                <tr class="Tr114Winter">
-                    <td class="Td114Winter">2月23日</td>
-                    <td class="Td114Winter">一</td>
-                    <td class="Td114Winter">開始上課日(為開學第3週)</td>
-                    <td class="Td114Winter">紀明輝</td>
-                    <td class="Td114Winter">張健雄</td>
-                </tr>
-            </tbody>
-        </table>
 
-        <div class="Footer114winter">
-            <p>南投縣愛蘭國民小學 114學年度寒假行事曆</p>
-            <p>最後更新日期：114年1月</p>
-        </div>
-    </div>
+    <h2 class="H2114Winter">南投縣愛蘭國民小學114學年度寒假行事曆<span class="period">(寒假期間：114年1月20日至2月22日)</span></h2>
+
+    <table class="Table114Winter">
+        <thead>
+            <tr class="Tr114Winter">
+                <th class="Th114Winter">日期</th>
+                <th class="Th114Winter">星期</th>
+                <th class="Th114Winter">行事事項</th>
+                <th class="Th114Winter">值日人員</th>
+                <th class="Th114Winter">值日工友</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">1月20日</td>
+                <td class="Td114Winter">二</td>
+                <td class="Td114Winter">修業式 </td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">1月21日</td>
+                <td class="Td114Winter">三</td>
+                <td class="Td114Winter">上下學期課程 </td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">1月22日</td>
+                <td class="Td114Winter">四</td>
+                <td class="Td114Winter">1. 上下學期課程<br>2. 與志工、家長會聯誼(一人一菜) </td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">1月23日</td>
+                <td class="Td114Winter">五</td>
+                <td class="Td114Winter">上下學期課程 </td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">1月24日</td>
+                <td class="Td114Winter">六</td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">1月25日</td>
+                <td class="Td114Winter">日</td>
+                <td class="Td114Winter">
+                </td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+            </tr>
+
+            <td class="Td114Winter">1月26日</td>
+            <td class="Td114Winter">一</td>
+            <td class="Td114Winter">
+                1. Makecode Arcade 遊戲設計寒假營隊<br>
+                2. 足球冬令營<br>
+                3. 幼兒園辦理寒假延長照顧服務 01/26-01/30<br>
+                (混齡班-油桐花; 幼幼班-鹿角樹)
+            </td>
+            <td class="Td114Winter">江振賢</td>
+            <td class="Td114Winter">張健雄 </td>
+            </tr>
+            <td class="Td114Winter">1月27日</td>
+            <td class="Td114Winter">二</td>
+            <td class="Td114Winter">
+                1. Makecode Arcade 遊戲設計寒假營隊<br>
+                2. 足球冬令營<br>
+                ＊校園環境整潔維護<br>
+                ＊校舍設備維修<br>
+                ＊消防機房維護及發電機發動
+            </td>
+            <td class="Td114Winter">羅萬達</td>
+            <td class="Td114Winter">張健雄 </td>
+            </tr>
+            <td class="Td114Winter">1月28日</td>
+            <td class="Td114Winter">三</td>
+            <td class="Td114Winter">
+                1. Makecode Arcade 遊戲設計寒假營隊<br>
+                2. 新北市學共輔導團跨縣市交流活動<br>
+                3. 足球冬令營
+            </td>
+            <td class="Td114Winter">許瑞欣</td>
+            <td class="Td114Winter">張健雄 </td>
+            </tr>
+            <td class="Td114Winter">1月29日</td>
+            <td class="Td114Winter">四</td>
+            <td class="Td114Winter">
+                1. Makecode Arcade 遊戲設計寒假營隊 <br>
+                2. 足球冬令營
+            </td>
+            <td class="Td114Winter">陳韻捷 </td>
+            <td class="Td114Winter">張健雄 </td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">1月30日</td>
+                <td class="Td114Winter">五</td>
+                <td class="Td114Winter">1. Makecode Arcade 遊戲設計寒假營隊<br>2. 足球冬令營 </td>
+                <td class="Td114Winter">蔡慈玉 </td>
+                <td class="Td114Winter">張健雄 </td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">1月31日</td>
+                <td class="Td114Winter">六</td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter">李滄鈞 </td>
+            </tr>
+
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">2月1日</td>
+                <td class="Td114Winter">日</td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter">李滄鈞 </td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">2月2日</td>
+                <td class="Td114Winter">一</td>
+                <td class="Td114Winter">1. 足球冬令營<br>2. 幼兒園寒假延長照顧 </td>
+                <td class="Td114Winter">卓雨瑩 </td>
+                <td class="Td114Winter">張健雄 </td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">2月3日</td>
+                <td class="Td114Winter">二</td>
+                <td class="Td114Winter">1. 足球冬令營<br>2.校園青苔清洗/除草 </td>
+                <td class="Td114Winter">洪妙芬 </td>
+                <td class="Td114Winter">張健雄 </td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">2月4日</td>
+                <td class="Td114Winter">三</td>
+                <td class="Td114Winter">1. 足球冬令營<br>2.電扇濾網清洗 </td>
+                <td class="Td114Winter">謝雅合 </td>
+                <td class="Td114Winter">張健雄 </td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">2月5日</td>
+                <td class="Td114Winter">四</td>
+                <td class="Td114Winter">1. 足球冬令營<br>2.清理水溝/除蟻 </td>
+                <td class="Td114Winter">謝靜怡 </td>
+                <td class="Td114Winter">張健雄 </td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">2月6日</td>
+                <td class="Td114Winter">五</td>
+                <td class="Td114Winter">1. 足球冬令營 </td>
+                <td class="Td114Winter">蘇郁云 </td>
+                <td class="Td114Winter">張健雄 </td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">2月7日</td>
+                <td class="Td114Winter">六</td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter">李滄鈞</td>
+            </tr>
+            <td class="Td114Winter">2月8日</td>
+            <td class="Td114Winter">日</td>
+            <td class="Td114Winter"></td>
+            <td class="Td114Winter"></td>
+            <td class="Td114Winter">李滄鈞</td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">2月9日</td>
+                <td class="Td114Winter">一</td>
+                <td class="Td114Winter">幼兒園全園備課日暨課程發展會議</td>
+                <td class="Td114Winter">蔡宏祥</td>
+                <td class="Td114Winter">張健雄</td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">2月10日</td>
+                <td class="Td114Winter">二</td>
+                <td class="Td114Winter">幼兒園備課日、校園清潔消毒</td>
+                <td class="Td114Winter">廖淑靜</td>
+                <td class="Td114Winter">張健雄</td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月11日</td>
+                <td class="Td114Winter">三</td>
+                <td class="Td114Winter">原定開學日(調整放假)、足球冬令營</td>
+                <td class="Td114Winter">紀明輝</td>
+                <td class="Td114Winter">張健雄</td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月12日</td>
+                <td class="Td114Winter">四</td>
+                <td class="Td114Winter">配合春節調整放假、足球冬令營</td>
+                <td class="Td114Winter">陳奕瑄</td>
+                <td class="Td114Winter">張健雄</td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月13日</td>
+                <td class="Td114Winter">五</td>
+                <td class="Td114Winter">配合春節調整放假、足球冬令營</td>
+                <td class="Td114Winter">林素玉</td>
+                <td class="Td114Winter">張健雄</td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月14日</td>
+                <td class="Td114Winter">六</td>
+                <td class="Td114Winter">農曆春節</td>
+                <td class="Td114Winter">李滄鈞</td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月15日</td>
+                <td class="Td114Winter">日</td>
+                <td class="Td114Winter">農曆春節</td>
+                <td class="Td114Winter">李滄鈞</td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月16日</td>
+                <td class="Td114Winter">一</td>
+                <td class="Td114Winter">農曆除夕</td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月17日</td>
+                <td class="Td114Winter">二</td>
+                <td class="Td114Winter">初一春節放假</td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月18日</td>
+                <td class="Td114Winter">三</td>
+                <td class="Td114Winter">初二春節放假</td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月19日</td>
+                <td class="Td114Winter">四</td>
+                <td class="Td114Winter">初三春節放假</td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月20日</td>
+                <td class="Td114Winter">五</td>
+                <td class="Td114Winter">初四春節放假</td>
+                <td class="Td114Winter"></td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月21日</td>
+                <td class="Td114Winter">六</td>
+                <td class="Td114Winter">初五春節放假</td>
+                <td class="Td114Winter">李滄鈞</td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="holiday Td114Winter">2月22日</td>
+                <td class="Td114Winter">日</td>
+                <td class="Td114Winter">初六春節放假</td>
+                <td class="Td114Winter">李滄鈞</td>
+                <td class="Td114Winter"></td>
+            </tr>
+            <tr class="Tr114Winter">
+                <td class="Td114Winter">2月23日</td>
+                <td class="Td114Winter">一</td>
+                <td class="Td114Winter">開始上課日(開學第3週)</td>
+                <td class="Td114Winter">紀明輝</td>
+                <td class="Td114Winter">張健雄</td>
+            </tr>
+        </tbody>
+    </table>
