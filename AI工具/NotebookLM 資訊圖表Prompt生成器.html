@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotebookLM 資訊圖表Prompt生成器 - Meiko微課頻道</title>
+    <!-- 引入必要的 Library -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;700;900&display=swap');
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #000000;
+            color: #e2e8f0;
+            font-size: 15px;
+        }
+
+        /* 專業級標題字距 */
+        .title-main {
+            letter-spacing: 0.15em;
+            text-transform: none !important;
+            font-weight: 900;
+        }
+
+        .text-style-fix {
+            text-transform: none !important;
+            letter-spacing: 0.02em;
+        }
+
+        /* 自定義捲軸樣式 - 範例圖庫側邊選單專用 */
+        .category-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .category-scrollbar::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.2);
+            border-radius: 10px;
+        }
+
+        .category-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .category-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #22d3ee;
+        }
+
+        /* 通用自定義捲軸 */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #22d3ee;
+        }
+
+        @keyframes f-in {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: f-in 0.5s ease-out forwards;
+        }
+
+        .btn-press:active {
+            transform: scale(0.97);
+        }
+
+        .bg-line-official {
+            background-color: #06C755;
+        }
+
+        .bg-youtube-official {
+            background-color: #FF0000;
+        }
+
+        .bg-discord-official {
+            background-color: #5865F2;
+        }
+
+        @keyframes pulse-yellow {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .recommend-tag {
+            color: #facc15;
+            font-weight: 900;
+            font-style: italic;
+            animation: pulse-yellow 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        const i18n = {
+            zh: {
+                title: "NotebookLM 資訊圖表Prompt生成器",
+                subtitle: "Professional Visual Assistant",
+                genTab: "Prompt生成器",
+                refTab: "資訊圖表範例圖庫",
+                langBtn: "English",
+                step1: "1. 需求類型",
+                step2: "2. 推薦風格",
+                step3: "3. 佈局結構 (可選)",
+                guideText: "點按分類看範例圖片，可於下方複製 Prompt 之後，到 NotebookLM 繪製資訊圖表",
+                disclaimer: "溫馨提醒：本提示詞僅供設計參考。建議您保留個人獨特創意，並根據實際需求彈性修改指令內容，以創作出最具個人特色的視覺化圖表作品。",
+                customPlaceholder: "輸入客製化需求，AI 會自動優化指令...",
+                customLabel: "客製化需求 / AI 助理 (AI Assistant)",
+                output: "Output prompt",
+                copy: "複製",
+                copyMulti: "複製中英文 Prompt",
+                copied: "已複製",
+                goto: "前往 NotebookLM",
+                recommended: "推薦",
+                none: "不指定佈局",
+                insight: "設計專業建議",
+                combined: "組合提示詞",
+                back: "返回生成器",
+                zoomIn: "放大檢視",
+                zoomOut: "縮小檢視",
+                promptZhTitle: "繁體中文指令",
+                promptEnTitle: "English Command",
+                footerNote: "學習更多 AI 與職場效率技術，歡迎關注",
+                footerCopy: "© 2025 Meiko 微課頻道 | NotebookLM Prompt Lab",
+                footerContact: "與 Meiko 聯繫：meikoedux@gmail.com",
+                discord: "加入 Discord 社群",
+                youtube: "Meiko 微課頻道",
+                line: "Line 貼圖助手 3.0"
+            },
+            en: {
+                title: "NotebookLM Infographic Prompt Generator",
+                subtitle: "Professional Visual Assistant",
+                genTab: "Prompt Generator",
+                refTab: "Infographic Gallery",
+                langBtn: "中文 (繁體)",
+                step1: "1. Goal Type",
+                step2: "2. Recommended Style",
+                step3: "3. Layout Structure",
+                guideText: "Select category to view examples, copy prompt below, and use in NotebookLM.",
+                disclaimer: "Note: These prompts are for reference only. We encourage you to incorporate your own creativity and adapt the content to create unique infographics that stand out.",
+                customPlaceholder: "Enter custom needs, AI will optimize prompts...",
+                customLabel: "Custom Needs / AI Assistant",
+                output: "Output Prompt",
+                copy: "Copy",
+                copyMulti: "Copy Multi-Language Prompts",
+                copied: "Copied",
+                goto: "Go to NotebookLM",
+                recommended: "Rec",
+                none: "Default Layout",
+                insight: "Professional Insight",
+                combined: "Combined Prompts",
+                back: "Back to Generator",
+                zoomIn: "Zoom In",
+                zoomOut: "Zoom Out",
+                promptZhTitle: "繁體中文指令",
+                promptEnTitle: "English Command",
+                footerNote: "Learn more about AI hacks at",
+                footerCopy: "© 2025 Meiko Studio | NotebookLM Prompt Lab",
+                footerContact: "Contact Meiko: meikoedux@gmail.com",
+                discord: "Join Discord Community",
+                youtube: "YouTube Channel",
+                line: "Line Assistant 3.0"
+            }
+        };
+
+        const Icon = ({ name, size = 18, className = "" }) => {
+            const icons = {
+                Copy: (
+                    <>
+                        <rect x="9" y="9" width="11" height="11" rx="1" ry="1" strokeWidth="2" />
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" strokeWidth="2" />
+                    </>
+                ),
+                ExternalLink: (
+                    <>
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" x2="21" y1="14" y2="3" />
+                    </>
+                ),
+                Layout: (
+                    <>
+                        <rect width="18" height="18" x="3" y="3" rx="1" ry="1" />
+                        <path d="M3 9h18M9 21V9" />
+                    </>
+                ),
+                Wand2: (
+                    <>
+                        <path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z" />
+                        <path d="m14 7 3 3" /><path d="M5 6v4" /><path d="M19 14v4" /><path d="M10 2v2" /><path d="M7 8H3" />
+                    </>
+                ),
+                Zap: <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />,
+                BarChart3: <path d="M18 20V10M12 20V4M6 20v-6" />,
+                Layers: <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />,
+                BookOpen: <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />,
+                FileText: <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8" />,
+                History: <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5" />,
+                Sparkles: <path d="m12 3 1.91 5.82 6.09.21-4.75 3.82 1.41 5.86L12 15.14l-4.66 3.57 1.41-5.86L4 9.03l6.09-.21L12 3z" />,
+                Share2: <><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98" /></>,
+                Check: <path d="M20 6 9 17l-5-5" />,
+                Palette: <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10c1.1 0 2-.9 2-2 0-.49-.18-.94-.48-1.3-.28-.34-.46-.77-.46-1.25 0-1.1.9-2 2-2h1.94c2.21 0 4-1.79 4-4 0-5.25-4.42-9.5-10-9.5zM6.5 12c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5 11 5.67 11 6.5 10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />,
+                Network: <><rect x="9" y="2" width="6" height="6" rx="1" /><rect x="2" y="16" width="6" height="6" rx="1" /><rect x="16" y="16" width="6" height="6" rx="1" /><path d="M12 8v4M12 12H5v4M12 12h7v4" /></>,
+                GitCommit: <><circle cx="12" cy="12" r="3" /><path d="M3 12h6m6 0h6" /></>,
+                Grid3X3: <path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18M15 3v18" />,
+                Triangle: <path d="m12 3 9 17H3l9-17z" />,
+                PenTool: <path d="m12 19 7-7 3 3-7 7-3-3zM18 13l-1.5-1.5M14 17l-1.5-1.5M11 8l2 2M9 11l2 2M5 19l2 2M2 22l1-1" />,
+                Terminal: <path d="m4 17 6-6-6-6M12 19h8" />,
+                ZoomIn: <><circle cx="11" cy="11" r="8" /><line x1="21" x2="16.65" y1="21" y2="16.65" /><line x1="11" x2="11" y1="8" y2="14" /><line x1="8" x2="14" y1="11" y2="11" /></>,
+                ZoomOut: <><circle cx="11" cy="11" r="8" /><line x1="21" x2="16.65" y1="21" y2="16.65" /><line x1="11" x2="11" y1="8" y2="11" /></>,
+                Youtube: (
+                    <>
+                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" fill="white" stroke="none" />
+                        <polygon points="9.75 15.02 15.75 12 9.75 8.98 9.75 15.02" fill="#FF0000" stroke="none" />
+                    </>
+                ),
+                Discord: (
+                    <path d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.864-.6083 1.2495-1.8447-.2758-3.68-.2758-5.4868 0-.1636-.3906-.4058-.8742-.6177-1.2495a.077.077 0 0 0-.0785-.037 19.7363 19.7363 0 0 0-4.8852 1.515.0699.0699 0 0 0-.0321.0277C.5334 9.0458-.3193 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 0 0 .0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 0 0-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 0 1 .0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 0 1 .0785.009c.1202.099.246.1972.3728.2925a.077.077 0 0 1-.0066.1276 12.2986 12.2986 0 0 1-1.873.8914.0766.0766 0 0 0-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 0 0 .0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 0 0 .0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 0 0-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9547-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0965 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0965 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z" fill="white" stroke="none" />
+                )
+            };
+            return (
+                <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                    {icons[name] || null}
+                </svg>
+            );
+        };
+
+        const App = () => {
+            const [lang, setLang] = useState('zh');
+            const [activeTab, setActiveTab] = useState('generator');
+            const [needType, setNeedType] = useState('summary');
+            const [customRequirement, setCustomRequirement] = useState('');
+            const [selectedStyle, setSelectedStyle] = useState('ref-1');
+            const [selectedLayout, setSelectedLayout] = useState('none');
+            const [refStyle, setRefStyle] = useState('ref-1');
+            const [copiedType, setCopiedType] = useState(null);
+            const [isZoomed, setIsZoomed] = useState(false);
+
+            const t = i18n[lang];
+            const notebookLMLogo = "https://raw.githubusercontent.com/meikochang/my-web-assets/refs/heads/main/images/notebooklm.png";
+            const meikoLogo = "https://rain-galley-248.notion.site/image/attachment%3A1a4404e1-e6b1-4f29-a495-123224c6135a%3AMeiko_logo.png?table=block&id=2c04c228-35e5-80d2-b534-f270fb01613d&spaceId=cf48a189-fd68-4fe6-a35c-bf6538001b35&width=770&userId=&cache=v2";
+
+            const needCategories = [
+                { id: 'summary', label: '行銷懶人包', nameEn: 'Marketing Pack', icon: 'Zap', recommendStyle: 'ref-1', recommendLayout: 'lay-2' },
+                { id: 'data', label: '數據分析報告', nameEn: 'Data Analysis', icon: 'BarChart3', recommendStyle: 'ref-6', recommendLayout: 'lay-4' },
+                { id: 'process', label: '流程邏輯說明', nameEn: 'Process Flow', icon: 'Layers', recommendStyle: 'ref-5', recommendLayout: 'lay-2' },
+                { id: 'education', label: '教育知識科普', nameEn: 'Educational Info', icon: 'BookOpen', recommendStyle: 'ref-2', recommendLayout: 'lay-5' },
+                { id: 'professional', label: '專業研究報告', nameEn: 'Research Report', icon: 'FileText', recommendStyle: 'ref-4', recommendLayout: 'lay-1' },
+                { id: 'history', label: '歷史演進時間', nameEn: 'Timeline History', icon: 'History', recommendStyle: 'ref-7', recommendLayout: 'lay-2' },
+                { id: 'creative', label: '創意發想筆記', nameEn: 'Creative Ideation', icon: 'Sparkles', recommendStyle: 'ref-3', recommendLayout: 'lay-3' },
+                { id: 'social', label: '社群媒體分享', nameEn: 'Social Media', icon: 'Share2', recommendStyle: 'ref-8', recommendLayout: 'lay-1' },
+            ];
+
+            const layoutCategories = [
+                { id: 'none', label: '不指定佈局', nameEn: 'Default Layout', icon: 'Layout', desc: lang === 'zh' ? '由 AI 自行發揮排版邏輯。' : 'Let AI decide.' },
+                { id: 'lay-1', label: '中心對焦', nameEn: 'Central Focus', icon: 'Network', desc: lang === 'zh' ? '核心概念在中央，分支向外。' : 'Core in center.' },
+                { id: 'lay-2', label: '蛇形流程', nameEn: 'Snake Flow', icon: 'GitCommit', desc: lang === 'zh' ? '適合步驟說明與演進。' : 'Sequence flow.' },
+                { id: 'lay-3', label: '左右對比', nameEn: 'Side-by-side', icon: 'Layout', desc: lang === 'zh' ? '適合優缺點或對比。' : 'Comparison.' },
+                { id: 'lay-4', label: '網格矩陣', nameEn: 'Grid Matrix', icon: 'Grid3X3', desc: lang === 'zh' ? '規整模組排列展示。' : 'Grid layout.' },
+                { id: 'lay-5', label: '層級金字塔', nameEn: 'Pyramid', icon: 'Triangle', desc: lang === 'zh' ? '展現廣入深的架構。' : 'Hierarchy.' },
+            ];
+
+            const referenceData = [
+                { id: 'ref-1', icon: 'Palette', title: '可愛粉嫩風格', nameEn: 'Cute Pastel Style', enSub: '(Cute Pastel)', zhDesc: '採用柔和親切的粉彩色調，能有效降低技術資訊的嚴肅感，非常適合製作功能比較或行銷懶人包。', enDesc: 'Soft pastel tones reduce technical seriousness, perfect for marketing packs.', img: 'https://ink-talk-607.notion.site/image/attachment%3A8e18e21f-2803-4911-aae5-037db8ed8e86%3Aunnamed_(6).png?table=block&id=2d364069-2830-8002-961b-e6ffd9dc8bc3&spaceId=a6d7eabf-7e89-49cd-8830-085224e7327f&width=1420&userId=&cache=v2', zhPrompt: '使用可愛柔和粉嫩風格，添加一些卡通圖案。', enPrompt: 'Cute and soft pastel style. Incorporate cute cartoon illustrations. Widescreen infographic. Professional yet friendly layout.' },
+                { id: 'ref-2', icon: 'BookOpen', title: '黑板粉筆風格', nameEn: 'Chalkboard Style', enSub: '(Chalkboard)', zhDesc: '強烈的教育氛圍，適合解釋核心功能或基礎知識簡述。', enDesc: 'Simulates a classic classroom setting, ideal for core concept explanations.', img: 'https://ink-talk-607.notion.site/image/attachment%3A1916ac8c-8d7c-487e-95de-ba2eab5df00f%3Aunnamed_(7).png?table=block&id=2d364069-2830-80b9-a1f2-db73a8238fbd&spaceId=a6d7eabf-7e89-49cd-8830-085224e7327f&width=1420&userId=&cache=v2', zhPrompt: '經典教室黑板風格。深綠色黑板帶有粉筆灰質感。', enPrompt: 'Classic classroom chalkboard style. Dusty dark green board with hand-lettered chalk effects.' },
+                { id: 'ref-3', icon: 'PenTool', title: '手繪塗鴉風格', nameEn: 'Sketch Style', enSub: '', zhDesc: '強調「筆記本」與「大腦激盪」的連結感，利用有機的手繪感賦予內容更多溫度與創意。', enDesc: 'Emphasizes link between notebooks and brainstorming for a human touch.', img: 'https://ink-talk-607.notion.site/image/attachment%3A870c6487-b8e6-4ff3-bd30-cab6a0b2da7a%3Aunnamed_(8).png?table=block&id=2d364069-2830-8024-8c9f-eab7a8fa33e6&spaceId=a6d7eabf-7e89-49cd-8830-085224e7327f&width=1420&userId=&cache=v2', zhPrompt: '視覺採用手繪素描風格，融入筆記本上的塗鴉感；利用鉛筆輪廓線與紙張紋理背景。', enPrompt: 'Hand-drawn sketch style, looking like doodles in a notebook. Pencil outlines. Textured notebook paper background.' },
+                { id: 'ref-4', icon: 'FileText', title: '企業曼非斯風格', nameEn: 'Corporate Style', enSub: '(Corporate Memphis)', zhDesc: '現代主流新創公司最愛用的風格，能有效傳達敏捷、專業且具包容力的數位品牌形象。', enDesc: 'Modern startup style conveying agility and professionalism in digital branding.', img: 'https://ink-talk-607.notion.site/image/attachment%3A57614ae3-e37e-4ce2-bc89-70e1523958a1%3A%E4%BC%81%E6%A5%AD%E6%9B%BC%E9%9D%9E%E6%96%AF%E9%A2%A8%E6%A0%BC.png?table=block&id=2d364069-2830-8099-8ea7-e6ba6fa56824&spaceId=a6d7eabf-7e89-49cd-8830-085224e7327f&width=1420&userId=&cache=v2', zhPrompt: '採用企業曼非斯風格插圖；配色柔和無輪廓線，呈現科技新創的極簡感。', enPrompt: 'Corporate Memphis style. Flat illustrations with exaggerated proportions. Soft pastel color palette. No outlines.' },
+                { id: 'ref-5', icon: 'Terminal', title: '白板馬克筆風格', nameEn: 'Whiteboard Style', enSub: '(Whiteboard)', zhDesc: '模擬真實會議室討論氛圍，非常適合用來呈現腦力激盪後的重點紀錄或流程梳理。', enDesc: 'Mimics real conference room discussion, perfect for summarizing brainstorms.', img: 'https://ink-talk-607.notion.site/image/attachment%3Adb381ade-a5cb-4af8-ac7b-3637a8d03cdb%3Aunnamed_(1).png?table=block&id=2d364069-2830-8070-af40-ffbb664fed50&spaceId=a6d7eabf-7e89-49cd-8830-085224e7327f&width=1420&userId=&cache=v2', zhPrompt: '呈現白板腦力激盪風格，利用粗獷且多彩的馬克筆筆跡；背景為亮白色板質感。', enPrompt: 'Whiteboard brainstorming style. Thick and colorful dry-erase marker strokes. Glossy white background with reflections.' },
+                { id: 'ref-6', icon: 'BarChart3', title: '數據儀表板風', nameEn: 'Dashboard Style', enSub: '(Data Dashboard)', zhDesc: '極致科技感，讓硬核數據分析展現出更高的權威感與精確性。', enDesc: 'High-tech digital style that gives data analysis a sense of authority and precision.', img: 'https://ink-talk-607.notion.site/image/attachment%3A8ef6457f-a3c1-4dc5-ad53-186e5c55a5f0%3A%E6%95%B8%E6%93%9A%E5%84%80%E8%A1%A8%E6%9D%BF%E9%A2%A8.png?table=block&id=2d364069-2830-8053-b164-c9326c9447c2&spaceId=a6d7eabf-7e89-49cd-8830-085224e7327f&width=1420&userId=&cache=v2', zhPrompt: '視覺呈現為現代化的數據儀表板介面，包含乾鏡的數據組件如圖表與曲線圖。', enPrompt: 'Modern data dashboard UI. Clean data widgets including charts and graphs. Structured grid layout. Dark mode interface.' },
+                { id: 'ref-7', icon: 'History', title: '復古報紙風格', nameEn: 'Vintage Style', enSub: '(Vintage Newspaper)', zhDesc: '利用懷舊與權威感的視覺語彙，非常適合用於展現歷史演進或品牌安全性聲明。', enDesc: 'Uses nostalgic and authoritative visual language, perfect for historical timelines.', img: 'https://ink-talk-607.notion.site/image/attachment%3A32ba3da4-a61e-4891-8901-38349d9b91a4%3Aunnamed_(6).png?table=block&id=2d364069-2830-8065-a9aa-c7d041db7c3f&spaceId=a6d7eabf-7e89-49cd-8830-085224e7327f&width=1420&userId=&cache=v2', zhPrompt: '視覺採用1950年代復古海報風格，背景為帶有摺痕與微黃舊紙感的紋理。', enPrompt: 'Vintage 1950s poster style. Aged paper texture with creases and sepia tones. Illustrations using halftone dot printing effect.' },
+                { id: 'ref-8', icon: 'Share2', title: '盲盒公仔風', nameEn: 'Pop Mart Style', enSub: '(Pop Mart)', zhDesc: '賦予 AI 生成內容具體形象，增加親和力與趣味性。', enDesc: 'Gives AI content a cute character image, increasing brand affinity and fun vibes.', img: 'https://ink-talk-607.notion.site/image/attachment%3Aa352d93c-174c-47b7-9b05-b4f970f07b18%3Aunnamed_(6).png?table=block&id=2d364069-2830-8081-a107-f5167e7f7288&spaceId=a6d7eabf-7e89-49cd-8830-085224e7327f&width=1420&userId=&cache=v2', zhPrompt: '採用 3D 角色設計與盲盒公仔風格，角色比例呈現為 Q 版；材質呈現光滑啞光。', enPrompt: '3D character design, Pop Mart blind box toy style. Chibi proportions. Smooth matte plastic texture. Soft studio lighting.' },
+                { id: 'ref-9', icon: 'PenTool', title: '手寫筆跡', nameEn: 'Handwritten Style', enSub: '(Gemini)', zhDesc: '還原筆記的手寫美感，能讓圖像內容展現出更強烈的手作溫度。', enDesc: 'Mimics real hand-drawn notes, giving AI content human warmth and a personal touch.', img: 'https://ink-talk-607.notion.site/image/attachment%3A0848196d-3c9c-470c-9184-3271cf4a0ad9%3AGemini_Generated_Image_o2p6x6o2p6x6o2p6.png?table=block&id=2d364069-2830-8016-91d5-e7023670b083&spaceId=a6d7eabf-7e89-49cd-8830-085224e7327f&width=1420&userId=&cache=v2', zhPrompt: '製作一張手繪風格的寬螢幕資訊圖表，字跡需呈現為流暢的手寫筆觸。', enPrompt: 'Hand-drawn widescreen infographic. Text in natural handwriting strokes. White paper background. All elements in cute hand-drawn style.' }
+            ];
+
+            const activeStyleData = referenceData.find(d => d.id === refStyle) || referenceData[0];
+
+            useEffect(() => {
+                const category = needCategories.find(c => c.id === needType);
+                if (category) {
+                    setSelectedStyle(category.recommendStyle);
+                    setSelectedLayout(category.recommendLayout);
+                }
+            }, [needType]);
+
+            const handleCopyCommand = (text, id) => {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                setCopiedType(id);
+                setTimeout(() => setCopiedType(null), 2000);
+                document.body.removeChild(textArea);
+            };
+
+            const toggleLang = () => setLang(lang === 'zh' ? 'en' : 'zh');
+
+            const getCombinedPrompt = () => {
+                const s = referenceData.find(d => d.id === selectedStyle) || referenceData[0];
+                const l = layoutCategories.find(d => d.id === selectedLayout);
+                const layoutMapEn = { none: "Default", 'lay-1': "Central Focus", 'lay-2': "Snake Flow", 'lay-3': "Side-by-side", 'lay-4': "Grid Matrix", 'lay-5': "Pyramid" };
+                const layoutTextEn = l.id === 'none' ? "" : `Layout: ${layoutMapEn[l.id] || "Standard"}. `;
+                const customNoteEn = customRequirement.trim() !== '' ? `[User request: ${customRequirement}] ` : "";
+
+                return {
+                    zh: `資訊圖表設計。${customRequirement.trim() !== '' ? `客製需求：【${customRequirement}】。` : ""}${l.id === 'none' ? "" : `佈局採「${l.label}」；`}風格要求「${s.title}」，${s.zhPrompt}`,
+                    en: `Infographic design. ${customNoteEn}${layoutTextEn}Visual style: ${s.nameEn}, featuring ${s.enPrompt}`
+                };
+            };
+
+            return (
+                <div className="min-h-screen flex flex-col overflow-x-hidden selection:bg-cyan-400 selection:text-black">
+                    <div className="max-w-[1500px] mx-auto w-full px-6 py-8 flex-grow">
+                        <header className="mb-8 bg-slate-800/40 p-6 rounded-xl border border-slate-700/50 flex flex-col md:flex-row justify-between items-center gap-6 shadow-xl backdrop-blur-sm animate-in">
+                            <div className="flex flex-col items-center md:items-start">
+                                <h1 className="flex items-center gap-4 title-main text-style-fix text-white">
+                                    <img src={notebookLMLogo} alt="Logo" className="w-10 h-10 object-contain mr-2" />
+                                    <span className="text-3xl font-black">{t.title}</span>
+                                </h1>
+                                <div className="mt-3 flex items-center gap-3">
+                                    <img src={meikoLogo} alt="Meiko" className="w-8 h-8 rounded-full border border-slate-600 shadow-sm" />
+                                    <div className="text-[11px] font-black text-slate-400 text-style-fix uppercase tracking-[0.2em]">
+                                        <a href="https://www.youtube.com/@meiko1" target="_blank" className="hover:text-cyan-400 transition-colors">Meiko微課頻道</a>
+                                        <span className="mx-2 text-slate-700">|</span>
+                                        <span className="text-cyan-400 uppercase tracking-widest">{t.subtitle}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <div className="flex bg-slate-900 p-1 rounded-lg border border-slate-700">
+                                    <button onClick={() => setActiveTab('generator')} className={`px-8 py-2 rounded-md text-xs font-black transition-all ${activeTab === 'generator' ? 'bg-cyan-400 text-black shadow-md' : 'text-slate-500 hover:text-cyan-400'}`}>{t.genTab}</button>
+                                    <button onClick={() => setActiveTab('reference')} className={`px-8 py-2 rounded-md text-xs font-black transition-all ${activeTab === 'reference' ? 'bg-cyan-400 text-black shadow-md' : 'text-slate-500 hover:text-cyan-400'}`}>{t.refTab}</button>
+                                </div>
+                                <button onClick={toggleLang} className="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-xs font-bold transition-all whitespace-nowrap">{t.langBtn}</button>
+                            </div>
+                        </header>
+
+                        {activeTab === 'generator' ? (
+                            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 animate-in">
+                                <div className="bg-slate-800/30 border border-slate-700/50 p-5 rounded-xl shadow-lg flex flex-col min-h-[400px]">
+                                    <h2 className="text-base font-black text-cyan-400 mb-5 tracking-widest border-b border-slate-700 pb-3 uppercase">{t.step1}</h2>
+                                    <div className="space-y-1.5 overflow-y-auto max-h-[300px] custom-scrollbar flex-grow pr-1 mb-4">
+                                        {needCategories.map(c => (
+                                            <button key={c.id} onClick={() => setNeedType(c.id)} className={`w-full text-left p-2.5 rounded-lg transition-all border ${needType === c.id ? 'bg-cyan-400/10 border-cyan-400 font-bold' : 'bg-slate-900/30 border-transparent hover:bg-slate-800'}`}>
+                                                <div className="flex items-center gap-3 text-white">
+                                                    <Icon name={c.icon} size={18} />
+                                                    <span className="text-[13px] font-normal">{lang === 'zh' ? c.label : c.nameEn}</span>
+                                                </div>
+                                            </button>
+                                        ))}
+                                    </div>
+                                    <div className="pt-4 border-t border-slate-700/50">
+                                        <label className="text-[10px] font-black text-slate-500 mb-2 block uppercase tracking-widest">{t.customLabel}</label>
+                                        <textarea value={customRequirement} onChange={(e) => setCustomRequirement(e.target.value)} placeholder={t.customPlaceholder} className="w-full bg-black/40 border border-slate-800 rounded-lg p-3 text-xs text-white focus:border-cyan-400 outline-none h-20 custom-scrollbar resize-none shadow-inner" />
+                                    </div>
+                                </div>
+
+                                <div className="bg-slate-800/30 border border-slate-700/50 p-5 rounded-xl shadow-lg flex flex-col h-full">
+                                    <h2 className="text-base font-black text-cyan-400 mb-5 tracking-widest border-b border-slate-700 pb-3 uppercase">{t.step2}</h2>
+                                    <div className="space-y-2 overflow-y-auto max-h-[450px] category-scrollbar pr-1">
+                                        {referenceData.map(d => {
+                                            const isRec = needCategories.find(n => n.id === needType)?.recommendStyle === d.id;
+                                            return (
+                                                <button key={d.id} onClick={() => setSelectedStyle(d.id)} className={`w-full text-left p-3 rounded-lg transition-all border relative ${selectedStyle === d.id ? 'bg-cyan-400/20 border-cyan-400 font-bold' : 'bg-slate-900/30 border-transparent hover:bg-slate-800'}`}>
+                                                    <div className="flex items-center gap-3 text-white">
+                                                        <Icon name={d.icon} size={18} />
+                                                        <span className="text-[13px] font-normal">{lang === 'zh' ? d.title : d.nameEn}</span>
+                                                    </div>
+                                                    {isRec && <span className="recommend-tag text-[9px] uppercase tracking-tighter absolute top-1 right-2">{t.recommended}</span>}
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+
+                                <div className="bg-slate-800/30 border border-slate-700/50 p-5 rounded-xl shadow-lg flex flex-col h-full">
+                                    <h2 className="text-base font-black text-cyan-400 mb-5 tracking-widest border-b border-slate-700 pb-3 uppercase">{t.step3}</h2>
+                                    <div className="space-y-1.5 overflow-y-auto max-h-[350px] custom-scrollbar pr-1">
+                                        {layoutCategories.map(l => {
+                                            const isRec = needCategories.find(n => n.id === needType)?.recommendLayout === l.id;
+                                            return (
+                                                <button key={l.id} onClick={() => setSelectedLayout(l.id)} className={`w-full text-left p-3.5 rounded-lg transition-all border relative ${selectedLayout === l.id ? 'bg-cyan-400/20 border-cyan-400 font-bold' : 'bg-slate-900/30 border-transparent hover:bg-slate-800'}`}>
+                                                    <div className="flex items-center gap-3 mb-0.5 text-white">
+                                                        <Icon name={l.icon} size={16} />
+                                                        <span className="text-[13px] text-white font-normal">{lang === 'zh' ? l.label : l.nameEn}</span>
+                                                        {isRec && <span className="recommend-tag text-[9px] ml-auto">{t.recommended}</span>}
+                                                    </div>
+                                                    <p className="text-[10px] opacity-40 pl-8 leading-tight">{l.desc}</p>
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+
+                                <div className="bg-slate-900 border border-slate-700 p-6 rounded-xl shadow-2xl flex flex-col h-full">
+                                    <h3 className="text-white font-black text-sm mb-6 flex items-center gap-3 italic text-style-fix"><Icon name="Zap" size={18} className="text-cyan-400" /> {t.output}</h3>
+                                    <div className="space-y-4 flex-grow">
+                                        <div className="bg-black/60 p-4 rounded-lg border border-slate-800 shadow-inner">
+                                            <div className="flex justify-between items-center mb-3 h-[28px]">
+                                                <span className="text-[10px] text-slate-500 font-black tracking-widest uppercase">{t.promptZhTitle}</span>
+                                                <button onClick={() => handleCopyCommand(getCombinedPrompt().zh, 'copy-zh')} className="bg-white text-slate-900 px-3 py-1.5 rounded-lg font-bold text-[10px] hover:bg-slate-200 transition-all shadow-lg whitespace-nowrap flex items-center gap-2 h-full"><Icon name="Copy" size={12} /><span>{copiedType === 'copy-zh' ? t.copied : t.copy}</span></button>
+                                            </div>
+                                            <p className="text-slate-200 text-[13px] leading-relaxed font-medium">{getCombinedPrompt().zh}</p>
+                                        </div>
+                                        <div className="bg-black/40 p-4 rounded-lg border border-slate-800 shadow-inner">
+                                            <div className="flex justify-between items-center mb-3 h-[28px]">
+                                                <span className="text-[10px] text-slate-500 font-black tracking-widest uppercase">{t.promptEnTitle}</span>
+                                                <button onClick={() => handleCopyCommand(getCombinedPrompt().en, 'copy-en')} className="bg-white text-slate-900 px-3 py-1.5 rounded-lg font-bold text-[10px] hover:bg-slate-200 transition-all shadow-lg whitespace-nowrap flex items-center gap-2 h-full"><Icon name="Copy" size={12} /><span>{copiedType === 'copy-en' ? t.copied : t.copy}</span></button>
+                                            </div>
+                                            <p className="text-slate-400 text-[11px] leading-relaxed font-mono opacity-80">{getCombinedPrompt().en}</p>
+                                        </div>
+                                    </div>
+                                    <a href="https://notebooklm.google.com/" target="_blank" className="mt-8 w-full bg-cyan-400 hover:brightness-110 text-black py-4 rounded-lg font-black text-sm flex items-center justify-center gap-3 shadow-lg group btn-press text-style-fix"><img src={notebookLMLogo} alt="Icon" className="w-5 h-5 group-hover:scale-110 transition-transform object-contain" />{t.goto}</a>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="animate-in pb-16">
+                                <div className="max-w-7xl mx-auto bg-slate-800/60 border border-slate-700 rounded-xl p-8 md:p-10 shadow-2xl backdrop-blur-md">
+                                    <div className="flex flex-col lg:flex-row gap-10 items-start relative">
+                                        {!isZoomed && (
+                                            <div className="lg:w-1/4 flex flex-col pt-[116px] animate-in sticky top-8">
+                                                <div className="mb-6 text-cyan-400 font-black text-xs uppercase tracking-widest text-style-fix border-b border-cyan-400/30 pb-3 leading-relaxed">{t.guideText}</div>
+                                                <div className="flex flex-col gap-2 category-scrollbar overflow-y-auto max-h-[550px] pr-2">
+                                                    {referenceData.map(d => (
+                                                        <button key={d.id} onClick={() => { setRefStyle(d.id); setIsZoomed(false); }} className={`w-full text-left px-4 py-2.5 rounded-lg text-[13px] font-normal border transition-all btn-press flex items-center gap-3 ${refStyle === d.id ? `bg-cyan-400 text-black font-bold border-cyan-300 shadow-lg` : 'bg-slate-900/50 border-slate-800 text-white hover:bg-slate-800'}`}>
+                                                            <div className="flex-shrink-0 opacity-80"><Icon name={d.icon} size={14} /></div>
+                                                            <span className="truncate">{lang === 'zh' ? d.title : d.nameEn}</span>
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+                                        <div className={`${isZoomed ? 'w-full' : 'lg:w-3/4'} flex flex-col h-full transition-all duration-500`}>
+                                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8 items-center animate-in">
+                                                <div className="border-l-[6px] border-cyan-400 pl-6 col-span-1 flex flex-col justify-center">
+                                                    <h3 className={`font-black text-white leading-tight text-style-fix ${activeStyleData.id === 'ref-3' ? 'text-xl' : 'text-2xl'}`}>{lang === 'zh' ? activeStyleData.title : activeStyleData.nameEn}</h3>
+                                                    {activeStyleData.enSub && <span className="text-cyan-400/80 text-sm font-bold opacity-80 mt-1">{activeStyleData.enSub}</span>}
+                                                </div>
+                                                <div className="lg:col-span-2 bg-cyan-400/5 border border-cyan-400/10 p-5 rounded-lg shadow-inner">
+                                                    <h4 className="text-cyan-400 font-black uppercase text-base tracking-widest mb-1 text-style-fix">{t.insight}</h4>
+                                                    <p className="text-slate-300 text-sm leading-relaxed font-light">{lang === 'zh' ? activeStyleData.zhDesc : activeStyleData.enDesc}</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-col gap-6">
+                                                <div className="flex justify-start">
+                                                    <button onClick={() => setIsZoomed(!isZoomed)} className="flex items-center gap-3 text-lg font-bold text-white hover:text-cyan-400 transition-all btn-press h-[36px]">
+                                                        <Icon name={isZoomed ? "ZoomOut" : "ZoomIn"} size={22} /> {isZoomed ? t.zoomOut : t.zoomIn}
+                                                    </button>
+                                                </div>
+                                                <div onClick={() => setIsZoomed(!isZoomed)} className={`relative cursor-pointer transition-all duration-500 bg-slate-950 rounded-lg overflow-hidden border border-slate-700 ${isZoomed ? 'w-full shadow-3xl z-40 border-cyan-400/20' : 'shadow-xl hover:border-cyan-400/10'}`}>
+                                                    <img src={activeStyleData.img} className="w-full h-auto object-contain" alt="Preview" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr className="my-10 border-slate-700 opacity-50" />
+                                    <div className="flex flex-col gap-6 animate-in">
+                                        <div className="flex items-center gap-4 mb-2">
+                                            <h4 className="text-lg font-bold text-white italic">{t.combined}</h4>
+                                            <div className="flex-grow h-px bg-slate-700 opacity-50"></div>
+                                        </div>
+                                        <div className="flex flex-col lg:flex-row gap-4 items-stretch">
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-grow">
+                                                <div className="bg-black/60 p-6 rounded-xl border border-slate-700 shadow-inner flex flex-col justify-center min-h-[140px] relative overflow-hidden group">
+                                                    <div className="flex justify-between items-center mb-4 border-b border-slate-800 pb-2 h-[28px]">
+                                                        <div className="flex items-center gap-3">
+                                                            <div className="w-2.5 h-2.5 bg-cyan-400 rounded-full shadow-lg"></div>
+                                                            <p className="text-slate-500 text-[11px] font-black uppercase tracking-widest">{t.promptZhTitle}</p>
+                                                        </div>
+                                                        <button onClick={() => handleCopyCommand(activeStyleData.zhPrompt, 'copy-ref-zh')} className="bg-white text-slate-900 px-4 py-1.5 rounded-lg font-bold text-[10px] hover:bg-slate-200 transition-all shadow-xl flex items-center gap-2 min-w-[80px] justify-center whitespace-nowrap h-full"><Icon name="Copy" size={12} /><span>{copiedType === 'copy-ref-zh' ? t.copied : t.copy}</span></button>
+                                                    </div>
+                                                    <p className="text-slate-200 text-sm leading-relaxed font-medium">「{activeStyleData.zhPrompt}」</p>
+                                                </div>
+                                                <div className="bg-black/60 p-6 rounded-xl border border-slate-700 shadow-inner flex flex-col justify-center min-h-[140px] relative overflow-hidden group">
+                                                    <div className="flex justify-between items-center mb-4 border-b border-slate-800 pb-2 h-[28px]">
+                                                        <div className="flex items-center gap-3">
+                                                            <div className="w-2.5 h-2.5 bg-slate-500 rounded-full"></div>
+                                                            <p className="text-slate-500 text-[11px] font-black uppercase tracking-widest">{t.promptEnTitle}</p>
+                                                        </div>
+                                                        <button onClick={() => handleCopyCommand(activeStyleData.enPrompt, 'copy-ref-en')} className="bg-white text-slate-900 px-4 py-1.5 rounded-lg font-bold text-[10px] hover:bg-slate-200 transition-all shadow-xl flex items-center gap-2 min-w-[80px] justify-center whitespace-nowrap h-full"><Icon name="Copy" size={12} /><span>{copiedType === 'copy-ref-en' ? t.copied : t.copy}</span></button>
+                                                    </div>
+                                                    <p className="text-slate-400 text-xs leading-relaxed font-mono opacity-80">{activeStyleData.enPrompt}</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-col gap-3 w-full lg:w-64 shrink-0">
+                                                <button onClick={() => handleCopyCommand(`${activeStyleData.zhPrompt}\n\n${activeStyleData.enPrompt}`, 'ref-copy')} className={`flex-1 py-4 rounded-xl font-bold flex flex-col items-center justify-center gap-2 transition-all active:scale-95 shadow-xl btn-press bg-white text-slate-900 hover:bg-slate-200 whitespace-nowrap`}><Icon name={copiedType === 'ref-copy' ? "Check" : "Copy"} size={22} /><span className="text-sm uppercase font-black tracking-widest">{copiedType === 'ref-copy' ? t.copied : t.copyMulti}</span></button>
+                                                <a href="https://notebooklm.google.com/" target="_blank" className={`flex-1 py-4 bg-cyan-400 hover:brightness-110 text-black rounded-xl font-black flex flex-col items-center justify-center gap-2 shadow-xl transition-all active:scale-95 border-2 border-cyan-300 group btn-press whitespace-nowrap`}><img src={notebookLMLogo} alt="Icon" className="w-6 h-6 group-hover:scale-110 transition-transform object-contain" /><span className="text-sm uppercase font-black tracking-widest">{t.goto}</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="mt-12 pt-8 border-t border-slate-700 flex justify-center">
+                                        <button onClick={() => setActiveTab('generator')} className="text-slate-600 hover:text-cyan-400 text-[11px] font-black flex items-center gap-3 tracking-[0.4em] transition-all group uppercase text-style-fix"><Icon name="Wand2" size={16} className="group-hover:rotate-12 transition-transform" /><span>{t.back}</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    <footer className="w-full mt-2 pt-6 pb-12 bg-black/90 backdrop-blur-md animate-in border-t border-slate-800/40">
+                        <div className="max-w-[1300px] mx-auto px-8 flex flex-col items-center gap-6 text-center">
+                            <div className="animate-in mb-2 px-4 max-w-4xl">
+                                <p className="text-yellow-400 text-[13px] leading-relaxed font-medium">{t.disclaimer}</p>
+                            </div>
+                            <div className="flex flex-row gap-5 justify-center items-center flex-nowrap w-full overflow-x-auto custom-scrollbar pb-2">
+                                <a href="https://meikochang.github.io/line-sticker-factory3.0/" target="_blank" className="bg-line-official hover:opacity-90 text-white text-[13px] font-black px-10 py-3.5 rounded-full transition-all shadow-xl flex items-center gap-3 btn-press whitespace-nowrap flex-shrink-0"><Icon name="ExternalLink" size={18} /><span>{i18n[lang].line}</span></a>
+                                <a href="https://www.youtube.com/@meiko1" target="_blank" className="bg-youtube-official hover:opacity-90 text-white text-[13px] font-black px-10 py-3.5 rounded-full transition-all shadow-xl flex items-center gap-3 btn-press whitespace-nowrap flex-shrink-0"><Icon name="Youtube" size={18} /><span>{i18n[lang].youtube}</span></a>
+                                <a href="https://discord.gg/BMRHfGas" target="_blank" className="bg-discord-official hover:opacity-90 text-white text-[13px] font-black px-10 py-3.5 rounded-full transition-all shadow-xl flex items-center gap-3 btn-press whitespace-nowrap flex-shrink-0"><Icon name="Discord" size={18} /><span>{i18n[lang].discord}</span></a>
+                            </div>
+                            <div className="space-y-1">
+                                <div className="text-sm font-medium text-slate-600 tracking-normal opacity-80">{t.footerCopy}</div>
+                                <p className="text-[13px] text-slate-700 leading-relaxed font-normal">{t.footerNote} <a href="https://www.youtube.com/@meiko1" target="_blank" className="text-cyan-400 font-bold hover:text-cyan-300">【Meiko微課頻道】</a></p>
+                                <div className="mt-2 pt-2 border-t border-slate-800"><p className="text-[14px] text-white font-normal opacity-70">{t.footerContact}</p></div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
