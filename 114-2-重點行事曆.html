@@ -1,0 +1,402 @@
+
+    <style>
+        .calendar-wrapper {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -10px #1e3a5f;
+            padding: 1.8rem 1.5rem;
+            border: 1px solid #c3d9ff;
+        }
+
+        .h1-114-2 {
+            color: #0b2b4a;
+            font-weight: 500;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            margin-top: 0.2rem;
+            margin-bottom: 0.2rem;
+            text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.6);
+        }
+
+        .h1-114-2 small {
+            font-size: 1em;
+            font-weight: 500;
+            color: #2b4f7b;
+            margin-left: 20px;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #f5faff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px #1f3a68;
+            border: 1px solid #a0c0e8;
+        }
+
+        .calendar-th {
+            background-color: #1c4e8c;
+            color: white;
+            font-weight: 600;
+            /* font-size: 1.1rem; */
+            padding: 16px 6px;
+            text-align: center;
+            border-right: 1px solid #3a7bb5;
+            border-bottom: 2px solid #0e3b6b;
+            letter-spacing: 0.5px;
+        }
+
+        .calendar-td {
+            border: 1px solid #b9d2f0;
+            padding: 12px 6px;
+            vertical-align: middle;
+            background-color: #edf4fe;
+            color: #01254e;
+            text-align: center;
+        }
+
+        .calendar-td.week-col,
+        .calendar-td.month-col {
+            background-color: #d4e3fc;
+            text-align: center;
+            vertical-align: middle;
+            color: #052c52;
+            border-right: 2px solid #84afe6;
+        }
+
+        .calendar-td.month-col {
+            /* font-size: 1.2rem; */
+            font-weight:bold
+            color: #6b39e0;
+            background-color: #c7dbfa;
+        }
+
+        .calendar-td.date-cell {
+            background-color: #e3efff;
+        }
+
+        .calendar-td.date-cell.red-date {
+            color: #c30000;
+            font-weight: 600;
+        }
+
+        .event-text {
+            color: #03316b;
+            line-height: 1.5;
+            /* font-size: 0.95rem; */
+            margin: 0;
+            padding: 2px 4px;
+        }
+
+        .event-highlight {
+            background-color: #d2e5ff;
+            border-radius: 12px;
+            padding: 4px 8px;
+            margin: 2px 0;
+            border-left: 3px solid #1960b3;
+        }
+
+        .calendar-tr-odd .calendar-td {
+            background-color: #e8f0fe;
+        }
+
+        .calendar-th[colspan] {
+            background-color: #10427c;
+        }
+
+        @media (max-width: 750px) {
+            .calendar-table {
+                font-size: 0.8rem;
+            }
+
+            .calendar-th {
+                padding: 8px 2px;
+            }
+        }
+
+        .calendar-td.event-cell {
+            text-align: left;
+        }
+    </style>        
+        <table class="calendar-table" cellspacing="0" cellpadding="0">
+            <h1 class="h1-114-2">愛蘭國民小學 <small>114學年度第二學期重點行事曆</small></h1>
+            <thead>
+                <tr class="calendar-tr-header">
+                    <th class="calendar-th" rowspan="2">週</th>
+                    <th class="calendar-th" rowspan="2">月</th>
+                    <th class="calendar-th" colspan="7">日 曆</th>
+                    <th class="calendar-th" rowspan="2">重 點 行 事</th>
+                </tr>
+                <tr class="calendar-tr-subheader">
+                    <th class="calendar-th">日</th>
+                    <th class="calendar-th">一</th>
+                    <th class="calendar-th">二</th>
+                    <th class="calendar-th">三</th>
+                    <th class="calendar-th">四</th>
+                    <th class="calendar-th">五</th>
+                    <th class="calendar-th">六</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="calendar-tr calendar-tr-1">
+                    <td class="calendar-td week-col">1</td>
+                    <td class="calendar-td month-col">一</td>
+                    <td class="calendar-td date-cell"></td>
+                    <td class="calendar-td date-cell"></td>
+                    <td class="calendar-td date-cell"></td>
+                    <td class="calendar-td date-cell">21</td>
+                    <td class="calendar-td date-cell">22</td>
+                    <td class="calendar-td date-cell">23</td>
+                    <td class="calendar-td date-cell red-date">24</td>
+                    <td class="calendar-td event-cell">1/21-23 調整上課</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-2">
+                    <td class="calendar-td week-col">2</td>
+                    <td class="calendar-td month-col">二</td>
+                    <td class="calendar-td date-cell"></td>
+                    <td class="calendar-td date-cell"></td>
+                    <td class="calendar-td date-cell"></td>
+                    <td class="calendar-td date-cell">11</td>
+                    <td class="calendar-td date-cell">12</td>
+                    <td class="calendar-td date-cell">13</td>
+                    <td class="calendar-td date-cell red-date">14</td>
+                    <td class="calendar-td event-cell">2/11 開學日</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-3">
+                    <td class="calendar-td week-col">3</td>
+                    <td class="calendar-td month-col">二</td>
+                    <td class="calendar-td date-cell red-date">22</td>
+                    <td class="calendar-td date-cell">23</td>
+                    <td class="calendar-td date-cell">24</td>
+                    <td class="calendar-td date-cell">25</td>
+                    <td class="calendar-td date-cell">26</td>
+                    <td class="calendar-td date-cell red-date">27</td>
+                    <td class="calendar-td date-cell red-date">28</td>
+                    <td class="calendar-td event-cell">
+                        <div class="event-text">2/23 上學日、2/25 社團選課(2/26、3/2、3 繳社團費)、2/27 補假、2/23
+                            跆拳、羽球、足球團隊發下調查表(2/26前收齊)、2/26 廢電池回收</div>
+                    </td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-4">
+                    <td class="calendar-td week-col">4</td>
+                    <td class="calendar-td month-col">三</td>
+                    <td class="calendar-td date-cell red-date">1</td>
+                    <td class="calendar-td date-cell">2</td>
+                    <td class="calendar-td date-cell">3</td>
+                    <td class="calendar-td date-cell">4</td>
+                    <td class="calendar-td date-cell">5</td>
+                    <td class="calendar-td date-cell">6</td>
+                    <td class="calendar-td date-cell red-date">7</td>
+                    <td class="calendar-td event-cell">3/9 兒童朝會-校園防災疏散避難演練、3/11 班親會(14:00-15:30)</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-5">
+                    <td class="calendar-td week-col">5</td>
+                    <td class="calendar-td month-col">三</td>
+                    <td class="calendar-td date-cell red-date">8</td>
+                    <td class="calendar-td date-cell">9</td>
+                    <td class="calendar-td date-cell">10</td>
+                    <td class="calendar-td date-cell">11</td>
+                    <td class="calendar-td date-cell">12</td>
+                    <td class="calendar-td date-cell">13</td>
+                    <td class="calendar-td date-cell red-date">14</td>
+                    <td class="calendar-td event-cell">自治鎮鎮長選舉宣傳 3/16 至3/26 止</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-6">
+                    <td class="calendar-td week-col">6</td>
+                    <td class="calendar-td month-col">三</td>
+                    <td class="calendar-td date-cell red-date">15</td>
+                    <td class="calendar-td date-cell">16</td>
+                    <td class="calendar-td date-cell">17</td>
+                    <td class="calendar-td date-cell">18</td>
+                    <td class="calendar-td date-cell">19</td>
+                    <td class="calendar-td date-cell">20</td>
+                    <td class="calendar-td date-cell red-date">21</td>
+                    <td class="calendar-td event-cell"></td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-7">
+                    <td class="calendar-td week-col">7</td>
+                    <td class="calendar-td month-col">三</td>
+                    <td class="calendar-td date-cell red-date">22</td>
+                    <td class="calendar-td date-cell">23</td>
+                    <td class="calendar-td date-cell">24</td>
+                    <td class="calendar-td date-cell">25</td>
+                    <td class="calendar-td date-cell">26</td>
+                    <td class="calendar-td date-cell">27</td>
+                    <td class="calendar-td date-cell red-date">28</td>
+                    <td class="calendar-td event-cell"></td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-8">
+                    <td class="calendar-td week-col">8</td>
+                    <td class="calendar-td month-col">四</td>
+                    <td class="calendar-td date-cell red-date">29</td>
+                    <td class="calendar-td date-cell">30</td>
+                    <td class="calendar-td date-cell">31</td>
+                    <td class="calendar-td date-cell">1</td>
+                    <td class="calendar-td date-cell">2</td>
+                    <td class="calendar-td date-cell red-date">3</td>
+                    <td class="calendar-td date-cell red-date">4</td>
+                    <td class="calendar-td event-cell">4/3 兒童節補假、4/6 清明節放假</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-9">
+                    <td class="calendar-td week-col">9</td>
+                    <td class="calendar-td month-col">四</td>
+                    <td class="calendar-td date-cell red-date">5</td>
+                    <td class="calendar-td date-cell red-date">6</td>
+                    <td class="calendar-td date-cell">7</td>
+                    <td class="calendar-td date-cell">8</td>
+                    <td class="calendar-td date-cell">9</td>
+                    <td class="calendar-td date-cell">10</td>
+                    <td class="calendar-td date-cell red-date">11</td>
+                    <td class="calendar-td event-cell">4/10 南投縣115 學年度幼兒園新生缺額公告</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-10">
+                    <td class="calendar-td week-col">10</td>
+                    <td class="calendar-td month-col">四</td>
+                    <td class="calendar-td date-cell red-date">12</td>
+                    <td class="calendar-td date-cell">13</td>
+                    <td class="calendar-td date-cell">14</td>
+                    <td class="calendar-td date-cell">15</td>
+                    <td class="calendar-td date-cell">16</td>
+                    <td class="calendar-td date-cell">17</td>
+                    <td class="calendar-td date-cell red-date">18</td>
+                    <td class="calendar-td event-cell">4/13-4/23 進行115 學年度南投縣公立幼兒園及非營利幼兒園線上招生登記</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-11">
+                    <td class="calendar-td week-col">11</td>
+                    <td class="calendar-td month-col">四</td>
+                    <td class="calendar-td date-cell red-date">19</td>
+                    <td class="calendar-td date-cell">20</td>
+                    <td class="calendar-td date-cell">21</td>
+                    <td class="calendar-td date-cell">22</td>
+                    <td class="calendar-td date-cell">23</td>
+                    <td class="calendar-td date-cell">24</td>
+                    <td class="calendar-td date-cell red-date">25</td>
+                    <td class="calendar-td event-cell">4/23、24 期中評量、4/24 大隊接力(第6節56) 4/24 幼兒園新生報名系統線上抽籤、公告錄取名單
+                        第66期愛蘭悅報出刊</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-12">
+                    <td class="calendar-td week-col">12</td>
+                    <td class="calendar-td month-col">五</td>
+                    <td class="calendar-td date-cell red-date">26</td>
+                    <td class="calendar-td date-cell">27</td>
+                    <td class="calendar-td date-cell">28</td>
+                    <td class="calendar-td date-cell">29</td>
+                    <td class="calendar-td date-cell">30</td>
+                    <td class="calendar-td date-cell red-date">1</td>
+                    <td class="calendar-td date-cell red-date">2</td>
+                    <td class="calendar-td event-cell">4/27-4/30 幼兒園新生錄取報到、4/28 全校春季校外教學、4/29 大隊接力(晨光12)、4/30
+                        大隊接力(晨光34)、5/1 勞動節放假、新生報到</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-13">
+                    <td class="calendar-td week-col">13</td>
+                    <td class="calendar-td month-col">五</td>
+                    <td class="calendar-td date-cell red-date">3</td>
+                    <td class="calendar-td date-cell">4</td>
+                    <td class="calendar-td date-cell">5</td>
+                    <td class="calendar-td date-cell">6</td>
+                    <td class="calendar-td date-cell">7</td>
+                    <td class="calendar-td date-cell">8</td>
+                    <td class="calendar-td date-cell red-date">9</td>
+                    <td class="calendar-td event-cell">5/6 溫馨愛蘭日-母親節才藝表演活動&教學成果展</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-14">
+                    <td class="calendar-td week-col">14</td>
+                    <td class="calendar-td month-col">五</td>
+                    <td class="calendar-td date-cell red-date">10</td>
+                    <td class="calendar-td date-cell">11</td>
+                    <td class="calendar-td date-cell">12</td>
+                    <td class="calendar-td date-cell">13</td>
+                    <td class="calendar-td date-cell">14</td>
+                    <td class="calendar-td date-cell">15</td>
+                    <td class="calendar-td date-cell red-date">16</td>
+                    <td class="calendar-td event-cell">5/12 新舊自治鎮幹部交接</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-15">
+                    <td class="calendar-td week-col">15</td>
+                    <td class="calendar-td month-col">五</td>
+                    <td class="calendar-td date-cell red-date">17</td>
+                    <td class="calendar-td date-cell">18</td>
+                    <td class="calendar-td date-cell">19</td>
+                    <td class="calendar-td date-cell">20</td>
+                    <td class="calendar-td date-cell">21</td>
+                    <td class="calendar-td date-cell">22</td>
+                    <td class="calendar-td date-cell red-date">23</td>
+                    <td class="calendar-td event-cell"></td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-16">
+                    <td class="calendar-td week-col">16</td>
+                    <td class="calendar-td month-col">五</td>
+                    <td class="calendar-td date-cell red-date">24</td>
+                    <td class="calendar-td date-cell">25</td>
+                    <td class="calendar-td date-cell">26</td>
+                    <td class="calendar-td date-cell">27</td>
+                    <td class="calendar-td date-cell">28</td>
+                    <td class="calendar-td date-cell">29</td>
+                    <td class="calendar-td date-cell red-date">30</td>
+                    <td class="calendar-td event-cell"></td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-17">
+                    <td class="calendar-td week-col">17</td>
+                    <td class="calendar-td month-col">六</td>
+                    <td class="calendar-td date-cell red-date">31</td>
+                    <td class="calendar-td date-cell">1</td>
+                    <td class="calendar-td date-cell">2</td>
+                    <td class="calendar-td date-cell">3</td>
+                    <td class="calendar-td date-cell">4</td>
+                    <td class="calendar-td date-cell">5</td>
+                    <td class="calendar-td date-cell red-date">6</td>
+                    <td class="calendar-td event-cell">6/3-4 六年級第二次評量、6/5 班際體育競賽-六年級躲避球、第67期愛蘭悅報出刊</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-18">
+                    <td class="calendar-td week-col">18</td>
+                    <td class="calendar-td month-col">六</td>
+                    <td class="calendar-td date-cell red-date">7</td>
+                    <td class="calendar-td date-cell">8</td>
+                    <td class="calendar-td date-cell">9</td>
+                    <td class="calendar-td date-cell">10</td>
+                    <td class="calendar-td date-cell">11</td>
+                    <td class="calendar-td date-cell">12</td>
+                    <td class="calendar-td date-cell red-date">13</td>
+                    <td class="calendar-td event-cell">6/12 畢業典禮</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-19">
+                    <td class="calendar-td week-col">19</td>
+                    <td class="calendar-td month-col">六</td>
+                    <td class="calendar-td date-cell red-date">14</td>
+                    <td class="calendar-td date-cell">15</td>
+                    <td class="calendar-td date-cell">16</td>
+                    <td class="calendar-td date-cell">17</td>
+                    <td class="calendar-td date-cell">18</td>
+                    <td class="calendar-td date-cell red-date">19</td>
+                    <td class="calendar-td date-cell red-date">20</td>
+                    <td class="calendar-td event-cell">暑期育樂營志願填選繳費6/15-16 (星期二截止)、6/19 端午節、6/17 社團最後一次上課</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-20">
+                    <td class="calendar-td week-col">20</td>
+                    <td class="calendar-td month-col">六</td>
+                    <td class="calendar-td date-cell red-date">21</td>
+                    <td class="calendar-td date-cell">22</td>
+                    <td class="calendar-td date-cell">23</td>
+                    <td class="calendar-td date-cell">24</td>
+                    <td class="calendar-td date-cell">25</td>
+                    <td class="calendar-td date-cell">26</td>
+                    <td class="calendar-td date-cell red-date">27</td>
+                    <td class="calendar-td event-cell">6/23-24 期末評量、6/26 班際體育競賽-躲避球</td>
+                </tr>
+                <tr class="calendar-tr calendar-tr-21">
+                    <td class="calendar-td week-col">21</td>
+                    <td class="calendar-td month-col">六</td>
+                    <td class="calendar-td date-cell red-date">28</td>
+                    <td class="calendar-td date-cell">29</td>
+                    <td class="calendar-td date-cell">30</td>
+                    <td class="calendar-td date-cell"></td>
+                    <td class="calendar-td date-cell"></td>
+                    <td class="calendar-td date-cell"></td>
+                    <td class="calendar-td date-cell"></td>
+                    <td class="calendar-td event-cell">6/30 結業式</td>
+                </tr>
+            </tbody>
+        </table>
