@@ -29,16 +29,21 @@
             right: 16px;
             z-index: 999;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+            /* 改為垂直排列 */
             gap: 8px;
+            /* 按鈕垂直間距 */
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(6px);
-            padding: 8px 14px;
+            padding: 8px 10px;
+            /* 調整內距，左右稍窄 */
             border-radius: 48px;
             box-shadow: 0 8px 24px rgba(0, 20, 30, 0.12);
             border: 1px solid rgba(255, 255, 255, 0.5);
-            flex-wrap: wrap;
-            justify-content: center;
+            width: auto;
+            /* 寬度由內容決定 */
+            min-width: unset;
+            /* 移除最小寬度限制 */
         }
 
         .float-btn {
@@ -57,6 +62,7 @@
             min-width: 80px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             cursor: pointer;
+            /* width: 100%; 可考慮取消註解讓按鈕同寬 */
         }
 
         .float-btn:hover {
@@ -252,9 +258,11 @@
             .float-btn-group {
                 top: 10px;
                 right: 10px;
-                padding: 6px 10px;
+                padding: 6px 8px;
                 gap: 6px;
                 border-radius: 32px;
+                flex-direction: column;
+                /* 維持垂直 */
             }
 
             .float-btn {
@@ -343,8 +351,10 @@
             }
 
             .float-btn-group {
-                flex-direction: row;
-                flex-wrap: wrap;
+                flex-direction: column;
+                /* 維持垂直 */
+                flex-wrap: nowrap;
+                /* 不換行 */
                 justify-content: center;
                 top: 6px;
                 right: 6px;
@@ -389,8 +399,8 @@
 
     <!-- 懸浮按鈕 (RWD 友善) -->
     <div class="float-btn-group">
-        <a href="#classA" class="float-btn">📘 甲班</a>
-        <a href="#classB" class="float-btn b-class">📙 乙班</a>
+        <a href="#classA" class="float-btn">📘 甲班課表</a>
+        <a href="#classB" class="float-btn b-class">📙 乙班課表</a>
     </div>
 
     <!-- 主標題 -->
@@ -639,20 +649,16 @@
                             <div class="cell-content">大馬瑞建址考古體驗</strong><span class="teacher">陳文富</span></div>
                         </td>
                         <td>
-                            <div class="cell-content">考古故事卡製作及<br>考古餅乾烘焙</strong><span
-                                    class="teacher">陳郁涵</span></div>
+                            <div class="cell-content">考古故事卡製作及<br>考古餅乾烘焙</strong><span class="teacher">陳郁涵</span></div>
                         </td>
                         <td>
-                            <div class="cell-content">考古故事卡製作及<br>考古餅乾烘焙</strong><span
-                                    class="teacher">陳郁涵</span></div>
+                            <div class="cell-content">考古故事卡製作及<br>考古餅乾烘焙</strong><span class="teacher">陳郁涵</span></div>
                         </td>
                         <td>
-                            <div class="cell-content">考古故事卡製作及<br>考古餅乾烘焙</strong><span
-                                    class="teacher">陳郁涵</span></div>
+                            <div class="cell-content">考古故事卡製作及<br>考古餅乾烘焙</strong><span class="teacher">陳郁涵</span></div>
                         </td>
                         <td>
-                            <div class="cell-content">考古故事卡製作及<br>考古餅乾烘焙</strong><span
-                                    class="teacher">陳郁涵</span></div>
+                            <div class="cell-content">考古故事卡製作及<br>考古餅乾烘焙</strong><span class="teacher">陳郁涵</span></div>
                         </td>
                     </tr>
                     <!-- 7/8 三 -->
