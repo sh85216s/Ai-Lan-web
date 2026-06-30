@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>115 夏日樂學 · 甲乙班課表 (RWD)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #f0f7fb;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* 懸浮按鈕群組 - 響應式調整 */
+        .float-btn-group {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 999;
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(6px);
+            padding: 8px 14px;
+            border-radius: 48px;
+            box-shadow: 0 8px 24px rgba(0, 20, 30, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .float-btn {
+            display: inline-block;
+            background: #1a5a6b;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease;
+            text-align: center;
+            min-width: 80px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+
+        .float-btn:hover {
+            background: #0e4454;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 18px rgba(0, 30, 40, 0.15);
+        }
+
+        .float-btn.b-class {
+            background: #b4653c;
+        }
+
+        .float-btn.b-class:hover {
+            background: #8f4f2e;
+        }
+
+        .float-btn:active {
+            transform: scale(0.94);
+        }
+
+        /* 主要容器 — 改為最大寬度 100%，左右留白 */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            background: white;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+            border-radius: 28px;
+            padding: 24px 16px 28px;
+            transition: all 0.2s;
+            margin-bottom: 28px;
+        }
+
+        /* 主標題 - 靠左 */
+        .main-title-wrapper {
+            width: 100%;
+            max-width: 1400px;
+            padding: 0 8px 12px 8px;
+            text-align: left;
+        }
+
+        .main-title {
+            font-size: 2.0rem;
+            font-weight: 600;
+            color: #0b3b4b;
+            letter-spacing: 2px;
+            border-bottom: 4px solid #ffb74d;
+            padding-bottom: 10px;
+            display: inline-block;
+            width: auto;
+        }
+
+        /* 標題列 + 資訊列 */
+        .container_A {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 4px 16px 4px;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+        }
+
+        .column {
+            flex: 1 1 auto;
+            font-size: 1rem;
+        }
+
+        .left-col {
+            text-align: left;
+        }
+
+        .right-col {
+            text-align: right;
+            font-size: 0.95rem;
+            color: #1e4b5a;
+        }
+
+        .left-col h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin: 0;
+            color: #0b3b4b;
+        }
+
+        /* 表格外層 – 水平捲動 (RWD 核心) */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 6px;
+            border-radius: 18px;
+            border: 1px solid #d9e6ed;
+            background: #ffffff;
+            /* 讓內部陰影更自然 */
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+        }
+
+        /* 表格本身 – 最小寬度確保欄位不被壓扁，但仍可滾動 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 820px;
+            /* 低於此寬度會觸發水平滾動 */
+            background-color: #ffffff;
+            table-layout: auto;
+        }
+
+        th {
+            background: #1a5a6b;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            padding: 12px 6px;
+            text-align: center;
+            border: 1px solid #2c6f81;
+            white-space: nowrap;
+        }
+
+        td {
+            border: 1px solid #cbdbe5;
+            padding: 10px 5px;
+            vertical-align: middle;
+            background-color: #fcfefe;
+            text-align: center;
+            line-height: 1.4;
+            min-width: 70px;
+            word-break: break-word;
+        }
+
+        .date-col {
+            background: #e3f0f5;
+            font-weight: 600;
+            color: #004d66;
+            white-space: nowrap;
+            width: 70px;
+            min-width: 60px;
+        }
+
+        .day-col {
+            background: #d7eaf3;
+            font-weight: 600;
+            color: #004d66;
+            white-space: nowrap;
+            width: 48px;
+            min-width: 40px;
+        }
+
+        .teacher {
+            display: block;
+            font-size: 0.75rem;
+            color: rgb(230, 60, 60);
+            margin-top: 2px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            line-height: 1.3;
+        }
+
+        .course-name {
+            font-weight: 500;
+            color: #0a2e3a;
+            word-break: break-word;
+        }
+
+        .cell-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 手機及小螢幕專屬調整 */
+        @media (max-width: 720px) {
+            body {
+                padding: 12px 8px;
+            }
+
+            .container {
+                padding: 16px 8px 18px;
+                border-radius: 20px;
+            }
+
+            .main-title {
+                font-size: 1.5rem;
+                padding-bottom: 8px;
+            }
+
+            .left-col h2 {
+                font-size: 1.3rem;
+            }
+
+            .float-btn-group {
+                top: 10px;
+                right: 10px;
+                padding: 6px 10px;
+                gap: 6px;
+                border-radius: 32px;
+            }
+
+            .float-btn {
+                font-size: 0.75rem;
+                padding: 6px 14px;
+                min-width: 65px;
+            }
+
+            .right-col {
+                font-size: 0.8rem;
+                text-align: right;
+            }
+
+            /* 表格字體稍小，但維持可讀性 */
+            table {
+                font-size: 0.75rem;
+                min-width: 680px;
+                /* 讓較小的平板仍可水平捲動 */
+            }
+
+            th {
+                font-size: 0.7rem;
+                padding: 8px 4px;
+                letter-spacing: 0.05em;
+            }
+
+            td {
+                padding: 8px 3px;
+                min-width: 55px;
+            }
+
+            .date-col {
+                width: 58px;
+                min-width: 50px;
+                font-size: 0.7rem;
+            }
+
+            .day-col {
+                width: 36px;
+                min-width: 32px;
+                font-size: 0.7rem;
+            }
+
+            .teacher {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* 極小螢幕 (如手機直向) 進一步調整 */
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.3rem;
+            }
+
+            .container_A {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .right-col {
+                text-align: left;
+                width: 100%;
+            }
+
+            table {
+                font-size: 0.7rem;
+                min-width: 580px;
+            }
+
+            td {
+                padding: 6px 2px;
+                min-width: 44px;
+            }
+
+            .date-col {
+                width: 48px;
+                min-width: 40px;
+                font-size: 0.65rem;
+            }
+
+            .day-col {
+                width: 30px;
+                min-width: 28px;
+                font-size: 0.65rem;
+            }
+
+            .float-btn-group {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                top: 6px;
+                right: 6px;
+                padding: 4px 8px;
+            }
+
+            .float-btn {
+                font-size: 0.65rem;
+                padding: 4px 10px;
+                min-width: 56px;
+            }
+        }
+
+        /* 平板或較大螢幕橫放時，讓表格更寬敞 */
+        @media (min-width: 1024px) {
+            table {
+                font-size: 0.95rem;
+                min-width: 1000px;
+            }
+
+            td {
+                padding: 14px 8px;
+            }
+
+            .teacher {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* 輔助 class */
+        .anchor-offset {
+            scroll-margin-top: 100px;
+        }
+
+        .weekday {
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 懸浮按鈕 (RWD 友善) -->
+    <div class="float-btn-group">
+        <a href="#classA" class="float-btn">📘 甲班</a>
+        <a href="#classB" class="float-btn b-class">📙 乙班</a>
+    </div>
+
+    <!-- 主標題 -->
+    <div class="main-title-wrapper">
+        <div class="main-title">🌞 115 夏日樂學 · 課表</div>
+    </div>
+
+    <!-- ========= 甲班 ========= -->
+    <div id="classA" class="container anchor-offset">
+        <div class="container_A">
+            <div class="column left-col">
+                <h2>📘 甲班課表</h2>
+            </div>
+            <div class="column right-col">
+                <span>📅 中英教室</span>
+                <span style="display: inline-block; margin-left: 12px;">👩‍🏫 教師於課程下方</span>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>週</th>
+                        <th>第1節</th>
+                        <th>第2節</th>
+                        <th>第3節</th>
+                        <th>第4節</th>
+                        <th>第5節</th>
+                        <th>第6節</th>
+                        <th>第7節</th>
+                        <th>第8節</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 7/6 一 -->
+                    <tr>
+                        <td class="date-col">7/6</td>
+                        <td class="day-col">一</td>
+                        <td><span class="course-name">AI 體適能遊戲</span><span class="teacher">向志賢</span></td>
+                        <td><span class="course-name">AI 體適能遊戲</span><span class="teacher">向志賢</span></td>
+                        <td><span class="course-name">AI 體適能遊戲</span><span class="teacher">向志賢</span></td>
+                        <td><span class="course-name">AI 體適能遊戲</span><span class="teacher">向志賢</span></td>
+                        <td><span class="course-name">科學小遊戲初探</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">科學小遊戲初探</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">科學小遊戲初探</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">科學小遊戲初探</span><span class="teacher">喻榮華</span></td>
+                    </tr>
+                    <!-- 7/7 二 -->
+                    <tr>
+                        <td class="date-col">7/7</td>
+                        <td class="day-col">二</td>
+                        <td><span class="course-name">白魚賞鳥趣</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">白魚賞鳥趣</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">白魚賞鳥趣</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">白魚賞鳥趣</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">白魚賞鳥趣</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">白魚賞鳥趣</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">白魚賞鳥趣</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">白魚賞鳥趣</span><span class="teacher">喻榮華</span></td>
+                    </tr>
+                    <!-- 7/8 三 -->
+                    <tr>
+                        <td class="date-col">7/8</td>
+                        <td class="day-col">三</td>
+                        <td><span class="course-name">走讀埔里老街</span><span class="teacher">詹羽辰</span></td>
+                        <td><span class="course-name">走讀埔里老街</span><span class="teacher">詹羽辰</span></td>
+                        <td><span class="course-name">走讀埔里老街</span><span class="teacher">詹羽辰</span></td>
+                        <td><span class="course-name">走讀埔里老街</span><span class="teacher">詹羽辰</span></td>
+                        <td><span class="course-name">桌遊探險樂</span><span class="teacher">詹羽辰</span></td>
+                        <td><span class="course-name">桌遊探險樂</span><span class="teacher">詹羽辰</span></td>
+                        <td><span class="course-name">桌遊探險樂</span><span class="teacher">詹羽辰</span></td>
+                        <td><span class="course-name">桌遊探險樂</span><span class="teacher">詹羽辰</span></td>
+                    </tr>
+                    <!-- 7/9 四 -->
+                    <tr>
+                        <td class="date-col">7/9</td>
+                        <td class="day-col">四</td>
+                        <td><span class="course-name">發現 Taiwan 和 Philippines 之美</span><span
+                                class="teacher">劉真麟、Chenny</span></td>
+                        <td><span class="course-name">發現 Taiwan 和 Philippines 之美</span><span
+                                class="teacher">劉真麟、Chenny</span></td>
+                        <td><span class="course-name">發現Taiwan 和 Philippines 之美</span><span
+                                class="teacher">劉真麟、Chenny</span></td>
+                        <td><span class="course-name">發現Taiwan 和 Philippines 之美</span><span
+                                class="teacher">劉真麟、Chenny</span></td>
+                        <td><span class="course-name">校園生態初探</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">校園生態初探</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">校園生態初探</span><span class="teacher">喻榮華</span></td>
+                        <td><span class="course-name">校園生態初探</span><span class="teacher">喻榮華</span></td>
+                    </tr>
+                    <!-- 7/10 五 -->
+                    <tr>
+                        <td class="date-col">7/10</td>
+                        <td class="day-col">五</td>
+                        <td><span class="course-name">閩南語童謠玩樂去</span><span class="teacher">曾雅涓</span></td>
+                        <td><span class="course-name">閩南語童謠玩樂去</span><span class="teacher">曾雅涓</span></td>
+                        <td><span class="course-name">閩南語童謠玩樂去</span><span class="teacher">曾雅涓</span></td>
+                        <td><span class="course-name">閩南語童謠玩樂去</span><span class="teacher">曾雅涓</span></td>
+                        <td><span class="course-name">紙藝文化初體驗</span><span class="teacher">江桂枝</span></td>
+                        <td><span class="course-name">紙藝文化初體驗</span><span class="teacher">江桂枝</span></td>
+                        <td><span class="course-name">紙藝文化初體驗</span><span class="teacher">江桂枝</span></td>
+                        <td><span class="course-name">紙藝文化初體驗</span><span class="teacher">江桂枝</span></td>
+                    </tr>
+                    <!-- 7/13 一 -->
+                    <tr>
+                        <td class="date-col">7/13</td>
+                        <td class="day-col">一</td>
+                        <td><span class="course-name">巴宰原鄉體驗</span><span class="teacher">潘英傑</span></td>
+                        <td><span class="course-name">巴宰原鄉體驗</span><span class="teacher">潘英傑</span></td>
+                        <td><span class="course-name">巴宰原鄉體驗</span><span class="teacher">潘英傑</span></td>
+                        <td><span class="course-name">巴宰原鄉體驗</span><span class="teacher">潘英傑</span></td>
+                        <td><span class="course-name">節慶故事創作教學</span><span class="teacher">王和祥</span></td>
+                        <td><span class="course-name">節慶故事創作教學</span><span class="teacher">王和祥</span></td>
+                        <td><span class="course-name">節慶故事創作教學</span><span class="teacher">王和祥</span></td>
+                        <td><span class="course-name">節慶故事創作教學</span><span class="teacher">王和祥</span></td>
+                    </tr>
+                    <!-- 7/14 二 -->
+                    <tr>
+                        <td class="date-col">7/14</td>
+                        <td class="day-col">二</td>
+                        <td><span class="course-name">大馬璘遺址考古體驗</span><span class="teacher">陳文富</span></td>
+                        <td><span class="course-name">大馬璘遺址考古體驗</span><span class="teacher">陳文富</span></td>
+                        <td><span class="course-name">大馬璘遺址考古體驗</span><span class="teacher">陳文富</span></td>
+                        <td><span class="course-name">大馬璘遺址考古體驗</span><span class="teacher">陳文富</span></td>
+                        <td><span class="course-name">考古故事卡製作及考古餅乾烘焙</span><span class="teacher">陳郁涵</span></td>
+                        <td><span class="course-name">考古故事卡製作及考古餅乾烘焙</span><span class="teacher">陳郁涵</span></td>
+                        <td><span class="course-name">考古故事卡製作及考古餅乾烘焙</span><span class="teacher">陳郁涵</span></td>
+                        <td><span class="course-name">考古故事卡製作及考古餅乾烘焙</span><span class="teacher">陳郁涵</span></td>
+                    </tr>
+                    <!-- 7/15 三 -->
+                    <tr>
+                        <td class="date-col">7/15</td>
+                        <td class="day-col">三</td>
+                        <td><span class="course-name">蠶蠶世界探究</span><span class="teacher">向志賢</span></td>
+                        <td><span class="course-name">蠶蠶世界探究</span><span class="teacher">向志賢</span></td>
+                        <td><span class="course-name">蠶蠶世界探究</span><span class="teacher">向志賢</span></td>
+                        <td><span class="course-name">蠶蠶世界探究</span><span class="teacher">向志賢</span></td>
+                        <td><span class="course-name">美食點心屋</span><span class="teacher">王和祥</span></td>
+                        <td><span class="course-name">美食點心屋</span><span class="teacher">王和祥</span></td>
+                        <td><span class="course-name">美食點心屋</span><span class="teacher">王和祥</span></td>
+                        <td><span class="course-name">美食點心屋</span><span class="teacher">王和祥</span></td>
+                    </tr>
+                    <!-- 7/16 四 -->
+                    <tr>
+                        <td class="date-col">7/16</td>
+                        <td class="day-col">四</td>
+                        <td><span class="course-name">在地廚房初體驗-土角胖</span><span class="teacher">陳郁涵</span></td>
+                        <td><span class="course-name">在地廚房初體驗-土角胖</span><span class="teacher">陳郁涵</span></td>
+                        <td><span class="course-name">在地廚房初體驗-土角胖</span><span class="teacher">陳郁涵</span></td>
+                        <td><span class="course-name">在地廚房初體驗-土角胖</span><span class="teacher">陳郁涵</span></td>
+                        <td><span class="course-name">愛蘭里梅村社區導覽</span><span class="teacher">陳文富</span></td>
+                        <td><span class="course-name">愛蘭里梅村社區導覽</span><span class="teacher">陳文富</span></td>
+                        <td><span class="course-name">愛蘭里梅村社區導覽</span><span class="teacher">陳文富</span></td>
+                        <td><span class="course-name">愛蘭里梅村社區導覽</span><span class="teacher">陳文富</span></td>
+                    </tr>
+                    <!-- 7/17 五 -->
+                    <tr>
+                        <td class="date-col">7/17</td>
+                        <td class="day-col">五</td>
+                        <td><span class="course-name">船山故事趣</span><span class="teacher">潘文輝</span></td>
+                        <td><span class="course-name">船山故事趣</span><span class="teacher">潘文輝</span></td>
+                        <td><span class="course-name">船山故事趣</span><span class="teacher">潘文輝</span></td>
+                        <td><span class="course-name">船山故事趣</span><span class="teacher">潘文輝</span></td>
+                        <td><span class="course-name">園膳彩繪</span><span class="teacher">江桂枝</span></td>
+                        <td><span class="course-name">園膳彩繪</span><span class="teacher">江桂枝</span></td>
+                        <td><span class="course-name">園膳彩繪</span><span class="teacher">江桂枝</span></td>
+                        <td><span class="course-name">園膳彩繪</span><span class="teacher">江桂枝</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ========= 乙班 ========= -->
+    <div id="classB" class="container anchor-offset">
+        <div class="container_A">
+            <div class="column left-col">
+                <h2>📙 乙班課表</h2>
+            </div>
+            <div class="column right-col">
+                <span>📅 高英教室</span>
+                <span style="display: inline-block; margin-left: 12px;">👩‍🏫 教師於課程下方</span>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>週</th>
+                        <th>第1節</th>
+                        <th>第2節</th>
+                        <th>第3節</th>
+                        <th>第4節</th>
+                        <th>第5節</th>
+                        <th>第6節</th>
+                        <th>第7節</th>
+                        <th>第8節</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 7/6 一 -->
+                    <tr>
+                        <td class="date-col">7/6</td>
+                        <td class="day-col">一</td>
+                        <td>
+                            <div class="cell-content"><strong>巴宰原鄉體驗</strong><span class="teacher">潘英傑</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>巴宰原鄉體驗</strong><span class="teacher">潘英傑</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>巴宰原鄉體驗</strong><span class="teacher">潘英傑</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>巴宰原鄉體驗</strong><span class="teacher">潘英傑</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>AI 體適能遊戲</strong><span class="teacher">向志賢</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>AI 體適能遊戲</strong><span class="teacher">向志賢</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>AI 體適能遊戲</strong><span class="teacher">向志賢</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>AI 體適能遊戲</strong><span class="teacher">向志賢</span></div>
+                        </td>
+                    </tr>
+                    <!-- 7/7 二 -->
+                    <tr>
+                        <td class="date-col">7/7</td>
+                        <td class="day-col">二</td>
+                        <td>
+                            <div class="cell-content"><strong>大馬瑞達址考古體驗</strong><span class="teacher">陳文富</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>大馬瑞達址考古體驗</strong><span class="teacher">陳文富</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>大馬瑞建址考古體驗</strong><span class="teacher">陳文富</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>大馬瑞建址考古體驗</strong><span class="teacher">陳文富</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>考古故事卡製作及<br>考古餅乾烘焙</strong><span
+                                    class="teacher">陳郁涵</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>考古故事卡製作及<br>考古餅乾烘焙</strong><span
+                                    class="teacher">陳郁涵</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>考古故事卡製作及<br>考古餅乾烘焙</strong><span
+                                    class="teacher">陳郁涵</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>考古故事卡製作及<br>考古餅乾烘焙</strong><span
+                                    class="teacher">陳郁涵</span></div>
+                        </td>
+                    </tr>
+                    <!-- 7/8 三 -->
+                    <tr>
+                        <td class="date-col">7/8</td>
+                        <td class="day-col">三</td>
+                        <td>
+                            <div class="cell-content"><strong>發現Taiwan和Philippines之美</strong><span
+                                    class="teacher">劉真麟·Chenny</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>發現Taiwan和Philippines之美</strong><span
+                                    class="teacher">劉真麟·Chenny</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>發現Taiwan和Philippines之美</strong><span
+                                    class="teacher">劉真麟·Chenny</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>發現Taiwann和Philippines之</strong><span
+                                    class="teacher">劉真麟·Chenny</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>閩南語童謠玩樂去</strong><span class="teacher">曾雅涓</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>閩南語童謠玩樂去</strong><span class="teacher">曾雅涓</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>閩南語童謠玩樂去</strong><span class="teacher">曾雅涓</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>閩南語童謠玩樂去</strong><span class="teacher">曾雅涓</span></div>
+                        </td>
+                    </tr>
+                    <!-- 7/9 四 -->
+                    <tr>
+                        <td class="date-col">7/9</td>
+                        <td class="day-col">四</td>
+                        <td>
+                            <div class="cell-content"><strong>走讀埔里老街</strong><span class="teacher">詹羽辰</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>走讀埔里老街</strong><span class="teacher">詹羽辰</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>走讀埔里老街</strong><span class="teacher">詹羽辰</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>走讀埔里老街</strong><span class="teacher">詹羽辰</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>桌遊探險樂</strong><span class="teacher">詹羽辰</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>桌遊探險樂</strong><span class="teacher">詹羽辰</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>桌遊探險樂</strong><span class="teacher">詹羽辰</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>桌遊探險樂</strong><span class="teacher">詹羽辰</span></div>
+                        </td>
+                    </tr>
+                    <!-- 7/10 五 -->
+                    <tr>
+                        <td class="date-col">7/10</td>
+                        <td class="day-col">五</td>
+                        <td>
+                            <div class="cell-content"><strong>校園生態初探</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>校園生態初探</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>校園生態初探</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>校園生態初探</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>科學小遊戲初探</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>科學小遊戲初探</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>科學小遊戲初探</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>科學小遊戲初探</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                    </tr>
+                    <!-- 7/13 一 -->
+                    <tr>
+                        <td class="date-col">7/13</td>
+                        <td class="day-col">一</td>
+                        <td>
+                            <div class="cell-content"><strong>在地廚房初體驗-土角胖</strong><span class="teacher">陳郁涵</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>在地廚房初體驗-土角胖</strong><span class="teacher">陳郁涵</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>在地廚房初體驗-土角胖</strong><span class="teacher">陳郁涵</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>在地廚房初體驗-土角胖</strong><span class="teacher">陳郁涵</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>愛蘭里梅村社區導覽</strong><span class="teacher">陳文富</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>愛蘭里梅村社區導覽</strong><span class="teacher">陳文富</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>愛蘭里梅村社區導覽</strong><span class="teacher">陳文富</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>愛蘭里梅村社區導覽</strong><span class="teacher">陳文富</span></div>
+                        </td>
+                    </tr>
+                    <!-- 7/14 二 -->
+                    <tr>
+                        <td class="date-col">7/14</td>
+                        <td class="day-col">二</td>
+                        <td>
+                            <div class="cell-content"><strong>白魚賞鳥趣</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>白魚賞鳥趣</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>白魚賞鳥趣</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>白魚賞鳥趣</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>白魚賞鳥趣</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>白魚賞鳥趣</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>白魚賞鳥趣</strong><span class="teacher">喻榮華</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"></div>
+                        </td>
+                    </tr>
+                    <!-- 7/15 三 -->
+                    <tr>
+                        <td class="date-col">7/15</td>
+                        <td class="day-col">三</td>
+                        <td>
+                            <div class="cell-content"><strong>船山故事趣</strong><span class="teacher">潘文輝</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>船山故事趣</strong><span class="teacher">潘文輝</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>船山故事趣</strong><span class="teacher">海文輝</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>船山故事趣</strong><span class="teacher">潘文輝</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>國語彩繪</strong><span class="teacher">江桂枝</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>國語彩繪</strong><span class="teacher">江桂枝</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>國語彩繪</strong><span class="teacher">江桂枝</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>國語彩繪</strong><span class="teacher">江桂枝</span></div>
+                        </td>
+                    </tr>
+                    <!-- 7/16 四 -->
+                    <tr>
+                        <td class="date-col">7/16</td>
+                        <td class="day-col">四</td>
+                        <td>
+                            <div class="cell-content"><strong>蟲蟲世界探究</strong><span class="teacher">向志賢</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>蟲蟲世界探究</strong><span class="teacher">向志賢</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>蟲蟲世界探究</strong><span class="teacher">向志賢</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>蟲蟲世界探究</strong><span class="teacher">向志賢</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>紙藝文化初體驗</strong><span class="teacher">江桂枝</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>紙藝文化初體驗</strong><span class="teacher">江桂枝</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>紙藝文化初體驗</strong><span class="teacher">江桂枝</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>紙藝文化初體驗</strong><span class="teacher">江桂枝</span></div>
+                        </td>
+                    </tr>
+                    <!-- 7/17 五 -->
+                    <tr>
+                        <td class="date-col">7/17</td>
+                        <td class="day-col">五</td>
+                        <td>
+                            <div class="cell-content"><strong>美食點心屋</strong><span class="teacher">王和祥</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>美食點心屋</strong><span class="teacher">王和祥</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>美食點心屋</strong><span class="teacher">王和祥</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>美食點心屋</strong><span class="teacher">王和祥</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>節慶故事創作教學</strong><span class="teacher">王和祥</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>節慶故事創作教學</strong><span class="teacher">王和祥</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>節慶故事創作教學</strong><span class="teacher">王和祥</span></div>
+                        </td>
+                        <td>
+                            <div class="cell-content"><strong>節慶故事創作教學</strong><span class="teacher">王和祥</span></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
