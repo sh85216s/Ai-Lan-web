@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115年暑假學習扶助班</title>
+    <!-- Bootstrap 5 CSS (RWD) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 微調卡片間距與標題 */
+        body {
+            background: #f5f7fa;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        .card-header {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .teacher-badge {
+            background-color: #e9ecef;
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            color: #1e293b;
+        }
+
+        .student-tag {
+            background: #f8f9fc;
+            border-radius: 30px;
+            padding: 0.3rem 1rem;
+            margin: 0.2rem 0.2rem;
+            display: inline-block;
+            border: 1px solid #dee2e6;
+            font-size: 0.9rem;
+            color: #0b2b4a;
+        }
+
+        .student-tag:hover {
+            background: #e2e8f0;
+            transition: 0.15s;
+        }
+
+        .info-icon {
+            color: #2c3e50;
+            opacity: 0.7;
+        }
+
+        /* 地點小標 */
+        .location {
+            font-size: 0.9rem;
+            color: #4b5b6b;
+            background: #f1f3f5;
+            padding: 0.1rem 1rem;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 20, 40, 0.04);
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
+        }
+
+        .header-note {
+            background: #ffffffdd;
+            backdrop-filter: blur(4px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .date-badge {
+            background: #1e2b3a;
+            color: white;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4 py-md-5">
+
+        <!-- 標題區：日期與主標 -->
+        <div class="row mb-4 align-items-center">
+            <div class="col-12 col-md-8">
+                <h1 class="display-6 fw-bold" style="color: #0b2b4a;">📘 115年暑假學習扶助班</h1>
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
+                    <span class="date-badge"><i class="bi bi-calendar-event me-1"></i> 115.8.3 – 115.8.14</span>
+                    <span class="badge bg-light text-dark border px-3 py-2">週一至週五 · 共2週</span>
+                    <span class="badge bg-light text-dark border px-3 py-2">⏰ 08:35 – 11:50</span>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
+                <span class="teacher-badge"><i class="bi bi-person-badge"></i> 共5班</span>
+                <span class="teacher-badge ms-1"><i class="bi bi-geo-alt"></i> 各教室</span>
+            </div>
+        </div>
+
+        <!-- 卡片群：使用 Bootstrap card-group / grid 自動 RWD -->
+        <div class="row g-4">
+
+            <!-- 一年級數學 卡片 -->
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="card h-100">
+                    <div
+                        class="card-header bg-primary bg-opacity-10 border-0 d-flex justify-content-between align-items-center flex-wrap">
+                        <span class="card-title">一年級 數學</span>
+                        <span class="location"><i class="bi bi-pin-map me-1"></i> 一甲教室</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="teacher-badge bg-light border"><i class="bi bi-person-circle me-1"></i> 林櫻蘭
+                                老師</span>
+                        </div>
+                        <div class="student-list">
+                            <span class="student-tag">甲 徐o娣</span>
+                            <span class="student-tag">甲 黃o萱</span>
+                            <span class="student-tag">甲 林o珊</span>
+                            <span class="student-tag">乙 潘o祐</span>
+                            <span class="student-tag">乙 潘o語</span>
+                            <span class="student-tag">乙 蔡o萱</span>
+                            <span class="student-tag">甲 紀o希</span>
+                        </div>
+                        <div class="mt-2 text-muted small d-flex gap-2 flex-wrap">
+                            <span><i class="bi bi-people"></i> 7 位</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 二年級數學 卡片 -->
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="card h-100">
+                    <div
+                        class="card-header bg-success bg-opacity-10 border-0 d-flex justify-content-between align-items-center flex-wrap">
+                        <span class="card-title">二年級 數學</span>
+                        <span class="location"><i class="bi bi-pin-map me-1"></i> 原民語教室</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="teacher-badge bg-light border"><i class="bi bi-person-circle me-1"></i> 洪明秀
+                                老師</span>
+                        </div>
+                        <div class="student-list">
+                            <span class="student-tag">甲 石o芸</span>
+                            <span class="student-tag">甲 陳o汝</span>
+                            <span class="student-tag">乙 潘o倫</span>
+                            <span class="student-tag">乙 詹o以</span>
+                            <span class="student-tag">甲 潘o柔</span>
+                            <span class="student-tag">乙 顏o圓</span>
+                            <span class="student-tag">乙 洪o安</span>
+                        </div>
+                        <div class="mt-2 text-muted small d-flex gap-2 flex-wrap">
+                            <span><i class="bi bi-people"></i> 7 位</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- 四年級數學 卡片 (獨立來自第二頁) -->
+                        <div class="col-12 col-md-6 col-xl-4">
+                            <div class="card h-100">
+                                <div
+                                    class="card-header bg-info bg-opacity-10 border-0 d-flex justify-content-between align-items-center flex-wrap">
+                                    <span class="card-title">四年級 數學</span>
+                                    <span class="location"><i class="bi bi-pin-map me-1"></i> 中社教室</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="teacher-badge bg-light border"><i class="bi bi-person-circle me-1"></i> 陳玥彤
+                                            老師</span>
+                                    </div>
+                                    <div class="student-list">
+                                        <span class="student-tag">甲 蔡o東</span>
+                                        <span class="student-tag">甲 張o歆</span>
+                                        <span class="student-tag">甲 郭o岑</span>
+                                        <span class="student-tag">甲 徐o婷</span>
+                                        <span class="student-tag">甲 紀o芸</span>
+                                        <span class="student-tag">丙 陳o丞</span>
+                                        <span class="student-tag">甲 王o輔</span>
+                                        <span class="student-tag">乙 萬o勛</span>
+                                        <span class="student-tag">丙 劉o均</span>
+                                    </div>
+                                    <div class="mt-2 text-muted small d-flex gap-2 flex-wrap">
+                                        <span><i class="bi bi-people"></i> 9 位</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            <!-- 五年級數學 卡片 -->
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="card h-100">
+                    <div
+                        class="card-header bg-warning bg-opacity-10 border-0 d-flex justify-content-between align-items-center flex-wrap">
+                        <span class="card-title">五年級 數學</span>
+                        <span class="location"><i class="bi bi-pin-map me-1"></i> 五丙教室</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="teacher-badge bg-light border"><i class="bi bi-person-circle me-1"></i> 藍麗敏
+                                老師</span>
+                        </div>
+                        <div class="student-list">
+                            <span class="student-tag">乙 孫o哲</span>
+                            <span class="student-tag">乙 潘o恩</span>
+                            <span class="student-tag">乙 張o芬</span>
+                            <span class="student-tag">丙 王o琦</span>
+                            <span class="student-tag">丙 何o岳</span>
+                            <span class="student-tag">四甲 王o輔</span>
+                            <span class="student-tag">乙 陳o綺</span>
+                        </div>
+                        <div class="mt-2 text-muted small d-flex gap-2 flex-wrap">
+                            <span><i class="bi bi-people"></i> 7 位</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 英語班 卡片 -->
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="card h-100">
+                    <div
+                        class="card-header bg-danger bg-opacity-10 border-0 d-flex justify-content-between align-items-center flex-wrap">
+                        <span class="card-title"><i class="bi bi-translate me-2"></i>英語班</span>
+                        <span class="location"><i class="bi bi-pin-map me-1"></i> 高社教室</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="teacher-badge bg-light border"><i class="bi bi-person-circle me-1"></i> 翁聿復
+                                老師</span>
+                        </div>
+                        <div class="student-list">
+                            <span class="student-tag">三乙 黃o瑄</span>
+                            <span class="student-tag">三乙 蔡o妤</span>
+                            <span class="student-tag">三乙 黃o綾</span>
+                            <span class="student-tag">三丙 蔡o穎</span>
+                            <span class="student-tag">四丙 林o愷</span>
+                            <span class="student-tag">五乙 潘o丞</span>
+                            <span class="student-tag">三乙 何o勤</span>
+                            <span class="student-tag">三乙 賴o里</span>
+                        </div>
+                        <div class="mt-2 text-muted small d-flex gap-2 flex-wrap">
+                            <span><i class="bi bi-people"></i> 8 位</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- row -->
+
+        <!-- 資料來源註記 (PDF標示) -->
+        <!-- <div class="row mt-5">
+            <div class="col-12">
+                <div class="p-3 bg-light rounded-3 border d-flex flex-wrap align-items-center justify-content-between">
+                    <span class="text-secondary"><i class="bi bi-file-pdf me-2"></i> 資料來源：暑假學習扶助名單1.pdf</span>
+                    <span class="badge bg-white text-dark border px-3 py-2">共 5 班 · 38 位學生</span>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
