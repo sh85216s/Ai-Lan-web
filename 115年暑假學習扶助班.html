@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>115年暑假學習扶助班</title>
     <!-- Bootstrap 5 CSS (RWD) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -89,6 +89,33 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
+
+        /* ----- 英語班專屬：強制 3 欄 (手機直立/橫式/桌機一律3欄) ----- */
+        .english-student-grid .student-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.3rem 0.5rem;
+        }
+
+        /* 標籤在 grid 內表現為區塊，撐滿欄寬 */
+        .english-student-grid .student-tag {
+            display: block;
+            text-align: center;
+            margin: 0.1rem 0;
+            padding: 0.3rem 0.2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 0.85rem;
+        }
+
+        /* 微調卡片內距 */
+        .english-student-grid .card-body {
+            padding-bottom: 0.5rem;
+        }
+
+        /* 其餘班級維持原有 inline-block 顯示 (不受影響) */
+        /* 小螢幕（手機）其他班級標籤保持 inline-block 自然換行 */
     </style>
 </head>
 
@@ -111,7 +138,7 @@
             </div>
         </div>
 
-        <!-- 卡片群：使用 Bootstrap card-group / grid 自動 RWD -->
+        <!-- 卡片群：使用 Bootstrap grid 自動 RWD -->
         <div class="row g-4">
 
             <!-- 一年級數學 卡片 -->
@@ -172,7 +199,7 @@
                 </div>
             </div>
 
-            <!-- 四年級數學 卡片 (獨立來自第二頁) -->
+            <!-- 四年級數學 卡片 -->
             <div class="col-12 col-md-6 col-xl-4">
                 <div class="card h-100">
                     <div
@@ -231,8 +258,8 @@
                 </div>
             </div>
 
-            <!-- 英語班 卡片 -->
-            <div class="col-12 col-md-6 col-xl-4">
+            <!-- 英語班 卡片：套用 .english-student-grid，強制 3 欄 (手機直立/橫式/桌機一律3欄) -->
+            <div class="col-12 col-md-6 col-xl-4 english-student-grid">
                 <div class="card h-100">
                     <div
                         class="card-header bg-danger bg-opacity-50 border-0 d-flex justify-content-between align-items-center flex-wrap">
@@ -244,6 +271,7 @@
                             <span class="teacher-badge bg-light border"><i class="bi bi-person-circle me-1"></i> 翁聿復
                                 老師</span>
                         </div>
+                        <!-- 此區 .student-list 使用 grid：固定 3 欄，無任何媒體查詢變更 -->
                         <div class="student-list">
                             <span class="student-tag">三乙 黃o瑄</span>
                             <span class="student-tag">三乙 蔡o妤</span>
