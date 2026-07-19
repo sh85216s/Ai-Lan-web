@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>校園生態初探 · 夏日樂學</title>
+    <!-- Bootstrap 5 RWD CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 (free) for close icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f7f0;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 1.5rem 0;
+        }
+
+        .header-title {
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #2a5c4a;
+            border-bottom: 4px solid #9bc4b0;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .subhead {
+            color: #3d6b58;
+            font-size: 1.1rem;
+            background: #e3f0e9;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        /* 卡片樣式：保持一致性 */
+        .plant-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0, 40, 20, 0.08);
+            transition: all 0.15s ease;
+            height: 100%;
+            border: 1px solid #dcebe2;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .plant-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(30, 70, 50, 0.12);
+            border-color: #b3d3c4;
+        }
+
+        .card-img-top {
+            height: 160px;
+            object-fit: cover;
+            background: #dae9e0;
+            border-bottom: 2px solid #c6dbcf;
+            transition: 0.2s;
+        }
+
+        .card-body {
+            padding: 0.9rem 0.8rem 0.7rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f4d3b;
+            margin-bottom: 0.2rem;
+        }
+
+        .card-text {
+            font-size: 0.8rem;
+            color: #4f6f5e;
+            background: #eaf3ee;
+            border-radius: 50px;
+            padding: 0.2rem 1rem;
+            display: inline-block;
+            letter-spacing: 0.3px;
+        }
+
+        /* 第12項「相關連結」卡片特殊樣式 (與其他卡片一致但無hover放大圖片) */
+        .link-card {
+            background: #f8fcf9;
+            border: 1px solid #cfe0d6;
+            cursor: default;
+        }
+
+        .link-card .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 0.8rem 1rem;
+            height: 100%;
+        }
+
+        /* 連結容器改為兩欄網格 */
+        .link-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.2rem 0.8rem;
+            width: 100%;
+            margin-top: 0.2rem;
+        }
+
+        .link-grid .link-item {
+            font-size: 0.78rem;
+            padding: 0.15rem 0;
+            border-bottom: 1px dashed #e0ede6;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .link-grid .link-item:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .link-card .card-body .link-item a {
+            color: #1d6b4c;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .link-card .card-body .link-item a:hover {
+            color: #0b3d2b;
+            text-decoration: underline;
+        }
+
+        .link-card .card-body .link-item i {
+            color: #3a7a5e;
+            width: 18px;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .link-card .card-title {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 2px solid #b8d5c6;
+            padding-bottom: 0.3rem;
+            width: 100%;
+        }
+
+        /* 放大浮層 (Lightbox) */
+        .image-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 30, 20, 0.7);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1050;
+            padding: 1.5rem;
+            transition: 0.2s;
+            cursor: pointer;
+            /* 點擊背景關閉 */
+        }
+
+        .image-overlay.show {
+            display: flex;
+        }
+
+        .image-overlay .modal-content-box {
+            position: relative;
+            background: transparent;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: default;
+            border-radius: 28px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            transition: 0.25s ease;
+        }
+
+        .image-overlay .modal-content-box img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            border-radius: 28px;
+            display: block;
+            object-fit: contain;
+            background: #f5fbf8;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 關閉按鈕 (X) 置於放大圖右上角 */
+        .close-btn {
+            position: absolute;
+            top: -18px;
+            right: -18px;
+            background: #1f3d31;
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 300;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+            border: 2px solid #f5fbf8;
+            transition: 0.2s;
+            cursor: pointer;
+            z-index: 1060;
+            background: rgba(30, 50, 40, 0.9);
+            backdrop-filter: blur(2px);
+        }
+
+        .close-btn:hover {
+            background: #a63c3c;
+            transform: scale(1.05);
+            border-color: white;
+        }
+
+        .close-btn i {
+            pointer-events: none;
+        }
+
+        /* 輔助文字 */
+        .footer-note {
+            margin-top: 2.8rem;
+            color: #3d6b58;
+            border-top: 1px solid #caddd3;
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* 針對小螢幕調整 */
+        @media (max-width: 576px) {
+            .image-overlay .modal-content-box {
+                max-width: 90vw;
+            }
+
+            .close-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 1.5rem;
+                top: -14px;
+                right: -14px;
+            }
+
+            .link-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.1rem 0.5rem;
+            }
+
+            .link-grid .link-item {
+                font-size: 0.65rem;
+                white-space: normal;
+                word-break: break-word;
+            }
+
+            .link-card .card-body .link-item i {
+                width: 14px;
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .link-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.1rem 0.3rem;
+            }
+
+            .link-grid .link-item {
+                font-size: 0.6rem;
+            }
+        }
+
+        /* 自訂格線間距 */
+        .g-4 {
+            --bs-gutter-y: 1.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-lg px-3 px-md-4">
+        <!-- 標題區 -->
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+            <h1 class="header-title display-6 mb-0">
+                <i class="fas fa-leaf me-2" style="color:#3a7a5e;"></i>校園生態初探
+            </h1>
+            <span class="subhead"><i class="far fa-calendar-alt me-2"></i>115.07.20 · 夏日樂學</span>
+        </div>
+
+        <!-- 植物卡片網格 + 第12項相關連結 -->
+        <div class="row g-4" id="plantGrid">
+            <!-- 前11項由 JavaScript 動態產生，第12項為「相關連結」固定卡片 -->
+        </div>
+
+        <!-- 版權/說明 -->
+        <div class="footer-note text-center">
+            <i class="fas fa-tree me-1"></i> 點擊植物圖片 · 放大欣賞 <i class="fas fa-expand ms-1 me-2"></i>
+            <span class="badge bg-secondary bg-opacity-25 text-dark">點擊背景或 ✕ 關閉</span>
+        </div>
+    </div>
+
+    <!-- 放大浮層 (Lightbox) -->
+    <div class="image-overlay" id="imageOverlay">
+        <div class="modal-content-box" id="modalContentBox">
+            <img src="" alt="放大植物" id="enlargedImage">
+            <!-- 關閉按鈕 X (右上角) -->
+            <span class="close-btn" id="closeBtn"><i class="fas fa-times"></i></span>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script>
+        (function () {
+            // ----- 植物資料 (共11項) -----
+            const plants = [
+                { name: '緬梔樹', family: '夾竹桃科', img: './緬梔樹.jpg' },
+                { name: '貝殼杉', family: '羅漢松科', img: './貝殼杉.jpg' },
+                { name: '竹柏', family: '羅漢松科', img: './竹柏.jpg' },
+                { name: '樟樹', family: '樟科', img: './樟樹.jpg' },
+                { name: '風鈴木', family: '紫葳科', img: './風鈴木.jpg' },
+                { name: '木棉', family: '錦葵科', img: './木棉.jpg' },
+                { name: '黃連木', family: '漆樹科', img: './黃連木.jpg' },
+                { name: '落雨松', family: '杉科', img: './落雨松.jpg' },
+                { name: '大葉桃花心木', family: '楝科', img: './大葉桃花心木.jpg' },
+                { name: '山刺番荔枝', family: '番荔枝科', img: './山刺番荔枝.jpg' },
+                { name: '蘋婆', family: '錦葵科', img: './蘋婆.jpg' }
+            ];
+
+            // ----- 渲染卡片 (前11項 + 第12項相關連結) -----
+            const grid = document.getElementById('plantGrid');
+            if (!grid) return;
+
+            grid.innerHTML = '';
+
+            // 1. 前11項植物卡片
+            plants.forEach((p) => {
+                const col = document.createElement('div');
+                col.className = 'col-6 col-md-4 col-lg-3';
+                col.innerHTML = `
+                        <div class="plant-card" data-img="${p.img}" data-name="${p.name}">
+                            <img src="${p.img}" class="card-img-top" alt="${p.name}" loading="lazy">
+                            <div class="card-body text-center">
+                                <div class="card-title">${p.name}</div>
+                                <div class="card-text"><i class="fas fa-tag me-1"></i>${p.family}</div>
+                            </div>
+                        </div>
+                    `;
+                grid.appendChild(col);
+            });
+
+            // 2. 第12項：相關連結 (獨立卡片，連結項目改為兩欄)
+            const linkCol = document.createElement('div');
+            linkCol.className = 'col-6 col-md-4 col-lg-3';
+            linkCol.innerHTML = `
+                    <div class="plant-card link-card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <i class="fas fa-link" style="color:#2a5c4a;"></i> 相關連結
+                            </div>
+                            <div class="link-grid">
+                                <div class="link-item">
+                                    <i class="fas fa-tree"></i>
+                                    <a href="https://kplant.atfr.org.tw/%E7%AB%B9%E6%9F%8F/%E7%AB%B9%E6%9F%8F.htm" target="_blank" rel="noopener noreferrer">竹柏</a>
+                                </div>
+                                <div class="link-item">
+                                    <i class="fas fa-tree"></i>
+                                    <a href="https://sites.google.com/view/butterfly-tw/%E8%9D%B4%E8%9D%B6%E5%9C%96%E9%91%91/%E9%B3%B3%E8%9D%B6%E7%A7%91/%E9%9D%92%E9%B3%B3%E8%9D%B6" target="_blank" rel="noopener noreferrer">青帶鳳蝶</a>
+                                </div>
+                                <div class="link-item">
+                                    <i class="fas fa-tree"></i>
+                                    <a href="https://sites.google.com/view/butterfly-tw/%E8%9D%B4%E8%9D%B6%E5%9C%96%E9%91%91/%E9%B3%B3%E8%9D%B6%E7%A7%91/%E8%87%BA%E7%81%A3%E9%B3%B3%E8%9D%B6?authuser=0" target="_blank" rel="noopener noreferrer">台灣鳳蝶</a>
+                                </div>
+                                <div class="link-item">
+                                    <i class="fas fa-tree"></i>
+                                    <a href="https://kplant.atfr.org.tw/%E9%BB%83%E8%8A%B1%E9%A2%A8%E9%88%B4%E6%9C%A8/%E9%BB%83%E8%8A%B1%E9%A2%A8%E9%88%B4%E6%9C%A8.htm" target="_blank" rel="noopener noreferrer">黃花風鈴木</a>
+                                </div>
+                                <div class="link-item">
+                                    <i class="fas fa-tree"></i>
+                                    <a href="https://kplant.atfr.org.tw/%E6%AF%9B%E9%A2%A8%E9%88%B4%E6%9C%A8/%E6%AF%9B%E9%A2%A8%E9%88%B4%E6%9C%A8.htm" target="_blank" rel="noopener noreferrer">毛風鈴木</a>
+                                </div>
+                                <div class="link-item">
+                                    <i class="fas fa-tree"></i>
+                                    <a href="https://kplant.atfr.org.tw/%E6%B4%8B%E7%B4%85%E9%A2%A8%E9%88%B4%E6%9C%A8/%E6%B4%8B%E7%B4%85%E9%A2%A8%E9%88%B4%E6%9C%A8.htm" target="_blank" rel="noopener noreferrer">洋紅風鈴木</a>
+                                </div>
+                                <div class="link-item">
+                                    <i class="fas fa-tree"></i>
+                                    <a href="https://youtu.be/MuwXHIVGVGc?si=NNC6YKZasG0yKxxH" target="_blank" rel="noopener noreferrer">小啄木鳥</a>
+                                </div>
+                                <div class="link-item">
+                                    <i class="fas fa-tree"></i>
+                                    <a href="https://taconet.pixnet.net/blog/posts/3035352551" target="_blank" rel="noopener noreferrer">赤星椿象</a>
+                                </div>
+                                <div class="link-item">
+                                    <i class="fas fa-tree"></i>
+                                    <a href="https://www.facebook.com/groups/906396862826910/posts/3089953754471199/" target="_blank" rel="noopener noreferrer">黃連木的花</a>
+                                </div>
+                                <div class="link-item">
+                                    <i class="fas fa-tree"></i>
+                                    <a href="https://pkblog0438.blogspot.com/2020/12/blog-post_20.html" target="_blank" rel="noopener noreferrer">落雨松</a>
+                                </div>
+                                <div class="link-item">
+                                    <i class="fas fa-tree"></i>
+                                    <a href="https://sites.google.com/view/butterfly-tw/%E8%9D%B4%E8%9D%B6%E5%9C%96%E9%91%91/%E9%B3%B3%E8%9D%B6%E7%A7%91/%E7%BF%A0%E6%96%91%E9%9D%92%E9%B3%B3%E8%9D%B6" target="_blank" rel="noopener noreferrer">綠斑鳳蝶</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            grid.appendChild(linkCol);
+
+            // ----- Lightbox 功能 (僅針對植物卡片) -----
+            const overlay = document.getElementById('imageOverlay');
+            const enlargedImg = document.getElementById('enlargedImage');
+            const closeBtn = document.getElementById('closeBtn');
+            const modalBox = document.getElementById('modalContentBox');
+
+            function openLightbox(imgSrc, altText) {
+                if (!overlay || !enlargedImg) return;
+                enlargedImg.src = imgSrc;
+                enlargedImg.alt = altText || '植物放大圖';
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                if (!overlay) return;
+                overlay.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // 事件代理：點擊 .plant-card 但排除 .link-card (相關連結不觸發放大)
+            grid.addEventListener('click', function (e) {
+                const card = e.target.closest('.plant-card');
+                if (!card) return;
+                // 如果包含 link-card 類別，表示是相關連結卡片，不觸發放大
+                if (card.classList.contains('link-card')) return;
+                const imgSrc = card.dataset.img;
+                const name = card.dataset.name || '植物';
+                if (imgSrc) {
+                    openLightbox(imgSrc, name);
+                }
+            });
+
+            // 關閉按鈕 X
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    closeLightbox();
+                });
+            }
+
+            // 點擊 overlay 背景關閉
+            if (overlay) {
+                overlay.addEventListener('click', function (e) {
+                    if (e.target === overlay) {
+                        closeLightbox();
+                    }
+                });
+                modalBox.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+            }
+
+            // 鍵盤 Esc 關閉
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && overlay && overlay.classList.contains('show')) {
+                    closeLightbox();
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
