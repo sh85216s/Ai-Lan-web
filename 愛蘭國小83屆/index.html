@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>愛蘭國小第83屆 · 懸停下拉（最上層）</title>
+    <!-- Bootstrap 5 + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        /* ----- 活潑可愛配色 (同前) ----- */
+        :root {
+            --cute-blue: #7BA9E0;
+            --cute-sage: #B5CDA3;
+            --cute-milk-tea: #F0D5C0;
+            --cute-cream: #FFF9F2;
+            --cute-dark: #4A4A4A;
+            --cute-pink: #F8C8D8;
+            --cute-yellow: #F9E79F;
+            --cute-orange: #F7C6A0;
+        }
+
+        body {
+            background-color: var(--cute-cream);
+            color: var(--cute-dark);
+            font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
+        }
+
+        /* ----- 導覽列 可愛風 + 確保下拉在最上層 ----- */
+        .navbar {
+            background-color: #ffffffec !important;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 6px 20px rgba(123, 169, 224, 0.15);
+            border-bottom: 4px solid var(--cute-blue);
+            border-radius: 0 0 2rem 2rem;
+            position: relative;
+            z-index: 1050;
+            /* 確保導覽列本身在較上層 */
+        }
+
+        .navbar-brand {
+            color: var(--cute-blue) !important;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand i {
+            color: var(--cute-pink);
+            font-size: 1.8rem;
+            margin-right: 6px;
+        }
+
+        .nav-link {
+            color: var(--cute-dark) !important;
+            font-weight: 600;
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: var(--cute-cream);
+            color: var(--cute-blue) !important;
+            box-shadow: 0 2px 8px rgba(123, 169, 224, 0.2);
+        }
+
+        /* ----- 下拉選單 強制在最上層 (z-index) ----- */
+        .dropdown-menu {
+            background-color: #fffffffa;
+            border: 2px solid var(--cute-milk-tea);
+            border-radius: 1.5rem;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+            padding: 0.5rem;
+            display: block;
+            /* 讓 hover 控制顯示與否 */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+            pointer-events: none;
+            /* 隱藏時不阻擋 hover */
+            z-index: 9999;
+            /* 極高層級，確保在所有內容之上 */
+            position: absolute;
+            /* 確保定位正確 */
+        }
+
+        /* 當父層 hover 或 show 時顯示 */
+        .dropdown:hover>.dropdown-menu,
+        .dropdown.show>.dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* dropdown-toggle 箭頭旋轉 */
+        .dropdown:hover>.dropdown-toggle::after {
+            transform: rotate(180deg);
+            transition: transform 0.25s;
+        }
+
+        .dropdown-toggle::after {
+            transition: transform 0.25s;
+        }
+
+        .dropdown-item {
+            color: var(--cute-dark);
+            border-radius: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--cute-cream);
+            color: var(--cute-blue);
+        }
+
+        /* 卡片 圓潤可愛 */
+        .card {
+            border: none;
+            border-radius: 2.5rem 2.5rem 2rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 12px 30px rgba(123, 169, 224, 0.08);
+            transition: all 0.25s;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(123, 169, 224, 0.13);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #faf4ed, #fff9f2);
+            border-bottom: 3px dashed var(--cute-milk-tea);
+            color: var(--cute-blue);
+            font-weight: 700;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .card-header i {
+            color: var(--cute-pink);
+            font-size: 1.5rem;
+            margin-right: 8px;
+        }
+
+        .card-footer {
+            background-color: #fffcf8;
+            border-top: 2px dotted var(--cute-milk-tea);
+        }
+
+        /* 公告事項 */
+        .announcement-item {
+            border-bottom: 2px dotted #f0e3da;
+            padding: 0.8rem 0.3rem;
+            transition: 0.15s;
+        }
+
+        .announcement-item:hover {
+            background-color: #fcf8f2;
+            border-radius: 1rem;
+            padding-left: 0.8rem;
+        }
+
+        .announcement-item:last-child {
+            border-bottom: none;
+        }
+
+        .announcement-date {
+            background-color: var(--cute-yellow);
+            padding: 0.15rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #6b4f3c;
+            min-width: 90px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .badge-soft-cute {
+            background-color: var(--cute-milk-tea);
+            color: #5a4a3a;
+            font-weight: 500;
+            border-radius: 2rem;
+            padding: 0.3rem 1.2rem;
+            font-size: 0.8rem;
+        }
+
+        /* 分頁 可愛 */
+        .pagination .page-link {
+            color: var(--cute-dark);
+            border: 2px solid transparent;
+            margin: 0 5px;
+            border-radius: 3rem;
+            padding: 0.4rem 1.2rem;
+            background-color: #f5efe9;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: var(--cute-blue);
+            border-color: var(--cute-blue);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(123, 169, 224, 0.4);
+        }
+
+        .pagination .page-item:not(.active) .page-link:hover {
+            background-color: var(--cute-cream);
+            border-color: var(--cute-pink);
+            color: var(--cute-blue);
+        }
+
+        /* 功課表 可愛 */
+        .table-bordered {
+            border-color: #ebddd2;
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        .table-bordered th {
+            background: linear-gradient(145deg, #f7efe8, #fcf5ed);
+            color: #4d3e33;
+            font-weight: 700;
+            border-color: #ebddd2;
+            padding: 0.6rem 0.3rem;
+        }
+
+        .table-bordered td {
+            border-color: #ebddd2;
+            vertical-align: middle;
+            padding: 0.5rem 0.2rem;
+            font-weight: 500;
+        }
+
+        .table-striped>tbody>tr:nth-of-type(odd)>* {
+            background-color: #fcf7f2;
+        }
+
+        .table-bordered td:first-child {
+            background-color: #f7efe8;
+            font-weight: 700;
+            color: var(--cute-blue);
+        }
+
+        .ratio iframe {
+            border-radius: 1.8rem;
+            border: 3px solid #f0e0d4;
+        }
+
+        footer {
+            color: var(--cute-dark);
+            opacity: 0.7;
+            border-top: 3px dotted var(--cute-milk-tea) !important;
+            padding-top: 1.2rem;
+        }
+
+        @media (max-width: 576px) {
+
+            .table-bordered td,
+            .table-bordered th {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.1rem;
+            }
+
+            .announcement-date {
+                min-width: 70px;
+                font-size: 0.7rem;
+                padding: 0.1rem 0.5rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* 額外：針對 .navbar-nav 內的下拉選單，確保不被 overflow 裁切 */
+        .navbar-nav .dropdown-menu {
+            position: absolute;
+        }
+
+        /* 對較小的螢幕，若 navbar 折疊，仍需保持顯示 */
+        @media (max-width: 991.98px) {
+            .navbar-nav .dropdown-menu {
+                position: static;
+                /* 手機版維持原本 Bootstrap 行為，但 hover 仍有效 */
+            }
+
+            /* 手機版 hover 仍可展開，但為避免誤觸，維持原設計 */
+            .navbar-nav .dropdown:hover>.dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                pointer-events: auto;
+                margin-top: 0.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 導覽列 (懸停下拉，z-index 確保最上層) -->
+    <nav class="navbar navbar-expand-lg py-2">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-emoji-smile-fill"></i>愛蘭國小第83屆
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="切換導航">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <!-- 首頁 (無下拉) -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"><i
+                                class="bi bi-house-heart me-1"></i>首頁</a>
+                    </li>
+                    <!-- 班級經營 (下拉) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-people me-1"></i>班級經營
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="classDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-book me-2"></i>班級規約</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person-badge me-2"></i>幹部名單</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-grid-3x3-gap me-2"></i>座位表</a></li>
+                        </ul>
+                    </li>
+                    <!-- 校本課程 (下拉) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="curriculumDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-tree me-1"></i>校本課程
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="curriculumDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-building me-2"></i>在地文化</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-flower1 me-2"></i>生態探索</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-book me-2"></i>閱讀深耕</a></li>
+                        </ul>
+                    </li>
+                    <!-- 學童作品 (下拉) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-palette me-1"></i>學童作品
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="workDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-brush me-2"></i>繪畫</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>書法</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-2"></i>作文</a></li>
+                        </ul>
+                    </li>
+                    <!-- 相簿 (下拉) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="albumDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-images me-1"></i>相簿
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="albumDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-calendar-event me-2"></i>校園活動</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-bus-front me-2"></i>校外教學</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-mortarboard me-2"></i>畢業典禮</a></li>
+                        </ul>
+                    </li>
+                    <!-- 榮譽榜 (下拉) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="honorDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-trophy me-1"></i>榮譽榜
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="honorDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-star me-2"></i>學業優秀</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-dribbble me-2"></i>體育競賽</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-palette me-2"></i>藝術表現</a></li>
+                        </ul>
+                    </li>
+                    <!-- 數位學習 (下拉) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="digitalDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-laptop me-1"></i>數位學習
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="digitalDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-globe2 me-2"></i>線上平台</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box me-2"></i>學習資源</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-shield-check me-2"></i>資訊素養</a></li>
+                        </ul>
+                    </li>
+                    <!-- 常用連結 (下拉) -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="linkDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-link-45deg me-1"></i>常用連結
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="linkDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-building me-2"></i>教育局</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-book me-2"></i>圖書館</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-mortarboard me-2"></i>學習扶助</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主內容 (與先前相同) -->
+    <main class="container py-4">
+        <!-- 公告事項 -->
+        <div class="card mb-4">
+            <div class="card-header d-flex align-items-center flex-wrap">
+                <i class="bi bi-megaphone-fill"></i>
+                <span class="me-2">公告事項</span>
+            </div>
+            <div class="card-body pb-0">
+                <div id="announcementList">
+                    <!-- 第一頁 (1-10) -->
+                    <div class="announcement-page" data-page="1">
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">07/20</span>
+                            <span>📢 暑假圖書館開放時間調整，週一至週五 9:00-16:00</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">07/18</span>
+                            <span>🏆 恭喜六年級王小明獲得全國繪畫比賽銀牌</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">07/15</span>
+                            <span>📚 校本課程「生態探索」暑假營隊開始報名</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">07/12</span>
+                            <span>🏫 校園操場整修工程完工，即日起開放使用</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">07/10</span>
+                            <span>🧑‍🏫 8/1 新生編班公告，請家長留意學校官網</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">07/08</span>
+                            <span>🎨 學童作品展覽於文化中心展出，展期至7/31</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">07/05</span>
+                            <span>🌿 校本課程「在地文化」校外教學，地點：埔里酒廠</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">07/03</span>
+                            <span>📖 數位學習平台新增英語互動課程，歡迎使用</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">07/01</span>
+                            <span>🏅 榮譽榜：六月份閱讀小達人得獎名單公告</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">06/28</span>
+                            <span>📌 暑假期間校園安全注意事項，請家長協助配合</span>
+                        </div>
+                    </div>
+                    <!-- 第二頁 (11-20) -->
+                    <div class="announcement-page d-none" data-page="2">
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">06/25</span>
+                            <span>🎵 合唱團參加縣賽榮獲優等，感謝指導老師</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">06/22</span>
+                            <span>📅 下學期行事曆已更新，請參閱校網</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">06/20</span>
+                            <span>🧪 自然科展榮獲全縣第三名，恭喜參賽同學</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">06/18</span>
+                            <span>📢 學校停車場施工，請改由側門進出</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">06/15</span>
+                            <span>🏀 班際籃球賽成績公告，六年三班奪冠</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">06/12</span>
+                            <span>🌍 國際交流活動，日本姊妹校來訪</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">06/10</span>
+                            <span>📚 圖書館舉辦暑期閱讀活動，歡迎參加</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">06/08</span>
+                            <span>🎭 戲劇社成果發表會，圓滿成功</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">06/05</span>
+                            <span>🧑‍💻 數位學習「程式設計」課程開始報名</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">06/03</span>
+                            <span>🏫 畢業典禮訂於6/20，歡迎家長蒞臨</span>
+                        </div>
+                    </div>
+                    <!-- 第三頁 (21-30) -->
+                    <div class="announcement-page d-none" data-page="3">
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">05/30</span>
+                            <span>✏️ 期末評量時程表公告，請同學提早準備</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">05/28</span>
+                            <span>🎨 美勞作品展，展出地點：校史室</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">05/25</span>
+                            <span>📢 夏季服裝換季通知，6/1起換穿夏季制服</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">05/22</span>
+                            <span>🌱 校本課程「有機農場」體驗活動，報名中</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">05/20</span>
+                            <span>🏆 田徑隊參加縣運奪得3金2銀佳績</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">05/18</span>
+                            <span>📖 閱讀認證系統更新，請學生重新登錄</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">05/15</span>
+                            <span>🎵 直笛隊參加全國比賽榮獲特優</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">05/12</span>
+                            <span>📅 家長座談會訂於5/28晚上七點</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">05/10</span>
+                            <span>🧪 科展作品榮獲全國佳作，全校同賀</span>
+                        </div>
+                        <div class="announcement-item d-flex flex-wrap align-items-center">
+                            <span class="announcement-date me-3">05/08</span>
+                            <span>📢 防疫措施調整，進入校園仍需量體溫</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 分頁控制 -->
+                <div class="pagination-container d-flex justify-content-center pt-2 pb-3">
+                    <nav aria-label="公告分頁">
+                        <ul class="pagination" id="announcementPagination">
+                            <li class="page-item active" data-page="1"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item" data-page="2"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item" data-page="3"><a class="page-link" href="#">3</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- 下方 Card 2欄 -->
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-calendar3"></i>Google 行事曆
+                    </div>
+                    <div class="card-body">
+                        <div class="ratio ratio-4x3">
+                            <iframe
+                                src="https://calendar.google.com/calendar/embed?src=zh.tw%23holiday%40group.v.calendar.google.com&ctz=Asia%2FTaipei"
+                                style="border: 0;" title="Google 行事曆"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-table"></i>功課表
+                    </div>
+                    <div class="card-body p-2 p-md-3">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">節次</th>
+                                        <th scope="col">星期一</th>
+                                        <th scope="col">星期二</th>
+                                        <th scope="col">星期三</th>
+                                        <th scope="col">星期四</th>
+                                        <th scope="col">星期五</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>國語</td>
+                                        <td>數學</td>
+                                        <td>英語</td>
+                                        <td>國語</td>
+                                        <td>數學</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>數學</td>
+                                        <td>國語</td>
+                                        <td>自然</td>
+                                        <td>數學</td>
+                                        <td>英語</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>體育</td>
+                                        <td>音樂</td>
+                                        <td>國語</td>
+                                        <td>社會</td>
+                                        <td>國語</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>社會</td>
+                                        <td>美術</td>
+                                        <td>數學</td>
+                                        <td>自然</td>
+                                        <td>本土語</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td>自然</td>
+                                        <td>英語</td>
+                                        <td>體育</td>
+                                        <td>音樂</td>
+                                        <td>綜合</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">6</th>
+                                        <td>綜合</td>
+                                        <td>社會</td>
+                                        <td>電腦</td>
+                                        <td>美術</td>
+                                        <td>體育</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">7</th>
+                                        <td>閱讀</td>
+                                        <td>綜合</td>
+                                        <td>社團</td>
+                                        <td>英語</td>
+                                        <td>自然</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">8</th>
+                                        <td>彈性</td>
+                                        <td>彈性</td>
+                                        <td>彈性</td>
+                                        <td>彈性</td>
+                                        <td>彈性</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="container py-3 mt-3">
+        <p class="text-center small mb-0" style="color: var(--cute-dark); opacity: 0.65;">
+            愛蘭國小第83屆班級網頁 ｜ Copyright © 2021.版權所有·向志賢老師
+        </p>
+    </footer>
+
+    <!-- Bootstrap JS (仍需要以支援 data-bs-toggle 但 hover 主控) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 分頁切換 (不影響下拉) -->
+    <script>
+        (function () {
+            const pagination = document.getElementById('announcementPagination');
+            const pages = document.querySelectorAll('.announcement-page');
+
+            function showPage(pageNum) {
+                pages.forEach(p => p.classList.add('d-none'));
+                const target = document.querySelector(`.announcement-page[data-page="${pageNum}"]`);
+                if (target) target.classList.remove('d-none');
+
+                const items = pagination.querySelectorAll('.page-item');
+                items.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.dataset.page == pageNum) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+
+            pagination.addEventListener('click', function (e) {
+                const link = e.target.closest('a');
+                if (!link) return;
+                const parentItem = link.closest('.page-item');
+                if (!parentItem) return;
+                const page = parentItem.dataset.page;
+                if (page) {
+                    e.preventDefault();
+                    showPage(parseInt(page));
+                }
+            });
+
+            showPage(1);
+        })();
+    </script>
+</body>
+
+</html>
