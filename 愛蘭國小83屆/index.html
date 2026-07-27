@@ -108,6 +108,7 @@
             border-radius: 1.2rem;
             font-weight: 500;
             padding: 0.5rem 1.2rem;
+            font-size: 1rem;
         }
 
         .dropdown-item:hover {
@@ -157,11 +158,6 @@
                 padding: 0.5rem 1rem;
             }
 
-            /* 手機版 dropdown-item 維持正常間距 */
-            .dropdown-item {
-                padding: 0.4rem 1rem;
-            }
-
             /* 移除 hover 旋轉效果 */
             .dropdown:hover>.dropdown-toggle::after {
                 transform: none;
@@ -181,7 +177,7 @@
             #linkDropdown .dropdown-menu {
                 display: none;
                 /* 預設隱藏，由 JS 控制 show */
-                padding: 0.3rem 0.3rem 0.1rem 0.3rem;
+                padding: 0.5rem 0.5rem 0.2rem 0.5rem;
                 border-left: none;
                 background: #fffffffa;
                 border: 2px solid var(--cute-milk-tea);
@@ -217,15 +213,16 @@
                 gap: 0.05rem;
             }
 
-            /* 雙欄中的每個項目 */
+            /* 雙欄中的每個項目 - 文字大小與其他選單一致 */
             #digitalDropdown .dropdown-item,
             #linkDropdown .dropdown-item {
                 white-space: nowrap;
                 overflow: visible;
                 text-overflow: clip;
-                padding: 0.2rem 0.3rem;
-                font-size: clamp(0.7rem, 1.8vw, 0.82rem);
-                border-radius: 0.3rem;
+                padding: 0.4rem 0.5rem;
+                font-size: 1rem;
+                /* 與一般 dropdown-item 相同 */
+                border-radius: 0.5rem;
                 background: transparent;
                 border: none;
                 transition: 0.15s;
@@ -233,11 +230,12 @@
                 box-sizing: border-box;
                 color: var(--cute-dark);
                 text-align: left;
-                min-height: 1.6rem;
+                min-height: 2.2rem;
                 line-height: 1.4;
                 display: flex;
                 align-items: center;
                 width: 100%;
+                font-weight: 500;
             }
 
             #digitalDropdown .dropdown-item:hover,
@@ -249,9 +247,9 @@
             /* 讓雙欄選單的 icon 與文字對齊 */
             #digitalDropdown .dropdown-item i,
             #linkDropdown .dropdown-item i {
-                margin-right: 6px;
-                font-size: 0.8rem;
-                width: 1rem;
+                margin-right: 8px;
+                font-size: 1rem;
+                width: 1.2rem;
                 text-align: center;
                 color: var(--cute-blue);
                 flex-shrink: 0;
@@ -283,7 +281,7 @@
                 max-width: 100%;
                 white-space: normal;
                 padding: 0.4rem 1rem;
-                font-size: 0.95rem;
+                font-size: 1rem;
                 border: none;
                 background: transparent;
                 min-height: auto;
@@ -692,27 +690,27 @@
             min-height: 0;
         }
 
-        /* 手機雙欄微調 */
+        /* 手機雙欄微調 - 確保文字大小與其他選單一致 */
         @media (max-width: 991.98px) {
 
             #digitalDropdown .dropdown-item,
             #linkDropdown .dropdown-item {
-                font-size: clamp(0.65rem, 1.6vw, 0.78rem);
-                padding: 0.15rem 0.25rem;
-                min-height: 1.5rem;
+                font-size: 1rem;
+                padding: 0.4rem 0.5rem;
+                min-height: 2.2rem;
             }
 
             #digitalDropdown .dropdown-item i,
             #linkDropdown .dropdown-item i {
-                font-size: 0.75rem;
-                width: 0.9rem;
-                margin-right: 4px;
+                font-size: 1rem;
+                width: 1.2rem;
+                margin-right: 8px;
             }
 
             #digitalDropdown .dropdown-menu .col,
             #linkDropdown .dropdown-menu .col {
-                padding: 0 0.1rem;
-                gap: 0.03rem;
+                padding: 0 0.15rem;
+                gap: 0.05rem;
             }
         }
     </style>
