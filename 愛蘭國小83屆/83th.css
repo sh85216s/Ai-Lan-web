@@ -1,46 +1,57 @@
-       /* ----- 活潑可愛配色 ----- */
+    /* ----- 明亮綠色系 對比鮮明 ----- */
     :root {
-        --cute-blue: #7BA9E0;
-        --cute-sage: #B5CDA3;
-        --cute-milk-tea: #F0D5C0;
-        --cute-cream: #FFF9F2;
-        --cute-dark: #4A4A4A;
-        --cute-pink: #F8C8D8;
-        --cute-yellow: #F9E79F;
-        --cute-orange: #F7C6A0;
+        --main-green: #2E7D32;
+        /* 深翠綠 – 主色調 */
+        --light-green: #66BB6A;
+        /* 鮮活綠 */
+        --soft-green: #C8E6C9;
+        /* 淺粉綠 */
+        --bg-green: #E8F5E9;
+        /* 極淡綠背景 */
+        --cream-white: #F9FBF7;
+        /* 奶油白 */
+        --bright-accent: #FFB300;
+        /* 金黃對比 */
+        --warm-orange: #FF8A65;
+        /* 珊瑚橘點綴 */
+        --dark-charcoal: #2C3E2F;
+        /* 深墨綠灰 */
+        --card-shadow: 0 12px 30px rgba(46, 125, 50, 0.10);
+        --card-hover-shadow: 0 20px 40px rgba(46, 125, 50, 0.18);
     }
 
     body {
-        background-color: var(--cute-cream);
-        color: var(--cute-dark);
+        background-color: var(--bg-green);
+        color: var(--dark-charcoal);
         font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
     }
 
+    /* ----- 導航列 綠意清新 ----- */
     .navbar {
         background-color: #ffffffec !important;
         backdrop-filter: blur(4px);
-        box-shadow: 0 6px 20px rgba(123, 169, 224, 0.15);
-        border-bottom: 4px solid var(--cute-blue);
+        box-shadow: 0 6px 20px rgba(46, 125, 50, 0.12);
+        border-bottom: 4px solid var(--main-green);
         border-radius: 0 0 2rem 2rem;
         position: relative;
         z-index: 1050;
     }
 
     .navbar-brand {
-        color: var(--cute-blue) !important;
+        color: var(--main-green) !important;
         font-weight: 700;
         letter-spacing: 1.5px;
         font-size: 1.5rem;
     }
 
     .navbar-brand i {
-        color: var(--cute-pink);
+        color: var(--bright-accent);
         font-size: 1.8rem;
         margin-right: 6px;
     }
 
     .nav-link {
-        color: var(--cute-dark) !important;
+        color: var(--dark-charcoal) !important;
         font-weight: 600;
         border-radius: 2rem;
         padding: 0.5rem 1rem;
@@ -49,16 +60,16 @@
 
     .nav-link:hover,
     .nav-link.active {
-        background-color: var(--cute-cream);
-        color: var(--cute-blue) !important;
-        box-shadow: 0 2px 8px rgba(123, 169, 224, 0.2);
+        background-color: var(--soft-green);
+        color: var(--main-green) !important;
+        box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15);
     }
 
     .dropdown-menu {
         background-color: #fffffffa;
-        border: 2px solid var(--cute-milk-tea);
+        border: 2px solid var(--soft-green);
         border-radius: 1.5rem;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
         padding: 0.5rem;
         display: block;
         opacity: 0;
@@ -70,17 +81,20 @@
         position: absolute;
     }
 
-    .dropdown:hover>.dropdown-menu,
-    .dropdown.show>.dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
+    @media (min-width: 992px) {
 
-    .dropdown:hover>.dropdown-toggle::after {
-        transform: rotate(180deg);
-        transition: transform 0.25s;
+        .dropdown:hover>.dropdown-menu,
+        .dropdown.show>.dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown:hover>.dropdown-toggle::after {
+            transform: rotate(180deg);
+            transition: transform 0.25s;
+        }
     }
 
     .dropdown-toggle::after {
@@ -88,18 +102,18 @@
     }
 
     .dropdown-item {
-        color: var(--cute-dark);
+        color: var(--dark-charcoal);
         border-radius: 1.2rem;
         font-weight: 500;
         padding: 0.5rem 1.2rem;
+        font-size: 1rem;
     }
 
     .dropdown-item:hover {
-        background-color: var(--cute-cream);
-        color: var(--cute-blue);
+        background-color: var(--bg-green);
+        color: var(--main-green);
     }
 
-    /* 讓常用連結的下拉選單靠右對齊，且寬度足夠顯示所有內容 */
     .dropdown-menu-end {
         left: auto !important;
         right: 0 !important;
@@ -107,21 +121,176 @@
         max-width: 360px;
     }
 
-    /* 在手機上保持原樣 */
+    /* 手機雙欄設定 */
     @media (max-width: 991.98px) {
-        .dropdown-menu-end {
-            left: 0 !important;
-            right: auto !important;
-            min-width: auto;
+        .dropdown-menu {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            pointer-events: auto;
+            display: none;
+            box-shadow: none;
+            border: none;
+            border-left: 3px solid var(--soft-green);
+            border-radius: 0 1.5rem 1.5rem 0;
+            background: transparent;
+            padding-left: 1rem;
+            margin-top: 0.2rem;
+            margin-bottom: 0.2rem;
+            width: 100%;
             max-width: 100%;
+            min-width: unset;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .navbar-nav .nav-link {
+            padding: 0.5rem 1rem;
+        }
+
+        .dropdown:hover>.dropdown-toggle::after {
+            transform: none;
+        }
+
+        .navbar-nav .dropdown {
+            margin-bottom: 0;
+        }
+
+        .navbar-nav .nav-item {
+            margin-bottom: 0;
+        }
+
+        #digitalDropdown .dropdown-menu,
+        #linkDropdown .dropdown-menu {
+            display: none;
+            padding: 0.5rem 0.5rem 0.2rem 0.5rem;
+            border-left: none;
+            background: #fffffffa;
+            border: 2px solid var(--soft-green);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            margin-top: 0.2rem;
+            margin-bottom: 0.2rem;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        #digitalDropdown .dropdown-menu.show,
+        #linkDropdown .dropdown-menu.show {
+            display: block;
+        }
+
+        #digitalDropdown .dropdown-menu .row,
+        #linkDropdown .dropdown-menu .row {
+            display: flex;
+            flex-wrap: nowrap;
+            margin: 0 -0.15rem;
+            gap: 0;
+        }
+
+        #digitalDropdown .dropdown-menu .col,
+        #linkDropdown .dropdown-menu .col {
+            flex: 0 0 50%;
+            max-width: 50%;
+            padding: 0 0.15rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.05rem;
+        }
+
+        #digitalDropdown .dropdown-item,
+        #linkDropdown .dropdown-item {
+            white-space: nowrap;
+            overflow: visible;
+            text-overflow: clip;
+            padding: 0.4rem 0.5rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            background: transparent;
+            border: none;
+            transition: 0.15s;
+            margin: 0;
+            box-sizing: border-box;
+            color: var(--dark-charcoal);
+            text-align: left;
+            min-height: 2.2rem;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            font-weight: 500;
+        }
+
+        #digitalDropdown .dropdown-item:hover,
+        #linkDropdown .dropdown-item:hover {
+            background-color: var(--bg-green);
+            color: var(--main-green);
+        }
+
+        #digitalDropdown .dropdown-item i,
+        #linkDropdown .dropdown-item i {
+            margin-right: 8px;
+            font-size: 1rem;
+            width: 1.2rem;
+            text-align: center;
+            color: var(--main-green);
+            flex-shrink: 0;
+        }
+
+        .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu {
+            display: none;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            padding-left: 1rem;
+            border-left: 3px solid var(--soft-green);
+            border-radius: 0 1.5rem 1.5rem 0;
+            background: transparent;
+            box-shadow: none;
+            border: none;
+            margin-top: 0.2rem;
+            margin-bottom: 0.2rem;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu.show {
+            display: block;
+        }
+
+        .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-item {
+            flex: unset;
+            max-width: 100%;
+            white-space: normal;
+            padding: 0.4rem 1rem;
+            font-size: 1rem;
+            border: none;
+            background: transparent;
+            min-height: auto;
+            width: 100%;
+        }
+
+        .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-item:hover {
+            background-color: var(--bg-green);
+            border-radius: 1.2rem;
         }
     }
 
+    @media (max-width: 991.98px) {
+        .dropdown-menu-end {
+            right: auto !important;
+            left: 0 !important;
+        }
+    }
+
+    /* ----- 卡片 綠意對比 ----- */
     .card {
         border: none;
         border-radius: 2.5rem 2.5rem 2rem 2rem;
         background-color: #ffffff;
-        box-shadow: 0 12px 30px rgba(123, 169, 224, 0.08);
+        box-shadow: var(--card-shadow);
         transition: all 0.25s;
         overflow: hidden;
         height: 100%;
@@ -131,13 +300,13 @@
 
     .card:hover {
         transform: translateY(-4px);
-        box-shadow: 0 20px 40px rgba(123, 169, 224, 0.13);
+        box-shadow: var(--card-hover-shadow);
     }
 
     .card-header {
-        background: linear-gradient(135deg, #faf4ed, #fff9f2);
-        border-bottom: 3px dashed var(--cute-milk-tea);
-        color: var(--cute-blue);
+        background: linear-gradient(135deg, #c8e6c9, #e8f5e9);
+        border-bottom: 3px dashed var(--light-green);
+        color: var(--main-green);
         font-weight: 700;
         padding: 1rem 1.5rem;
         font-size: 1.1rem;
@@ -145,7 +314,7 @@
     }
 
     .card-header i {
-        color: var(--cute-pink);
+        color: var(--bright-accent);
         font-size: 1.4rem;
         margin-right: 8px;
     }
@@ -159,15 +328,14 @@
     }
 
     .card-footer {
-        background-color: #fffcf8;
-        border-top: 2px dotted var(--cute-milk-tea);
+        background-color: #f6fbf5;
+        border-top: 2px dotted var(--soft-green);
     }
 
-    /* 新增公告按鈕樣式 */
     .btn-add-announcement {
-        background-color: var(--cute-pink);
-        color: var(--cute-dark);
-        font-weight: 600;
+        background-color: var(--bright-accent);
+        color: var(--dark-charcoal);
+        font-weight: 700;
         border-radius: 2rem;
         padding: 0.3rem 1.2rem;
         font-size: 0.85rem;
@@ -180,44 +348,45 @@
     }
 
     .btn-add-announcement:hover {
-        background-color: #f0b0c8;
-        color: var(--cute-dark);
+        background-color: #FFA000;
+        color: var(--dark-charcoal);
         transform: scale(1.03);
-        box-shadow: 0 4px 12px rgba(248, 200, 216, 0.4);
+        box-shadow: 0 4px 12px rgba(255, 179, 0, 0.4);
     }
 
     .btn-add-announcement i {
         font-size: 1.1rem;
-        color: var(--cute-blue);
+        color: var(--main-green);
     }
 
+    /* 分頁 */
     .pagination .page-link {
-        color: var(--cute-dark);
+        color: var(--dark-charcoal);
         border: 2px solid transparent;
         margin: 0 5px;
         border-radius: 3rem;
         padding: 0.4rem 1.2rem;
-        background-color: #f5efe9;
+        background-color: #eaf5e8;
         font-weight: 600;
         transition: 0.2s;
     }
 
     .pagination .page-item.active .page-link {
-        background-color: var(--cute-blue);
-        border-color: var(--cute-blue);
+        background-color: var(--main-green);
+        border-color: var(--main-green);
         color: #fff;
-        box-shadow: 0 4px 12px rgba(123, 169, 224, 0.4);
+        box-shadow: 0 4px 12px rgba(46, 125, 50, 0.35);
     }
 
     .pagination .page-item:not(.active) .page-link:hover {
-        background-color: var(--cute-cream);
-        border-color: var(--cute-pink);
-        color: var(--cute-blue);
+        background-color: var(--soft-green);
+        border-color: var(--bright-accent);
+        color: var(--main-green);
     }
 
-    /* ===== 功課表樣式 - 所有文字置中 ===== */
+    /* 功課表 */
     .table-bordered {
-        border-color: #ebddd2;
+        border-color: #c0d6b5;
         border-radius: 1.5rem;
         overflow: hidden;
         margin-bottom: 0;
@@ -229,12 +398,12 @@
     .table-bordered td {
         text-align: center !important;
         vertical-align: middle !important;
-        border-color: #ebddd2;
+        border-color: #b8cfa8;
     }
 
     .table-bordered th {
-        background: linear-gradient(145deg, #f7efe8, #fcf5ed);
-        color: #4d3e33;
+        background: linear-gradient(145deg, #dce8d0, #eaf3e0);
+        color: #1f3b1f;
         font-weight: 700;
         padding: 0.5rem 0.25rem;
         font-size: 0.85rem;
@@ -247,39 +416,35 @@
     }
 
     .table-striped>tbody>tr:nth-of-type(odd)>* {
-        background-color: #fcf7f2;
+        background-color: #f3f9ef;
     }
 
     .table-bordered td:first-child {
-        background-color: #f7efe8;
+        background-color: #dce8d0;
         font-weight: 700;
-        color: var(--cute-blue);
+        color: var(--main-green);
     }
 
     .ratio iframe {
         border-radius: 1.8rem;
-        border: 3px solid #f0e0d4;
+        border: 3px solid #c6dbc0;
     }
 
     footer {
-        color: var(--cute-dark);
-        opacity: 0.7;
-        border-top: 3px dotted var(--cute-milk-tea) !important;
+        color: var(--dark-charcoal);
+        opacity: 0.8;
+        border-top: 3px dotted var(--soft-green) !important;
         padding-top: 1.2rem;
     }
 
-    /* ===== 提醒事項樣式 - 左右兩欄 ===== */
-    .reminder-item {
-        padding: 0.2rem 0;
-    }
-
+    /* 提醒事項 */
     .reminder-item .reminder-card {
-        background: linear-gradient(135deg, #faf4ed, #fff9f2);
-        border: 2px solid var(--cute-milk-tea);
+        background: linear-gradient(135deg, #f1f8ee, #fafff8);
+        border: 2px solid var(--soft-green);
         border-radius: 1.5rem;
         padding: 0.6rem 1rem;
         transition: all 0.2s;
-        box-shadow: 0 4px 12px rgba(123, 169, 224, 0.06);
+        box-shadow: 0 4px 12px rgba(46, 125, 50, 0.06);
         display: flex;
         align-items: center;
         gap: 0.8rem;
@@ -287,8 +452,8 @@
 
     .reminder-item .reminder-card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(123, 169, 224, 0.12);
-        border-color: var(--cute-blue);
+        box-shadow: 0 8px 20px rgba(46, 125, 50, 0.12);
+        border-color: var(--main-green);
     }
 
     .reminder-item .reminder-left {
@@ -301,61 +466,105 @@
 
     .reminder-item .reminder-icon {
         font-size: 1.6rem;
-        color: var(--cute-blue);
+        color: var(--main-green);
         line-height: 1;
     }
 
     .reminder-item .reminder-label {
         font-weight: 700;
-        color: var(--cute-blue);
+        color: var(--main-green);
         font-size: 0.95rem;
         letter-spacing: 2px;
         margin-top: 2px;
     }
 
-    .reminder-item .reminder-right {
-        flex: 1;
-        text-align: left;
-    }
-
     .reminder-item .reminder-detail {
         font-size: 0.85rem;
         line-height: 1.6;
-        color: var(--cute-dark);
+        color: var(--dark-charcoal);
     }
 
     .reminder-divider {
         border: none;
         height: 2px;
-        background: linear-gradient(to right, transparent, var(--cute-milk-tea), transparent);
+        background: linear-gradient(to right, transparent, var(--soft-green), transparent);
         margin: 0.2rem 0;
-        opacity: 0.5;
+        opacity: 0.6;
     }
 
-    /* 手機版微調 */
+    /* 公告表格 */
+    .announcement-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .announcement-table tr {
+        border-bottom: 2px dotted #d6e8ce;
+        transition: 0.15s;
+    }
+
+    .announcement-table tr:hover {
+        background-color: #f6fcf2;
+    }
+
+    .announcement-table tr:last-child {
+        border-bottom: none;
+    }
+
+    .announcement-table td {
+        padding: 0.8rem 0.5rem;
+        vertical-align: top;
+        line-height: 1.6;
+    }
+
+    .announcement-table .col-date {
+        width: 130px;
+        min-width: 100px;
+        white-space: nowrap;
+        font-weight: 600;
+        color: var(--main-green);
+    }
+
+    .announcement-table .col-date .date-tag {
+        background-color: var(--bright-accent);
+        padding: 0.15rem 0.8rem;
+        border-radius: 2rem;
+        font-size: 0.85rem;
+        display: inline-block;
+        color: #1f3b1f;
+        font-weight: 600;
+    }
+
+    .announcement-table .col-content a {
+        color: var(--main-green);
+        text-decoration: underline;
+        font-weight: 500;
+    }
+
+    .announcement-table .col-content a:hover {
+        color: var(--warm-orange);
+    }
+
     @media (max-width: 576px) {
-        .reminder-item .reminder-card {
-            padding: 0.5rem 0.6rem;
-            border-radius: 1.2rem;
-            gap: 0.5rem;
+        .announcement-table td {
+            display: block;
+            padding: 0.5rem 0.3rem;
         }
 
-        .reminder-item .reminder-left {
-            min-width: 45px;
+        .announcement-table .col-date {
+            width: auto;
+            white-space: normal;
+            padding-bottom: 0.2rem;
         }
 
-        .reminder-item .reminder-icon {
-            font-size: 1.3rem;
+        .announcement-table tr {
+            padding: 0.6rem 0;
+            display: block;
+            border-bottom: 3px double #d6e8ce;
         }
 
-        .reminder-item .reminder-label {
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        .reminder-item .reminder-detail {
-            font-size: 0.75rem;
-            line-height: 1.4;
+        .announcement-table tr:last-child {
+            border-bottom: none;
         }
 
         .table-bordered th,
@@ -381,137 +590,44 @@
         .card-body {
             padding: 0.8rem 0.8rem;
         }
+
+        .reminder-item .reminder-card {
+            padding: 0.5rem 0.6rem;
+            border-radius: 1.2rem;
+            gap: 0.5rem;
+        }
+
+        .reminder-item .reminder-left {
+            min-width: 45px;
+        }
+
+        .reminder-item .reminder-icon {
+            font-size: 1.3rem;
+        }
+
+        .reminder-item .reminder-label {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .reminder-item .reminder-detail {
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
     }
 
     @media (max-width: 991.98px) {
         .navbar-nav .dropdown-menu {
             position: static;
         }
-
-        .navbar-nav .dropdown:hover>.dropdown-menu {
-            position: static;
-            opacity: 1;
-            visibility: visible;
-            transform: none;
-            pointer-events: auto;
-            margin-top: 0.25rem;
-        }
-    }
-
-    .debug-box {
-        background-color: #f8f9fa;
-        border: 2px solid #dee2e6;
-        border-radius: 1rem;
-        padding: 1rem;
-        margin-top: 1rem;
-        font-size: 0.9rem;
-        font-family: 'Courier New', monospace;
-        max-height: 300px;
-        overflow-y: auto;
-    }
-
-    .debug-box .error {
-        color: #dc3545;
-    }
-
-    .debug-box .success {
-        color: #198754;
-    }
-
-    .debug-box .info {
-        color: #0d6efd;
-    }
-
-    .debug-box .warning {
-        color: #ffc107;
-    }
-
-    /* ===== 公告 2 欄表格樣式 ===== */
-    .announcement-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .announcement-table tr {
-        border-bottom: 2px dotted #f0e3da;
-        transition: 0.15s;
-    }
-
-    .announcement-table tr:hover {
-        background-color: #fcf8f2;
-    }
-
-    .announcement-table tr:last-child {
-        border-bottom: none;
-    }
-
-    .announcement-table td {
-        padding: 0.8rem 0.5rem;
-        vertical-align: top;
-        line-height: 1.6;
-    }
-
-    .announcement-table .col-date {
-        width: 130px;
-        min-width: 100px;
-        white-space: nowrap;
-        font-weight: 600;
-        color: var(--cute-blue);
-    }
-
-    .announcement-table .col-date .date-tag {
-        background-color: var(--cute-yellow);
-        padding: 0.15rem 0.8rem;
-        border-radius: 2rem;
-        font-size: 0.85rem;
-        display: inline-block;
-        color: #6b4f3c;
-    }
-
-    .announcement-table .col-content {
-        color: var(--cute-dark);
-    }
-
-    .announcement-table .col-content a {
-        color: var(--cute-blue);
-        text-decoration: underline;
-    }
-
-    .announcement-table .col-content a:hover {
-        color: var(--cute-pink);
-    }
-
-    /* 手機版改為單欄 */
-    @media (max-width: 576px) {
-        .announcement-table td {
-            display: block;
-            padding: 0.5rem 0.3rem;
-        }
-
-        .announcement-table .col-date {
-            width: auto;
-            white-space: normal;
-            padding-bottom: 0.2rem;
-        }
-
-        .announcement-table tr {
-            padding: 0.6rem 0;
-            display: block;
-            border-bottom: 3px double #f0e3da;
-        }
-
-        .announcement-table tr:last-child {
-            border-bottom: none;
-        }
     }
 
     .empty-announcement {
-        color: #999;
+        color: #7a8f72;
         font-size: 1.1rem;
         padding: 2rem 0;
     }
 
-    /* 讓行事曆的 iframe 填滿卡片 body */
     .calendar-wrapper {
         flex: 1;
         display: flex;
@@ -528,10 +644,9 @@
         width: 100%;
         height: 100%;
         border-radius: 1.8rem;
-        border: 3px solid #f0e0d4;
+        border: 3px solid #c6dbc0;
     }
 
-    /* 功課表容器 */
     .schedule-wrapper {
         flex: 1;
         display: flex;
@@ -549,4 +664,37 @@
     .schedule-wrapper .table-responsive table {
         flex: 1;
         min-height: 0;
+    }
+
+    /* 手機雙欄微調 */
+    @media (max-width: 991.98px) {
+
+        #digitalDropdown .dropdown-item,
+        #linkDropdown .dropdown-item {
+            font-size: 1rem;
+            padding: 0.4rem 0.5rem;
+            min-height: 2.2rem;
+        }
+
+        #digitalDropdown .dropdown-item i,
+        #linkDropdown .dropdown-item i {
+            font-size: 1rem;
+            width: 1.2rem;
+            margin-right: 8px;
+        }
+
+        #digitalDropdown .dropdown-menu .col,
+        #linkDropdown .dropdown-menu .col {
+            padding: 0 0.15rem;
+            gap: 0.05rem;
+        }
+    }
+
+    /* 額外小點綴 */
+    .text-green-highlight {
+        color: var(--main-green);
+    }
+
+    .bg-soft-green {
+        background-color: var(--bg-green);
     }
