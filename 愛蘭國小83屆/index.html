@@ -8,15 +8,15 @@
     <!-- Bootstrap 5 + Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-<link rel="stylesheet" href="83th.css">
+    <link rel="stylesheet" href="css/83th.css">
 </head>
 
 <body>
-    <!-- 導覽列 -->
+    <!-- 導覽列 (完全相同) -->
     <nav class="navbar navbar-expand-lg py-2">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="bi bi-emoji-smile-fill"></i>愛蘭國小第83屆
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-emoji-smile-fill"></i>愛蘭國小第83屆甲班
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
                 aria-controls="mainNav" aria-expanded="false" aria-label="切換導航">
@@ -25,21 +25,37 @@
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"><i
+                        <a class="nav-link active" aria-current="page" href="index.html"><i
                                 class="bi bi-house-heart me-1"></i>首頁</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button">
+                        <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-people me-1"></i>班級經營
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="classDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-book me-2"></i>班級規約</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person-badge me-2"></i>幹部名單</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-grid-3x3-gap me-2"></i>座位表</a></li>
+                            <li><a class="dropdown-item" href="班級經營/班級幹部&值日生.html"><i
+                                        class="bi bi-book me-2"></i>班級幹部、值日生</a></li>
+                            <li><a class="dropdown-item" href="班級經營/科任和出題老師.html"><i
+                                        class="bi bi-book me-2"></i>科任和出題老師</a></li>
+                            <li><a class="dropdown-item" href="班級經營/掃地工作分配.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>掃地工作分配</a></li>
+                            <li><a class="dropdown-item" href="班級經營/社團和團隊.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>社團、團隊</a></li>
+                            <li><a class="dropdown-item" href="班級經營/學藝競賽.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>學藝競賽</a></li>
+                            <li><a class="dropdown-item" href="#"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>英語手牽手、學習扶助、原民語</a>
+                            </li>
+                            <li><a class="dropdown-item" href="班級經營/學生各項帳號.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>學生各項帳號</a></li>
+                            <li><a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/16qZ40y_JXktnOvBb9eSPUUMJ4lPb2JPLLW_oE5xS-2U/edit?usp=sharing" target=" _blank"><i class="bi bi-grid-3x3-gap me-2"></i>學生基本資料(不公開)</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="curriculumDropdown" role="button">
+                        <a class="nav-link dropdown-toggle" href="#" id="curriculumDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-tree me-1"></i>校本課程
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="curriculumDropdown">
@@ -49,8 +65,9 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button">
-                            <i class="bi bi-palette me-1"></i>學童作品
+                        <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-palette me-1"></i>作品
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="workDropdown">
                             <li><a class="dropdown-item" href="#"><i class="bi bi-brush me-2"></i>繪畫</a></li>
@@ -59,21 +76,24 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="albumDropdown" role="button">
+                        <a class="nav-link dropdown-toggle" href="#" id="albumDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-images me-1"></i>相簿
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="albumDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-calendar-event me-2"></i>115學年度上學期</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-bus-front me-2"></i>115學年度下學期</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-mortarboard me-2"></i>116學年度上學期</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-mortarboard me-2"></i>116學年度下學期</a>
-                            </li>
+                            <li><a class="dropdown-item" href="活動相簿/115-1.html"><i
+                                        class="bi bi-calendar-event me-2"></i>115學年度上學期</a></li>
+                            <li><a class="dropdown-item" href="活動相簿/115-2.html"><i
+                                        class="bi bi-bus-front me-2"></i>115學年度下學期</a></li>
+                            <li><a class="dropdown-item" href="活動相簿/116-1.html"><i
+                                        class="bi bi-mortarboard me-2"></i>116學年度上學期</a></li>
+                            <li><a class="dropdown-item" href="活動相簿/116-2.html"><i
+                                        class="bi bi-mortarboard me-2"></i>116學年度下學期</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="honorDropdown" role="button">
+                        <a class="nav-link dropdown-toggle" href="#" id="honorDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-trophy me-1"></i>榮譽榜
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="honorDropdown">
@@ -82,47 +102,45 @@
                             <li><a class="dropdown-item" href="#"><i class="bi bi-palette me-2"></i>藝術表現</a></li>
                         </ul>
                     </li>
-                    <!-- 數位學習 (雙欄) -->
                     <li class="nav-item dropdown" id="digitalDropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="digitalDropdownToggle" role="button">
+                        <a class="nav-link dropdown-toggle" href="#" id="digitalDropdownToggle" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-laptop me-1"></i>數位學習
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="digitalDropdownToggle">
                             <div class="row">
                                 <div class="col">
                                     <li><a class="dropdown-item" href="https://adl.edu.tw/" target="blank"><i
-                                                class="bi bi-laptop-fill"></i>&nbsp;因材網</a></li>
+                                                class="bi bi-laptop-fill"></i>因材網</a></li>
                                     <li><a class="dropdown-item" href="https://www.learnmode.net/home/"
-                                            target="_blank"><i class="bi bi-laptop-fill"></i>&nbsp;學習吧</a></li>
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>學習吧</a></li>
                                     <li><a class="dropdown-item" href="https://www.junyiacademy.org/" target="blank"><i
-                                                class="bi bi-laptop-fill"></i>&nbsp;均一教育平台</a></li>
+                                                class="bi bi-laptop-fill"></i>均一教育平台</a></li>
                                     <li><a class="dropdown-item" href="https://loilonote.app/login?hl=zh-Hant"
-                                            target="_blank"><i class="bi bi-laptop-fill"></i>&nbsp;LoiLoNote</a></li>
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>LoiLoNote</a></li>
                                     <li><a class="dropdown-item" href="https://www.pagamo.org/" target="_blank"><i
-                                                class="bi bi-laptop-fill"></i>&nbsp;PaGamO</a></li>
+                                                class="bi bi-laptop-fill"></i>PaGamO</a></li>
                                 </div>
                                 <div class="col">
                                     <li><a class="dropdown-item" href="https://padlet.com/" target="_blank"><i
-                                                class="bi bi-laptop-fill"></i>&nbsp;Padlet</a></li>
+                                                class="bi bi-laptop-fill"></i>Padlet</a></li>
                                     <li><a class="dropdown-item" href="https://wordwall.net/tc" target="_blank"><i
-                                                class="bi bi-laptop-fill"></i>&nbsp;Wordwall</a></li>
+                                                class="bi bi-laptop-fill"></i>Wordwall</a></li>
                                     <li><a class="dropdown-item" href="https://www.coolenglish.edu.tw/"
-                                            target="_blank"><i class="bi bi-laptop-fill"></i>&nbsp;Cool English(酷英網)</a>
-                                    </li>
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>Cool English(酷英網)</a></li>
                                     <li><a class="dropdown-item" href="https://cooc.tp.edu.tw/" target="_blank"><i
-                                                class="bi bi-laptop-fill"></i>&nbsp;台北酷客雲</a></li>
+                                                class="bi bi-laptop-fill"></i>台北酷客雲</a></li>
                                     <li><a class="dropdown-item"
                                             href="https://www.icrt.com.tw/news_lunchbox.php?&mlevel1=7&mlevel2=96"
-                                            target="_blank"><i class="bi bi-laptop-fill"></i>&nbsp;ICRT News
-                                            Lunchbox</a></li>
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>ICRT News Lunchbox</a></li>
                                 </div>
                             </div>
                         </ul>
                     </li>
-                    <!-- 常用連結 (雙欄) -->
                     <li class="nav-item dropdown" id="linkDropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="linkDropdownToggle" role="button">
-                            <i class="bi bi-link-45deg me-1"></i>常用連結
+                        <a class="nav-link dropdown-toggle" href="#" id="linkDropdownToggle" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-link-45deg me-1"></i>網路資源
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="linkDropdownToggle">
                             <div class="row">
@@ -136,8 +154,9 @@
                                             target="_blank"><i class="bi bi-link-45deg"></i>教育部電子辭典</a></li>
                                     <li><a class="dropdown-item" href="https://dict.idioms.moe.edu.tw/search.jsp"
                                             target="_blank"><i class="bi bi-link-45deg"></i>教育部成語典</a></li>
-                                    <li><a class="dropdown-item" href="http://163.20.160.14/~word/" target="blank"><i
-                                                class="bi bi-link-45deg"></i>書法教學網</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="https://sites.google.com/mail.jges.ntpc.edu.tw/ctrc" target="blank"><i
+                                                class="bi bi-link-45deg"></i>新北市書法教學資源中心</a></li>
                                     <li><a class="dropdown-item"
                                             href="http://163.20.160.14/~moodle/course/view.php?id=22" target="blank"><i
                                                 class="bi bi-link-45deg"></i>國小硬筆字教學實務</a></li>
@@ -145,9 +164,6 @@
                                                 class="bi bi-link-45deg"></i>澎湖縣硬筆書法教學網</a></li>
                                 </div>
                                 <div class="col">
-                                    <li><a class="dropdown-item"
-                                            href="http://163.20.160.14/~ntc/course/index.php?categoryid=17"
-                                            target="blank"><i class="bi bi-link-45deg"></i>新北市書法教學網</a></li>
                                     <li><a class="dropdown-item" href="http://www.emath.math.ncu.edu.tw/e_school/"
                                             target="blank"><i class="bi bi-link-45deg"></i>子由數學小學堂</a></li>
                                     <li><a class="dropdown-item" href="https://tw.dictionary.search.yahoo.com/"
@@ -230,12 +246,12 @@
                                 <table class="table table-bordered table-striped mb-0" style="height:100%;">
                                     <thead>
                                         <tr>
-                                            <th scope="col">節次</th>
-                                            <th scope="col">星期一</th>
-                                            <th scope="col">星期二</th>
-                                            <th scope="col">星期三</th>
-                                            <th scope="col">星期四</th>
-                                            <th scope="col">星期五</th>
+                                            <th scope="col" style=" width:13.2%">節次</th>
+                                            <th scope="col" style=" width:17.36%">星期一</th>
+                                            <th scope="col" style=" width:17.36%">星期二</th>
+                                            <th scope="col" style=" width:17.36%">星期三</th>
+                                            <th scope="col" style=" width:17.36%">星期四</th>
+                                            <th scope="col" style=" width:17.36%">星期五</th>
                                         </tr>
                                     </thead>
                                     <tbody>

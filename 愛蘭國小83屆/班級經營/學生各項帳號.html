@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>83屆甲班 · 學生帳號查詢</title>
+    <!-- Bootstrap 5 + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- DataTables 核心 -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
+    <style>
+        /* ----- 完全保留原有綠色系與所有樣式 ----- */
+        :root {
+            --main-green: #2E7D32;
+            --light-green: #66BB6A;
+            --soft-green: #C8E6C9;
+            --bg-green: #E8F5E9;
+            --cream-white: #F9FBF7;
+            --bright-accent: #FFB300;
+            --warm-orange: #FF8A65;
+            --dark-charcoal: #2C3E2F;
+            --card-shadow: 0 12px 30px rgba(46, 125, 50, 0.10);
+            --card-hover-shadow: 0 20px 40px rgba(46, 125, 50, 0.18);
+        }
+
+        body {
+            background-color: var(--bg-green);
+            color: var(--dark-charcoal);
+            font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
+        }
+
+        .navbar {
+            background-color: #ffffffec !important;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.12);
+            border-bottom: 4px solid var(--main-green);
+            border-radius: 0 0 2rem 2rem;
+            position: relative;
+            z-index: 1050;
+        }
+
+        .navbar-brand {
+            color: var(--main-green) !important;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand i {
+            color: var(--bright-accent);
+            font-size: 1.8rem;
+            margin-right: 6px;
+        }
+
+        .nav-link {
+            color: var(--dark-charcoal) !important;
+            font-weight: 600;
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: var(--soft-green);
+            color: var(--main-green) !important;
+            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15);
+        }
+
+        .dropdown-menu {
+            background-color: #fffffffa;
+            border: 2px solid var(--soft-green);
+            border-radius: 1.5rem;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+            padding: 0.5rem;
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+            pointer-events: none;
+            z-index: 9999;
+            position: absolute;
+        }
+
+        @media (min-width: 992px) {
+
+            .dropdown:hover>.dropdown-menu,
+            .dropdown.show>.dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+
+            .dropdown:hover>.dropdown-toggle::after {
+                transform: rotate(180deg);
+                transition: transform 0.25s;
+            }
+        }
+
+        .dropdown-toggle::after {
+            transition: transform 0.25s;
+        }
+
+        .dropdown-item {
+            color: var(--dark-charcoal);
+            border-radius: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            font-size: 1rem;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--bg-green);
+            color: var(--main-green);
+        }
+
+        .dropdown-menu-end {
+            left: auto !important;
+            right: 0 !important;
+            min-width: 240px;
+            max-width: 360px;
+        }
+
+        @media (max-width: 991.98px) {
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                pointer-events: auto;
+                display: none;
+                box-shadow: none;
+                border: none;
+                border-left: 3px solid var(--soft-green);
+                border-radius: 0 1.5rem 1.5rem 0;
+                background: transparent;
+                padding-left: 1rem;
+                margin-top: 0.2rem;
+                margin-bottom: 0.2rem;
+                width: 100%;
+                max-width: 100%;
+                min-width: unset;
+            }
+
+            .dropdown-menu.show {
+                display: block;
+            }
+
+            .navbar-nav .nav-link {
+                padding: 0.5rem 1rem;
+            }
+
+            .dropdown:hover>.dropdown-toggle::after {
+                transform: none;
+            }
+
+            .navbar-nav .dropdown {
+                margin-bottom: 0;
+            }
+
+            .navbar-nav .nav-item {
+                margin-bottom: 0;
+            }
+
+            #digitalDropdown .dropdown-menu,
+            #linkDropdown .dropdown-menu {
+                display: none;
+                padding: 0.5rem 0.5rem 0.2rem 0.5rem;
+                border-left: none;
+                background: #fffffffa;
+                border: 2px solid var(--soft-green);
+                border-radius: 1.5rem;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+                margin-top: 0.2rem;
+                margin-bottom: 0.2rem;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            #digitalDropdown .dropdown-menu.show,
+            #linkDropdown .dropdown-menu.show {
+                display: block;
+            }
+
+            #digitalDropdown .dropdown-menu .row,
+            #linkDropdown .dropdown-menu .row {
+                display: flex;
+                flex-wrap: nowrap;
+                margin: 0 -0.15rem;
+                gap: 0;
+            }
+
+            #digitalDropdown .dropdown-menu .col,
+            #linkDropdown .dropdown-menu .col {
+                flex: 0 0 50%;
+                max-width: 50%;
+                padding: 0 0.15rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.05rem;
+            }
+
+            #digitalDropdown .dropdown-item,
+            #linkDropdown .dropdown-item {
+                white-space: nowrap;
+                overflow: visible;
+                text-overflow: clip;
+                padding: 0.4rem 0.5rem;
+                font-size: 1rem;
+                border-radius: 0.5rem;
+                background: transparent;
+                border: none;
+                transition: 0.15s;
+                margin: 0;
+                box-sizing: border-box;
+                color: var(--dark-charcoal);
+                text-align: left;
+                min-height: 2.2rem;
+                line-height: 1.4;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                font-weight: 500;
+            }
+
+            #digitalDropdown .dropdown-item i,
+            #linkDropdown .dropdown-item i {
+                display: none !important;
+            }
+
+            #digitalDropdown .dropdown-item,
+            #linkDropdown .dropdown-item {
+                padding-left: 0.8rem;
+            }
+
+            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu {
+                display: none;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                padding-left: 1rem;
+                border-left: 3px solid var(--soft-green);
+                border-radius: 0 1.5rem 1.5rem 0;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                margin-top: 0.2rem;
+                margin-bottom: 0.2rem;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu.show {
+                display: block;
+            }
+
+            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-item {
+                flex: unset;
+                max-width: 100%;
+                white-space: normal;
+                padding: 0.4rem 1rem;
+                font-size: 1rem;
+                border: none;
+                background: transparent;
+                min-height: auto;
+                width: 100%;
+            }
+
+            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-item:hover {
+                background-color: var(--bg-green);
+                border-radius: 1.2rem;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .dropdown-menu-end {
+                right: auto !important;
+                left: 0 !important;
+            }
+        }
+
+        .card {
+            border: none;
+            border-radius: 2.5rem 2.5rem 2rem 2rem;
+            background-color: #ffffff;
+            box-shadow: var(--card-shadow);
+            transition: all 0.25s;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #c8e6c9, #e8f5e9);
+            border-bottom: 3px dashed var(--light-green);
+            color: var(--main-green);
+            font-weight: 700;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .card-header i {
+            color: var(--bright-accent);
+            font-size: 1.4rem;
+            margin-right: 8px;
+        }
+
+        .card-body {
+            flex: 1 1 auto;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-footer {
+            background-color: #f6fbf5;
+            border-top: 2px dotted var(--soft-green);
+        }
+
+        .btn-add-announcement {
+            background-color: var(--bright-accent);
+            color: var(--dark-charcoal);
+            font-weight: 700;
+            border-radius: 2rem;
+            padding: 0.3rem 1.2rem;
+            font-size: 0.85rem;
+            border: 2px solid transparent;
+            transition: 0.25s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-add-announcement:hover {
+            background-color: #FFA000;
+            color: var(--dark-charcoal);
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(255, 179, 0, 0.4);
+        }
+
+        .btn-add-announcement i {
+            font-size: 1.1rem;
+            color: var(--main-green);
+        }
+
+        .pagination .page-link {
+            color: var(--dark-charcoal);
+            border: 2px solid transparent;
+            margin: 0 5px;
+            border-radius: 3rem;
+            padding: 0.4rem 1.2rem;
+            background-color: #eaf5e8;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: var(--main-green);
+            border-color: var(--main-green);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.35);
+        }
+
+        .pagination .page-item:not(.active) .page-link:hover {
+            background-color: var(--soft-green);
+            border-color: var(--bright-accent);
+            color: var(--main-green);
+        }
+
+        /* ---------- 強制覆蓋 DataTable 表格顏色 綠色系 ---------- */
+        table.dataTable {
+            border-collapse: collapse !important;
+            border-radius: 1.5rem !important;
+            overflow: hidden !important;
+            width: 100% !important;
+            background-color: #ffffff !important;
+            box-shadow: var(--card-shadow) !important;
+        }
+
+        table.dataTable thead th {
+            background: linear-gradient(145deg, #dce8d0, #eaf3e0) !important;
+            color: #1f3b1f !important;
+            font-weight: 700 !important;
+            padding: 0.7rem 0.4rem !important;
+            font-size: 0.85rem !important;
+            border-bottom: 3px solid var(--main-green) !important;
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        table.dataTable thead th:first-child {
+            border-radius: 1.5rem 0 0 0 !important;
+        }
+
+        table.dataTable thead th:last-child {
+            border-radius: 0 1.5rem 0 0 !important;
+        }
+
+        table.dataTable tbody tr {
+            background-color: #ffffff !important;
+            transition: 0.15s ease !important;
+        }
+
+        table.dataTable tbody tr:nth-child(even) {
+            background-color: #f3f9ef !important;
+        }
+
+        table.dataTable tbody tr:nth-child(odd) {
+            background-color: #ffffff !important;
+        }
+
+        table.dataTable tbody tr:hover {
+            background-color: #e2f0dc !important;
+            box-shadow: inset 0 0 0 1px var(--light-green) !important;
+        }
+
+        table.dataTable tbody td {
+            padding: 0.6rem 0.3rem !important;
+            text-align: center !important;
+            vertical-align: middle !important;
+            border-bottom: 1px solid #d6e8ce !important;
+            font-weight: 500 !important;
+            font-size: 0.85rem !important;
+            color: var(--dark-charcoal) !important;
+            background-color: transparent !important;
+        }
+
+        table.dataTable tbody td:first-child {
+            background-color: #dce8d0 !important;
+            font-weight: 700 !important;
+            color: var(--main-green) !important;
+            border-left: 3px solid var(--main-green) !important;
+            border-radius: 1rem 0 0 1rem !important;
+        }
+
+        table.dataTable tbody td:last-child {
+            border-right: 3px solid var(--main-green) !important;
+            border-radius: 0 1rem 1rem 0 !important;
+        }
+
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate {
+            color: var(--dark-charcoal) !important;
+            font-weight: 500 !important;
+        }
+
+        /* ===== 重新美化分頁按鈕：徹底移除黑色系，使用綠色系與對比色 ===== */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            border-radius: 3rem !important;
+            background-color: #eaf5e8 !important;
+            /* 柔和綠色底 */
+            border: 2px solid var(--soft-green) !important;
+            color: var(--dark-charcoal) !important;
+            font-weight: 600 !important;
+            margin: 0 4px !important;
+            padding: 0.3rem 1rem !important;
+            transition: 0.25s ease !important;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+        }
+
+        /* 當前頁面 (active) — 使用主綠色 */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background-color: var(--main-green) !important;
+            border-color: var(--main-green) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.30) !important;
+        }
+
+        /* 懸停 (hover) — 使用明亮對比橘色，無黑色 */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background-color: var(--bright-accent) !important;
+            border-color: var(--bright-accent) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 14px rgba(255, 179, 0, 0.40) !important;
+            transform: translateY(-1px);
+        }
+
+        /* 焦點 (focus) — 使用柔和綠色邊框，無黑色 */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:focus {
+            outline: none !important;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.25) !important;
+            border-color: var(--main-green) !important;
+        }
+
+        /* 已訪問 (visited) 維持與常態相同，無黑色 */
+        .dataTables_wrapper .dataTables_paginate .paginate_button:visited {
+            background-color: #eaf5e8 !important;
+            border-color: var(--soft-green) !important;
+            color: var(--dark-charcoal) !important;
+        }
+
+        /* 禁用狀態 (disabled) — 淡化但保持綠色系 */
+        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+            background-color: #eaf5e8 !important;
+            border-color: #d6e8ce !important;
+            color: #9aaa9a !important;
+            opacity: 0.6;
+            cursor: default;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* 搜尋框 & 長度選擇 保持原有風格 */
+        .dataTables_wrapper .dataTables_filter input {
+            border-radius: 2rem !important;
+            border: 2px solid var(--soft-green) !important;
+            padding: 0.4rem 1rem !important;
+            background-color: #ffffff !important;
+            color: var(--dark-charcoal) !important;
+        }
+
+        .dataTables_wrapper .dataTables_filter input:focus {
+            border-color: var(--main-green) !important;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15) !important;
+        }
+
+        .dataTables_wrapper .dataTables_length select {
+            border-radius: 2rem !important;
+            border: 2px solid var(--soft-green) !important;
+            padding: 0.2rem 0.8rem !important;
+            background-color: #ffffff !important;
+            color: var(--dark-charcoal) !important;
+        }
+
+        .container h2 {
+            color: var(--main-green);
+            font-weight: 700;
+            margin: 1.2rem 0 1rem 0;
+            border-left: 6px solid var(--bright-accent);
+            padding-left: 1.2rem;
+        }
+
+        footer {
+            color: var(--dark-charcoal);
+            opacity: 0.8;
+            border-top: 3px dotted var(--soft-green) !important;
+            padding-top: 1.2rem;
+        }
+
+        @media (max-width: 576px) {
+            table.dataTable tbody td {
+                font-size: 0.7rem !important;
+                padding: 0.3rem 0.1rem !important;
+            }
+
+            table.dataTable thead th {
+                font-size: 0.7rem !important;
+                padding: 0.4rem 0.1rem !important;
+            }
+
+            .container h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 導覽列 (完全相同) -->
+    <nav class="navbar navbar-expand-lg py-2">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-emoji-smile-fill"></i>愛蘭國小第83屆甲班
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="切換導航">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../index.html"><i
+                                class="bi bi-house-heart me-1"></i>首頁</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-people me-1"></i>班級經營
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="classDropdown">
+                            <li><a class="dropdown-item" href="../班級經營/班級幹部&值日生.html"><i
+                                        class="bi bi-book me-2"></i>班級幹部、值日生</a></li>
+                            <li><a class="dropdown-item" href="../班級經營/科任和出題老師.html"><i
+                                        class="bi bi-book me-2"></i>科任和出題老師</a></li>
+                            <li><a class="dropdown-item" href="../班級經營/掃地工作分配.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>掃地工作分配</a></li>
+                            <li><a class="dropdown-item" href="../班級經營/社團和團隊.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>社團、團隊</a></li>
+                            <li><a class="dropdown-item" href="../班級經營/學藝競賽.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>學藝競賽</a></li>
+                            <li><a class="dropdown-item" href="#"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>英語手牽手、學習扶助、原民語</a>
+                            </li>
+                            <li><a class="dropdown-item" href="../班級經營/學生各項帳號.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>學生各項帳號</a></li>
+                            <li><a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/16qZ40y_JXktnOvBb9eSPUUMJ4lPb2JPLLW_oE5xS-2U/edit?usp=sharing" target=" _blank"><i class="bi bi-grid-3x3-gap me-2"></i>學生基本資料(不公開)</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="curriculumDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-tree me-1"></i>校本課程
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="curriculumDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-building me-2"></i>在地文化</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-flower1 me-2"></i>生態探索</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-book me-2"></i>閱讀深耕</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-palette me-1"></i>作品
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="workDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-brush me-2"></i>繪畫</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>書法</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-2"></i>作文</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="albumDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-images me-1"></i>相簿
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="albumDropdown">
+                            <li><a class="dropdown-item" href="../活動相簿/115-1.html"><i
+                                        class="bi bi-calendar-event me-2"></i>115學年度上學期</a></li>
+                            <li><a class="dropdown-item" href="../活動相簿/115-2.html"><i
+                                        class="bi bi-bus-front me-2"></i>115學年度下學期</a></li>
+                            <li><a class="dropdown-item" href="../活動相簿/116-1.html"><i
+                                        class="bi bi-mortarboard me-2"></i>116學年度上學期</a></li>
+                            <li><a class="dropdown-item" href="../活動相簿/116-2.html"><i
+                                        class="bi bi-mortarboard me-2"></i>116學年度下學期</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="honorDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-trophy me-1"></i>榮譽榜
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="honorDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-star me-2"></i>學業優秀</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-dribbble me-2"></i>體育競賽</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-palette me-2"></i>藝術表現</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" id="digitalDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="digitalDropdownToggle" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-laptop me-1"></i>數位學習
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="digitalDropdownToggle">
+                            <div class="row">
+                                <div class="col">
+                                    <li><a class="dropdown-item" href="https://adl.edu.tw/" target="blank"><i
+                                                class="bi bi-laptop-fill"></i>因材網</a></li>
+                                    <li><a class="dropdown-item" href="https://www.learnmode.net/home/"
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>學習吧</a></li>
+                                    <li><a class="dropdown-item" href="https://www.junyiacademy.org/" target="blank"><i
+                                                class="bi bi-laptop-fill"></i>均一教育平台</a></li>
+                                    <li><a class="dropdown-item" href="https://loilonote.app/login?hl=zh-Hant"
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>LoiLoNote</a></li>
+                                    <li><a class="dropdown-item" href="https://www.pagamo.org/" target="_blank"><i
+                                                class="bi bi-laptop-fill"></i>PaGamO</a></li>
+                                </div>
+                                <div class="col">
+                                    <li><a class="dropdown-item" href="https://padlet.com/" target="_blank"><i
+                                                class="bi bi-laptop-fill"></i>Padlet</a></li>
+                                    <li><a class="dropdown-item" href="https://wordwall.net/tc" target="_blank"><i
+                                                class="bi bi-laptop-fill"></i>Wordwall</a></li>
+                                    <li><a class="dropdown-item" href="https://www.coolenglish.edu.tw/"
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>Cool English(酷英網)</a></li>
+                                    <li><a class="dropdown-item" href="https://cooc.tp.edu.tw/" target="_blank"><i
+                                                class="bi bi-laptop-fill"></i>台北酷客雲</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="https://www.icrt.com.tw/news_lunchbox.php?&mlevel1=7&mlevel2=96"
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>ICRT News Lunchbox</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" id="linkDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="linkDropdownToggle" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-link-45deg me-1"></i>網路資源
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="linkDropdownToggle">
+                            <div class="row">
+                                <div class="col">
+                                    <li><a class="dropdown-item" href="https://alps.ntct.edu.tw" target="blank"><i
+                                                class="bi bi-link-45deg"></i>愛蘭國小</a></li>
+                                    <li><a class="dropdown-item" href="https://eschool.ntct.edu.tw/" target="blank"><i
+                                                class="bi bi-link-45deg"></i>南投縣校務行政系統</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="https://www.edu.tw/Content_List.aspx?n=83D8D70FE4468412"
+                                            target="_blank"><i class="bi bi-link-45deg"></i>教育部電子辭典</a></li>
+                                    <li><a class="dropdown-item" href="https://dict.idioms.moe.edu.tw/search.jsp"
+                                            target="_blank"><i class="bi bi-link-45deg"></i>教育部成語典</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="https://sites.google.com/mail.jges.ntpc.edu.tw/ctrc" target="blank"><i
+                                                class="bi bi-link-45deg"></i>新北市書法教學資源中心</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="http://163.20.160.14/~moodle/course/view.php?id=22" target="blank"><i
+                                                class="bi bi-link-45deg"></i>國小硬筆字教學實務</a></li>
+                                    <li><a class="dropdown-item" href="http://write.phc.edu.tw/" target="blank"><i
+                                                class="bi bi-link-45deg"></i>澎湖縣硬筆書法教學網</a></li>
+                                </div>
+                                <div class="col">
+                                    <li><a class="dropdown-item" href="http://www.emath.math.ncu.edu.tw/e_school/"
+                                            target="blank"><i class="bi bi-link-45deg"></i>子由數學小學堂</a></li>
+                                    <li><a class="dropdown-item" href="https://tw.dictionary.search.yahoo.com/"
+                                            target="blank"><i class="bi bi-link-45deg"></i>奇摩英語字典</a></li>
+                                    <li><a class="dropdown-item" href="https://www.egame.kh.edu.tw/" target="blank"><i
+                                                class="bi bi-link-45deg"></i>U世代島嶼學習樂園</a></li>
+                                    <li><a class="dropdown-item" href="https://digitalmaster.knsh.com.tw/"
+                                            target="_blank"><i class="bi bi-link-45deg"></i>康軒數位高手</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="https://edisc3.hle.com.tw/edisc_v3/index.html?t=-912323430"
+                                            target="_blank"><i class="bi bi-link-45deg"></i>翰林行動大師</a></li>
+                                    <li><a class="dropdown-item" href="https://nanidigi.oneclass.com.tw/"
+                                            target="_blank"><i class="bi bi-link-45deg"></i>南一數位資源網</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+    <div class="container">
+        <h2><i class="bi bi-table me-2" style="color: var(--bright-accent);"></i>83屆甲班學生各類帳號查詢系統</h2>
+        <table id="table_id" class="display compact hover cell-border stripe responsive nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>班級</th>
+                    <th>座號</th>
+                    <th>姓名</th>
+                    <th>學號</th>
+                    <th>OpenID</th>
+                    <th>身分證字號</th>
+                    <th>學生google帳號</th>
+                    <th>因材網帳號</th>
+                    <th>學習吧帳號</th>
+                    <th>LoiloNote帳號</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 原始資料完全保留 -->
+                <tr>
+                    <td>101</td>
+                    <td>1</td>
+                    <td>林O縉</td>
+                    <td>114001</td>
+                    <td>s0275562</td>
+                    <td>B12589XXXX</td>
+                    <td>s0275562@alps.ntct.edu.tw</td>
+                    <td>s0275562</td>
+                    <td>s0275562</td>
+                    <td>s0275562</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>2</td>
+                    <td>賴O佑</td>
+                    <td>114002</td>
+                    <td>s0275536</td>
+                    <td>B12577XXXX</td>
+                    <td>s0275536@alps.ntct.edu.tw</td>
+                    <td>s0275536</td>
+                    <td>s0275536</td>
+                    <td>s0275536</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>3</td>
+                    <td>鄭O燁</td>
+                    <td>114003</td>
+                    <td>s0276323</td>
+                    <td>M12359XXXX</td>
+                    <td>s0276323@alps.ntct.edu.tw</td>
+                    <td>s0276323</td>
+                    <td>s0276323</td>
+                    <td>s0276323</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>4</td>
+                    <td>田O恩</td>
+                    <td>114004</td>
+                    <td>s0276368</td>
+                    <td>M12366XXXX</td>
+                    <td>s0276368@alps.ntct.edu.tw</td>
+                    <td>s0276368</td>
+                    <td>s0276368</td>
+                    <td>s0276368</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>5</td>
+                    <td>陳O允</td>
+                    <td>114005</td>
+                    <td>s0275565</td>
+                    <td>B12590XXXX</td>
+                    <td>s0275565@alps.ntct.edu.tw</td>
+                    <td>s0275565</td>
+                    <td>s0275565</td>
+                    <td>s0275565</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>6</td>
+                    <td>蔡O宇</td>
+                    <td>114006</td>
+                    <td>s0276380</td>
+                    <td>M12366XXXX</td>
+                    <td>s0276380@alps.ntct.edu.tw</td>
+                    <td>s0276380</td>
+                    <td>s0276380</td>
+                    <td>s0276380</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>7</td>
+                    <td>謝O棠</td>
+                    <td>114007</td>
+                    <td>s0276413</td>
+                    <td>M12367XXXX</td>
+                    <td>s0276413@alps.ntct.edu.tw</td>
+                    <td>s0276413</td>
+                    <td>s0276413</td>
+                    <td>s0276413</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>8</td>
+                    <td>黃O誌</td>
+                    <td>114008</td>
+                    <td>s0276426</td>
+                    <td>M12367XXXX</td>
+                    <td>s0276426@alps.ntct.edu.tw</td>
+                    <td>s0276426</td>
+                    <td>s0276426</td>
+                    <td>s0276426</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>9</td>
+                    <td>李O勳</td>
+                    <td>114009</td>
+                    <td>s0276470</td>
+                    <td>M12367XXXX</td>
+                    <td>s0276470@alps.ntct.edu.tw</td>
+                    <td>s0276470</td>
+                    <td>s0276470</td>
+                    <td>s0276470</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>10</td>
+                    <td>林O億</td>
+                    <td>114010</td>
+                    <td>s0275991</td>
+                    <td>M12354XXXX</td>
+                    <td>s0275991@alps.ntct.edu.tw</td>
+                    <td>s0275991</td>
+                    <td>s0275991</td>
+                    <td>s0275991</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>11</td>
+                    <td>黃O崴</td>
+                    <td>114011</td>
+                    <td>s0276562</td>
+                    <td>M12367XXXX</td>
+                    <td>s0276562@alps.ntct.edu.tw</td>
+                    <td>s0276562</td>
+                    <td>s0276562</td>
+                    <td>s0276562</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>12</td>
+                    <td>潘O妤</td>
+                    <td>114012</td>
+                    <td>s0277158</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277158@alps.ntct.edu.tw</td>
+                    <td>s0277158</td>
+                    <td>s0277158</td>
+                    <td>s0277158</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>13</td>
+                    <td>賴O萱</td>
+                    <td>114013</td>
+                    <td>s0277164</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277164@alps.ntct.edu.tw</td>
+                    <td>s0277164</td>
+                    <td>s0277164</td>
+                    <td>s0277164</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>14</td>
+                    <td>徐O媃</td>
+                    <td>114014</td>
+                    <td>s0276739</td>
+                    <td>M22339XXXX</td>
+                    <td>s0276739@alps.ntct.edu.tw</td>
+                    <td>s0276739</td>
+                    <td>s0276739</td>
+                    <td>s0276739</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>15</td>
+                    <td>黃O萱</td>
+                    <td>114015</td>
+                    <td>s0277195</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277195@alps.ntct.edu.tw</td>
+                    <td>s0277195</td>
+                    <td>s0277195</td>
+                    <td>s0277195</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>16</td>
+                    <td>陳O如</td>
+                    <td>114016</td>
+                    <td>s0277198</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277198@alps.ntct.edu.tw</td>
+                    <td>s0277198</td>
+                    <td>s0277198</td>
+                    <td>s0277198</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>17</td>
+                    <td>紀O希</td>
+                    <td>114017</td>
+                    <td>s0276710</td>
+                    <td>M22331XXXX</td>
+                    <td>s0276710@alps.ntct.edu.tw</td>
+                    <td>s0276710</td>
+                    <td>s0276710</td>
+                    <td>s0276710</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>18</td>
+                    <td>陳O伃</td>
+                    <td>114018</td>
+                    <td>s0277222</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277222@alps.ntct.edu.tw</td>
+                    <td>s0277222</td>
+                    <td>s0277222</td>
+                    <td>s0277222</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>19</td>
+                    <td>卓O安</td>
+                    <td>114019</td>
+                    <td>s0277214</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277214@alps.ntct.edu.tw</td>
+                    <td>s0277214</td>
+                    <td>s0277214</td>
+                    <td>s0277214</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>20</td>
+                    <td>林O珊</td>
+                    <td>114020</td>
+                    <td>s0277242</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277242@alps.ntct.edu.tw</td>
+                    <td>s0277242</td>
+                    <td>s0277242</td>
+                    <td>s0277242</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>21</td>
+                    <td>潘O菲</td>
+                    <td>114021</td>
+                    <td>s0277257</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277257@alps.ntct.edu.tw</td>
+                    <td>s0277257</td>
+                    <td>s0277257</td>
+                    <td>s0277257</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>22</td>
+                    <td>米O‧羅勃</td>
+                    <td>114022</td>
+                    <td>s0277264</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277264@alps.ntct.edu.tw</td>
+                    <td>s0277264</td>
+                    <td>s0277264</td>
+                    <td>s0277264</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>23</td>
+                    <td>何O晞</td>
+                    <td>114046</td>
+                    <td>s0020659</td>
+                    <td>M22356XXXX</td>
+                    <td>s0020659@alps.ntct.edu.tw</td>
+                    <td>s0020659</td>
+                    <td>s0020659</td>
+                    <td>s0020659</td>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>24</td>
+                    <td>謝O浩</td>
+                    <td>114048</td>
+                    <td>s0021023</td>
+                    <td>M12366XXXX</td>
+                    <td>s0021023@alps.ntct.edu.tw</td>
+                    <td>s0021023</td>
+                    <td>s0021023</td>
+                    <td>s0021023</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>1</td>
+                    <td>葉O睿</td>
+                    <td>114023</td>
+                    <td>s0276303</td>
+                    <td>M12359XXXX</td>
+                    <td>s0276303@alps.ntct.edu.tw</td>
+                    <td>s0276303</td>
+                    <td>s0276303</td>
+                    <td>s0276303</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>2</td>
+                    <td>潘O愷</td>
+                    <td>114024</td>
+                    <td>s0276306</td>
+                    <td>M12359XXXX</td>
+                    <td>s0276306@alps.ntct.edu.tw</td>
+                    <td>s0276306</td>
+                    <td>s0276306</td>
+                    <td>s0276306</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>3</td>
+                    <td>邱O智</td>
+                    <td>114025</td>
+                    <td>s0276326</td>
+                    <td>M12359XXXX</td>
+                    <td>s0276326@alps.ntct.edu.tw</td>
+                    <td>s0276326</td>
+                    <td>s0276326</td>
+                    <td>s0276326</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>4</td>
+                    <td>潘O祐</td>
+                    <td>114026</td>
+                    <td>s0276325</td>
+                    <td>M12359XXXX</td>
+                    <td>s0276325@alps.ntct.edu.tw</td>
+                    <td>s0276325</td>
+                    <td>s0276325</td>
+                    <td>s0276325</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>5</td>
+                    <td>陳O</td>
+                    <td>114027</td>
+                    <td>s0275558</td>
+                    <td>B12588XXXX</td>
+                    <td>s0275558@alps.ntct.edu.tw</td>
+                    <td>s0275558</td>
+                    <td>s0275558</td>
+                    <td>s0275558</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>6</td>
+                    <td>陳O安</td>
+                    <td>114028</td>
+                    <td>s0276369</td>
+                    <td>M12366XXXX</td>
+                    <td>s0276369@alps.ntct.edu.tw</td>
+                    <td>s0276369</td>
+                    <td>s0276369</td>
+                    <td>s0276369</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>7</td>
+                    <td>巧O佑</td>
+                    <td>114029</td>
+                    <td>s0276379</td>
+                    <td>M12366XXXX</td>
+                    <td>s0276379@alps.ntct.edu.tw</td>
+                    <td>s0276379</td>
+                    <td>s0276379</td>
+                    <td>s0276379</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>8</td>
+                    <td>陳O豪</td>
+                    <td>114030</td>
+                    <td>s0276432</td>
+                    <td>M12367XXXX</td>
+                    <td>s0276432@alps.ntct.edu.tw</td>
+                    <td>s0276432</td>
+                    <td>s0276432</td>
+                    <td>s0276432</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>9</td>
+                    <td>曾O睿</td>
+                    <td>114031</td>
+                    <td>s0276439</td>
+                    <td>M12367XXXX</td>
+                    <td>s0276439@alps.ntct.edu.tw</td>
+                    <td>s0276439</td>
+                    <td>s0276439</td>
+                    <td>s0276439</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>10</td>
+                    <td>傅O宇</td>
+                    <td>114032</td>
+                    <td>s0276496</td>
+                    <td>M12367XXXX</td>
+                    <td>s0276496@alps.ntct.edu.tw</td>
+                    <td>s0276496</td>
+                    <td>s0276496</td>
+                    <td>s0276496</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>11</td>
+                    <td>林O昊</td>
+                    <td>114033</td>
+                    <td>s0276556</td>
+                    <td>M12367XXXX</td>
+                    <td>s0276556@alps.ntct.edu.tw</td>
+                    <td>s0276556</td>
+                    <td>s0276556</td>
+                    <td>s0276556</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>12</td>
+                    <td>謝O睿</td>
+                    <td>114034</td>
+                    <td>s0276565</td>
+                    <td>M12367XXXX</td>
+                    <td>s0276565@alps.ntct.edu.tw</td>
+                    <td>s0276565</td>
+                    <td>s0276565</td>
+                    <td>s0276565</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>13</td>
+                    <td>蔡O萱</td>
+                    <td>114035</td>
+                    <td>s0277162</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277162@alps.ntct.edu.tw</td>
+                    <td>s0277162</td>
+                    <td>s0277162</td>
+                    <td>s0277162</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>14</td>
+                    <td>林O軒</td>
+                    <td>114036</td>
+                    <td>s0276708</td>
+                    <td>M22331XXXX</td>
+                    <td>s0276708@alps.ntct.edu.tw</td>
+                    <td>s0276708</td>
+                    <td>s0276708</td>
+                    <td>s0276708</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>15</td>
+                    <td>曾O蕎</td>
+                    <td>114037</td>
+                    <td>s0276735</td>
+                    <td>M22339XXXX</td>
+                    <td>s0276735@alps.ntct.edu.tw</td>
+                    <td>s0276735</td>
+                    <td>s0276735</td>
+                    <td>s0276735</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>16</td>
+                    <td>黃O翊</td>
+                    <td>114038</td>
+                    <td>s0277197</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277197@alps.ntct.edu.tw</td>
+                    <td>s0277197</td>
+                    <td>s0277197</td>
+                    <td>s0277197</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>17</td>
+                    <td>王O仟</td>
+                    <td>114039</td>
+                    <td>s0277205</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277205@alps.ntct.edu.tw</td>
+                    <td>s0277205</td>
+                    <td>s0277205</td>
+                    <td>s0277205</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>18</td>
+                    <td>涂O瑀</td>
+                    <td>114040</td>
+                    <td>s0277216</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277216@alps.ntct.edu.tw</td>
+                    <td>s0277216</td>
+                    <td>s0277216</td>
+                    <td>s0277216</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>19</td>
+                    <td>黃O晴</td>
+                    <td>114041</td>
+                    <td>s0275765</td>
+                    <td>F23432XXXX</td>
+                    <td>s0275765@alps.ntct.edu.tw</td>
+                    <td>s0275765</td>
+                    <td>s0275765</td>
+                    <td>s0275765</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>20</td>
+                    <td>潘O語</td>
+                    <td>114042</td>
+                    <td>s0277237</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277237@alps.ntct.edu.tw</td>
+                    <td>s0277237</td>
+                    <td>s0277237</td>
+                    <td>s0277237</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>21</td>
+                    <td>徐O淇</td>
+                    <td>114043</td>
+                    <td>s0277244</td>
+                    <td>M22356XXXX</td>
+                    <td>s0277244@alps.ntct.edu.tw</td>
+                    <td>s0277244</td>
+                    <td>s0277244</td>
+                    <td>s0277244</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>22</td>
+                    <td>潘O竹</td>
+                    <td>114044</td>
+                    <td>s0276829</td>
+                    <td>M22346XXXX</td>
+                    <td>s0276829@alps.ntct.edu.tw</td>
+                    <td>s0276829</td>
+                    <td>s0276829</td>
+                    <td>s0276829</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>23</td>
+                    <td>潘O希</td>
+                    <td>114045</td>
+                    <td>s0275753</td>
+                    <td>F23409XXXX</td>
+                    <td>s0275753@alps.ntct.edu.tw</td>
+                    <td>s0275753</td>
+                    <td>s0275753</td>
+                    <td>s0275753</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>24</td>
+                    <td>高O菲</td>
+                    <td>114047</td>
+                    <td>s0020937</td>
+                    <td>B22565XXXX</td>
+                    <td>s0020937@alps.ntct.edu.tw</td>
+                    <td>s0020937</td>
+                    <td>s0020937</td>
+                    <td>s0020937</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable({
+                responsive: true,
+                language: {
+                    "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/zh-HANT.json"
+                },
+                columnDefs: [
+                    { responsivePriority: 1, targets: [0, 1, 2] },
+                    { responsivePriority: 2, targets: [3, 4] }
+                ],
+                autoWidth: false,
+                paging: true,
+                pageLength: 12,
+                lengthMenu: [12, 25],
+                order: [
+                    [0, 'asc'],
+                    [1, 'asc']
+                ]
+            });
+        });
+    </script>
+</body>
+
+</html>
