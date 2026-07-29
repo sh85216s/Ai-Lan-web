@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
-        /* ----- 完全保留原有綠色系與所有樣式 (僅強制圖片4:3) ----- */
+        /* ----- 明亮綠色系 (與 index.html 完全一致) ----- */
         :root {
             --main-green: #2E7D32;
             --light-green: #66BB6A;
@@ -58,13 +58,18 @@
             border-radius: 2rem;
             padding: 0.5rem 1rem;
             transition: 0.2s;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
         .nav-link:hover,
         .nav-link.active {
             background-color: var(--soft-green);
             color: var(--main-green) !important;
-            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15);
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
         .dropdown-menu {
@@ -73,6 +78,7 @@
             border-radius: 1.5rem;
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
             padding: 0.5rem;
+            /* 桌機 hover 用 opacity/visibility 控制 */
             display: block;
             opacity: 0;
             visibility: hidden;
@@ -83,6 +89,7 @@
             position: absolute;
         }
 
+        /* 桌機：hover 或 .show 時顯示 */
         @media (min-width: 992px) {
 
             .dropdown:hover>.dropdown-menu,
@@ -109,11 +116,15 @@
             font-weight: 500;
             padding: 0.5rem 1.2rem;
             font-size: 1rem;
+            border: none !important;
+            outline: none !important;
         }
 
         .dropdown-item:hover {
             background-color: var(--bg-green);
             color: var(--main-green);
+            border: none !important;
+            outline: none !important;
         }
 
         .dropdown-menu-end {
@@ -123,6 +134,7 @@
             max-width: 360px;
         }
 
+        /* 手機版樣式 - 與 index.html 完全一致 */
         @media (max-width: 991.98px) {
             .dropdown-menu {
                 position: static;
@@ -225,6 +237,12 @@
                 font-weight: 500;
             }
 
+            #digitalDropdown .dropdown-item:hover,
+            #linkDropdown .dropdown-item:hover {
+                background-color: var(--bg-green);
+                color: var(--main-green);
+            }
+
             #digitalDropdown .dropdown-item i,
             #linkDropdown .dropdown-item i {
                 display: none !important;
@@ -280,6 +298,7 @@
             }
         }
 
+        /* ----- 卡片與圖片樣式 ----- */
         .card {
             border: none;
             border-radius: 2.5rem 2.5rem 2rem 2rem;
@@ -326,202 +345,37 @@
             border-top: 2px dotted var(--soft-green);
         }
 
-        .btn-add-announcement {
-            background-color: var(--bright-accent);
-            color: var(--dark-charcoal);
-            font-weight: 700;
-            border-radius: 2rem;
-            padding: 0.3rem 1.2rem;
-            font-size: 0.85rem;
-            border: 2px solid transparent;
-            transition: 0.25s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .btn-add-announcement:hover {
-            background-color: #FFA000;
-            color: var(--dark-charcoal);
-            transform: scale(1.03);
-            box-shadow: 0 4px 12px rgba(255, 179, 0, 0.4);
-        }
-
-        .btn-add-announcement i {
-            font-size: 1.1rem;
-            color: var(--main-green);
-        }
-
-        .pagination .page-link {
-            color: var(--dark-charcoal);
-            border: 2px solid transparent;
-            margin: 0 5px;
-            border-radius: 3rem;
-            padding: 0.4rem 1.2rem;
-            background-color: #eaf5e8;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-
-        .pagination .page-item.active .page-link {
-            background-color: var(--main-green);
-            border-color: var(--main-green);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.35);
-        }
-
-        .pagination .page-item:not(.active) .page-link:hover {
-            background-color: var(--soft-green);
-            border-color: var(--bright-accent);
-            color: var(--main-green);
-        }
-
-        table.dataTable {
-            border-collapse: collapse !important;
-            border-radius: 1.5rem !important;
-            overflow: hidden !important;
-            width: 100% !important;
-            background-color: #ffffff !important;
-            box-shadow: var(--card-shadow) !important;
-        }
-
-        table.dataTable thead th {
-            background: linear-gradient(145deg, #dce8d0, #eaf3e0) !important;
-            color: #1f3b1f !important;
-            font-weight: 700 !important;
-            padding: 0.7rem 0.4rem !important;
-            font-size: 0.85rem !important;
-            border-bottom: 3px solid var(--main-green) !important;
-            text-align: center !important;
-            vertical-align: middle !important;
-        }
-
-        table.dataTable thead th:first-child {
-            border-radius: 1.5rem 0 0 0 !important;
-        }
-
-        table.dataTable thead th:last-child {
-            border-radius: 0 1.5rem 0 0 !important;
-        }
-
-        table.dataTable tbody tr {
-            background-color: #ffffff !important;
-            transition: 0.15s ease !important;
-        }
-
-        table.dataTable tbody tr:nth-child(even) {
-            background-color: #f3f9ef !important;
-        }
-
-        table.dataTable tbody tr:nth-child(odd) {
-            background-color: #ffffff !important;
-        }
-
-        table.dataTable tbody tr:hover {
-            background-color: #e2f0dc !important;
-            box-shadow: inset 0 0 0 1px var(--light-green) !important;
-        }
-
-        table.dataTable tbody td {
-            padding: 0.6rem 0.3rem !important;
-            text-align: center !important;
-            vertical-align: middle !important;
-            border-bottom: 1px solid #d6e8ce !important;
-            font-weight: 500 !important;
-            font-size: 0.85rem !important;
-            color: var(--dark-charcoal) !important;
-            background-color: transparent !important;
-        }
-
-        table.dataTable tbody td:first-child {
-            background-color: #dce8d0 !important;
-            font-weight: 700 !important;
+        /* 首頁按鈕永遠保持 active 樣式 */
+        .home-link {
+            background-color: var(--soft-green) !important;
             color: var(--main-green) !important;
-            border-left: 3px solid var(--main-green) !important;
-            border-radius: 1rem 0 0 1rem !important;
-        }
-
-        table.dataTable tbody td:last-child {
-            border-right: 3px solid var(--main-green) !important;
-            border-radius: 0 1rem 1rem 0 !important;
-        }
-
-        .dataTables_wrapper .dataTables_info,
-        .dataTables_wrapper .dataTables_paginate {
-            color: var(--dark-charcoal) !important;
-            font-weight: 500 !important;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            border-radius: 3rem !important;
-            background-color: #eaf5e8 !important;
-            border: 2px solid var(--soft-green) !important;
-            color: var(--dark-charcoal) !important;
-            font-weight: 600 !important;
-            margin: 0 4px !important;
-            padding: 0.3rem 1rem !important;
-            transition: 0.25s ease !important;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02) !important;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            background-color: var(--main-green) !important;
-            border-color: var(--main-green) !important;
-            color: #ffffff !important;
-            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.30) !important;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-            background-color: var(--bright-accent) !important;
-            border-color: var(--bright-accent) !important;
-            color: #ffffff !important;
-            box-shadow: 0 4px 14px rgba(255, 179, 0, 0.40) !important;
-            transform: translateY(-1px);
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button:focus {
+            border: none !important;
             outline: none !important;
-            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.25) !important;
-            border-color: var(--main-green) !important;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button:visited {
-            background-color: #eaf5e8 !important;
-            border-color: var(--soft-green) !important;
-            color: var(--dark-charcoal) !important;
-        }
-
-        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
-        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
-            background-color: #eaf5e8 !important;
-            border-color: #d6e8ce !important;
-            color: #9aaa9a !important;
-            opacity: 0.6;
-            cursor: default;
-            transform: none !important;
             box-shadow: none !important;
         }
 
-        .dataTables_wrapper .dataTables_filter input {
-            border-radius: 2rem !important;
-            border: 2px solid var(--soft-green) !important;
-            padding: 0.4rem 1rem !important;
-            background-color: #ffffff !important;
-            color: var(--dark-charcoal) !important;
+        .home-link:hover {
+            background-color: var(--soft-green) !important;
+            color: var(--main-green) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
-        .dataTables_wrapper .dataTables_filter input:focus {
-            border-color: var(--main-green) !important;
-            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15) !important;
+        /* 其他連結的 hover 效果 */
+        .nav-link:not(.home-link):hover {
+            background-color: var(--soft-green);
+            color: var(--main-green) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
-        .dataTables_wrapper .dataTables_length select {
-            border-radius: 2rem !important;
-            border: 2px solid var(--soft-green) !important;
-            padding: 0.2rem 0.8rem !important;
-            background-color: #ffffff !important;
-            color: var(--dark-charcoal) !important;
+        footer {
+            color: var(--dark-charcoal);
+            opacity: 0.8;
+            border-top: 3px dotted var(--soft-green) !important;
+            padding-top: 1.2rem;
         }
 
         .container h2 {
@@ -532,39 +386,8 @@
             padding-left: 1.2rem;
         }
 
-        footer {
-            color: var(--dark-charcoal);
-            opacity: 0.8;
-            border-top: 3px dotted var(--soft-green) !important;
-            padding-top: 1.2rem;
-        }
-
-        @media (max-width: 576px) {
-            table.dataTable tbody td {
-                font-size: 0.7rem !important;
-                padding: 0.3rem 0.1rem !important;
-            }
-
-            table.dataTable thead th {
-                font-size: 0.7rem !important;
-                padding: 0.4rem 0.1rem !important;
-            }
-
-            .container h2 {
-                font-size: 1.3rem;
-            }
-        }
-
-        /* ---------- 強制 4:3 比例 (新增) ---------- */
+        /* ---------- 強制 4:3 比例 ---------- */
         .card-img-top {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* 確保所有卡片圖片都套用，並保留連結功能 */
-        .SM a img {
             width: 100%;
             aspect-ratio: 4 / 3;
             object-fit: cover;
@@ -575,11 +398,27 @@
             line-height: 0;
             overflow: hidden;
         }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* 桌機版保留圖示 */
+        @media (min-width: 992px) {
+
+            #digitalDropdown .dropdown-item i,
+            #linkDropdown .dropdown-item i {
+                display: inline-block !important;
+                margin-right: 8px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- 導覽列 (完全相同) -->
+    <!-- 導覽列 - 與 index.html 選單行為完全一致 -->
     <nav class="navbar navbar-expand-lg py-2">
         <div class="container">
             <a class="navbar-brand" href="../index.html">
@@ -591,10 +430,14 @@
             </button>
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <!-- 首頁 -->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../index.html"><i
-                                class="bi bi-house-heart me-1"></i>首頁</a>
+                        <a class="nav-link home-link" href="../index.html">
+                            <i class="bi bi-house-heart me-1"></i>首頁
+                        </a>
                     </li>
+
+                    <!-- 班級經營 -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -612,16 +455,16 @@
                             <li><a class="dropdown-item" href="../班級經營/學藝競賽.html"><i
                                         class="bi bi-grid-3x3-gap me-2"></i>學藝競賽</a></li>
                             <li><a class="dropdown-item" href="../班級經營/英語手牽手_學習扶助_原民語.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>英語手牽手、學習扶助、原民語</a>
-                            </li>
+                                        class="bi bi-grid-3x3-gap me-2"></i>英語手牽手、學習扶助、原民語</a></li>
                             <li><a class="dropdown-item" href="../班級經營/學生各項帳號.html"><i
                                         class="bi bi-grid-3x3-gap me-2"></i>學生各項帳號</a></li>
                             <li><a class="dropdown-item"
                                     href="https://docs.google.com/spreadsheets/d/16qZ40y_JXktnOvBb9eSPUUMJ4lPb2JPLLW_oE5xS-2U/edit?usp=sharing"
-                                    target=" _blank"><i class="bi bi-grid-3x3-gap me-2"></i>學生基本資料(不公開)</a>
-                            </li>
+                                    target="_blank"><i class="bi bi-grid-3x3-gap me-2"></i>學生基本資料(不公開)</a></li>
                         </ul>
                     </li>
+
+                    <!-- 校本課程 -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="curriculumDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -633,6 +476,8 @@
                             <li><a class="dropdown-item" href="#"><i class="bi bi-book me-2"></i>閱讀深耕</a></li>
                         </ul>
                     </li>
+
+                    <!-- 作品 -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -644,22 +489,26 @@
                             <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-2"></i>作文</a></li>
                         </ul>
                     </li>
+
+                    <!-- 相簿 -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="albumDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-images me-1"></i>相簿
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="albumDropdown">
-                            <li><a class="dropdown-item" href="../活動相簿/115-1.html"><i
+                            <li><a class="dropdown-item" href="#"><i
                                         class="bi bi-calendar-event me-2"></i>115學年度上學期</a></li>
-                            <li><a class="dropdown-item" href="../活動相簿/115-2.html"><i
+                            <li><a class="dropdown-item" href="115-2.html"><i
                                         class="bi bi-bus-front me-2"></i>115學年度下學期</a></li>
-                            <li><a class="dropdown-item" href="../活動相簿/116-1.html"><i
+                            <li><a class="dropdown-item" href="116-1.html"><i
                                         class="bi bi-mortarboard me-2"></i>116學年度上學期</a></li>
-                            <li><a class="dropdown-item" href="../活動相簿/116-2.html"><i
+                            <li><a class="dropdown-item" href="116-2.html"><i
                                         class="bi bi-mortarboard me-2"></i>116學年度下學期</a></li>
                         </ul>
                     </li>
+
+                    <!-- 榮譽榜 -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="honorDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -671,6 +520,8 @@
                             <li><a class="dropdown-item" href="#"><i class="bi bi-palette me-2"></i>藝術表現</a></li>
                         </ul>
                     </li>
+
+                    <!-- 數位學習 -->
                     <li class="nav-item dropdown" id="digitalDropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="digitalDropdownToggle" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -706,6 +557,8 @@
                             </div>
                         </ul>
                     </li>
+
+                    <!-- 網路資源 -->
                     <li class="nav-item dropdown" id="linkDropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="linkDropdownToggle" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -775,10 +628,7 @@
                                 class="card-img-top" title="前往相簿" alt="期末同樂會"></a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">期末同樂會</h5>
-                        <p class="card-text" style="font-size: 13px;">
-                            時間：2021.09.11&nbsp;&nbsp;8:00~11:30<br>地點：埔里水頭陳老爹農場<br>活動內容：<br>1.生態導覽+版畫拓印<br>2.水田導覽+水圳摸蜆玩水<br>
-                            3.暨大團隊LED介紹+水質檢測</p>
+                        <!-- 可選填標題與內容，此處保留空白 -->
                     </div>
                 </div>
             </div>
@@ -791,10 +641,7 @@
                                 class="card-img-top" title="前往相簿" alt="78th畢業典禮"></a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">78th畢業典禮</h5>
-                        <p class="card-text" style="font-size: 13px;">
-                            時間：2021.09.14&nbsp;&nbsp;9:00~11:00<br>地點：愛蘭國小活動中心<br>活動內容：<br>簡報介紹茭白筍的種類、種植、病蟲害防治、產業加工等。
-                        </p>
+                        <!-- 可選填標題與內容 -->
                     </div>
                 </div>
             </div>
@@ -807,9 +654,7 @@
                                 class="card-img-top" title="前往相簿" alt="製作畢業證書封套"></a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">製作畢業證書封套</h5>
-                        <p class="card-text" style="font-size: 13px;">
-                            時間：2021.09.23<br>地點：電腦教室<br>活動內容：<br>各小組分工利用Coggle完成國語第二課的文章架構心智圖</p>
+                        <!-- 可選填標題與內容 -->
                     </div>
                 </div>
             </div>
@@ -822,19 +667,15 @@
                                 class="card-img-top" title="前往相簿" alt="第78屆六乙畢業生-個人藝術照"></a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">第78屆六乙畢業生-個人藝術照</h5>
-                        <p class="card-text" style="font-size: 13px;">
-                            時間：2021.09.24<br>地點：五乙教室<br>活動內容：<br>小組的每1位成員依序針對負責的部分做報告</p>
+                        <!-- 可選填標題與內容 -->
                     </div>
                 </div>
             </div>
         </div><br>
 
-        <!-- 第2列 (保留空列作為未來擴充) -->
-        <!-- 第3列 (保留) -->
-        <!-- 第4列 (保留) -->
-
+        <!-- 第2列 (預留未來擴充) -->
     </div>
+
     <footer class="container py-3 mt-3">
         <p class="text-center small mb-0" style="color: var(--dark-charcoal); opacity: 0.95;">
             © 2026 愛蘭國民小學．向志賢老師 All Rights Reserved. ｜ 最後更新：<span id="lastModified"></span>
@@ -843,10 +684,15 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('lastModified').textContent = new Date().toLocaleDateString('zh-TW', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit'
+        document.addEventListener('DOMContentLoaded', function () {
+            function updateLastModified() {
+                const lastModified = new Date(document.lastModified);
+                const formattedDateTime =
+                    `${lastModified.getFullYear()}-${String(lastModified.getMonth() + 1).padStart(2, '0')}-${String(lastModified.getDate()).padStart(2, '0')} ${String(lastModified.getHours()).padStart(2, '0')}:${String(lastModified.getMinutes()).padStart(2, '0')}`;
+                const el = document.getElementById('lastModified');
+                if (el) el.textContent = formattedDateTime;
+            }
+            updateLastModified();
         });
     </script>
 </body>

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>115學年度第2學期活動相簿</title>
+    <!-- Bootstrap 5 + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        /* ----- 明亮綠色系 (與 index.html 完全一致) ----- */
+        :root {
+            --main-green: #2E7D32;
+            --light-green: #66BB6A;
+            --soft-green: #C8E6C9;
+            --bg-green: #E8F5E9;
+            --cream-white: #F9FBF7;
+            --bright-accent: #FFB300;
+            --warm-orange: #FF8A65;
+            --dark-charcoal: #2C3E2F;
+            --card-shadow: 0 12px 30px rgba(46, 125, 50, 0.10);
+            --card-hover-shadow: 0 20px 40px rgba(46, 125, 50, 0.18);
+        }
+
+        body {
+            background-color: var(--bg-green);
+            color: var(--dark-charcoal);
+            font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
+        }
+
+        .navbar {
+            background-color: #ffffffec !important;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.12);
+            border-bottom: 4px solid var(--main-green);
+            border-radius: 0 0 2rem 2rem;
+            position: relative;
+            z-index: 1050;
+        }
+
+        .navbar-brand {
+            color: var(--main-green) !important;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand i {
+            color: var(--bright-accent);
+            font-size: 1.8rem;
+            margin-right: 6px;
+        }
+
+        .nav-link {
+            color: var(--dark-charcoal) !important;
+            font-weight: 600;
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            transition: 0.2s;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: var(--soft-green);
+            color: var(--main-green) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .dropdown-menu {
+            background-color: #fffffffa;
+            border: 2px solid var(--soft-green);
+            border-radius: 1.5rem;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+            padding: 0.5rem;
+            /* 桌機 hover 用 opacity/visibility 控制 */
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+            pointer-events: none;
+            z-index: 9999;
+            position: absolute;
+        }
+
+        /* 桌機：hover 或 .show 時顯示 */
+        @media (min-width: 992px) {
+
+            .dropdown:hover>.dropdown-menu,
+            .dropdown.show>.dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+
+            .dropdown:hover>.dropdown-toggle::after {
+                transform: rotate(180deg);
+                transition: transform 0.25s;
+            }
+        }
+
+        .dropdown-toggle::after {
+            transition: transform 0.25s;
+        }
+
+        .dropdown-item {
+            color: var(--dark-charcoal);
+            border-radius: 1.2rem;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            font-size: 1rem;
+            border: none !important;
+            outline: none !important;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--bg-green);
+            color: var(--main-green);
+            border: none !important;
+            outline: none !important;
+        }
+
+        .dropdown-menu-end {
+            left: auto !important;
+            right: 0 !important;
+            min-width: 240px;
+            max-width: 360px;
+        }
+
+        /* 手機版樣式 - 與 index.html 完全一致 */
+        @media (max-width: 991.98px) {
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                pointer-events: auto;
+                display: none;
+                box-shadow: none;
+                border: none;
+                border-left: 3px solid var(--soft-green);
+                border-radius: 0 1.5rem 1.5rem 0;
+                background: transparent;
+                padding-left: 1rem;
+                margin-top: 0.2rem;
+                margin-bottom: 0.2rem;
+                width: 100%;
+                max-width: 100%;
+                min-width: unset;
+            }
+
+            .dropdown-menu.show {
+                display: block;
+            }
+
+            .navbar-nav .nav-link {
+                padding: 0.5rem 1rem;
+            }
+
+            .dropdown:hover>.dropdown-toggle::after {
+                transform: none;
+            }
+
+            .navbar-nav .dropdown {
+                margin-bottom: 0;
+            }
+
+            .navbar-nav .nav-item {
+                margin-bottom: 0;
+            }
+
+            #digitalDropdown .dropdown-menu,
+            #linkDropdown .dropdown-menu {
+                display: none;
+                padding: 0.5rem 0.5rem 0.2rem 0.5rem;
+                border-left: none;
+                background: #fffffffa;
+                border: 2px solid var(--soft-green);
+                border-radius: 1.5rem;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+                margin-top: 0.2rem;
+                margin-bottom: 0.2rem;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            #digitalDropdown .dropdown-menu.show,
+            #linkDropdown .dropdown-menu.show {
+                display: block;
+            }
+
+            #digitalDropdown .dropdown-menu .row,
+            #linkDropdown .dropdown-menu .row {
+                display: flex;
+                flex-wrap: nowrap;
+                margin: 0 -0.15rem;
+                gap: 0;
+            }
+
+            #digitalDropdown .dropdown-menu .col,
+            #linkDropdown .dropdown-menu .col {
+                flex: 0 0 50%;
+                max-width: 50%;
+                padding: 0 0.15rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.05rem;
+            }
+
+            #digitalDropdown .dropdown-item,
+            #linkDropdown .dropdown-item {
+                white-space: nowrap;
+                overflow: visible;
+                text-overflow: clip;
+                padding: 0.4rem 0.5rem;
+                font-size: 1rem;
+                border-radius: 0.5rem;
+                background: transparent;
+                border: none;
+                transition: 0.15s;
+                margin: 0;
+                box-sizing: border-box;
+                color: var(--dark-charcoal);
+                text-align: left;
+                min-height: 2.2rem;
+                line-height: 1.4;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                font-weight: 500;
+            }
+
+            #digitalDropdown .dropdown-item:hover,
+            #linkDropdown .dropdown-item:hover {
+                background-color: var(--bg-green);
+                color: var(--main-green);
+            }
+
+            #digitalDropdown .dropdown-item i,
+            #linkDropdown .dropdown-item i {
+                display: none !important;
+            }
+
+            #digitalDropdown .dropdown-item,
+            #linkDropdown .dropdown-item {
+                padding-left: 0.8rem;
+            }
+
+            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu {
+                display: none;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                padding-left: 1rem;
+                border-left: 3px solid var(--soft-green);
+                border-radius: 0 1.5rem 1.5rem 0;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                margin-top: 0.2rem;
+                margin-bottom: 0.2rem;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu.show {
+                display: block;
+            }
+
+            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-item {
+                flex: unset;
+                max-width: 100%;
+                white-space: normal;
+                padding: 0.4rem 1rem;
+                font-size: 1rem;
+                border: none;
+                background: transparent;
+                min-height: auto;
+                width: 100%;
+            }
+
+            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-item:hover {
+                background-color: var(--bg-green);
+                border-radius: 1.2rem;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .dropdown-menu-end {
+                right: auto !important;
+                left: 0 !important;
+            }
+        }
+
+        /* ----- 卡片與圖片樣式 ----- */
+        .card {
+            border: none;
+            border-radius: 2.5rem 2.5rem 2rem 2rem;
+            background-color: #ffffff;
+            box-shadow: var(--card-shadow);
+            transition: all 0.25s;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #c8e6c9, #e8f5e9);
+            border-bottom: 3px dashed var(--light-green);
+            color: var(--main-green);
+            font-weight: 700;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .card-header i {
+            color: var(--bright-accent);
+            font-size: 1.4rem;
+            margin-right: 8px;
+        }
+
+        .card-body {
+            flex: 1 1 auto;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-footer {
+            background-color: #f6fbf5;
+            border-top: 2px dotted var(--soft-green);
+        }
+
+        /* 首頁按鈕永遠保持 active 樣式 */
+        .home-link {
+            background-color: var(--soft-green) !important;
+            color: var(--main-green) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .home-link:hover {
+            background-color: var(--soft-green) !important;
+            color: var(--main-green) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* 其他連結的 hover 效果 */
+        .nav-link:not(.home-link):hover {
+            background-color: var(--soft-green);
+            color: var(--main-green) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        footer {
+            color: var(--dark-charcoal);
+            opacity: 0.8;
+            border-top: 3px dotted var(--soft-green) !important;
+            padding-top: 1.2rem;
+        }
+
+        .container h2 {
+            color: var(--main-green);
+            font-weight: 700;
+            margin: 1.2rem 0 1rem 0;
+            border-left: 6px solid var(--bright-accent);
+            padding-left: 1.2rem;
+        }
+
+        /* ---------- 強制 4:3 比例 ---------- */
+        .card-img-top {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            display: block;
+        }
+
+        .SM {
+            line-height: 0;
+            overflow: hidden;
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* 桌機版保留圖示 */
+        @media (min-width: 992px) {
+
+            #digitalDropdown .dropdown-item i,
+            #linkDropdown .dropdown-item i {
+                display: inline-block !important;
+                margin-right: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 導覽列 - 與 index.html 選單行為完全一致 -->
+    <nav class="navbar navbar-expand-lg py-2">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-emoji-smile-fill"></i>愛蘭國小第83屆甲班
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="切換導航">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <!-- 首頁 -->
+                    <li class="nav-item">
+                        <a class="nav-link home-link" href="../index.html">
+                            <i class="bi bi-house-heart me-1"></i>首頁
+                        </a>
+                    </li>
+
+                    <!-- 班級經營 -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-people me-1"></i>班級經營
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="classDropdown">
+                            <li><a class="dropdown-item" href="../班級經營/班級幹部&值日生.html"><i
+                                        class="bi bi-book me-2"></i>班級幹部、值日生</a></li>
+                            <li><a class="dropdown-item" href="../班級經營/科任和出題老師.html"><i
+                                        class="bi bi-book me-2"></i>科任和出題老師</a></li>
+                            <li><a class="dropdown-item" href="../班級經營/掃地工作分配.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>掃地工作分配</a></li>
+                            <li><a class="dropdown-item" href="../班級經營/社團和團隊.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>社團、團隊</a></li>
+                            <li><a class="dropdown-item" href="../班級經營/學藝競賽.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>學藝競賽</a></li>
+                            <li><a class="dropdown-item" href="../班級經營/英語手牽手_學習扶助_原民語.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>英語手牽手、學習扶助、原民語</a></li>
+                            <li><a class="dropdown-item" href="../班級經營/學生各項帳號.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>學生各項帳號</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://docs.google.com/spreadsheets/d/16qZ40y_JXktnOvBb9eSPUUMJ4lPb2JPLLW_oE5xS-2U/edit?usp=sharing"
+                                    target="_blank"><i class="bi bi-grid-3x3-gap me-2"></i>學生基本資料(不公開)</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- 校本課程 -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="curriculumDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-tree me-1"></i>校本課程
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="curriculumDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-building me-2"></i>在地文化</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-flower1 me-2"></i>生態探索</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-book me-2"></i>閱讀深耕</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- 作品 -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-palette me-1"></i>作品
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="workDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-brush me-2"></i>繪畫</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>書法</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-2"></i>作文</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- 相簿 -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="albumDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-images me-1"></i>相簿
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="albumDropdown">
+                            <li><a class="dropdown-item" href="115-1.html"><i
+                                        class="bi bi-calendar-event me-2"></i>115學年度上學期</a></li>
+                            <li><a class="dropdown-item" href="#"><i
+                                        class="bi bi-bus-front me-2"></i>115學年度下學期</a></li>
+                            <li><a class="dropdown-item" href="116-1.html"><i
+                                        class="bi bi-mortarboard me-2"></i>116學年度上學期</a></li>
+                            <li><a class="dropdown-item" href="116-2.html"><i
+                                        class="bi bi-mortarboard me-2"></i>116學年度下學期</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- 榮譽榜 -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="honorDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-trophy me-1"></i>榮譽榜
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="honorDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-star me-2"></i>學業優秀</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-dribbble me-2"></i>體育競賽</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-palette me-2"></i>藝術表現</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- 數位學習 -->
+                    <li class="nav-item dropdown" id="digitalDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="digitalDropdownToggle" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-laptop me-1"></i>數位學習
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="digitalDropdownToggle">
+                            <div class="row">
+                                <div class="col">
+                                    <li><a class="dropdown-item" href="https://adl.edu.tw/" target="blank"><i
+                                                class="bi bi-laptop-fill"></i>因材網</a></li>
+                                    <li><a class="dropdown-item" href="https://www.learnmode.net/home/"
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>學習吧</a></li>
+                                    <li><a class="dropdown-item" href="https://www.junyiacademy.org/" target="blank"><i
+                                                class="bi bi-laptop-fill"></i>均一教育平台</a></li>
+                                    <li><a class="dropdown-item" href="https://loilonote.app/login?hl=zh-Hant"
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>LoiLoNote</a></li>
+                                    <li><a class="dropdown-item" href="https://www.pagamo.org/" target="_blank"><i
+                                                class="bi bi-laptop-fill"></i>PaGamO</a></li>
+                                </div>
+                                <div class="col">
+                                    <li><a class="dropdown-item" href="https://padlet.com/" target="_blank"><i
+                                                class="bi bi-laptop-fill"></i>Padlet</a></li>
+                                    <li><a class="dropdown-item" href="https://wordwall.net/tc" target="_blank"><i
+                                                class="bi bi-laptop-fill"></i>Wordwall</a></li>
+                                    <li><a class="dropdown-item" href="https://www.coolenglish.edu.tw/"
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>Cool English(酷英網)</a></li>
+                                    <li><a class="dropdown-item" href="https://cooc.tp.edu.tw/" target="_blank"><i
+                                                class="bi bi-laptop-fill"></i>台北酷客雲</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="https://www.icrt.com.tw/news_lunchbox.php?&mlevel1=7&mlevel2=96"
+                                            target="_blank"><i class="bi bi-laptop-fill"></i>ICRT News Lunchbox</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <!-- 網路資源 -->
+                    <li class="nav-item dropdown" id="linkDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="linkDropdownToggle" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-link-45deg me-1"></i>網路資源
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="linkDropdownToggle">
+                            <div class="row">
+                                <div class="col">
+                                    <li><a class="dropdown-item" href="https://alps.ntct.edu.tw" target="blank"><i
+                                                class="bi bi-link-45deg"></i>愛蘭國小</a></li>
+                                    <li><a class="dropdown-item" href="https://eschool.ntct.edu.tw/" target="blank"><i
+                                                class="bi bi-link-45deg"></i>南投縣校務行政系統</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="https://www.edu.tw/Content_List.aspx?n=83D8D70FE4468412"
+                                            target="_blank"><i class="bi bi-link-45deg"></i>教育部電子辭典</a></li>
+                                    <li><a class="dropdown-item" href="https://dict.idioms.moe.edu.tw/search.jsp"
+                                            target="_blank"><i class="bi bi-link-45deg"></i>教育部成語典</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="https://sites.google.com/mail.jges.ntpc.edu.tw/ctrc" target="blank"><i
+                                                class="bi bi-link-45deg"></i>新北市書法教學資源中心</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="http://163.20.160.14/~moodle/course/view.php?id=22" target="blank"><i
+                                                class="bi bi-link-45deg"></i>國小硬筆字教學實務</a></li>
+                                    <li><a class="dropdown-item" href="http://write.phc.edu.tw/" target="blank"><i
+                                                class="bi bi-link-45deg"></i>澎湖縣硬筆書法教學網</a></li>
+                                </div>
+                                <div class="col">
+                                    <li><a class="dropdown-item" href="http://www.emath.math.ncu.edu.tw/e_school/"
+                                            target="blank"><i class="bi bi-link-45deg"></i>子由數學小學堂</a></li>
+                                    <li><a class="dropdown-item" href="https://tw.dictionary.search.yahoo.com/"
+                                            target="blank"><i class="bi bi-link-45deg"></i>奇摩英語字典</a></li>
+                                    <li><a class="dropdown-item" href="https://www.egame.kh.edu.tw/" target="blank"><i
+                                                class="bi bi-link-45deg"></i>U世代島嶼學習樂園</a></li>
+                                    <li><a class="dropdown-item" href="https://digitalmaster.knsh.com.tw/"
+                                            target="_blank"><i class="bi bi-link-45deg"></i>康軒數位高手</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="https://edisc3.hle.com.tw/edisc_v3/index.html?t=-912323430"
+                                            target="_blank"><i class="bi bi-link-45deg"></i>翰林行動大師</a></li>
+                                    <li><a class="dropdown-item" href="https://nanidigi.oneclass.com.tw/"
+                                            target="_blank"><i class="bi bi-link-45deg"></i>南一數位資源網</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+    <!-- 主內容 -->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>115學年度下學期活動相簿</h2>
+            </div>
+        </div>
+        <br>
+
+        <!-- 第1列 (4:3強制生效) -->
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <div class="card h-100">
+                    <div class="SM">
+                        <a href="https://photos.app.goo.gl/Pwuzk7ogp7pepg6s9" target="blank"><img
+                                src="https://lh3.googleusercontent.com/pw/AP1GczObi0mXqQlArGH3hfKOjuZBpBBppKK-dn6BWheHp9FCnVheYeuvP03tzDJ7CYFToM2noTdkgPysiM-z-UXTrle9PztCqTQTs3I1HRwrI_ayAjUoUxmrnAjm89YOe_penm9Ss5AYaSj33r4xllU8rO1EJw=w1140-h855-s-no-gm?authuser=0"
+                                class="card-img-top" title="前往相簿" alt="期末同樂會"></a>
+                    </div>
+                    <div class="card-body">
+                        <!-- 可選填標題與內容，此處保留空白 -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <div class="card h-100">
+                    <div class="SM">
+                        <a href="https://photos.app.goo.gl/gZMBtp1Ggt3heBef7" target="blank"><img
+                                src="https://lh3.googleusercontent.com/pw/AP1GczMcKcwKD3oR34hxK-Ao01iDIxR1FB4hVeuwCudVDoVKzADivxWk64Il2Iad4-u1P1K9TSMBSwDSdTnLddS1ZITLFOKvpdp7UjUUtwN9C0IFtE512xf3GxSPGV3KxfluODYR3yCpjmgOBBVzh_spesIhFw=w1280-h853-s-no-gm?authuser=0"
+                                class="card-img-top" title="前往相簿" alt="78th畢業典禮"></a>
+                    </div>
+                    <div class="card-body">
+                        <!-- 可選填標題與內容 -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <div class="card h-100">
+                    <div class="SM">
+                        <a href="https://photos.app.goo.gl/AC9CJBqRwCtiQ8v57" target="blank"><img
+                                src="https://lh3.googleusercontent.com/pw/AP1GczNqa9TeVWXIdN_jaTsbYSfHGZvtBtPtAkJWiAYvEjSTlLUmMe2K99NDI6P7bPBMalOnYrXoFUkDUstPpGYMzTvAAAK724KHITf89QR0GCy819joi33xszwttqDjo2FZngB3Kx9Nr_seWyxUiEkIt84opA=w1140-h855-s-no-gm?authuser=0"
+                                class="card-img-top" title="前往相簿" alt="製作畢業證書封套"></a>
+                    </div>
+                    <div class="card-body">
+                        <!-- 可選填標題與內容 -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <div class="card h-100">
+                    <div class="SM">
+                        <a href="https://photos.app.goo.gl/P7S6XkZ6t26zbrLA8" target="blank"><img
+                                src="https://lh3.googleusercontent.com/pw/AP1GczPQls59rwJAq7X7JinSE9DNpm-AQKpgXeUHYbNzYgJX4AR6Hf17WQjN4ur_p0KC75E-_lHeIZRaneHrfy5jS5hla8ADedtd4vmh8kXdx2-jY3kIzVSM_7pSHPzpu_IhabHqVYKAXt-0PF4m98XKBJjdsQ=w599-h855-s-no-gm?authuser=0"
+                                class="card-img-top" title="前往相簿" alt="第78屆六乙畢業生-個人藝術照"></a>
+                    </div>
+                    <div class="card-body">
+                        <!-- 可選填標題與內容 -->
+                    </div>
+                </div>
+            </div>
+        </div><br>
+
+        <!-- 第2列 (預留未來擴充) -->
+    </div>
+
+    <footer class="container py-3 mt-3">
+        <p class="text-center small mb-0" style="color: var(--dark-charcoal); opacity: 0.95;">
+            © 2026 愛蘭國民小學．向志賢老師 All Rights Reserved. ｜ 最後更新：<span id="lastModified"></span>
+        </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function updateLastModified() {
+                const lastModified = new Date(document.lastModified);
+                const formattedDateTime =
+                    `${lastModified.getFullYear()}-${String(lastModified.getMonth() + 1).padStart(2, '0')}-${String(lastModified.getDate()).padStart(2, '0')} ${String(lastModified.getHours()).padStart(2, '0')}:${String(lastModified.getMinutes()).padStart(2, '0')}`;
+                const el = document.getElementById('lastModified');
+                if (el) el.textContent = formattedDateTime;
+            }
+            updateLastModified();
+        });
+    </script>
+</body>
+
+</html>

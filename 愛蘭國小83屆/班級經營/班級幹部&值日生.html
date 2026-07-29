@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>班級幹部&值日生</title>
+    <title>班級幹部 &amp; 值日生</title>
     <!-- Bootstrap 5 + Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
-        /* ----- 原有明亮綠色系 ----- */
+        /* ----- 明亮綠色系 ----- */
         :root {
             --main-green: #2E7D32;
             --light-green: #66BB6A;
@@ -58,13 +58,18 @@
             border-radius: 2rem;
             padding: 0.5rem 1rem;
             transition: 0.2s;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
         .nav-link:hover,
         .nav-link.active {
             background-color: var(--soft-green);
             color: var(--main-green) !important;
-            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15);
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
         .dropdown-menu {
@@ -73,6 +78,34 @@
             border-radius: 1.5rem;
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
             padding: 0.5rem;
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+            pointer-events: none;
+            z-index: 9999;
+            position: absolute;
+        }
+
+        @media (min-width: 992px) {
+
+            .dropdown:hover>.dropdown-menu,
+            .dropdown.show>.dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+
+            .dropdown:hover>.dropdown-toggle::after {
+                transform: rotate(180deg);
+                transition: transform 0.25s;
+            }
+        }
+
+        .dropdown-toggle::after {
+            transition: transform 0.25s;
         }
 
         .dropdown-item {
@@ -81,11 +114,15 @@
             font-weight: 500;
             padding: 0.5rem 1.2rem;
             font-size: 1rem;
+            border: none !important;
+            outline: none !important;
         }
 
         .dropdown-item:hover {
             background-color: var(--bg-green);
             color: var(--main-green);
+            border: none !important;
+            outline: none !important;
         }
 
         .dropdown-menu-end {
@@ -95,10 +132,14 @@
             max-width: 360px;
         }
 
-        /* 手機版樣式 */
         @media (max-width: 991.98px) {
             .dropdown-menu {
                 position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                pointer-events: auto;
+                display: none;
                 box-shadow: none;
                 border: none;
                 border-left: 3px solid var(--soft-green);
@@ -112,12 +153,29 @@
                 min-width: unset;
             }
 
+            .dropdown-menu.show {
+                display: block;
+            }
+
             .navbar-nav .nav-link {
                 padding: 0.5rem 1rem;
             }
 
+            .dropdown:hover>.dropdown-toggle::after {
+                transform: none;
+            }
+
+            .navbar-nav .dropdown {
+                margin-bottom: 0;
+            }
+
+            .navbar-nav .nav-item {
+                margin-bottom: 0;
+            }
+
             #digitalDropdown .dropdown-menu,
             #linkDropdown .dropdown-menu {
+                display: none;
                 padding: 0.5rem 0.5rem 0.2rem 0.5rem;
                 border-left: none;
                 background: #fffffffa;
@@ -128,6 +186,11 @@
                 margin-bottom: 0.2rem;
                 width: 100%;
                 max-width: 100%;
+            }
+
+            #digitalDropdown .dropdown-menu.show,
+            #linkDropdown .dropdown-menu.show {
+                display: block;
             }
 
             #digitalDropdown .dropdown-menu .row,
@@ -152,12 +215,15 @@
             #linkDropdown .dropdown-item {
                 white-space: nowrap;
                 overflow: visible;
+                text-overflow: clip;
                 padding: 0.4rem 0.5rem;
                 font-size: 1rem;
                 border-radius: 0.5rem;
                 background: transparent;
                 border: none;
+                transition: 0.15s;
                 margin: 0;
+                box-sizing: border-box;
                 color: var(--dark-charcoal);
                 text-align: left;
                 min-height: 2.2rem;
@@ -166,6 +232,12 @@
                 align-items: center;
                 width: 100%;
                 font-weight: 500;
+            }
+
+            #digitalDropdown .dropdown-item:hover,
+            #linkDropdown .dropdown-item:hover {
+                background-color: var(--bg-green);
+                color: var(--main-green);
             }
 
             #digitalDropdown .dropdown-item i,
@@ -181,6 +253,7 @@
             .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu {
                 display: none;
                 flex-direction: column;
+                flex-wrap: nowrap;
                 padding-left: 1rem;
                 border-left: 3px solid var(--soft-green);
                 border-radius: 0 1.5rem 1.5rem 0;
@@ -213,14 +286,6 @@
                 background-color: var(--bg-green);
                 border-radius: 1.2rem;
             }
-
-            .dropdown-toggle {
-                cursor: pointer;
-            }
-
-            .dropdown-menu.show {
-                display: block !important;
-            }
         }
 
         @media (max-width: 991.98px) {
@@ -230,7 +295,6 @@
             }
         }
 
-        /* 卡片樣式 */
         .card {
             border: none;
             border-radius: 2.5rem 2.5rem 2rem 2rem;
@@ -279,10 +343,10 @@
             padding-top: 1.2rem;
         }
 
-        /* 班級幹部美化 */
+        /* ===== 職稱標籤 - 每個字獨立分散對齊 ===== */
         .role-label-group {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             gap: 8px;
             padding: 3px 0;
             border-bottom: 1px dashed rgba(46, 125, 50, 0.15);
@@ -293,29 +357,61 @@
             border-bottom: none;
         }
 
-        .badge-role {
+        .role-label-group .badge-role {
+            flex: 0 0 4.5em;
+            /* 固定寬度，以4個中文字為基準 */
             background: var(--main-green);
             color: #fff;
             font-size: 0.7rem;
             font-weight: 600;
-            padding: 0.15rem 0.7rem;
+            padding: 0.15rem 0.2rem;
             border-radius: 20px;
-            letter-spacing: 0.5px;
-            display: inline-block;
-            min-width: 60px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            /* 每個字獨立分散對齊 */
+            align-items: center;
+            line-height: 1.5;
+            letter-spacing: 0px;
+            /* 將中文字拆成獨立字元，用 flex 排列 */
         }
 
-        .label-text {
+        /* 將 badge-role 內的文字拆成獨立字元 */
+        .role-label-group .badge-role .char {
+            display: inline-block;
+            flex: 1;
+            text-align: center;
+            /* 每個字元居中，利用 flex:1 平均分配空間 */
+        }
+
+        /* 針對2個字的標籤（如「班長」），2個字元各佔一半寬度 */
+        /* 3個字（副班長），3個字元各佔1/3寬度 */
+        /* 4個字（衛生股長、體育股長），4個字元各佔1/4寬度 */
+
+        .role-label-group .label-text {
             font-weight: 500;
             color: #1d3b1d;
             font-size: 0.9rem;
+            flex: 1;
+            text-align: left;
         }
 
-        .label-text::before {
+        .role-label-group .label-text::before {
             content: "✨ ";
             color: var(--bright-accent);
             font-size: 0.7rem;
+        }
+
+        /* 手機版維持相同效果 */
+        @media (max-width: 576px) {
+            .role-label-group .badge-role {
+                flex: 0 0 4.5em;
+                font-size: 0.7rem;
+                padding: 0.15rem 0.2rem;
+            }
+
+            .role-label-group .label-text {
+                font-size: 0.9rem;
+            }
         }
 
         .duty-block {
@@ -393,7 +489,6 @@
             box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.02);
         }
 
-        /* 值日生表格 */
         .table-duty {
             width: 100%;
             border-collapse: separate;
@@ -460,23 +555,28 @@
             border-bottom: 2px solid var(--main-green);
         }
 
-        /* 首頁按鈕永遠保持 active 樣式 */
         .home-link {
             background-color: var(--soft-green) !important;
             color: var(--main-green) !important;
-            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
         .home-link:hover {
             background-color: var(--soft-green) !important;
             color: var(--main-green) !important;
-            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
-        /* 其他連結的 hover 效果 */
         .nav-link:not(.home-link):hover {
             background-color: var(--soft-green);
             color: var(--main-green) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
         }
 
         @media (max-width: 576px) {
@@ -507,7 +607,6 @@
             }
         }
 
-        /* 桌機版保留圖示 */
         @media (min-width: 992px) {
 
             #digitalDropdown .dropdown-item i,
@@ -532,34 +631,31 @@
             </button>
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <!-- 首頁 - 使用 home-link 類別，永遠保持淺綠色背景 -->
                     <li class="nav-item">
                         <a class="nav-link home-link" href="../index.html">
                             <i class="bi bi-house-heart me-1"></i>首頁
                         </a>
                     </li>
 
-                    <!-- 班級經營 -->
-                    <li class="nav-item dropdown" data-bs-auto-close="outside">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button"
-                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-people me-1"></i>班級經營
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="classDropdown">
-                            <li><a class="dropdown-item" href="../班級經營/班級幹部&值日生.html"><i
+                            <li><a class="dropdown-item" href="#"><i
                                         class="bi bi-book me-2"></i>班級幹部、值日生</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/科任和出題老師.html"><i
-                                        class="bi bi-book me-2"></i>科任和出題老師</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/掃地工作分配.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>掃地工作分配</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/社團和團隊.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>社團、團隊</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/學藝競賽.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>學藝競賽</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/英語手牽手_學習扶助_原民語.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>英語手牽手、學習扶助、原民語</a>
+                            <li><a class="dropdown-item" href="科任和出題老師.html"><i class="bi bi-book me-2"></i>科任和出題老師</a>
                             </li>
-                            <li><a class="dropdown-item" href="../班級經營/學生各項帳號.html"><i
+                            <li><a class="dropdown-item" href="掃地工作分配.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>掃地工作分配</a></li>
+                            <li><a class="dropdown-item" href="社團和團隊.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>社團、團隊</a></li>
+                            <li><a class="dropdown-item" href="學藝競賽.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>學藝競賽</a></li>
+                            <li><a class="dropdown-item" href="英語手牽手_學習扶助_原民語.html"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>英語手牽手、學習扶助、原民語</a></li>
+                            <li><a class="dropdown-item" href="學生各項帳號.html"><i
                                         class="bi bi-grid-3x3-gap me-2"></i>學生各項帳號</a></li>
                             <li><a class="dropdown-item"
                                     href="https://docs.google.com/spreadsheets/d/16qZ40y_JXktnOvBb9eSPUUMJ4lPb2JPLLW_oE5xS-2U/edit?usp=sharing"
@@ -567,10 +663,9 @@
                         </ul>
                     </li>
 
-                    <!-- 校本課程 -->
-                    <li class="nav-item dropdown" data-bs-auto-close="outside">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="curriculumDropdown" role="button"
-                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-tree me-1"></i>校本課程
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="curriculumDropdown">
@@ -580,10 +675,9 @@
                         </ul>
                     </li>
 
-                    <!-- 作品 -->
-                    <li class="nav-item dropdown" data-bs-auto-close="outside">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button"
-                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-palette me-1"></i>作品
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="workDropdown">
@@ -593,10 +687,9 @@
                         </ul>
                     </li>
 
-                    <!-- 相簿 -->
-                    <li class="nav-item dropdown" data-bs-auto-close="outside">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="albumDropdown" role="button"
-                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-images me-1"></i>相簿
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="albumDropdown">
@@ -611,10 +704,9 @@
                         </ul>
                     </li>
 
-                    <!-- 榮譽榜 -->
-                    <li class="nav-item dropdown" data-bs-auto-close="outside">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="honorDropdown" role="button"
-                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-trophy me-1"></i>榮譽榜
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="honorDropdown">
@@ -624,10 +716,9 @@
                         </ul>
                     </li>
 
-                    <!-- 數位學習 -->
-                    <li class="nav-item dropdown" id="digitalDropdown" data-bs-auto-close="outside">
+                    <li class="nav-item dropdown" id="digitalDropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="digitalDropdownToggle" role="button"
-                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-laptop me-1"></i>數位學習
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="digitalDropdownToggle">
@@ -661,10 +752,9 @@
                         </ul>
                     </li>
 
-                    <!-- 網路資源 -->
-                    <li class="nav-item dropdown" id="linkDropdown" data-bs-auto-close="outside">
+                    <li class="nav-item dropdown" id="linkDropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="linkDropdownToggle" role="button"
-                            data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-link-45deg me-1"></i>網路資源
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="linkDropdownToggle">
@@ -711,8 +801,8 @@
         </div>
     </nav>
 
+    <!-- 主要內容 -->
     <div class="container mt-4">
-        <!-- 班級幹部 四卡 -->
         <div class="mb-4">
             <h3 class="fw-bold section-title"><i class="bi bi-person-gear me-2"></i>一、班級幹部</h3>
             <div class="row g-3 mt-2">
@@ -720,14 +810,39 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title"><i class="bi bi-calendar2-week"></i> 五上</h5>
-                            <div class="role-label-group"><span class="badge-role">班長</span><span class="label-text">囿妘
-                                    · 劭澐</span></div>
-                            <div class="role-label-group"><span class="badge-role">副班長</span><span class="label-text">劭澐
-                                    · 囿妘</span></div>
-                            <div class="role-label-group"><span class="badge-role">衛生股長</span><span
-                                    class="label-text">根鋐 · 士楷</span></div>
-                            <div class="role-label-group"><span class="badge-role">體育股長</span><span
-                                    class="label-text">宇勛 · 柏瑜(06)</span></div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">班</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">囿妘 · 劭澐</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">副</span>
+                                    <span class="char">班</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">劭澐 · 囿妘</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">衛</span>
+                                    <span class="char">生</span>
+                                    <span class="char">股</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">根鋐 · 士楷</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">體</span>
+                                    <span class="char">育</span>
+                                    <span class="char">股</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">宇勛 · 柏瑜(06)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -735,14 +850,39 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title"><i class="bi bi-calendar2-week"></i> 五下</h5>
-                            <div class="role-label-group"><span class="badge-role">班長</span><span class="label-text">囿妘
-                                    · 劭澐</span></div>
-                            <div class="role-label-group"><span class="badge-role">副班長</span><span class="label-text">劭澐
-                                    · 囿妘</span></div>
-                            <div class="role-label-group"><span class="badge-role">衛生股長</span><span
-                                    class="label-text">根鋐 · 士楷</span></div>
-                            <div class="role-label-group"><span class="badge-role">體育股長</span><span
-                                    class="label-text">宇勛 · 柏瑜(06)</span></div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">班</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">囿妘 · 劭澐</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">副</span>
+                                    <span class="char">班</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">劭澐 · 囿妘</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">衛</span>
+                                    <span class="char">生</span>
+                                    <span class="char">股</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">根鋐 · 士楷</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">體</span>
+                                    <span class="char">育</span>
+                                    <span class="char">股</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">宇勛 · 柏瑜(06)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -750,14 +890,39 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title"><i class="bi bi-calendar2-week"></i> 六上</h5>
-                            <div class="role-label-group"><span class="badge-role">班長</span><span class="label-text">恩哲
-                                    · 柏翔</span></div>
-                            <div class="role-label-group"><span class="badge-role">副班長</span><span class="label-text">柏翔
-                                    · 恩哲</span></div>
-                            <div class="role-label-group"><span class="badge-role">衛生股長</span><span
-                                    class="label-text">亨一 · 士楷</span></div>
-                            <div class="role-label-group"><span class="badge-role">體育股長</span><span
-                                    class="label-text">守中 · 柏瑜(06)</span></div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">班</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">恩哲 · 柏翔</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">副</span>
+                                    <span class="char">班</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">柏翔 · 恩哲</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">衛</span>
+                                    <span class="char">生</span>
+                                    <span class="char">股</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">亨一 · 士楷</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">體</span>
+                                    <span class="char">育</span>
+                                    <span class="char">股</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">守中 · 柏瑜(06)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -765,20 +930,44 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title"><i class="bi bi-calendar2-week"></i> 六下</h5>
-                            <div class="role-label-group"><span class="badge-role">班長</span><span
-                                    class="label-text">沛云</span></div>
-                            <div class="role-label-group"><span class="badge-role">副班長</span><span
-                                    class="label-text">劭澐</span></div>
-                            <div class="role-label-group"><span class="badge-role">衛生股長</span><span
-                                    class="label-text">亨一 · 士楷</span></div>
-                            <div class="role-label-group"><span class="badge-role">體育股長</span><span
-                                    class="label-text">柏瑜(06) · 守中</span></div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">班</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">沛云</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">副</span>
+                                    <span class="char">班</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">劭澐</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">衛</span>
+                                    <span class="char">生</span>
+                                    <span class="char">股</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">亨一 · 士楷</span>
+                            </div>
+                            <div class="role-label-group">
+                                <span class="badge-role">
+                                    <span class="char">體</span>
+                                    <span class="char">育</span>
+                                    <span class="char">股</span>
+                                    <span class="char">長</span>
+                                </span>
+                                <span class="label-text">柏瑜(06) · 守中</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 職責區塊 -->
             <div class="row g-3 mt-2">
                 <div class="col-lg-3 col-md-3 d-flex">
                     <div class="duty-block w-100">
@@ -813,7 +1002,6 @@
             </div>
         </div>
 
-        <!-- 值日生 -->
         <div class="mt-5">
             <h3 class="fw-bold section-title"><i class="bi bi-clipboard-check me-2"></i>二、值日生</h3>
             <div class="duty-table-wrap mt-3">
