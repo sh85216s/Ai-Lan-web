@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>認識茭白筍 · 美人腿 | 校本課程</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: #f8f5f0;
+            font-family: '微軟正黑體', 'Segoe UI', Roboto, sans-serif;
+            color: #2d2d2d;
+            padding-top: 70px;
+            /* 為固定選單留空間 */
+        }
+
+        /* 右上方主題選單 (固定) */
+        .topic-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1030;
+            background: rgba(30, 74, 59, 0.92);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+            padding: 8px 0;
+            border-bottom: 2px solid #ffb347;
+        }
+
+        .topic-nav .nav-link {
+            color: #f0f7f2;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 40px;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .topic-nav .nav-link:hover,
+        .topic-nav .nav-link.active {
+            background: #ffb347;
+            color: #1e3d33;
+        }
+
+        .topic-nav .navbar-toggler {
+            border-color: #ffd78a;
+        }
+
+        .topic-nav .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,215,138,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .header-gradient {
+            background: linear-gradient(145deg, #2b7a62 0%, #3ca07e 100%);
+            color: #fff;
+            padding: 2rem 0 1.5rem;
+            border-radius: 0 0 40px 40px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-gradient h1 {
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-gradient .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            border-left: 3px solid #ffd78a;
+            padding-left: 16px;
+        }
+
+        .section-title {
+            border-bottom: 4px solid #ffb347;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.8rem;
+            font-weight: 700;
+            color: #1e4a3b;
+            position: relative;
+        }
+
+        .section-title i {
+            color: #ff9f1c;
+            margin-right: 10px;
+        }
+
+        .card-hover {
+            transition: all 0.2s ease-in-out;
+            border: none;
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 6px 18px rgba(0, 40, 30, 0.08);
+            border-radius: 24px;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(0, 60, 40, 0.12);
+            background: #fff;
+        }
+
+        .badge-soft-green {
+            background: #d5efe6;
+            color: #105a44;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 40px;
+        }
+
+        .bamboo-bg {
+            background: #eaf5ef;
+            border-radius: 32px;
+            padding: 2rem 1.5rem;
+        }
+
+        .table-custom th {
+            background: #1e4a3b;
+            color: #fff;
+            border: none;
+        }
+
+        .table-custom td {
+            background: #fafaf7;
+            vertical-align: middle;
+        }
+
+        .icon-circle {
+            width: 48px;
+            height: 48px;
+            background: #d9efe7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #136b4d;
+            font-size: 1.6rem;
+        }
+
+        .list-bullet {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .list-bullet li {
+            padding-left: 28px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .list-bullet li::before {
+            content: "🌱";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #2b7a62;
+            font-size: 1.2rem;
+        }
+
+        .footer-note {
+            background: #1e3d33;
+            color: #cfddd7;
+            border-radius: 40px 40px 0 0;
+            padding: 2.5rem 0;
+        }
+
+        .poem-box {
+            background: #fff6ea;
+            border-radius: 40px 8px 40px 8px;
+            padding: 1.8rem;
+            border-left: 8px solid #c8a77b;
+        }
+
+        .equal-height-cards .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .equal-height-cards .card .card-body {
+            flex: 1 1 auto;
+        }
+
+        @media (max-width: 576px) {
+            .header-gradient h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* 錨點偏移 */
+        .anchor-offset {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ============ 右上方主題選單 (固定) ============ -->
+    <nav class="topic-nav navbar navbar-expand-md">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="#"><i class="fas fa-seedling me-2"
+                    style="color:#ffd78a;"></i>茭白筍</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topicMenu"
+                aria-controls="topicMenu" aria-expanded="false" aria-label="切換選單">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="topicMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                    <li class="nav-item"><a class="nav-link active" data-target="intro" href="#intro"><i
+                                class="fas fa-home me-1"></i>簡介</a></li>
+                    <li class="nav-item"><a class="nav-link" data-target="formation" href="#formation"><i
+                                class="fas fa-fan"></i> 形成與環境</a></li>
+                    <li class="nav-item"><a class="nav-link" data-target="variety" href="#variety"><i
+                                class="fas fa-table"></i> 品種</a></li>
+                    <li class="nav-item"><a class="nav-link" data-target="pests" href="#pests"><i
+                                class="fas fa-bug"></i> 病蟲害</a></li>
+                    <li class="nav-item"><a class="nav-link" data-target="history" href="#history"><i
+                                class="fas fa-history"></i> 歷史&「病」玉米</a></li>
+                    <li class="nav-item"><a class="nav-link" data-target="benefits" href="#benefits"><i
+                                class="fas fa-heart"></i> 益處、吃法、工藝和文創</a></li>                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ HEADER ============ -->
+    <header class="header-gradient text-center text-md-start">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h1 class="display-3 fw-bold"><i class="fas fa-seedling me-2" style="color:#ffd78a;"></i>認識茭白筍</h1>
+                    <p class="subtitle mt-2"><i class="fas fa-leaf me-2"></i>不是筍，是「水米」— 台灣美人腿</p>
+                    <div class="mt-3 d-flex flex-wrap gap-2">
+                        <span class="badge-soft-green"><i class="fas fa-water me-1"></i>水生禾本科</span>
+                        <span class="badge-soft-green"><i class="fas fa-utensils me-1"></i>雕胡飯 · 菰米</span>
+                        <span class="badge-soft-green"><i class="fas fa-fungus me-1"></i>黑穗菌共生</span>
+                        <span class="badge-soft-green"><i class="fas fa-map-pin me-1"></i>台灣埔里最大產地</span>
+                    </div>
+                </div>
+                <div class="col-md-5 mt-3 mt-md-0 text-md-end">
+                    <img src=""
+                        alt="茭白筍 icon" class="img-fluid"
+                        style="max-width:100px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-4">
+        <!-- 1. 簡介 + 菰米/雕胡飯 -->
+        <section id="intro" class="row g-4 mb-5 anchor-offset">
+            <div class="col-lg-6">
+                <div class="card-hover card p-4 h-100">
+                    <h3 class="section-title"><i class="fas fa-info-circle"></i>茭白筍 · 不是筍</h3>
+                    <p class="lead fs-6" style="line-height:1.8;">「茭白筍」不是筍，而是禾本科多年生水生植物，和「水稻」是近親，因此有「水米」(water
+                        rice)之稱。食用部位為嫩莖，色澤白皙形如小腿，在臺灣又稱為「美人腿」。</p>
+                    <div class="mt-3 row g-2">
+                        <div class="col-sm-6"><i class="fas fa-check-circle text-success me-1"></i> 雌雄同花序</div>
+                        <div class="col-sm-6"><i class="fas fa-check-circle text-success me-1"></i> 果實為穎果</div>
+                        <div class="col-sm-6"><i class="fas fa-check-circle text-success me-1"></i> 性喜溫暖 · 水田栽培</div>
+                        <div class="col-sm-6"><i class="fas fa-check-circle text-success me-1"></i> 與黑穗菌共生 · 菌癭</div>
+                        <div class="col-sm-6"><i class="fas fa-check-circle text-success me-1"></i> 古時採「菰米」為六穀</div>
+                        <div class="col-sm-6"><i class="fas fa-check-circle text-success me-1"></i> 營養豐富 · 膳食纖維多</div>
+                    </div>
+                    <div class="mt-3 bg-light p-3 rounded-4">
+                        <i class="fas fa-rice text-secondary me-2"></i><strong>菰米（野米）</strong> —
+                        古六穀之一，蛋白質、纖維是白米數倍，李白詩中「雕胡飯」即此。〈本草綱目〉記載：利五臟、解煩熱。
+                    </div>
+                    <div class="mt-2 small text-secondary"><i class="fas fa-quote-left me-1"></i>「跪進雕胡飯，月光明素盤。」— 李白
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card-hover card p-4 h-100">
+                    <h3 class="section-title"><i class="fas fa-seedling"></i>雕胡飯 · 野米營養</h3>
+                    <div class="poem-box mb-3">
+                        <i class="fas fa-quote-left text-secondary opacity-50 me-1"></i> 跪進雕胡飯，月光明素盤。<br>
+                        <span class="text-secondary">— 李白《宿五松山下荀媼家》</span>
+                    </div>
+                    <ul class="list-bullet">
+                        <li>野米蛋白質 ≈ 白米 3 倍</li>
+                        <li>纖維 ≈ 白米 3 倍，葉酸 ≈ 5 倍</li>
+                        <li>熱量比糙米更低，營養密度高</li>
+                        <li>古六穀：稻、黍、稷、粱、麥、菰</li>
+                        <li>屈原、杜甫、陸遊都曾歌詠</li>
+                    </ul>
+                    <div class="alert alert-info mt-3 p-2 small" style="background:#d9edf7; border-radius:12px;">
+                        <i class="fas fa-globe-americas me-1"></i> 北美種植菰草以生產菰米，美國、加拿大禁止進口茭白筍，黑穗菌被視為管制微生物。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 形成 + 環境 -->
+        <section id="formation" class="row g-4 mb-5 equal-height-cards anchor-offset">
+            <div class="col-md-6">
+                <div class="card-hover card p-4">
+                    <h3 class="section-title"><i class="fas fa-fan"></i>茭白筍的形成</h3>
+                    <p>亞洲菰草與黑粉菌（穗菌）共生，菌分泌生長素及細胞分裂素，刺激嫩莖薄壁細胞增生（3倍）及增大（15倍），形成直徑約3公分、長約17公分的「菌癭」— 即茭白筍。未長菌癭的植株則開花，但無法結菰米。
+                    </p>
+                    <div class="alert alert-success bg-opacity-10 border-0 mt-2">
+                        <i class="fas fa-microscope me-2"></i> 菌癭採收下來，就是俗稱的茭白筍
+                    </div>
+                    <div class="bg-warm p-2 rounded-3 mt-2" style="background:#fcf8f0;">
+                        <i class="fas fa-corn text-warning me-1"></i> 在墨西哥，玉米感染黑穗菌形成的「腫瘤」被稱為「墨西哥松露」，售價比玉米更高！
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card-hover card p-4">
+                    <h3 class="section-title"><i class="fas fa-sun"></i>適合生長的環境</h3>
+                    <div class="d-flex flex-wrap gap-2 mb-2">
+                        <span class="badge bg-warning bg-opacity-20 text-dark px-3 py-2" style="font-size:0.9rem;"><i
+                                class="fas fa-sun me-1"></i>日照充足</span>
+                        <span class="badge bg-warning bg-opacity-20 text-dark px-3 py-2" style="font-size:0.9rem;"><i
+                                class="fas fa-temperature-high me-1"></i>分蘗20-30℃</span>
+                        <span class="badge bg-warning bg-opacity-20 text-dark px-3 py-2" style="font-size:0.9rem;"><i
+                                class="fas fa-water me-1"></i>活水灌溉</span>
+                    </div>
+                    <ul class="list-unstyled small" style="font-size:1rem;">
+                        <li><i class="fas fa-check text-success me-2"></i>pH 5.5~6.5 微酸性土</li>
+                        <li><i class="fas fa-check text-success me-2"></i>孕茭期適溫 20-25℃</li>
+                        <li><i class="fas fa-check text-success me-2"></i>黑穗菌生長適溫 25℃ 上下</li>
+                        <li><i class="fas fa-check text-success me-2"></i>浮萍可降溫、淨化、提供氮肥</li>
+                        <li><i class="fas fa-check text-success me-2"></i>埔里多湧泉、山泉水，水質潔淨</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 繁殖 + 選種 + 光照 + 水源 -->
+        <section class="row g-4 mb-5">
+            <div class="col-lg-4">
+                <div class="card-hover card p-4 h-100">
+                    <h4><i class="fas fa-crop-alt text-success me-2"></i>繁殖 · 無性生殖</h4>
+                    <p class="small">利用分株法，因染色體分裂不均導致不稔，皆以無性繁殖。須慎選優良母株，避免雄株（開花株）或灰茭（黑心）。</p>
+                    <div class="bg-light p-2 rounded-3 text-center">
+                        <i class="fas fa-cut text-secondary me-1"></i> 選苗 → 曝曬 → 切取短縮莖
+                    </div>
+                    <p class="mt-2 fst-italic text-secondary small">「欉根選苗」決定明年品質</p>
+                    <div class="mt-2 border-top pt-2">
+                        <i class="fas fa-user-astronaut text-warning me-1"></i> <strong>陳敢當</strong> —
+                        「敢當種」發現者，無私推廣，奠定埔里茭白筍王國。
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-hover card p-4 h-100">
+                    <h4><i class="fas fa-lightbulb text-warning me-2"></i>光照 · 產期調節</h4>
+                    <p>刈頭與光照可防治基腐病、胡麻葉枯病，14小時以上光照可控制產期。多數農民使用傳統燈泡（佔96%），LED僅4%（成本較高）。</p>
+                    <div class="progress" style="height:24px;">
+                        <div class="progress-bar bg-warning" style="width:88%">88%</div>
+                    </div>
+                    <span class="small text-secondary">使用光照比例</span>
+                    <p class="small mt-2"><i
+                            class="fas fa-lightbulb text-warning me-1"></i>夜間光照延長至14小時，可預防矮化病，約40天可恢復產筍。</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-hover card p-4 h-100">
+                    <h4><i class="fas fa-tint text-primary me-2"></i>水源 · 採收</h4>
+                    <p>山泉、湧泉、溪水、井水，水溫25-26℃品質最佳。採收時須確認莖部膨脹，割起後清洗去泥，去頭去尾留約30公分。</p>
+                    <span class="badge bg-info bg-opacity-25 text-dark" style="font-size:0.9rem;"><i
+                            class="far fa-clock me-1"></i> 產季集中 4~6月 & 8~10月</span>
+                    <div class="mt-2 small">
+                        <i class="fas fa-chart-line text-success me-1"></i> 埔里占全臺總面積85%，年產值約20~25億元。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 品種表格 -->
+        <section id="variety" class="mb-5 anchor-offset">
+            <h3 class="section-title"><i class="fas fa-table me-2"></i>茭白筍三品種 · 比較</h3>
+            <div class="table-responsive">
+                <table class="table table-custom table-bordered rounded-4 overflow-hidden">
+                    <thead>
+                        <tr>
+                            <th>品種名</th>
+                            <th>敢當種 (雙季茭)</th>
+                            <th>赤殼種 (單季茭)</th>
+                            <th>青殼種 (雙季茭)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>產期</strong></td>
+                            <td>全年</td>
+                            <td>10～11月</td>
+                            <td>4～10月</td>
+                        </tr>
+                        <tr>
+                            <td><strong>種植時間</strong></td>
+                            <td>依產期決定，一期四個月</td>
+                            <td>5、6、7月種</td>
+                            <td>冬至過後</td>
+                        </tr>
+                        <tr>
+                            <td><strong>特色</strong></td>
+                            <td>收割水深40~90cm，浮萍防曬</td>
+                            <td>水深0~20cm，類水稻水位</td>
+                            <td>水深90cm以上</td>
+                        </tr>
+                        <tr>
+                            <td><strong>產地</strong></td>
+                            <td>大埔里地區</td>
+                            <td>三芝、埔里、宜蘭、台中、大陸等</td>
+                            <td>十幾年前品種，目前已少見</td>
+                        </tr>
+                        <tr>
+                            <td><strong>甜度/口感</strong></td>
+                            <td>甜度次之，皮薄清脆</td>
+                            <td>甜，皮稍厚</td>
+                            <td>普通，皮中厚</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 5. 病蟲害與防治 -->
+        <section id="pests" class="mb-5 anchor-offset">
+            <h3 class="section-title"><i class="fas fa-bug me-2"></i>病蟲害與防治</h3>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-hover card p-3 h-100">
+                        <div class="d-flex align-items-center mb-2"><span class="icon-circle me-3"><i
+                                    class="fas fa-snail"></i></span>
+                            <h5 class="mb-0">福壽螺</h5>
+                        </div>
+                        <p class="small">聚乙醛餌劑、耐克螺、苦茶粕（皂素）、生物防治（鴨、烏鰡、泰國鯰、甲魚）。三苯醋錫、納乃得已禁用。</p>
+                        <span class="badge bg-danger bg-opacity-10 text-danger" style="font-size:0.9rem;">劇毒藥劑已禁止</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-hover card p-3 h-100">
+                        <div class="d-flex align-items-center mb-2"><span class="icon-circle me-3"><i
+                                    class="fas fa-seedling"></i></span>
+                            <h5 class="mb-0">銹病 · 胡麻葉枯病</h5>
+                        </div>
+                        <p class="small">菲克利水懸劑、硫磺粉輪替；有機質肥料、矽酸爐渣可減輕胡麻葉枯病。</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-hover card p-3 h-100">
+                        <div class="d-flex align-items-center mb-2"><span class="icon-circle me-3"><i
+                                    class="fas fa-wheat-alt"></i></span>
+                            <h5 class="mb-0">螟蟲 · 大螟</h5>
+                        </div>
+                        <p class="small">二化螟、大螟蛀食莖幹造成枯心。天敵：寄生蜂；深水滅蛹、清除病株、培丹粒劑、撲滅松。</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-hover card p-3 h-100">
+                        <div class="d-flex align-items-center mb-2"><span class="icon-circle me-3"><i
+                                    class="fas fa-tree"></i></span>
+                            <h5 class="mb-0">矮化病</h5>
+                        </div>
+                        <p class="small">光照不足導致苗期結筍，每日14小時光照21天可恢復。農民使用400瓦鹵素燈或LED延長光照。</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-hover card p-3 h-100">
+                        <div class="d-flex align-items-center mb-2"><span class="icon-circle me-3"><i
+                                    class="fas fa-kiwi-bird"></i></span>
+                            <h5 class="mb-0">鳥害 · 田鼠</h5>
+                        </div>
+                        <p class="small">紅冠水雞、白腹秧雞啄食筍體；防治：放鞭炮、提高水位（保育類不能傷害）。田鼠以捕鼠籠、抗凝血劑鼠藥防治。</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-hover card p-3 h-100">
+                        <div class="d-flex align-items-center mb-2"><span class="icon-circle me-3"><i
+                                    class="fas fa-hand-holding-heart"></i></span>
+                            <h5 class="mb-0">有機 · 環保酵素</h5>
+                        </div>
+                        <p class="small">埔里環保酵素共耕團，以水果、紅糖發酵，改善土質、驅蟲、增加肥力，堅持2-3年轉換期，產品供不應求。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 p-3 bg-soft-green rounded-4" style="background:#e9f3e3;">
+                <i class="fas fa-recycle me-2"></i><strong>有機/友善防治：</strong> 苦茶粕、鴨子、烏鰡、環保酵素 (MNF) 等。埔里有機茭白筍特別甜脆。
+            </div>
+        </section>
+
+        <!-- 6. 歷史 + 陳敢當 + 墨西哥玉米 -->
+        <section id="history" class="row g-4 mb-5 equal-height-cards anchor-offset">
+            <div class="col-md-6">
+                <div class="card-hover card p-4">
+                    <h4><i class="fas fa-history text-success me-2"></i>埔里茭白筍歷史</h4>
+                    <p>中國引進台灣約200年，與鱸魚、蒓菜並稱「江南三大名菜」。埔里氣候溫和、水質佳，成為全台最大產區。</p>
+                    <div class="bg-light p-3 rounded-4 mt-2">
+                        <i class="fas fa-user-astronaut text-warning me-2"></i><strong>陳敢當</strong> —
+                        「敢當種」發現者，不自私分享，被譽為埔里茭白筍之父。
+                    </div>
+                    <p class="mt-2 small"><i class="fas fa-map-pin me-1"></i> 113年埔里種植面積約 1,400 公頃，年產量約 45,000
+                        公噸，約占全國九成。</p>
+                    <div class="mt-2 border-top pt-2 small">
+                        <i class="fas fa-clock me-1"></i> 漢代後因黑穗菌感染，莖部膨大成為茭白筍。唐代李白、杜甫詩中皆提到「雕胡飯」。
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card-hover card p-4">
+                    <h4><i class="fas fa-corn text-warning me-2"></i>墨西哥「病」玉米</h4>
+                    <p>玉米黑穗菌感染後形成腫瘤（墨西哥松露），口感類似菇類，售價比玉米還高。與茭白筍同為黑穗菌引起的「菌癭」現象。</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <span class="badge bg-secondary bg-opacity-10 text-dark" style="font-size:0.9rem;"><i
+                                class="fas fa-utensils me-1"></i> 羹湯 · 脆餅</span>
+                        <span class="badge bg-secondary bg-opacity-10 text-dark" style="font-size:0.9rem;"><i
+                                class="fas fa-seedling me-1"></i> 台灣人怕黑點，墨西哥人當佳餚</span>
+                    </div>
+                    <div class="alert alert-warning mt-2 p-2 small" style="background:#fff3cd; border-radius:12px;">
+                        <i class="fas fa-exclamation-triangle me-1"></i> 北美為保護菰米產業，將黑穗菌列為管制微生物，禁止進口茭白筍。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 益處 + 吃法 + 工藝 -->
+        <section id="benefits" class="row g-4 mb-5 anchor-offset">
+            <div class="col-lg-4">
+                <div class="card-hover card p-4 h-100">
+                    <h4><i class="fas fa-heart text-danger me-2"></i>茭白筍益處</h4>
+                    <ul class="list-bullet small">
+                        <li>膳食纖維促進整腸、降膽固醇</li>
+                        <li>鈣質幫助代謝、消水腫</li>
+                        <li>菰黑穗菌含活性鈣，預防骨質疏鬆</li>
+                        <li>本草綱目：利五臟、解煩熱</li>
+                    </ul>
+                    <div class="alert alert-warning small mt-2">⚠️ 部分功效僅有有限科學證據，但美味無庸置疑。</div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-hover card p-4 h-100">
+                    <h4><i class="fas fa-utensil-spoon text-warning me-2"></i>多種吃法</h4>
+                    <div class="d-flex flex-wrap gap-1">
+                        <span class="badge bg-light text-dark border" style="font-size:0.9rem;">涼拌</span>
+                        <span class="badge bg-light text-dark border" style="font-size:0.9rem;">油燜</span>
+                        <span class="badge bg-light text-dark border" style="font-size:0.9rem;">麻醬</span>
+                        <span class="badge bg-light text-dark border" style="font-size:0.9rem;">炒</span>
+                        <span class="badge bg-light text-dark border" style="font-size:0.9rem;">海苔粥</span>
+                        <span class="badge bg-light text-dark border" style="font-size:0.9rem;">泡菜</span>
+                        <span class="badge bg-light text-dark border" style="font-size:0.9rem;">味噌烤</span>
+                        <span class="badge bg-light text-dark border" style="font-size:0.9rem;">水煮</span>
+                        <span class="badge bg-light text-dark border" style="font-size:0.9rem;">炒蛋</span>
+                    </div>
+                    <p class="mt-2 small"><i class="fas fa-egg me-1"></i> 美人腿泡麵 · 茭白筍脆片 · 土角胖（茭白筍麵包）</p>
+                    <div class="mt-2 small">
+                        <i class="fas fa-box me-1"></i> 味王代工美人腿泡麵（素食/牛肉）<br>
+                        <i class="fas fa-cookie me-1"></i> 茭白筍脆片：原味、胡椒、芥末
+                    </div>
+                </div>
+            </div>
+            <div id="craft" class="col-lg-4 anchor-offset">
+                <div class="card-hover card p-4 h-100">
+                    <h4><i class="fas fa-palette text-primary me-2"></i>工藝 · 文創</h4>
+                    <ul class="list-unstyled small">
+                        <li><i class="fas fa-paint-brush me-2 text-secondary"></i>日本木漆工藝：黑粉撒漆</li>
+                        <li><i class="fas fa-scroll me-2 text-secondary"></i>「惜福宣」手工紙：筍殼製成，不易黃化</li>
+                        <li><i class="fas fa-crown me-2 text-secondary"></i>美人腿節：選拔代言人，獎金10萬</li>
+                        <li><i class="fas fa-bread-slice me-2 text-secondary"></i>土角胖（埔里茭白筍+堅果，4次發酵）</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 參考資料 -->
+        <section class="bamboo-bg p-4">
+            <h5 class="mb-3"><i class="fas fa-book-open me-2"></i>參考資料 · 延伸閱讀</h5>
+            <div class="row row-cols-2 row-cols-md-3 g-2 small">
+                <div class="col"><a href="#" class="text-decoration-none text-dark"><i
+                            class="fas fa-file-pdf text-danger me-1"></i> 埔里茭白筍產銷</a></div>
+                <div class="col"><a href="#" class="text-decoration-none text-dark"><i
+                            class="fas fa-file-pdf text-danger me-1"></i> 潔白美人腿</a></div>
+                <div class="col"><a href="#" class="text-decoration-none text-dark"><i class="fas fa-leaf me-1"></i>
+                        有機稻田鴨雄兵</a></div>
+                <div class="col"><a href="#" class="text-decoration-none text-dark"><i class="fas fa-rice me-1"></i>
+                        茭白筍原本是米</a></div>
+                <div class="col"><a href="#" class="text-decoration-none text-dark"><i class="fas fa-virus me-1"></i>
+                        玉米黑穗菌</a></div>
+                <div class="col"><a href="#" class="text-decoration-none text-dark"><i class="fas fa-recycle me-1"></i>
+                        環保酵素製作</a></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer-note mt-4">
+        <div class="container text-center text-md-start">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0"><i class="fas fa-seedling me-2" style="color:#b8d9cb;"></i> 認識茭白筍 · 從菰米到美人腿</p>
+                    <small class="opacity-75">資料彙整自農委會、埔里農會、日耕農產</small>
+                </div>
+                <div class="col-md-6 text-md-end mt-2 mt-md-0" style="color:#b8d9cb;">
+                    <p class="mb-0">© 2026 愛蘭國民小學．向志賢老師 All Rights Reserved.</p>
+                    <small class="opacity-75">最後更新：<span id="lastModified"></span></small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 更新最後修改時間
+        function updateLastModified() {
+            const lastModified = new Date(document.lastModified);
+            const formattedDateTime = `${lastModified.getFullYear()}-${String(lastModified.getMonth() + 1).padStart(2, '0')}-${String(lastModified.getDate()).padStart(2, '0')} ${String(lastModified.getHours()).padStart(2, '0')}:${String(lastModified.getMinutes()).padStart(2, '0')}`;
+            const el = document.getElementById('lastModified');
+            if (el) el.textContent = formattedDateTime;
+        }
+        updateLastModified();
+
+        // 選單 active 切換 (點擊後加上 active class)
+        document.querySelectorAll('.topic-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                // 移除所有 active
+                document.querySelectorAll('.topic-nav .nav-link').forEach(l => l.classList.remove('active'));
+                // 加上 active
+                this.classList.add('active');
+                // 關閉手機選單
+                const menu = document.getElementById('topicMenu');
+                const bsCollapse = bootstrap.Collapse.getInstance(menu);
+                if (bsCollapse) bsCollapse.hide();
+            });
+        });
+
+        // 滾動時自動更新 active (基於錨點)
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.topic-nav .nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 90;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-target') === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
