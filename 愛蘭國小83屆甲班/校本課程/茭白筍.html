@@ -574,6 +574,65 @@
                 font-size: 0.88rem;
             }
         }
+
+        /* 本頁新增：活動卡片標題字體微調 */
+        .activity-card .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--main-green);
+        }
+
+        .activity-card .card-text {
+            font-size: 0.95rem;
+        }
+
+        .activity-card .pill-tag {
+            font-size: 0.9rem;
+        }
+
+        /* ===== 為「網頁」與「簡報」連結套用 nav-link 效果 ===== */
+        .link-btn-nav {
+            color: var(--dark-charcoal) !important;
+            font-weight: 600;
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            transition: 0.2s;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: transparent !important;
+            text-decoration: none !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .link-btn-nav:hover {
+            background-color: var(--soft-green) !important;
+            color: var(--main-green) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .link-btn-nav:visited {
+            color: var(--dark-charcoal) !important;
+        }
+
+        .link-btn-nav:active {
+            background-color: var(--soft-green) !important;
+            color: var(--main-green) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        /* 修正按鈕群組間距 */
+        .link-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem 0.5rem;
+        }
     </style>
 </head>
 
@@ -781,27 +840,57 @@
             </div>
         </div>
 
-        <div class="row g-4 mb-4">
-            <div class="col-md-6">
-                <div class="card p-3 h-100" style="background:#f6fbf5; border:1px solid var(--soft-green);">
-                    <h5 class="fw-bold"><i class="bi bi-easel2 me-2"
-                            style="color:var(--main-green);"></i>茭白筍簡報介紹&nbsp;(&nbsp;<a href="認識茭白筍/index.html"
-                            target=" _blank">網頁</a>、<a href="茭白筍簡報和網頁/茭白筍-115.07.30修正.pdf"
-                            target=" _blank">簡報</a>&nbsp;)</h5>
-                    <div class="d-flex flex-wrap gap-3 mt-2">
-                        <span class="pill-tag"><i class="bi bi-calendar3"></i> 9/13 (一) 09:00~11:00</span>
-                        <span class="pill-tag"><i class="bi bi-geo-alt"></i> 學生活動中心</span>
+        <!-- ===== 本學期2項活動 (修改連結樣式) ===== -->
+        <div class="mb-4">
+            <h4 class="fw-bold"
+                style="color: var(--main-green); border-bottom: 3px solid var(--soft-green); padding-bottom: 0.4rem;">
+                <i class="bi bi-calendar-check me-2"></i>本學期 2 項活動
+            </h4>
+            <div class="row g-4 mt-2">
+                <!-- 活動1：茭白筍簡報介紹 -->
+                <div class="col-md-6">
+                    <div class="card activity-card h-100 w-100 p-3"
+                        style="background:#f6fbf5; border:2px solid var(--main-green); border-radius: 2rem;">
+                        <div class="card-title d-flex align-items-center gap-2 flex-wrap">
+                            <i class="bi bi-easel2" style="color: var(--main-green); font-size: 1.8rem;"></i>
+                            <span>茭白筍簡報介紹&nbsp;</span>
+                            <span class="link-group">
+                                <a href="茭白筍簡報和網頁/index.html" target="_blank" class="link-btn-nav">
+                                    <i class="bi bi-globe2"></i> 網頁
+                                </a>
+                                <a href="茭白筍簡報和網頁/茭白筍-115.07.30修正.pdf" target="_blank" class="link-btn-nav">
+                                    <i class="bi bi-file-earmark-pdf"></i> 簡報
+                                </a>
+                            </span>
+                        </div>
+                        <div class="card-text">
+                            <p><span class="pill-tag"><i class="bi bi-calendar3"></i> 9/13 (一) 09:00~11:00</span>
+                                <span class="pill-tag"><i class="bi bi-geo-alt"></i> 學生活動中心</span>
+                            </p>
+                            <p class="text-secondary">邀請農會專家與在地青農分享，認識茭白筍的一生。</p>
+                        </div>
                     </div>
-                    <p class="mt-2 mb-0 text-secondary">邀請農會專家與在地青農分享，認識茭白筍的一生。</p>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card p-3 h-100" style="background:#f6fbf5; border:1px solid var(--soft-green);">
-                    <h5 class="fw-bold"><i class="bi bi-book me-2" style="color:var(--main-green);"></i>茭白筍小書製作</h5>
-                    <p class="mb-0 text-secondary">將所學整理成創意小書，涵蓋種植、生態、料理與心得。</p>
-                    <div class="mt-2"><span class="pill-tag"><i class="bi bi-pencil"></i> 10 頁</span> <span
-                            class="pill-tag"><i class="bi bi-star-fill" style="color:var(--bright-accent);"></i>
-                            300字心得</span></div>
+                <!-- 活動2：茭白筍小書製作 -->
+                <div class="col-md-6">
+                    <div class="card activity-card h-100 w-100 p-3"
+                        style="background:#f6fbf5; border:2px solid var(--main-green); border-radius: 2rem;">
+                        <div class="card-title d-flex align-items-center gap-2">
+                            <i class="bi bi-book" style="color: var(--main-green); font-size: 1.8rem;"></i>
+                            <span>茭白筍小書製作</span>
+                        </div>
+                        <div class="card-text">
+                            <p class="text-secondary">將所學整理成創意小書，涵蓋種植、生態、料理與心得。</p>
+                            <div class="mt-2">
+                                <span class="pill-tag"><i class="bi bi-pencil"></i> 10 頁</span>
+                                <span class="pill-tag"><i class="bi bi-star-fill"
+                                        style="color:var(--bright-accent);"></i> 300字心得</span>
+                            </div>
+                            <div class="mt-2 small text-secondary">
+                                <i class="bi bi-dot"></i> 封面・內頁10項主題・封底插畫
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -947,14 +1036,14 @@
             <p>例如：<br>我原本以為茭白筍和竹筍一樣，後來才知道它是因為菰黑穗菌的作用才會形成可以食用的茭白筍，讓我覺得非常神奇。我以前吃茭白筍時從來沒有想過它是這樣長大的，以後看到茭白筍時，我一定會想到它特殊的生長方式，也會更珍惜農民種植的辛勞。
             </p>
             <br>
-            <P>
+            <p>
                 這段心得不只是寫「很神奇」，還說明了：
-                <ul>
-                    <li>學到什麼：知道茭白筍形成的原因。</li>
-                    <li>自己的感受：覺得很神奇。</li>
-                    <li>舉例說明：以前不知道，現在吃茭白筍時會想到它的生長方式，也更珍惜農民的努力。</li>
-                </ul>                
-                這樣的心得會比只寫「我覺得很有趣」更具體、更有內容。
+            <ul>
+                <li>學到什麼：知道茭白筍形成的原因。</li>
+                <li>自己的感受：覺得很神奇。</li>
+                <li>舉例說明：以前不知道，現在吃茭白筍時會想到它的生長方式，也更珍惜農民的努力。</li>
+            </ul>
+            這樣的心得會比只寫「我覺得很有趣」更具體、更有內容。
             </p>
         </div>
 
