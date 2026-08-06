@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>埔里鎮茭白筍生產合作社</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font (noto sans tc) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== 完全繼承「水采田」顏色風格 ===== */
+        body {
+            font-family: 'Noto Sans TC', 'Segoe UI', Roboto, sans-serif;
+            background: #f0f6ff;
+            padding-top: 16px;
+        }
+
+        .bg-soft-sky {
+            background-color: #d9e9ff;
+        }
+
+        /* 標題區塊 (header-image) 與水采田一致 */
+        .header-image {
+            background: #1b4a8a;
+            width: 100%;
+            min-height: 150px;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-image::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 80px;
+            background: #f9c74f;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .header-image::after {
+            content: '';
+            position: absolute;
+            right: 40px;
+            top: 30px;
+            width: 100px;
+            height: 100px;
+            background: #4a9e6b;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .header-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: #3b7a5a;
+            opacity: 0.7;
+            clip-path: ellipse(70% 100% at 50% 100%);
+        }
+
+        .header-title {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 4px;
+            z-index: 1;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .header-subtitle {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 18px;
+            color: #ffd966;
+            z-index: 1;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+
+            .header-subtitle {
+                font-size: 16px;
+            }
+
+            .header-image::before {
+                width: 60px;
+                height: 60px;
+                left: 30px;
+            }
+
+            .header-image::after {
+                width: 70px;
+                height: 70px;
+                right: 20px;
+                top: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-image {
+                min-height: 110px;
+                padding: 14px 10px;
+            }
+
+            .header-title {
+                font-size: 26px;
+                letter-spacing: 1px;
+            }
+
+            .header-subtitle {
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .header-image::before {
+                width: 40px;
+                height: 40px;
+                left: 15px;
+            }
+
+            .header-image::after {
+                width: 50px;
+                height: 50px;
+                right: 10px;
+                top: 12px;
+            }
+
+            .header-wave {
+                height: 30px;
+            }
+
+            body {
+                padding-top: 66px;
+            }
+        }
+
+        /* 卡片樣式 (與主頁一致) */
+        .card-shadow {
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            transition: 0.25s ease;
+            border: none;
+            background: white;
+        }
+
+        .card-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 35px rgba(0, 20, 60, 0.12);
+        }
+
+        .section-title {
+            border-left: 8px solid #ffb347;
+            padding-left: 20px;
+            font-weight: 900;
+            color: #0a2f6c;
+        }
+
+        .UnderLine {
+            text-decoration: underline;
+            text-underline-offset: 0.2rem;
+            text-decoration-color: #ffb347;
+            text-decoration-thickness: 2px;
+        }
+
+        /* ===== 圖片與文字兩欄等高 ===== */
+        .equal-height-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .equal-height-row>[class*="col-"] {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 圖片區塊 — 圓角、內邊距、背景與邊框 */
+        .img-placeholder {
+            background: #d9e9ff;
+            border-radius: 28px;
+            padding: 12px;
+            border: 2px dashed #0a2f6c40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1 1 auto;
+            min-height: 200px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        /* 右側文字卡片：與圖片等高 */
+        .text-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            padding: 1.8rem 2rem;
+            flex: 1 1 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: none;
+        }
+
+        .text-card p {
+            line-height: 2;
+            margin-bottom: 0.8rem;
+        }
+
+        .text-card .fw-bold {
+            color: #0a2f6c;
+        }
+
+        .theme-badge {
+            background: #e8f0fe;
+            color: #0a2f6c;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        @media (max-width: 767.98px) {
+            .text-card {
+                padding: 1.5rem;
+                margin-top: 0;
+            }
+
+            .equal-height-row>[class*="col-"] {
+                margin-bottom: 16px;
+            }
+
+            .equal-height-row>.col-md-6:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        /* 導航列 (保留風格) */
+        .navbar-custom {
+            background: linear-gradient(145deg, #0a2f6c 0%, #1b4a8a 100%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            border-bottom: 4px solid #ffd966;
+            border-radius: 0 0 2rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1050;
+        }
+
+        .navbar-custom .navbar-brand {
+            color: #ffffff !important;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .navbar-custom .navbar-brand i {
+            color: #ffd966;
+        }
+
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 4px;
+            border-radius: 30px;
+            padding: 8px 18px;
+            transition: 0.2s;
+        }
+
+        .navbar-custom .nav-link:hover {
+            background: #ffd966;
+            color: #0a2f6c !important;
+        }
+
+        /* 數據重點標示 */
+        .stat-highlight {
+            background: #e8f0fe;
+            border-radius: 20px;
+            padding: 0.2rem 0.8rem;
+            font-weight: 700;
+            color: #0a2f6c;
+            display: inline-block;
+        }
+
+        .stat-number {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #1b4a8a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- 標題區塊 (與水采田一致) -->
+        <div class="header-image">
+            <div class="header-title">🌾 茭白筍合作社</div>
+            <div class="header-subtitle">埔里鎮 · 美人腿王國 · 愛蘭里梅村路189號</div>
+            <div class="header-wave"></div>
+        </div>
+
+        <!-- ===== 左右兩欄：左圖右文，強制等高 ===== -->
+        <div class="row g-4 equal-height-row mb-5">
+            <!-- 左欄：圖片 (茭白筍田園或合作社意象) -->
+            <div class="col-md-6">
+                <div class="img-placeholder">
+                    <!-- 插入一張代表埔里茭白筍的圖片 (請將 jiaobai.jpg 放在同目錄) -->
+                    <img src="jiaobai.jpg" alt="埔里茭白筍田園風光">
+                </div>
+            </div>
+            <!-- 右欄：文字卡片 (等高) -->
+            <div class="col-md-6">
+                <div class="text-card">
+                    <h4 class="fw-bold text-primary mb-3"><i class="fas fa-seedling me-2"
+                            style="color:#4a9e6b;"></i>保證責任埔里鎮茭白筍生產合作社</h4>
+                    <p>
+                        <span class="fw-bold">民國66年（1977年）</span> 於埔里鎮愛蘭里成立「保證責任埔里鎮茭白筍生產合作社」（梅村路189號），
+                        見證了當地<span class="UnderLine">美人腿</span>產業的規模化發展。
+                    </p>
+                    <p>
+                        <span class="fw-bold">民國72年政策推動：</span> 政府實施「稻米生產及稻田轉作計畫」，
+                        埔里鎮農會以補助與協助運銷方式輔導稻田轉種茭白筍，
+                        推動種植面積大幅激增，奠定 <span class="fw-bold" style="color:#0a2f6c;">「茭白筍王國」</span> 地位。
+                    </p>
+                    <p class="mt-2">
+                        <i class="fas fa-landmark me-1" style="color:#b07d4b;"></i>
+                        合作社不僅是產銷據點，更是埔里茭白筍產業從在地走向全國的關鍵推手。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 新增：關鍵數據區（民國85年 & 104年） ===== -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="card card-shadow p-4 p-md-5">
+                    <h5 class="fw-bold text-primary mb-4"><i class="fas fa-chart-bar me-2"
+                            style="color:#f1c40f;"></i>埔里茭白筍 · 關鍵數據</h5>
+                    <div class="row g-4">
+                        <!-- 民國85年 -->
+                        <div class="col-md-6">
+                            <div class="bg-soft-sky p-4 rounded-4 h-100" style="background: #e3efff;">
+                                <h6 class="fw-bold"><i class="fas fa-calendar-check me-2"
+                                        style="color:#1b4a8a;"></i>民國85年 (1996)</h6>
+                                <p class="mb-1"><span class="stat-number">1,990</span> 公頃</p>
+                                <p class="text-muted small">種植面積，佔南投縣 <span class="stat-highlight">93.7%</span></p>
+                                <p class="mb-1"><span class="stat-number">3,527.9</span> 萬公斤</p>
+                                <p class="text-muted small">產量，佔南投縣 <span class="stat-highlight">94.0%</span></p>
+                                <p class="mt-2 mb-0"><i class="fas fa-flag me-1" style="color:#e67e22;"></i> 全台最大產區雛形
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 民國104年 -->
+                        <div class="col-md-6">
+                            <div class="bg-soft-sky p-4 rounded-4 h-100" style="background: #d9e9ff;">
+                                <h6 class="fw-bold"><i class="fas fa-calendar-check me-2"
+                                        style="color:#1b4a8a;"></i>民國104年 (2015)</h6>
+                                <p class="mb-1"><span class="stat-number">1,547</span> 公頃</p>
+                                <p class="text-muted small">種植面積，穩居全鎮第一</p>
+                                <p class="mb-1"><span class="stat-number">81.9%</span> (面積) / <span
+                                        class="stat-number">89.2%</span> (產量)</p>
+                                <p class="text-muted small">佔全國比例，穩坐 <span class="stat-highlight">「茭白筍王國」</span> 寶座</p>
+                                <p class="mt-2 mb-0"><i class="fas fa-trophy me-1" style="color:#f1c40f;"></i>
+                                    全國八成以上產量來自埔里</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-4 mb-0 text-secondary" style="line-height: 1.8;">
+                        <i class="fas fa-info-circle me-1" style="color:#0a2f6c;"></i>
+                        從民國85年到104年，埔里茭白筍產業歷經轉作、技術升級與市場拓展，
+                        面積雖略有調整，但產量與品質持續領先，確立了「美人腿」的傳奇地位。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 額外引用/補充區 (仿水采田補充樣式) -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="card card-shadow p-4 p-md-5">
+                    <h5 class="fw-bold text-primary mb-3"><i class="fas fa-history me-2"
+                            style="color:#f1c40f;"></i>政策・轉作・王國</h5>
+                    <p class="fs-6 lh-base" style="line-height: 2;">
+                        <span class="UnderLine">埔里茭白筍</span> 的輝煌，始於民國66年合作社的成立，
+                        並在民國72年稻田轉作計畫的政策助攻下，種植面積從零星擴大到數百公頃。
+                        埔里鎮農會以補助、技術輔導與共同運銷，讓「美人腿」成為台灣夏季餐桌上的明星，
+                        也讓埔里贏得 <span class="fw-bold">「茭白筍王國」</span> 的美譽。
+                        合作社至今仍是產業鏈的核心，串聯農民、市場與土地記憶。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 額外小資訊：地址與年代 (延續風格) -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="card card-shadow p-3 p-md-4 h-100">
+                    <h6 class="fw-bold"><i class="fas fa-map-pin me-2" style="color:#e67e22;"></i>合作社地址</h6>
+                    <p class="mb-0">南投縣埔里鎮愛蘭里梅村路189號</p>
+                    <small class="text-muted">自民國66年（1977年）營運至今</small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-shadow p-3 p-md-4 h-100">
+                    <h6 class="fw-bold"><i class="fas fa-calendar-alt me-2" style="color:#2980b9;"></i>關鍵年份</h6>
+                    <p class="mb-0"><span class="fw-bold">1977</span> 合作社成立 ｜ <span class="fw-bold">1983</span> 稻田轉作計畫啟動
+                    </p>
+                    <small class="text-muted">奠定「茭白筍王國」基礎</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+    </script>
+</body>
+
+</html>

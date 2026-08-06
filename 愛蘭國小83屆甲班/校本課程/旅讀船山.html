@@ -21,20 +21,11 @@
             padding-top: 76px;
         }
 
-        .bg-deep-blue {
-            background-color: #0a2f6c;
-        }
-
         .bg-soft-sky {
             background-color: #d9e9ff;
         }
 
-        .brand-logo {
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        /* ===== 導航列 (與原設計相同) ===== */
+        /* ===== 導航列 ===== */
         .navbar-custom {
             background: linear-gradient(145deg, #0a2f6c 0%, #1b4a8a 100%);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
@@ -111,7 +102,7 @@
             filter: invert(1);
         }
 
-        /* 桌機hover展開 (保留原功能) */
+        /* 桌機hover展開 */
         @media (min-width: 992px) {
 
             .navbar-custom .dropdown:hover>.dropdown-menu,
@@ -188,7 +179,7 @@
             }
         }
 
-        /* 手機/平板 (與原設計相同) */
+        /* 手機/平板 */
         @media (max-width: 991.98px) {
             .navbar-custom .dropdown-menu {
                 position: static;
@@ -349,7 +340,7 @@
             }
         }
 
-        /* ===== header 樣式 (原設計) ===== */
+        /* ===== header 樣式 ===== */
         .header-image {
             background: #1b4a8a;
             width: 100%;
@@ -486,40 +477,6 @@
             }
         }
 
-        @media (max-width: 400px) {
-            .header-image {
-                min-height: 90px;
-                padding: 10px 8px;
-            }
-
-            .header-title {
-                font-size: 20px;
-                letter-spacing: 0.5px;
-            }
-
-            .header-subtitle {
-                font-size: 11px;
-                white-space: nowrap;
-            }
-
-            .header-image::before {
-                width: 30px;
-                height: 30px;
-                left: 10px;
-            }
-
-            .header-image::after {
-                width: 35px;
-                height: 35px;
-                right: 8px;
-                top: 10px;
-            }
-
-            .header-wave {
-                height: 20px;
-            }
-        }
-
         /* ===== 卡片等通用 ===== */
         .card-shadow {
             border-radius: 28px;
@@ -532,15 +489,6 @@
         .card-shadow:hover {
             transform: translateY(-5px);
             box-shadow: 0 18px 35px rgba(0, 20, 60, 0.12);
-        }
-
-        .theme-card .card-body {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .theme-card .card-text {
-            flex: 1;
         }
 
         .theme-card .activity-item {
@@ -563,10 +511,6 @@
             padding-left: 18px;
             font-size: 0.88rem;
             color: #333;
-        }
-
-        .theme-card .activity-item ul li {
-            margin-bottom: 2px;
         }
 
         .theme-badge {
@@ -609,92 +553,7 @@
             border-color: #f1c40f;
         }
 
-        .badge-grade {
-            background: #e8f0fe;
-            color: #0a2f6c;
-            padding: 6px 18px;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .footer-custom {
-            background: #0a2f6c;
-            color: #cbd5e6;
-            border-radius: 40px 40px 0 0;
-            padding: 30px 0 20px;
-            margin-top: 50px;
-        }
-
-        .footer-custom a {
-            color: #ffd966;
-            text-decoration: none;
-        }
-
-        .footer-custom a:hover {
-            text-decoration: underline;
-            color: white;
-        }
-
-        .quick-menu {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            gap: 8px 16px;
-            padding: 10px 0 6px 0;
-            border-bottom: 2px solid #e0e7f0;
-            margin-bottom: 20px;
-        }
-
-        .quick-menu a {
-            color: #0a2f6c;
-            font-weight: 700;
-            text-decoration: none;
-            padding: 4px 8px;
-            border-radius: 30px;
-            transition: 0.2s;
-            font-size: 1rem;
-        }
-
-        .quick-menu a:hover {
-            background: #ffd966;
-            color: #0a2f6c;
-        }
-
-        .quick-menu a i {
-            margin-right: 4px;
-        }
-
-        @media (max-width: 576px) {
-            .quick-menu {
-                justify-content: center;
-                gap: 6px 12px;
-            }
-
-            .quick-menu a {
-                font-size: 0.9rem;
-                padding: 3px 6px;
-            }
-        }
-
-        .img-float-right {
-            float: right;
-            margin: 0 0 15px 20px;
-            max-width: 100%;
-            border-radius: 24px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-        }
-
-        @media (max-width: 576px) {
-            .img-float-right {
-                float: none;
-                margin: 0 auto 20px;
-                display: block;
-                width: 100%;
-            }
-        }
-
-        /* ===== ★ 新增：右下角固定選單 (高年級/中年級/低年級/學習單) ===== */
+        /* ===== 右下角固定選單 ===== */
         .fixed-bottom-right-nav {
             position: fixed;
             bottom: 30px;
@@ -725,6 +584,7 @@
             letter-spacing: 0.5px;
             background: linear-gradient(145deg, #0a2f6c, #1b4a8a);
             backdrop-filter: blur(2px);
+            cursor: pointer;
         }
 
         .fixed-bottom-right-nav .nav-btn i {
@@ -743,7 +603,6 @@
             color: #0a2f6c;
         }
 
-        /* 手機版稍微縮小 */
         @media (max-width: 576px) {
             .fixed-bottom-right-nav {
                 bottom: 16px;
@@ -757,12 +616,69 @@
                 min-width: 80px;
             }
         }
+
+        /* ===== 摺疊選單標題樣式 ===== */
+        .collapsible-header {
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 28px;
+            padding: 12px 20px;
+            background-color: #ffffff;
+            border: 1px solid rgba(10, 47, 108, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            user-select: none;
+        }
+
+        .collapsible-header:hover {
+            background-color: #f8fbff;
+            border-color: #0a2f6c;
+        }
+
+        .collapsible-header .section-title {
+            border-left: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        .collapsible-header .toggle-icon {
+            font-size: 1.2rem;
+            color: #0a2f6c;
+            transition: transform 0.3s;
+        }
+
+        .collapsible-header[aria-expanded="true"] .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-body {
+            padding-top: 1.2rem;
+        }
+
+        /* ===== 景點卡片點擊樣式 ===== */
+        .spot-card {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .spot-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 20, 50, 0.15);
+        }
+
+        .spot-card:hover .card {
+            border-color: #0a2f6c;
+        }
+
+        .spot-card .card {
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- ===== 導航列 (保留完整原樣) ===== -->
+    <!-- ===== 導航列 ===== -->
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top py-2">
         <div class="container">
             <a class="navbar-brand" href="../index.html">
@@ -774,52 +690,33 @@
             </button>
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <!-- <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../index.html"><i
-                                class="bi bi-house-heart me-1"></i>首頁</a>
-                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            班級經營
-                        </a>
+                            data-bs-toggle="dropdown" aria-expanded="false">班級經營</a>
                         <ul class="dropdown-menu" aria-labelledby="classDropdown">
-                            <li><a class="dropdown-item" href="../班級經營/班級幹部&值日生.html"><i
-                                        class="bi bi-book me-2"></i>班級幹部、值日生</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/科任和出題老師.html"><i
-                                        class="bi bi-book me-2"></i>科任和出題老師</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/掃地工作分配.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>掃地工作分配</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/社團和團隊.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>社團、團隊</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/學藝競賽.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>學藝競賽</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/英語手牽手_學習扶助_原民語.html"><i
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-book me-2"></i>班級幹部、值日生</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-book me-2"></i>科任和出題老師</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-grid-3x3-gap me-2"></i>掃地工作分配</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-grid-3x3-gap me-2"></i>社團、團隊</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-grid-3x3-gap me-2"></i>學藝競賽</a></li>
+                            <li><a class="dropdown-item" href="#"><i
                                         class="bi bi-grid-3x3-gap me-2"></i>英語手牽手、學習扶助、原民語</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/學生各項帳號.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>學生各項帳號</a></li>
-                            <li><a class="dropdown-item"
-                                    href="https://docs.google.com/spreadsheets/d/16qZ40y_JXktnOvBb9eSPUUMJ4lPb2JPLLW_oE5xS-2U/edit?usp=sharing"
-                                    target="_blank"><i class="bi bi-grid-3x3-gap me-2"></i>學生基本資料(不公開)</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-grid-3x3-gap me-2"></i>學生各項帳號</a></li>
+                            <li><a class="dropdown-item" href="#" target="_blank"><i
+                                        class="bi bi-grid-3x3-gap me-2"></i>學生基本資料(不公開)</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="curriculumDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            校本課程
-                        </a>
+                            data-bs-toggle="dropdown" aria-expanded="false">校本課程</a>
                         <ul class="dropdown-menu" aria-labelledby="curriculumDropdown">
-                            <li><a class="dropdown-item" href="../校本課程/茭白筍.html"><i
-                                        class="bi bi-building me-2"></i>自然環境-茭白筍</a></li>
-                            <li><a class="dropdown-item" href="../校本課程/旅讀船山.html"><i
-                                        class="bi bi-flower1 me-2"></i>人文環境-旅讀船山</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-building me-2"></i>自然環境-茭白筍</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-flower1 me-2"></i>人文環境-旅讀船山</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            作品
-                        </a>
+                            data-bs-toggle="dropdown" aria-expanded="false">作品</a>
                         <ul class="dropdown-menu" aria-labelledby="workDropdown">
                             <li><a class="dropdown-item" href="#"><i class="bi bi-brush me-2"></i>繪畫</a></li>
                             <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>書法</a></li>
@@ -828,25 +725,20 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="albumDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            相簿
-                        </a>
+                            data-bs-toggle="dropdown" aria-expanded="false">相簿</a>
                         <ul class="dropdown-menu" aria-labelledby="albumDropdown">
-                            <li><a class="dropdown-item" href="../活動相簿/115-1.html"><i
-                                        class="bi bi-calendar-event me-2"></i>115學年度上學期</a></li>
-                            <li><a class="dropdown-item" href="../活動相簿/115-2.html"><i
-                                        class="bi bi-bus-front me-2"></i>115學年度下學期</a></li>
-                            <li><a class="dropdown-item" href="../活動相簿/116-1.html"><i
-                                        class="bi bi-mortarboard me-2"></i>116學年度上學期</a></li>
-                            <li><a class="dropdown-item" href="../活動相簿/116-2.html"><i
-                                        class="bi bi-mortarboard me-2"></i>116學年度下學期</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-calendar-event me-2"></i>115學年度上學期</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-bus-front me-2"></i>115學年度下學期</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-mortarboard me-2"></i>116學年度上學期</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-mortarboard me-2"></i>116學年度下學期</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="honorDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            榮譽榜
-                        </a>
+                            data-bs-toggle="dropdown" aria-expanded="false">榮譽榜</a>
                         <ul class="dropdown-menu" aria-labelledby="honorDropdown">
                             <li><a class="dropdown-item" href="#"><i class="bi bi-star me-2"></i>學業優秀</a></li>
                             <li><a class="dropdown-item" href="#"><i class="bi bi-dribbble me-2"></i>體育競賽</a></li>
@@ -855,9 +747,7 @@
                     </li>
                     <li class="nav-item dropdown" id="digitalDropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="digitalDropdownToggle" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            數位學習
-                        </a>
+                            data-bs-toggle="dropdown" aria-expanded="false">數位學習</a>
                         <ul class="dropdown-menu" aria-labelledby="digitalDropdownToggle">
                             <div class="row">
                                 <div class="col">
@@ -878,20 +768,18 @@
                                     <li><a class="dropdown-item" href="#" target="_blank"><i
                                                 class="bi bi-laptop-fill"></i>Wordwall</a></li>
                                     <li><a class="dropdown-item" href="#" target="_blank"><i
-                                                class="bi bi-laptop-fill"></i>Cool English(酷英網)</a></li>
+                                                class="bi bi-laptop-fill"></i>Cool English</a></li>
                                     <li><a class="dropdown-item" href="#" target="_blank"><i
                                                 class="bi bi-laptop-fill"></i>台北酷客雲</a></li>
                                     <li><a class="dropdown-item" href="#" target="_blank"><i
-                                                class="bi bi-laptop-fill"></i>ICRT News Lunchbox</a></li>
+                                                class="bi bi-laptop-fill"></i>ICRT News</a></li>
                                 </div>
                             </div>
                         </ul>
                     </li>
                     <li class="nav-item dropdown" id="linkDropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="linkDropdownToggle" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            網路資源
-                        </a>
+                            data-bs-toggle="dropdown" aria-expanded="false">網路資源</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="linkDropdownToggle">
                             <div class="row">
                                 <div class="col">
@@ -958,7 +846,7 @@
             </div>
         </div>
 
-        <!-- ===== 本學期 3 項主題 (保留原樣) ===== -->
+        <!-- ===== 本學期 3 項主題 ===== -->
         <div class="mb-3">
             <div class="d-flex flex-wrap align-items-center justify-content-between">
                 <h2 class="section-title mb-0"><i class="fas fa-book-open me-2" style="color:#f1c40f;"></i>本學期 3 項主題
@@ -966,7 +854,6 @@
             </div>
         </div>
 
-        <!-- 三項主題卡片 (不變) -->
         <div class="row g-4 mb-5">
             <div class="col-md-4">
                 <div class="card card-shadow theme-card h-100 p-3">
@@ -1045,231 +932,312 @@
             </div>
         </div>
 
-        <!-- ========= 高年級路線 ========= -->
-        <div id="high" class="mb-5">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <h2 class="section-title mb-0">高年級生態旅遊路線</h2>
-            </div>
-            <div class="mt-3 p-3 bg-soft-sky rounded-4 d-flex flex-wrap align-items-center gap-3">
-                <i class="fas fa-walking fa-2x" style="color:#0a2f6c;"></i>
-                <span class="fw-bold">16個景點，約2km，步行時，每個景點以平均停留5～10分鐘計，共需約3小時完成。若以腳踏車進行，可在2.5小時內完成。</span>
-            </div>
-            <div><img src="旅讀船山網頁/img/高年級路線.png" style=" width: 100%;" alt="高年級路線圖"></div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">1</span>烏牛欄教會</h5>
-                        <p class="small">1870年巴宰族潘開山·武干受福音感召，埔里第一間禮拜堂。</p><a href="#"
-                            class="btn btn-outline-gold btn-sm w-100" onclick="alert('更多細節：烏牛欄教會歷史可參考高年級學習單')"><i
-                                class="fas fa-info-circle"></i> 補充資料</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">2</span>水采田</h5>
-                        <p class="small">巴宰族耆老潘氏住宅，921震後重建。取名「水、米、田」寓意。</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">3</span>福壽宮</h5>
-                        <p class="small">埔里最古老的土地公廟。</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">4</span>茭白筍合作社</h5>
-                        <p class="small">隸屬農會，民國83年以前成立。</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">5</span>無某崎</h5>
-                        <p class="small">早期台地居民挑水上下，青年鍛鍊體力之地。坡頂有糙葉樹。</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">6</span>副班長家草地</h5>
-                        <p class="small">夫妻樹(白雞油、楓香)及獨角仙棲息地，南眺牛相觸。</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">7</span>廢棄軍營</h5>
-                        <p class="small">921地震後部隊撤離。</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">8</span>醒靈寺</h5>
-                        <p class="small">三級古蹟，供奉關聖帝君，見證烏牛欄之役，廟前有百年香楠。</p><a href="#"
-                            class="btn btn-outline-gold btn-sm w-100" onclick="alert('高年級學習單：我所認識的醒靈寺')"><i
-                                class="fas fa-pen"></i> 學習單</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">9</span>埔里基督教醫院</h5>
-                        <p class="small">1955年創立，由孫理蓮、謝緯醫師等宣教士開創山地醫療。</p><a href="#"
-                            class="btn btn-outline-gold btn-sm w-100" onclick="alert('高年級學習單：埔基參訪')"><i
-                                class="fas fa-pen"></i> 學習單</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">10</span>德芬堂</h5>
-                        <p class="small">紀念德國宣教士貝德芬，創設山地伯特利聖經書院。</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">11</span>舊崎仔</h5>
-                        <p class="small">出入台地的孔道。</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">12</span>陰陽界</h5>
-                        <p class="small">高牆隔開公墓區及住宅區。</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">13</span>石頭厝</h5>
-                        <p class="small">早年稱「瑪莉亞產房」，提供山區產婦待產。</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">14</span>竹編達人</h5>
-                        <p class="small">鐵山路98號，蔡先生傳統竹編技藝。</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">15</span>愛蘭國小・派出所</h5>
-                        <p class="small">百年老樟樹、緬梔樹，派出所後方最大榕樹。</p><a href="#" class="btn btn-outline-gold btn-sm w-100"
-                            onclick="window.open('https://sh85216s.github.io/Ai-Lan-web/Ai-Lan-plant/index.html','_blank')"><i
-                                class="fas fa-tree"></i> 校園植物</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow h-100 p-3">
-                        <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">16</span>肉粽</h5>
-                        <p class="small">潘先生販售，播放「燒肉粽」懷舊老歌，近三十年。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- ===== 摺疊選單區域 ===== -->
+        <div id="accordionRoute">
 
-        <!-- ========= 中年級路線 ========= -->
-        <div id="med" class="mb-5">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <h2 class="section-title mb-0">中年級生態旅遊路線</h2>
-            </div>
-            <div class="mt-3 p-3 bg-soft-sky rounded-4 d-flex flex-wrap align-items-center gap-3">
-                <i class="fas fa-walking fa-2x" style="color:#0a2f6c;"></i>
-                <span class="fw-bold">14個景點，約1.5km，每個景點以平均停留5～10分鐘計，共需約2.5小時完成。若以腳踏車進行，可在2小時內完成。</span>
-            </div>
-            <div class="row g-3">
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>1.季林商行</strong><small
-                            class="d-block">40年老店，棺材象徵升官發財。</small></div>
+            <!-- 高年級 -->
+            <div class="mb-4">
+                <div class="collapsible-header d-flex align-items-center justify-content-between"
+                    data-bs-toggle="collapse" data-bs-target="#collapseHigh" aria-expanded="false"
+                    aria-controls="collapseHigh">
+                    <h2 class="section-title mb-0"><i class="fas fa-mountain me-2" style="color:#0a2f6c;"></i>高年級生態旅遊路線
+                    </h2>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
                 </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>2.瑞美理髮</strong><small
-                            class="d-block">65年開業，保留手動推剪。</small></div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>3.王家古厝</strong><small
-                            class="d-block">台地最早的診所。</small></div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>4.慶昌碾米廠</strong><small
-                            class="d-block">50年，木製米桶，豆餅碾碎機。</small></div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>5.黎老師雜貨店</strong><small
-                            class="d-block">30多年老雜貨店，阿嬤看店。</small></div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>6.木匠</strong><small
-                            class="d-block">第二代陳先生，傳統木工工具。</small></div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>7.福安宮</strong><small
-                            class="d-block">居民關係密切的土地公廟。</small></div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>8.天后宮</strong><small class="d-block">主祀媽祖。</small>
+                <div class="collapse collapsible-body" id="collapseHigh" data-bs-parent="#accordionRoute">
+                    <div class="mt-3 p-3 bg-soft-sky rounded-4 d-flex flex-wrap align-items-center gap-3">
+                        <i class="fas fa-walking fa-2x" style="color:#0a2f6c;"></i>
+                        <span class="fw-bold">16個景點，約2km，步行時，每個景點以平均停留5～10分鐘計，共需約3小時完成。若以腳踏車進行，可在2.5小時內完成。</span>
+                    </div>
+                    <div><img src="旅讀船山網頁/img/高年級路線.png" style="width:100%;" alt="高年級路線圖"></div>
+                    <br>
+                    <div class="row g-4" id="highSpots">
+                        <!-- 每個景點卡片加入 data-page 屬性，指向對應的詳細頁面 -->
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/烏牛欄教會.html')"
+                            data-name="烏牛欄教會">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">1</span>烏牛欄教會 <i class="fas fa-file-pdf me-1 text-danger"></i></h5>
+                                <p class="small">1870年巴宰族潘開山·武干受福音感召，埔里第一間禮拜堂。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/水采田.html')"
+                            data-name="水采田">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">2</span>水采田</h5>
+                                <p class="small">巴宰族耆老潘氏住宅，921震後重建。取名「水、米、田」寓意。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/福壽宮.html')"
+                            data-name="福壽宮">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">3</span>福壽宮</h5>
+                                <p class="small">埔里最古老的土地公廟。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/茭白筍合作社.html')"
+                            data-name="茭白筍合作社">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">4</span>茭白筍合作社</h5>
+                                <p class="small">隸屬農會，民國83年以前成立。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/無某崎.html')"
+                            data-name="無某崎">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">5</span>無某崎</h5>
+                                <p class="small">早期台地居民挑水上下，青年鍛鍊體力之地。坡頂有糙葉樹。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/副班長家草地.html')"
+                            data-name="副班長家草地">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">6</span>副班長家草地</h5>
+                                <p class="small">夫妻樹(白雞油、楓香)及獨角仙棲息地，南眺牛相觸。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/廢棄軍營.html')"
+                            data-name="廢棄軍營">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">7</span>廢棄軍營</h5>
+                                <p class="small">921地震後部隊撤離。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/醒靈寺.html')"
+                            data-name="醒靈寺">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">8</span>醒靈寺 <i class="fas fa-file-pdf me-1 text-danger"></i></h5>
+                                <p class="small">三級古蹟，供奉關聖帝君，見證烏牛欄之役，廟前有百年香楠。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/埔里基督教醫院.html')"
+                            data-name="埔里基督教醫院">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">9</span>埔里基督教醫院 <i class="fas fa-file-pdf me-1 text-danger"></i></h5>
+                                <p class="small">1955年創立，由孫理蓮、謝緯醫師等宣教士開創山地醫療。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/德芬堂.html')"
+                            data-name="德芬堂">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">10</span>德芬堂</h5>
+                                <p class="small">紀念德國宣教士貝德芬，創設山地伯特利聖經書院。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/舊崎仔.html')"
+                            data-name="舊崎仔">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">11</span>舊崎仔</h5>
+                                <p class="small">出入台地的孔道。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/陰陽界.html')"
+                            data-name="陰陽界">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">12</span>陰陽界</h5>
+                                <p class="small">高牆隔開公墓區及住宅區。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/石頭厝.html')"
+                            data-name="石頭厝">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">13</span>石頭厝</h5>
+                                <p class="small">早年稱「瑪莉亞產房」，提供山區產婦待產。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/竹編達人.html')"
+                            data-name="竹編達人">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">14</span>竹編達人</h5>
+                                <p class="small">鐵山路98號，蔡先生傳統竹編技藝。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/愛蘭國小及派出所.html')"
+                            data-name="愛蘭國小・派出所">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">15</span>愛蘭國小・派出所</h5>
+                                <p class="small">百年老樟樹、緬梔樹，派出所後方最大榕樹。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('旅讀船山網頁/高年級旅遊路線/肉粽.html')"
+                            data-name="肉粽">
+                            <div class="card card-shadow h-100 p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">16</span>肉粽</h5>
+                                <p class="small">潘先生販售，播放「燒肉粽」懷舊老歌，近三十年。</p>
+                                <div class="mt-auto"><span class="badge bg-primary bg-opacity-10 text-primary"><i
+                                            class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>9.水水世界</strong><small
-                            class="d-block">人工浮島淨化水質，生態水培。</small></div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>10.西鎮堂</strong><small
-                            class="d-block">主祀齊天大聖，黑狗精傳奇。</small></div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>11.天公廟</strong><small
-                            class="d-block">錫蘭橄欖巨木，六龍盤柱。</small></div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>12.廣興紙寮</strong><small
-                            class="d-block">體驗造紙，紙藝教室。</small></div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>13.黃家古厝</strong><small
-                            class="d-block">三級古蹟，番秀才望麒麟故居。</small></div>
-                </div>
-                <div class="col-6 col-md-4 col-lg-3">
-                    <div class="card card-shadow p-2 h-100"><strong>14.阿婆洗衣池</strong><small
-                            class="d-block">天然湧泉，紹興池，婦女聚會所。</small></div>
-                </div>
             </div>
-        </div>
 
-        <!-- ========= 低年級路線 ========= -->
-        <div id="low" class="mb-5">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <h2 class="section-title mb-0">低年級生態旅遊路線</h2>
-                <span class="badge bg-warning bg-opacity-20 text-warning px-3 py-2 rounded-pill fw-bold">6個景點</span>
+            <!-- 中年級 -->
+            <div class="mb-4">
+                <div class="collapsible-header d-flex align-items-center justify-content-between"
+                    data-bs-toggle="collapse" data-bs-target="#collapseMed" aria-expanded="false"
+                    aria-controls="collapseMed">
+                    <h2 class="section-title mb-0"><i class="fas fa-tree me-2" style="color:#0a2f6c;"></i>中年級生態旅遊路線</h2>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="collapse collapsible-body" id="collapseMed" data-bs-parent="#accordionRoute">
+                    <div class="mt-3 p-3 bg-soft-sky rounded-4 d-flex flex-wrap align-items-center gap-3">
+                        <i class="fas fa-walking fa-2x" style="color:#0a2f6c;"></i>
+                        <span class="fw-bold">14個景點，約1.5km，每個景點以平均停留5～10分鐘計，共需約2.5小時完成。若以腳踏車進行，可在2小時內完成。</span>
+                    </div>
+                    <div><img src="旅讀船山網頁/img/中年級路線.png" style="width:100%;" alt="中年級路線圖"></div>
+                    <br>
+                    <div class="row g-3" id="medSpots">
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/季林商行.html')"
+                            data-name="季林商行">
+                            <div class="card card-shadow p-2 h-100"><strong>1.季林商行</strong><small
+                                    class="d-block">40年老店，棺材象徵升官發財。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/瑞美理髮.html')"
+                            data-name="瑞美理髮">
+                            <div class="card card-shadow p-2 h-100"><strong>2.瑞美理髮</strong><small
+                                    class="d-block">65年開業，保留手動推剪。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/王家古厝.html')"
+                            data-name="王家古厝">
+                            <div class="card card-shadow p-2 h-100"><strong>3.王家古厝</strong><small
+                                    class="d-block">台地最早的診所。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/慶昌碾米廠.html')"
+                            data-name="慶昌碾米廠">
+                            <div class="card card-shadow p-2 h-100"><strong>4.慶昌碾米廠</strong><small
+                                    class="d-block">50年，木製米桶，豆餅碾碎機。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/黎老師雜貨店.html')"
+                            data-name="黎老師雜貨店">
+                            <div class="card card-shadow p-2 h-100"><strong>5.黎老師雜貨店</strong><small
+                                    class="d-block">30多年老雜貨店，阿嬤看店。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/木匠.html')"
+                            data-name="木匠">
+                            <div class="card card-shadow p-2 h-100"><strong>6.木匠</strong><small
+                                    class="d-block">第二代陳先生，傳統木工工具。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/福安宮.html')"
+                            data-name="福安宮">
+                            <div class="card card-shadow p-2 h-100"><strong>7.福安宮</strong><small
+                                    class="d-block">居民關係密切的土地公廟。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/天后宮.html')"
+                            data-name="天后宮">
+                            <div class="card card-shadow p-2 h-100"><strong>8.天后宮</strong><small
+                                    class="d-block">主祀媽祖。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/水水世界.html')"
+                            data-name="水水世界">
+                            <div class="card card-shadow p-2 h-100"><strong>9.水水世界</strong><small
+                                    class="d-block">人工浮島淨化水質，生態水培。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/西鎮堂.html')"
+                            data-name="西鎮堂">
+                            <div class="card card-shadow p-2 h-100"><strong>10.西鎮堂</strong><small
+                                    class="d-block">主祀齊天大聖，黑狗精傳奇。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/天公廟.html')"
+                            data-name="天公廟">
+                            <div class="card card-shadow p-2 h-100"><strong>11.天公廟</strong><small
+                                    class="d-block">錫蘭橄欖巨木，六龍盤柱。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/廣興紙寮.html')"
+                            data-name="廣興紙寮">
+                            <div class="card card-shadow p-2 h-100"><strong>12.廣興紙寮</strong><small
+                                    class="d-block">體驗造紙，紙藝教室。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/黃家古厝.html')"
+                            data-name="黃家古厝">
+                            <div class="card card-shadow p-2 h-100"><strong>13.黃家古厝</strong><small
+                                    class="d-block">三級古蹟，番秀才望麒麟故居。</small></div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/阿婆洗衣池.html')"
+                            data-name="阿婆洗衣池">
+                            <div class="card card-shadow p-2 h-100"><strong>14.阿婆洗衣池</strong><small
+                                    class="d-block">天然湧泉，紹興池，婦女聚會所。</small></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mt-3 p-3 bg-soft-sky rounded-4 d-flex flex-wrap align-items-center gap-3">
-                <i class="fas fa-walking fa-2x" style="color:#0a2f6c;"></i>
-                <span class="fw-bold">6個景點</span>
+
+            <!-- 低年級 -->
+            <div class="mb-4">
+                <div class="collapsible-header d-flex align-items-center justify-content-between"
+                    data-bs-toggle="collapse" data-bs-target="#collapseLow" aria-expanded="false"
+                    aria-controls="collapseLow">
+                    <h2 class="section-title mb-0"><i class="fas fa-seedling me-2" style="color:#0a2f6c;"></i>低年級生態旅遊路線
+                    </h2>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="collapse collapsible-body" id="collapseLow" data-bs-parent="#accordionRoute">
+                    <div class="mt-3 p-3 bg-soft-sky rounded-4 d-flex flex-wrap align-items-center gap-3">
+                        <i class="fas fa-walking fa-2x" style="color:#0a2f6c;"></i>
+                        <span class="fw-bold">6個景點</span>
+                    </div>
+                    <div><img src="旅讀船山網頁/img/低年級路線.png" style="width:100%;" alt="低年級路線圖"></div>
+                    <br>
+                    <div class="row g-3" id="lowSpots">
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('景點詳細頁/廣興紙寮.html')" data-name="廣興紙寮">
+                            <div class="card card-shadow p-3"><i class="bi bi-house-gear-fill fa-2x me-2"
+                                    style="color:#0a2f6c;"></i><strong>廣興紙寮</strong><br><small>水和紙的世界，手作體驗。</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('景點詳細頁/烏牛欄教會.html')" data-name="烏牛欄教會">
+                            <div class="card card-shadow p-3"><i class="fas fa-church fa-2x me-2"
+                                    style="color:#0a2f6c;"></i><strong>烏牛欄教會</strong><br><small>巴宰族信仰起源。</small></div>
+                        </div>
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('景點詳細頁/水水世界.html')" data-name="水水世界">
+                            <div class="card card-shadow p-3"><i class="fas fa-water fa-2x me-2"
+                                    style="color:#0a2f6c;"></i><strong>水水世界</strong><br><small>生態浮島，認識水質淨化。</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('景點詳細頁/阿婆洗衣池.html')" data-name="阿婆洗衣池">
+                            <div class="card card-shadow p-3"><i class="fas fa-hand-sparkles fa-2x me-2"
+                                    style="color:#0a2f6c;"></i><strong>阿婆洗衣池</strong><br><small>湧泉洗衣池，社區記憶。</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('景點詳細頁/西鎮堂.html')" data-name="西鎮堂">
+                            <div class="card card-shadow p-3"><i class="fas fa-place-of-worship fa-2x me-2"
+                                    style="color:#0a2f6c;"></i><strong>西鎮堂</strong><br><small>齊天大聖廟，傳奇故事。</small></div>
+                        </div>
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('景點詳細頁/黃家古厝.html')" data-name="黃家古厝">
+                            <div class="card card-shadow p-3"><i class="fas fa-home fa-2x me-2"
+                                    style="color:#0a2f6c;"></i><strong>黃家古厝</strong><br><small>三級古蹟，番秀才故居。</small></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="row g-3">
-                <div class="col-md-4">
-                    <div class="card card-shadow p-3"><i class="fas fa-factory fa-2x me-2"
-                            style="color:#0a2f6c;"></i><strong>廣興紙寮</strong><br><small>水和紙的世界，手作體驗。</small></div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-shadow p-3"><i class="fas fa-church fa-2x me-2"
-                            style="color:#0a2f6c;"></i><strong>烏牛欄教會</strong><br><small>巴宰族信仰起源。</small></div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-shadow p-3"><i class="fas fa-water fa-2x me-2"
-                            style="color:#0a2f6c;"></i><strong>水水世界</strong><br><small>生態浮島，認識水質淨化。</small></div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-shadow p-3"><i class="fas fa-hand-sparkles fa-2x me-2"
-                            style="color:#0a2f6c;"></i><strong>阿婆洗衣池</strong><br><small>湧泉洗衣池，社區記憶。</small></div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-shadow p-3"><i class="fas fa-place-of-worship fa-2x me-2"
-                            style="color:#0a2f6c;"></i><strong>西鎮堂</strong><br><small>齊天大聖廟，傳奇故事。</small></div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-shadow p-3"><i class="fas fa-home fa-2x me-2"
-                            style="color:#0a2f6c;"></i><strong>黃家古厝</strong><br><small>三級古蹟，番秀才故居。</small></div>
-                </div>
-            </div>
-            <div class="mt-2"><a href="#" class="btn btn-outline-gold" onclick="alert('低年級學習單：水和紙的世界1、2，探訪愛蘭台地')"><i
-                        class="fas fa-download"></i> 低年級學習單</a></div>
         </div>
 
         <!-- ========= 統整學習單 ========= -->
@@ -1277,42 +1245,42 @@
             <h2 class="section-title mb-4"><i class="fas fa-file-pdf me-2" style="color:#c0392b;"></i>統整學習單</h2>
             <div class="row g-3">
                 <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3"><i
-                            class="fas fa-file-pdf fa-2x text-danger"></i>
+                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
                         <div><a href="#" onclick="alert('認識常見的民俗植物')" class="fw-bold text-decoration-none">認識常見的民俗植物</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3"><i
-                            class="fas fa-file-pdf fa-2x text-danger"></i>
+                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
                         <div><a href="#" onclick="alert('大樹公寓')" class="fw-bold text-decoration-none">大樹公寓</a></div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3"><i
-                            class="fas fa-file-pdf fa-2x text-danger"></i>
+                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
                         <div><a href="#" onclick="alert('愛蘭台地常見的民俗植物')"
                                 class="fw-bold text-decoration-none">愛蘭台地常見的民俗植物</a></div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3"><i
-                            class="fas fa-file-pdf fa-2x text-danger"></i>
+                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
                         <div><a href="#" onclick="alert('愛蘭台地的動物資源－兩爬類')" class="fw-bold text-decoration-none">兩爬類</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3"><i
-                            class="fas fa-file-pdf fa-2x text-danger"></i>
+                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
                         <div><a href="#" onclick="alert('愛蘭台地的動物資源－鳥類')" class="fw-bold text-decoration-none">鳥類</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3"><i
-                            class="fas fa-file-pdf fa-2x text-danger"></i>
+                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
                         <div><a href="#" onclick="alert('愛蘭台地的植物資源－愛蘭國小')"
                                 class="fw-bold text-decoration-none">植物資源－愛蘭國小</a></div>
                     </div>
@@ -1331,30 +1299,119 @@
         </footer>
     </div>
 
-    <!-- ===== ★ 右下角固定選單：高年級 / 中年級 / 低年級 / 學習單 ===== -->
+    <!-- ===== 右下角固定選單 ===== -->
     <div class="fixed-bottom-right-nav">
-        <a href="#high" class="nav-btn"><i class="fas fa-mountain"></i> 高年級</a>
-        <a href="#med" class="nav-btn"><i class="fas fa-tree"></i> 中年級</a>
-        <a href="#low" class="nav-btn"><i class="fas fa-seedling"></i> 低年級</a>
+        <a class="nav-btn" id="btnHigh"><i class="fas fa-mountain"></i> 高年級</a>
+        <a class="nav-btn" id="btnMed"><i class="fas fa-tree"></i> 中年級</a>
+        <a class="nav-btn" id="btnLow"><i class="fas fa-seedling"></i> 低年級</a>
         <a href="#worksheet" class="nav-btn"><i class="fas fa-pencil-alt"></i> 學習單</a>
     </div>
 
     <script>
+        // 更新最後修改時間
         function updateLastModified() {
-            const lastModified = new Date(document.lastModified);
-            const formattedDateTime =
-                `${lastModified.getFullYear()}-${String(lastModified.getMonth() + 1).padStart(2, '0')}-${String(lastModified.getDate()).padStart(2, '0')} ${String(lastModified.getHours()).padStart(2, '0')}:${String(lastModified.getMinutes()).padStart(2, '0')}`;
-            const el = document.getElementById('lastModified');
+            var lastModified = new Date(document.lastModified);
+            var formattedDateTime =
+                lastModified.getFullYear() + '-' +
+                String(lastModified.getMonth() + 1).padStart(2, '0') + '-' +
+                String(lastModified.getDate()).padStart(2, '0') + ' ' +
+                String(lastModified.getHours()).padStart(2, '0') + ':' +
+                String(lastModified.getMinutes()).padStart(2, '0');
+            var el = document.getElementById('lastModified');
             if (el) el.textContent = formattedDateTime;
         }
         updateLastModified();
-        // 原頁面有 loadAnnouncements() 但未定義，若無則忽略
-        // 保留以防萬一
-        if (typeof loadAnnouncements === 'function') loadAnnouncements();
+
+        // 監聽 collapse 事件，確保只有一個展開
+        var collapseElements = document.querySelectorAll('.collapse');
+        collapseElements.forEach(function (el) {
+            el.addEventListener('show.bs.collapse', function (e) {
+                collapseElements.forEach(function (other) {
+                    if (other !== e.target) {
+                        var bsCollapse = bootstrap.Collapse.getInstance(other);
+                        if (bsCollapse) {
+                            bsCollapse.hide();
+                        }
+                    }
+                });
+            });
+        });
+
+        // 右下角按鈕觸發對應摺疊
+        function toggleCollapse(targetId) {
+            var header = document.querySelector('[data-bs-target="' + targetId + '"]');
+            if (!header) return;
+            var targetEl = document.querySelector(targetId);
+            if (!targetEl) return;
+            var isExpanded = header.getAttribute('aria-expanded') === 'true';
+            var bsCollapse = bootstrap.Collapse.getInstance(targetEl);
+            if (isExpanded) {
+                if (bsCollapse) bsCollapse.hide();
+            } else {
+                if (bsCollapse) {
+                    bsCollapse.show();
+                } else {
+                    header.click();
+                }
+            }
+        }
+
+        document.getElementById('btnHigh').addEventListener('click', function (e) {
+            e.preventDefault();
+            toggleCollapse('#collapseHigh');
+        });
+        document.getElementById('btnMed').addEventListener('click', function (e) {
+            e.preventDefault();
+            toggleCollapse('#collapseMed');
+        });
+        document.getElementById('btnLow').addEventListener('click', function (e) {
+            e.preventDefault();
+            toggleCollapse('#collapseLow');
+        });
+
+        // 點擊標題時捲動到該區塊
+        document.querySelectorAll('.collapsible-header').forEach(function (header) {
+            header.addEventListener('click', function (e) {
+                var targetId = this.getAttribute('data-bs-target');
+                var targetEl = document.querySelector(targetId);
+                if (targetEl && !targetEl.classList.contains('show')) {
+                    setTimeout(function () {
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 350);
+                }
+            });
+        });
+
+        // ===== 開啟景點詳細頁面（彈出視窗） =====
+        function openDetailPage(pageUrl) {
+            // 計算視窗大小（佔螢幕80%）
+            var width = window.screen.availWidth * 0.8;
+            var height = window.screen.availHeight * 0.8;
+            var left = (window.screen.availWidth - width) / 2;
+            var top = (window.screen.availHeight - height) / 2;
+
+            // 開啟新視窗，移除所有工具列
+            var features =
+                'width=' + width +
+                ',height=' + height +
+                ',left=' + left +
+                ',top=' + top +
+                ',menubar=no' +
+                ',toolbar=no' +
+                ',location=no' +
+                ',status=no' +
+                ',scrollbars=yes' +
+                ',resizable=yes';
+
+            window.open(pageUrl, '_blank', features);
+        }
+
+        console.log('頁面已載入，景點卡片數量: ' + document.querySelectorAll('.spot-card').length);
     </script>
 
     <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+    </script>
 </body>
 
 </html>
