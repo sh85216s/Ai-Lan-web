@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
-        /* ===== 完全複製 社團和團隊.html 的 CSS (變數、導覽、下拉、手機) ===== */
         :root {
             --main-green: #2E7D32;
             --light-green: #66BB6A;
@@ -633,207 +632,71 @@
             flex-wrap: wrap;
             gap: 0.25rem 0.5rem;
         }
+
+        /* ===== 標題區：副標題對齊標題中間 ===== */
+        .hero-title-wrapper {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: auto;
+        }
+
+        .hero-title-wrapper .title-block {
+            text-align: left;
+            width: 100%;
+        }
+
+        .hero-title-wrapper .title-block h2 {
+            margin-bottom: 0.1rem;
+            font-size: 2rem;
+            color: var(--main-green);
+            font-weight: 700;
+        }
+
+        .hero-title-wrapper .sub-block {
+            text-align: center;
+            width: 100%;
+            margin-top: 0.2rem;
+        }
+
+        .hero-title-wrapper .sub-block p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #3a5e3a;
+            letter-spacing: 0.5px;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        /* 副標題中的分隔點樣式 */
+        .sub-block .sep {
+            margin: 0 0.15rem;
+        }
     </style>
+    <base target="_blank">
 </head>
 
 <body>
-
-    <!-- ===== 導覽列：與社團和團隊.html 完全一致 (選單操作模式相同) ===== -->
-    <nav class="navbar navbar-expand-lg py-2">
-        <div class="container">
-            <a class="navbar-brand" href="../index.html">
-                <i class="bi bi-house-heart me-1"></i>愛蘭國小第83屆甲班
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-                aria-controls="mainNav" aria-expanded="false" aria-label="切換導航">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <!-- 首頁 -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link home-link" href="../index.html">
-                            <i class="bi bi-house-heart me-1"></i>首頁
-                        </a>
-                    </li> -->
-                    <!-- 班級經營 -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            班級經營
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="classDropdown">
-                            <li><a class="dropdown-item" href="../班級經營/班級幹部&值日生.html"><i
-                                        class="bi bi-book me-2"></i>班級幹部、值日生</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/科任和出題老師.html"><i
-                                        class="bi bi-book me-2"></i>科任和出題老師</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/掃地工作分配.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>掃地工作分配</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/社團和團隊.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>社團、團隊</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/學藝競賽.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>學藝競賽</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/英語手牽手_學習扶助_原民語.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>英語手牽手、學習扶助、原民語</a></li>
-                            <li><a class="dropdown-item" href="../班級經營/學生各項帳號.html"><i
-                                        class="bi bi-grid-3x3-gap me-2"></i>學生各項帳號</a></li>
-                            <li><a class="dropdown-item"
-                                    href="https://docs.google.com/spreadsheets/d/16qZ40y_JXktnOvBb9eSPUUMJ4lPb2JPLLW_oE5xS-2U/edit?usp=sharing"
-                                    target="_blank"><i class="bi bi-grid-3x3-gap me-2"></i>學生基本資料(不公開)</a></li>
-                        </ul>
-                    </li>
-                    <!-- 校本課程 (此頁即自然環境-茭白筍) -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="curriculumDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            校本課程
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="curriculumDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-building me-2"></i>自然環境-茭白筍</a></li>
-                            <li><a class="dropdown-item" href="旅讀船山.html"><i
-                                        class="bi bi-flower1 me-2"></i>人文環境-旅讀船山</a></li>
-                        </ul>
-                    </li>
-                    <!-- 作品 -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="workDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            作品
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="workDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-brush me-2"></i>繪畫</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>書法</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-2"></i>作文</a></li>
-                        </ul>
-                    </li>
-                    <!-- 相簿 -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="albumDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            相簿
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="albumDropdown">
-                            <li><a class="dropdown-item" href="../活動相簿/115-1.html"><i
-                                        class="bi bi-calendar-event me-2"></i>115學年度上學期</a></li>
-                            <li><a class="dropdown-item" href="../活動相簿/115-2.html"><i
-                                        class="bi bi-bus-front me-2"></i>115學年度下學期</a></li>
-                            <li><a class="dropdown-item" href="../活動相簿/116-1.html"><i
-                                        class="bi bi-mortarboard me-2"></i>116學年度上學期</a></li>
-                            <li><a class="dropdown-item" href="../活動相簿/116-2.html"><i
-                                        class="bi bi-mortarboard me-2"></i>116學年度下學期</a></li>
-                        </ul>
-                    </li>
-                    <!-- 榮譽榜 -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="honorDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            榮譽榜
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="honorDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-star me-2"></i>學業優秀</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-dribbble me-2"></i>體育競賽</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-palette me-2"></i>藝術表現</a></li>
-                        </ul>
-                    </li>
-                    <!-- 數位學習 -->
-                    <li class="nav-item dropdown" id="digitalDropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="digitalDropdownToggle" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            數位學習
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="digitalDropdownToggle">
-                            <div class="row">
-                                <div class="col">
-                                    <li><a class="dropdown-item" href="https://adl.edu.tw/" target="blank"><i
-                                                class="bi bi-laptop-fill"></i>因材網</a></li>
-                                    <li><a class="dropdown-item" href="https://www.learnmode.net/home/"
-                                            target="_blank"><i class="bi bi-laptop-fill"></i>學習吧</a></li>
-                                    <li><a class="dropdown-item" href="https://www.junyiacademy.org/" target="blank"><i
-                                                class="bi bi-laptop-fill"></i>均一教育平台</a></li>
-                                    <li><a class="dropdown-item" href="https://loilonote.app/login?hl=zh-Hant"
-                                            target="_blank"><i class="bi bi-laptop-fill"></i>LoiLoNote</a></li>
-                                    <li><a class="dropdown-item" href="https://www.pagamo.org/" target="_blank"><i
-                                                class="bi bi-laptop-fill"></i>PaGamO</a></li>
-                                </div>
-                                <div class="col">
-                                    <li><a class="dropdown-item" href="https://padlet.com/" target="_blank"><i
-                                                class="bi bi-laptop-fill"></i>Padlet</a></li>
-                                    <li><a class="dropdown-item" href="https://wordwall.net/tc" target="_blank"><i
-                                                class="bi bi-laptop-fill"></i>Wordwall</a></li>
-                                    <li><a class="dropdown-item" href="https://www.coolenglish.edu.tw/"
-                                            target="_blank"><i class="bi bi-laptop-fill"></i>Cool English(酷英網)</a></li>
-                                    <li><a class="dropdown-item" href="https://cooc.tp.edu.tw/" target="_blank"><i
-                                                class="bi bi-laptop-fill"></i>台北酷客雲</a></li>
-                                    <li><a class="dropdown-item"
-                                            href="https://www.icrt.com.tw/news_lunchbox.php?&mlevel1=7&mlevel2=96"
-                                            target="_blank"><i class="bi bi-laptop-fill"></i>ICRT News Lunchbox</a></li>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <!-- 網路資源 -->
-                    <li class="nav-item dropdown" id="linkDropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="linkDropdownToggle" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            網路資源
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="linkDropdownToggle">
-                            <div class="row">
-                                <div class="col">
-                                    <li><a class="dropdown-item" href="https://alps.ntct.edu.tw" target="blank"><i
-                                                class="bi bi-link-45deg"></i>愛蘭國小</a></li>
-                                    <li><a class="dropdown-item" href="https://eschool.ntct.edu.tw/" target="blank"><i
-                                                class="bi bi-link-45deg"></i>南投縣校務行政系統</a></li>
-                                    <li><a class="dropdown-item"
-                                            href="https://www.edu.tw/Content_List.aspx?n=83D8D70FE4468412"
-                                            target="_blank"><i class="bi bi-link-45deg"></i>教育部電子辭典</a></li>
-                                    <li><a class="dropdown-item" href="https://dict.idioms.moe.edu.tw/search.jsp"
-                                            target="_blank"><i class="bi bi-link-45deg"></i>教育部成語典</a></li>
-                                    <li><a class="dropdown-item"
-                                            href="https://sites.google.com/mail.jges.ntpc.edu.tw/ctrc" target="blank"><i
-                                                class="bi bi-link-45deg"></i>新北市書法教學資源中心</a></li>
-                                    <li><a class="dropdown-item"
-                                            href="http://163.20.160.14/~moodle/course/view.php?id=22" target="blank"><i
-                                                class="bi bi-link-45deg"></i>國小硬筆字教學實務</a></li>
-                                    <li><a class="dropdown-item" href="http://write.phc.edu.tw/" target="blank"><i
-                                                class="bi bi-link-45deg"></i>澎湖縣硬筆書法教學網</a></li>
-                                </div>
-                                <div class="col">
-                                    <li><a class="dropdown-item" href="http://www.emath.math.ncu.edu.tw/e_school/"
-                                            target="blank"><i class="bi bi-link-45deg"></i>子由數學小學堂</a></li>
-                                    <li><a class="dropdown-item" href="https://tw.dictionary.search.yahoo.com/"
-                                            target="blank"><i class="bi bi-link-45deg"></i>奇摩英語字典</a></li>
-                                    <li><a class="dropdown-item" href="https://www.egame.kh.edu.tw/" target="blank"><i
-                                                class="bi bi-link-45deg"></i>U世代島嶼學習樂園</a></li>
-                                    <li><a class="dropdown-item" href="https://digitalmaster.knsh.com.tw/"
-                                            target="_blank"><i class="bi bi-link-45deg"></i>康軒數位高手</a></li>
-                                    <li><a class="dropdown-item"
-                                            href="https://edisc3.hle.com.tw/edisc_v3/index.html?t=-912323430"
-                                            target="_blank"><i class="bi bi-link-45deg"></i>翰林行動大師</a></li>
-                                    <li><a class="dropdown-item" href="https://nanidigi.oneclass.com.tw/"
-                                            target="_blank"><i class="bi bi-link-45deg"></i>南一數位資源網</a></li>
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <!-- ===== 主內容：自然環境-茭白筍 ===== -->
     <div class="container py-4">
-        <div class="d-flex align-items-center gap-4 mb-4 flex-wrap">
-            <div class="hero-icon"><i class="bi bi-brush-fill"></i></div>
-            <div>
-                <h2 class="fw-bold" style="color: var(--main-green);">🌱 茭白筍 · 埔里水田寶藏</h2>
-                <p class="text-muted fw-semibold">自然環境 · 產業生態 · 手作小書</p>
+        <!-- 標題區：副標題對齊標題中間 -->
+        <div class="hero-title-wrapper mb-4 pt-4 mt-3">
+            <div class="title-block">
+                <h2>🌱 茭白筍 · 埔里水田寶藏</h2>
+            </div>
+            <div class="sub-block">
+                <p>
+                    <span class="subtitle-text">自然環境</span>
+                    <span class="sep">·</span>
+                    <span class="subtitle-text">產業生態</span>
+                    <span class="sep">·</span>
+                    <span class="subtitle-text">手作小書</span>
+                </p>
             </div>
         </div>
 
         <div class="info-badge mb-4">
             <div class="d-flex align-items-center gap-3 flex-wrap">
-                <!-- <i class="bi bi-info-circle-fill" style="font-size:2rem; color:var(--bright-accent);"></i> -->
                 <span class="mb-0 fw-semibold" style="font-size:1.05rem;">
                     茭白筍是埔里地區的特產，不少學生家長以種植茭白筍維生。透過課程設計，探討產業與生態，並以實作方式讓孩子更加瞭解家鄉文化，體驗這片土地的自然之美。
                 </span>
@@ -855,11 +718,8 @@
                             <i class="bi bi-easel2" style="color: var(--main-green); font-size: 1.8rem;"></i>
                             <span>茭白筍簡報介紹&nbsp;</span>
                             <span class="link-group">
-                                <a href="茭白筍簡報和網頁/index.html" target="_blank" class="link-btn-nav">
-                                    <i class="bi bi-globe2"></i> 網頁
-                                </a>
-                                <a href="茭白筍簡報和網頁/茭白筍-115.07.30修正.pdf" target="_blank" class="link-btn-nav">
-                                    <i class="bi bi-file-earmark-pdf"></i> 簡報
+                                <a href="茭白筍-115.07.30修正.pdf" target="_blank" class="link-btn-nav">
+                                    <i class="bi bi-file-earmark-pdf text-danger"></i> 簡報
                                 </a>
                             </span>
                         </div>
@@ -895,7 +755,7 @@
             </div>
         </div>
 
-        <!-- 其餘內容 (小書結構、簡報等) 保留 -->
+        <!-- 其餘內容 (小書結構、簡報等) -->
         <div class="table-visual mb-4">
             <h4 class="fw-bold" style="color:var(--main-green); padding:5px 0;">📘 茭白筍小書 · 完整結構</h4>
             <table class="table mb-0">
@@ -939,91 +799,6 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-
-        <!-- 六個項目：使用統一的 info-card，字體大小一致，高度自動 -->
-        <div class="row g-4 mb-4">
-            <!-- 1. 茭白筍適合環境 -->
-            <div class="col-md-4">
-                <div class="info-card">
-                    <div class="card-title"><i class="bi bi-tree-fill"></i> 茭白筍適合環境</div>
-                    <div class="content">
-                        <span class="badge-item">日照充足</span>
-                        <span class="badge-item">水田環境</span>
-                        <span class="badge-item">溫暖氣候</span>
-                        <span class="badge-item">浮萍 (滿江紅/大萍/青萍)</span>
-                        <div class="subnote">土壤深厚有機質，水質潔淨，溫度約20~28℃</div>
-                    </div>
-                </div>
-            </div>
-            <!-- 2. 生長四階段 -->
-            <div class="col-md-4">
-                <div class="info-card">
-                    <div class="card-title"><i class="bi bi-flower2"></i> 生長四階段</div>
-                    <div class="content">
-                        <span class="step-badge">萌芽</span>
-                        <span class="step-badge">分蘗</span>
-                        <span class="step-badge">孕茭</span>
-                        <span class="step-badge">休眠</span>
-                    </div>
-                </div>
-            </div>
-            <!-- 3. 品種 -->
-            <div class="col-md-4">
-                <div class="info-card">
-                    <div class="card-title"><i class="bi bi-grid-3x3-gap-fill"></i> 品種</div>
-                    <div class="content">
-                        <span class="badge-item" style="background:#e8f5e9;">青殼</span>
-                        <span class="badge-item" style="background:#fff8e1;">白殼</span>
-                        <span class="badge-item" style="background:#ffebee;">赤殼</span>
-                        <div class="subnote">埔里以青殼為主，各具風味與產期</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row g-4 mb-4">
-            <!-- 4. 病蟲害 (至少三種) -->
-            <div class="col-md-4">
-                <div class="info-card">
-                    <div class="card-title"><i class="bi bi-bug-fill" style="color:#d84315;"></i> 病蟲害</div>
-                    <div class="content">
-                        <span class="badge-item" style="background:#ffebee;">福壽螺</span>
-                        <span class="badge-item" style="background:#ffebee;">螟蟲</span>
-                        <span class="badge-item" style="background:#ffebee;">銹病</span>
-                        <span class="badge-item" style="background:#ffebee;">基腐病</span>
-                        <span class="badge-item" style="background:#ffebee;">矮化病</span>
-                        <span class="badge-item" style="background:#ffebee;">胡麻葉枯病</span>
-                        <div class="subnote">田鼠、水鳥、常綠飛蝨亦為常見</div>
-                    </div>
-                </div>
-            </div>
-            <!-- 5. 加工品 -->
-            <div class="col-md-4">
-                <div class="info-card">
-                    <div class="card-title"><i class="bi bi-box-seam" style="color:#5d4037;"></i> 加工品</div>
-                    <div class="content">
-                        <span class="dish-tag">泡菜</span>
-                        <span class="dish-tag">脆片</span>
-                        <span class="dish-tag">泡麵</span>
-                        <span class="dish-tag">土角胖</span>
-                        <div class="subnote">創新產品，延長保存與風味</div>
-                    </div>
-                </div>
-            </div>
-            <!-- 6. 茭白筍種植流程 -->
-            <div class="col-md-4">
-                <div class="info-card">
-                    <div class="card-title"><i class="bi bi-signpost-2"></i> 種植流程</div>
-                    <div class="content">
-                        <span class="process-item">欉根選苗</span>
-                        <span class="process-item">育苗</span>
-                        <span class="process-item">翻犁</span>
-                        <span class="process-item">畫線</span>
-                        <span class="process-item">筍苗定植</span>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="info-badge mb-4" style="border-left-color: var(--main-green);">
