@@ -29,318 +29,6 @@
         }
 
         .card {
-            border-radius: 2rem;
-        }
-
-        .navbar {
-            background-color: #ffffffec !important;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.12);
-            border-bottom: 4px solid var(--main-green);
-            border-radius: 0 0 2rem 2rem;
-            position: relative;
-            z-index: 1050;
-        }
-
-        .navbar-brand {
-            color: var(--main-green) !important;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            font-size: 1.5rem;
-        }
-
-        .navbar-brand i {
-            color: var(--bright-accent);
-            font-size: 1.8rem;
-            margin-right: 6px;
-        }
-
-        .nav-link {
-            color: var(--dark-charcoal) !important;
-            font-weight: 600;
-            border-radius: 2rem;
-            padding: 0.5rem 1rem;
-            transition: 0.2s;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-            background-color: transparent !important;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background-color: var(--soft-green) !important;
-            color: var(--main-green) !important;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        .home-link {
-            background-color: var(--soft-green) !important;
-            color: var(--main-green) !important;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        .home-link:hover {
-            background-color: var(--soft-green) !important;
-            color: var(--main-green) !important;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        .nav-link:not(.home-link):hover {
-            background-color: var(--soft-green);
-            color: var(--main-green) !important;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        .dropdown-menu {
-            background-color: #fffffffa;
-            border: 2px solid var(--soft-green);
-            border-radius: 1.5rem;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-            padding: 0.5rem;
-            display: block;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-            pointer-events: none;
-            z-index: 9999;
-            position: absolute;
-        }
-
-        @media (min-width: 992px) {
-
-            .dropdown:hover>.dropdown-menu,
-            .dropdown.show>.dropdown-menu {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-                pointer-events: auto;
-            }
-
-            .dropdown:hover>.dropdown-toggle::after {
-                transform: rotate(180deg);
-                transition: transform 0.25s;
-            }
-        }
-
-        .dropdown-toggle::after {
-            transition: transform 0.25s;
-        }
-
-        .dropdown-item {
-            color: var(--dark-charcoal);
-            border-radius: 1.2rem;
-            font-weight: 500;
-            padding: 0.5rem 1.2rem;
-            font-size: 1rem;
-            border: none !important;
-            outline: none !important;
-        }
-
-        .dropdown-item:hover {
-            background-color: var(--bg-green);
-            color: var(--main-green);
-            border: none !important;
-            outline: none !important;
-        }
-
-        .dropdown-menu-end {
-            left: auto !important;
-            right: 0 !important;
-            min-width: 240px;
-            max-width: 360px;
-        }
-
-        @media (max-width: 991.98px) {
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                pointer-events: auto;
-                display: none;
-                box-shadow: none;
-                border: none;
-                border-left: 3px solid var(--soft-green);
-                border-radius: 0 1.5rem 1.5rem 0;
-                background: transparent;
-                padding-left: 1rem;
-                margin-top: 0.2rem;
-                margin-bottom: 0.2rem;
-                width: 100%;
-                max-width: 100%;
-                min-width: unset;
-            }
-
-            .dropdown-menu.show {
-                display: block;
-            }
-
-            .navbar-nav .nav-link {
-                padding: 0.5rem 1rem;
-            }
-
-            .dropdown:hover>.dropdown-toggle::after {
-                transform: none;
-            }
-
-            .navbar-nav .dropdown {
-                margin-bottom: 0;
-            }
-
-            .navbar-nav .nav-item {
-                margin-bottom: 0;
-            }
-
-            #digitalDropdown .dropdown-menu,
-            #linkDropdown .dropdown-menu {
-                display: none;
-                padding: 0.5rem 0.5rem 0.2rem 0.5rem;
-                border-left: none;
-                background: #fffffffa;
-                border: 2px solid var(--soft-green);
-                border-radius: 1.5rem;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-                margin-top: 0.2rem;
-                margin-bottom: 0.2rem;
-                width: 100%;
-                max-width: 100%;
-            }
-
-            #digitalDropdown .dropdown-menu.show,
-            #linkDropdown .dropdown-menu.show {
-                display: block;
-            }
-
-            #digitalDropdown .dropdown-menu .row,
-            #linkDropdown .dropdown-menu .row {
-                display: flex;
-                flex-wrap: nowrap;
-                margin: 0 -0.15rem;
-                gap: 0;
-            }
-
-            #digitalDropdown .dropdown-menu .col,
-            #linkDropdown .dropdown-menu .col {
-                flex: 0 0 50%;
-                max-width: 50%;
-                padding: 0 0.15rem;
-                display: flex;
-                flex-direction: column;
-                gap: 0.05rem;
-            }
-
-            #digitalDropdown .dropdown-item,
-            #linkDropdown .dropdown-item {
-                white-space: nowrap;
-                overflow: visible;
-                text-overflow: clip;
-                padding: 0.4rem 0.5rem;
-                font-size: 1rem;
-                border-radius: 0.5rem;
-                background: transparent;
-                border: none;
-                transition: 0.15s;
-                margin: 0;
-                box-sizing: border-box;
-                color: var(--dark-charcoal);
-                text-align: left;
-                min-height: 2.2rem;
-                line-height: 1.4;
-                display: flex;
-                align-items: center;
-                width: 100%;
-                font-weight: 500;
-            }
-
-            #digitalDropdown .dropdown-item:hover,
-            #linkDropdown .dropdown-item:hover {
-                background-color: var(--bg-green);
-                color: var(--main-green);
-            }
-
-            #digitalDropdown .dropdown-item i,
-            #linkDropdown .dropdown-item i {
-                display: none !important;
-            }
-
-            #digitalDropdown .dropdown-item,
-            #linkDropdown .dropdown-item {
-                padding-left: 0.8rem;
-            }
-
-            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu {
-                display: none;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                padding-left: 1rem;
-                border-left: 3px solid var(--soft-green);
-                border-radius: 0 1.5rem 1.5rem 0;
-                background: transparent;
-                box-shadow: none;
-                border: none;
-                margin-top: 0.2rem;
-                margin-bottom: 0.2rem;
-                width: 100%;
-                max-width: 100%;
-            }
-
-            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu.show {
-                display: block;
-            }
-
-            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-item {
-                flex: unset;
-                max-width: 100%;
-                white-space: normal;
-                padding: 0.4rem 1rem;
-                font-size: 1rem;
-                border: none;
-                background: transparent;
-                min-height: auto;
-                width: 100%;
-            }
-
-            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-item:hover {
-                background-color: var(--bg-green);
-                border-radius: 1.2rem;
-            }
-        }
-
-        @media (max-width: 991.98px) {
-            .dropdown-menu-end {
-                right: auto !important;
-                left: 0 !important;
-            }
-        }
-
-        @media (min-width: 992px) {
-
-            #digitalDropdown .dropdown-item i,
-            #linkDropdown .dropdown-item i {
-                display: inline-block !important;
-                margin-right: 8px;
-            }
-        }
-
-        footer {
-            color: var(--dark-charcoal);
-            opacity: 0.8;
-            border-top: 3px dotted var(--soft-green) !important;
-            padding-top: 1.2rem;
-        }
-
-        /* ===== 本頁視覺化元件 – 全部字體大小統一，卡片自動適應內容 ===== */
-        .card {
             border: none;
             border-radius: 2.5rem 2.5rem 2rem 2rem;
             background-color: #ffffff;
@@ -357,142 +45,30 @@
             box-shadow: var(--card-hover-shadow);
         }
 
-        .card-header {
-            background: linear-gradient(135deg, #c8e6c9, #e8f5e9);
-            border-bottom: 3px dashed var(--light-green);
-            color: var(--main-green);
-            font-weight: 700;
-            padding: 1rem 1.5rem;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .card-header i {
-            color: var(--bright-accent);
-            font-size: 1.4rem;
-            margin-right: 8px;
-        }
-
-        .card-body {
-            flex: 1 1 auto;
-            padding: 1rem 1.25rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* 統一的資訊卡片 (用於六個項目) */
-        .info-card {
-            background: white;
-            border-radius: 2rem;
-            padding: 1.2rem 1.2rem;
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--soft-green);
-            height: 100%;
-            transition: 0.2s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .info-card:hover {
-            box-shadow: var(--card-hover-shadow);
-            transform: translateY(-3px);
-        }
-
-        .info-card .card-title {
-            font-size: 1.1rem;
+        /* 活動卡片 */
+        .activity-card .card-title {
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--main-green);
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        .info-card .card-title i {
-            font-size: 1.3rem;
-            color: var(--bright-accent);
-        }
-
-        .info-card .content {
+        .activity-card .card-text {
             font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--dark-charcoal);
         }
 
-        .info-card .content .badge-item {
+        .activity-card .card-text p {
+            font-size: 1.1rem;
+        }
+
+        .activity-card .pill-tag {
             font-size: 0.9rem;
-            font-weight: 500;
-            background: #f0f7ec;
-            padding: 0.2rem 0.9rem;
-            border-radius: 2rem;
-            display: inline-block;
-            margin: 0.15rem 0.2rem;
-            border: 1px solid #d6e8ce;
         }
 
-        .info-card .content .step-badge {
-            font-size: 0.9rem;
-            background: #e8f5e9;
-            padding: 0.25rem 1.2rem;
-            border-radius: 3rem;
-            display: inline-block;
-            margin: 0.2rem 0.3rem;
-            font-weight: 600;
-            color: var(--main-green);
+        .activity-card .small {
+            font-size: 0.95rem;
         }
 
-        .info-card .content .process-item {
-            font-size: 0.9rem;
-            background: #fafff8;
-            padding: 0.2rem 0.9rem;
-            border-radius: 2rem;
-            display: inline-block;
-            margin: 0.15rem 0.2rem;
-            border: 1px solid #d6e8ce;
-        }
-
-        .info-card .content .dish-tag {
-            font-size: 0.9rem;
-            background: #fff8f0;
-            padding: 0.2rem 1rem;
-            border-radius: 2rem;
-            display: inline-block;
-            margin: 0.15rem 0.2rem;
-            border: 1px solid #ffe0b0;
-        }
-
-        .info-card .subnote {
-            font-size: 0.85rem;
-            color: #5a6b5a;
-            margin-top: 0.4rem;
-        }
-
-        /* 保持所有卡片高度一致，但由內容撐開 */
-        .row.g-4 .col-md-4,
-        .row.g-4 .col-md-6 {
-            display: flex;
-        }
-
-        .row.g-4 .col-md-4 .info-card,
-        .row.g-4 .col-md-6 .info-card {
-            flex: 1 1 auto;
-        }
-
-        /* 表格、hero 等不影響 */
-        .hero-icon {
-            background: #fff7e0;
-            width: 4.2rem;
-            height: 4.2rem;
-            border-radius: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.4rem;
-            color: var(--bright-accent);
-            box-shadow: 0 4px 12px rgba(255, 179, 0, 0.2);
-        }
-
+        /* 資訊徽章 */
         .info-badge {
             background: white;
             border-radius: 2rem;
@@ -502,6 +78,7 @@
             transition: 0.2s;
         }
 
+        /* 表格視覺 */
         .table-visual {
             background: white;
             border-radius: 2.5rem;
@@ -551,6 +128,15 @@
             border-radius: 0 1.5rem 1.5rem 0;
         }
 
+        .table-visual .badge {
+            font-size: 1rem;
+        }
+
+        .table-visual .small {
+            font-size: 0.95rem;
+        }
+
+        /* 藥丸標籤 */
         .pill-tag {
             background: var(--soft-green);
             border-radius: 3rem;
@@ -560,36 +146,7 @@
             display: inline-block;
         }
 
-        @media (max-width: 576px) {
-            .navbar-brand {
-                font-size: 1.2rem;
-            }
-
-            .info-card .card-title {
-                font-size: 1rem;
-            }
-
-            .info-card .content {
-                font-size: 0.88rem;
-            }
-        }
-
-        /* 本頁新增：活動卡片標題字體微調 */
-        .activity-card .card-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--main-green);
-        }
-
-        .activity-card .card-text {
-            font-size: 0.95rem;
-        }
-
-        .activity-card .pill-tag {
-            font-size: 0.9rem;
-        }
-
-        /* ===== 為「網頁」與「簡報」連結套用 nav-link 效果 ===== */
+        /* 連結按鈕 */
         .link-btn-nav {
             color: var(--dark-charcoal) !important;
             font-weight: 600;
@@ -626,14 +183,13 @@
             box-shadow: none !important;
         }
 
-        /* 修正按鈕群組間距 */
         .link-group {
             display: flex;
             flex-wrap: wrap;
             gap: 0.25rem 0.5rem;
         }
 
-        /* ===== 標題區：副標題對齊標題中間 ===== */
+        /* 標題區 */
         .hero-title-wrapper {
             display: inline-flex;
             flex-direction: column;
@@ -648,7 +204,7 @@
 
         .hero-title-wrapper .title-block h2 {
             margin-bottom: 0.1rem;
-            font-size: 2rem;
+            font-size: 2.6rem;
             color: var(--main-green);
             font-weight: 700;
         }
@@ -668,9 +224,31 @@
             line-height: 1.3;
         }
 
-        /* 副標題中的分隔點樣式 */
         .sub-block .sep {
             margin: 0 0.15rem;
+        }
+
+        /* 心得區 */
+        .insight-block {
+            font-size: 1.05rem;
+        }
+
+        .insight-block p,
+        .insight-block li {
+            line-height: 1.8;
+        }
+
+        footer {
+            color: var(--dark-charcoal);
+            opacity: 0.8;
+            border-top: 3px dotted var(--soft-green) !important;
+            padding-top: 1.2rem;
+        }
+
+        @media (max-width: 576px) {
+            .hero-title-wrapper .title-block h2 {
+                font-size: 2rem;
+            }
         }
     </style>
     <base target="_blank">
@@ -698,12 +276,13 @@
         <div class="info-badge mb-4">
             <div class="d-flex align-items-center gap-3 flex-wrap">
                 <span class="mb-0 fw-semibold" style="font-size:1.05rem;">
-                    茭白筍是埔里地區的特產，不少學生家長以種植茭白筍維生。透過課程設計，探討產業與生態，並以實作方式讓孩子更加瞭解家鄉文化，體驗這片土地的自然之美。
+                    埔里盆地因氣候宜人、水質純淨，孕育出優質的「茭白筍」（俗稱美人腿），成為當地極具代表性的農業特產。埔里的茭白筍產量高居全台之冠，不僅口感鮮甜脆嫩，更是許多在地家庭的經濟支柱，不少學生家長以種植茭白筍維生。<br><br>
+                    為了讓這份土地的情感代代相傳，在地教育透過課程設計，探討產業與生態，並以實作方式讓孩子更加瞭解家鄉文化，體驗這片土地的自然之美。學童走入筍田，親手觀察生態與水質，學習友善耕作對環境的永續效益。這樣的在地化學習，不僅打破了教室的邊界，更將產業知識、環境教育與鄉土情懷緊密結合，讓孩子在產地實踐中深刻感受家鄉農業的價值與魅力。
                 </span>
             </div>
         </div>
 
-        <!-- ===== 本學期2項活動 (修改連結樣式) ===== -->
+        <!-- ===== 本學期2項活動 ===== -->
         <div class="mb-4">
             <h4 class="fw-bold"
                 style="color: var(--main-green); border-bottom: 3px solid var(--soft-green); padding-bottom: 0.4rem;">
@@ -801,7 +380,7 @@
             </table>
         </div>
 
-        <div class="info-badge mb-4" style="border-left-color: var(--main-green);">
+        <div class="info-badge mb-4 insight-block" style="border-left-color: var(--main-green);">
             <i class="bi bi-pencil-square me-3" style="font-size:1.8rem; color:var(--main-green);"></i>
             <span class="fw-bold">P10 心得 · 至少 300 字</span>
             <p class="text-secondary ms-2">
