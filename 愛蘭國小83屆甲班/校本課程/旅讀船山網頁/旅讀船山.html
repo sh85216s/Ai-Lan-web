@@ -673,6 +673,39 @@
         #themeSection {
             scroll-margin-top: 80px;
         }
+
+        /* ===== 統整學習單卡片點擊效果 ===== */
+        #collapseWorksheet .col-md-6.col-lg-4 {
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        #collapseWorksheet .col-md-6.col-lg-4:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 20, 50, 0.15);
+        }
+
+        #collapseWorksheet .col-md-6.col-lg-4 .card {
+            transition: border-color 0.25s ease, background 0.25s ease;
+            border: 2px solid transparent;
+        }
+
+        #collapseWorksheet .col-md-6.col-lg-4:hover .card {
+            border-color: #0a2f6c;
+            background: #fafcff;
+        }
+
+        /* 點擊時的回饋 */
+        #collapseWorksheet .col-md-6.col-lg-4:active .card {
+            transform: scale(0.98);
+            transition-duration: 0.05s;
+        }
+
+        /* 小提示：卡片內的連結文字保持可點擊，但不影響整張卡片點擊 */
+        #collapseWorksheet .col-md-6.col-lg-4 a {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 
@@ -1190,7 +1223,7 @@
                 </div>
             </div>
 
-            <!-- ========= 統整學習單 ========= -->
+            <!-- ========= 統整學習單（15 個卡片均可點擊） ========= -->
             <div class="mb-4 route-section" id="worksheetSection">
                 <div class="collapsible-header d-flex align-items-center justify-content-between"
                     data-bs-toggle="collapse" data-bs-target="#collapseWorksheet" aria-expanded="false"
@@ -1200,7 +1233,8 @@
                 </div>
                 <div class="collapse collapsible-body" id="collapseWorksheet" data-bs-parent="#accordionRoute">
                     <div class="row g-3">
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 1. 我的觀察記錄(植物) -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/我的觀察記錄.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/我的觀察記錄.pdf" title="我的觀察記錄(植物)" target="_blank"
@@ -1208,7 +1242,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 2. 愛蘭台地自然觀察記錄單 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/愛蘭台地自然觀察記錄單.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/愛蘭台地自然觀察記錄單.pdf" title="愛蘭台地自然觀察記錄單" target="_blank"
@@ -1216,7 +1251,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 3. 阿嬤的寶貝-認識常見的民俗植物 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/阿嬤的寶貝-認識常見的民俗植物.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/阿嬤的寶貝-認識常見的民俗植物.pdf" title="阿嬤的寶貝-認識常見的民俗植物" target="_blank"
@@ -1224,7 +1260,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 4. 我的家在樹上 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/我的家在樹上.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/我的家在樹上.pdf" title="大樹公寓" target="_blank"
@@ -1232,14 +1269,16 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 5. 大樹公寓 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/大樹公寓.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/大樹公寓.pdf" title="大樹公寓" target="_blank"
                                         class="fw-bold text-decoration-none">大樹公寓</a></div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 6. 愛蘭台地的自然資源─兩棲爬蟲類 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/愛蘭台地的自然資源─兩棲爬蟲類.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/愛蘭台地的自然資源─兩棲爬蟲類.pdf" title="愛蘭台地的自然資源─兩棲爬蟲類" target="_blank"
@@ -1247,7 +1286,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 7. 愛蘭台地的動物資源 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/愛蘭台地的動物資源.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/愛蘭台地的動物資源.pdf" title="愛蘭台地的動物資源" target="_blank"
@@ -1255,7 +1295,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 8. 愛蘭台地的動物資源－鳥類 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/愛蘭台地的動物資源－鳥類.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/愛蘭台地的動物資源－鳥類.pdf" title="愛蘭台地的動物資源－鳥類" target="_blank"
@@ -1263,7 +1304,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 9. 愛蘭台地的植物資源－愛蘭國小 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/愛蘭台地的植物資源－愛蘭國小.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/愛蘭台地的植物資源－愛蘭國小.pdf" title="愛蘭台地的植物資源－愛蘭國小" target="_blank"
@@ -1271,7 +1313,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 10. 愛蘭台地的植物資源－醒靈寺附近 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/愛蘭台地的植物資源－醒靈寺附近.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/愛蘭台地的植物資源－醒靈寺附近.pdf" title="愛蘭台地的植物資源－醒靈寺附近" target="_blank"
@@ -1279,7 +1322,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 11. 愛蘭台地的植物資源－鐵山里南側往愛村橋叉路至涼亭 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/愛蘭台地的植物資源－鐵山里南側往愛村橋叉路至涼亭.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/愛蘭台地的植物資源－鐵山里南側往愛村橋叉路至涼亭.pdf" title="愛蘭台地的植物資源－鐵山里南側往愛村橋叉路至涼亭"
@@ -1288,7 +1332,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 12. 愛蘭台地常見的民俗植物 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/愛蘭台地常見的民俗植物.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/愛蘭台地常見的民俗植物.pdf" title="愛蘭台地常見的民俗植物" target="_blank"
@@ -1296,7 +1341,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 13. 愛蘭台地探索1 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/愛蘭台地探索1.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/愛蘭台地探索1.pdf" title="愛蘭台地探索1" target="_blank"
@@ -1304,7 +1350,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 14. 愛蘭台地探索2 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/愛蘭台地探索2.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/愛蘭台地探索2.pdf" title="愛蘭台地探索2" target="_blank"
@@ -1312,7 +1359,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4">
+                        <!-- 15. 愛蘭台地探索-認識植物朋友 -->
+                        <div class="col-md-6 col-lg-4" data-pdf="學習單/統整學習單/愛蘭台地探索-認識植物朋友.pdf">
                             <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
                                 <i class="fas fa-file-pdf fa-2x text-danger"></i>
                                 <div><a href="學習單/統整學習單/愛蘭台地探索-認識植物朋友.pdf" title="愛蘭台地探索-認識植物朋友" target="_blank"
@@ -1320,8 +1368,10 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- 底部提示 -->
                         <div class="col-12 mt-2">
-                            <p class="mt-2 text-muted small"><i class="fas fa-info-circle"></i> 點擊上方連結可瀏覽或下載PDF學習單</p>
+                            <p class="mt-2 text-muted small"><i class="fas fa-info-circle"></i> 點擊卡片任意處即可開啟
+                                PDF，也可點擊文字連結開啟。</p>
                         </div>
                     </div>
                 </div>
@@ -1465,7 +1515,36 @@
             window.open(pageUrl, '_blank', features);
         }
 
+        // ================================================================
+        // ★★★ 統整學習單：點擊整張卡片開啟 PDF（共 15 個） ★★★
+        // ================================================================
+        (function () {
+            // 選取統整學習單區域內的所有卡片容器（col-md-6 col-lg-4）
+            var cards = document.querySelectorAll('#collapseWorksheet .col-md-6.col-lg-4');
+            cards.forEach(function (card) {
+                // 從 data-pdf 屬性取得 PDF 路徑
+                var pdfPath = card.getAttribute('data-pdf');
+                if (!pdfPath) return;
+
+                // 點擊卡片時開啟 PDF（但若點擊的是內部的 a 連結，則由 a 標籤處理，避免重複）
+                card.addEventListener('click', function (e) {
+                    // 若點擊的是 a 標籤本身，不攔截，讓它正常運作
+                    if (e.target.closest('a')) return;
+                    window.open(pdfPath, '_blank');
+                });
+
+                // 阻止內部 a 標籤的點擊事件冒泡到卡片，避免雙重觸發
+                var links = card.querySelectorAll('a');
+                links.forEach(function (link) {
+                    link.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                    });
+                });
+            });
+        })();
+
         console.log('頁面已載入，景點卡片數量: ' + document.querySelectorAll('.spot-card').length);
+        console.log('統整學習單卡片數量: ' + document.querySelectorAll('#collapseWorksheet .col-md-6.col-lg-4').length);
     </script>
 
     <!-- Bootstrap 5 JS Bundle -->
