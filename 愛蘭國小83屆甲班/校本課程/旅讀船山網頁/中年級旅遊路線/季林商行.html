@@ -2,19 +2,19 @@
 <html lang="zh-tw">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>烏牛欄教會</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>季林商行 · 巴宰潘家老店</title>
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
     <!-- Font Awesome 6 (free) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Google Font (noto sans tc) -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet" />
     <style>
-        /* ===== 完全繼承旅讀船山.html 顏色風格 ===== */
+        /* ===== 完全繼承旅讀船山 / 烏牛欄教會 顏色風格 ===== */
         body {
             font-family: 'Noto Sans TC', 'Segoe UI', Roboto, sans-serif;
             background: #f0f6ff;
@@ -25,7 +25,7 @@
             background-color: #d9e9ff;
         }
 
-        /* 標題區塊 (header-image) 樣式與旅讀船山一致 */
+        /* 標題區塊 (header-image) 樣式與烏牛欄教會一致 */
         .header-image {
             background: #1b4a8a;
             width: 100%;
@@ -190,47 +190,61 @@
             text-decoration-thickness: 2px;
         }
 
-        /* 圖片區塊 — 強制高度相同、圓角外框一致 */
-        .img-placeholder {
-            background: #d9e9ff;
-            border-radius: 28px;
-            /* 與卡片圓角一致 */
-            padding: 12px;
-            border: 2px dashed #0a2f6c40;
-            /* 統一邊框 */
+        /* ===== 圖片與文字兩欄等高 ===== */
+        .equal-height-row {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 200px;
-            height: 100%;
-            /* 讓容器撐滿父層 */
-            color: #0a2f6c;
-            font-weight: 700;
-            font-size: 1.2rem;
-            overflow: hidden;
-            /* 確保圖片不溢出圓角 */
+            flex-wrap: wrap;
         }
 
-        /* 圖片本身：填滿容器、保持比例、圓角繼承 */
-        .img-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* 裁切以填滿，同時維持比例 */
-            border-radius: 18px;
-            /* 內縮圓角，與外框呼應 */
-            display: block;
-        }
-
-        /* 讓兩個圖片的父層 col 高度一致 (Bootstrap grid 預設相同高度) */
-        .row.g-4 .col-md-6 {
+        .equal-height-row>[class*="col-"] {
             display: flex;
             flex-direction: column;
         }
 
-        .row.g-4 .col-md-6 .img-placeholder {
+        /* 圖片區塊 — 圓角、內邊距、背景與邊框（延續 img-placeholder 風格） */
+        .img-placeholder {
+            background: #d9e9ff;
+            border-radius: 28px;
+            padding: 12px;
+            border: 2px dashed #0a2f6c40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex: 1 1 auto;
-            /* 讓 placeholder 撐滿父層高度 */
+            min-height: 200px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        /* 右側文字卡片：與圖片等高 */
+        .text-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            padding: 1.8rem 2rem;
+            flex: 1 1 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: none;
+        }
+
+        .text-card p {
+            line-height: 2;
+            margin-bottom: 0.8rem;
+        }
+
+        .text-card .fw-bold {
+            color: #0a2f6c;
         }
 
         .theme-badge {
@@ -243,23 +257,23 @@
             display: inline-block;
         }
 
-        .btn-outline-gold {
-            border: 2px solid #f1c40f;
-            color: #1b4a8a;
-            font-weight: 700;
-            border-radius: 50px;
-            padding: 6px 20px;
-            transition: 0.2s;
-            background: white;
+        /* 響應式調整：小螢幕時文字卡片與圖片自然堆疊 */
+        @media (max-width: 767.98px) {
+            .text-card {
+                padding: 1.5rem;
+                margin-top: 0;
+            }
+
+            .equal-height-row>[class*="col-"] {
+                margin-bottom: 16px;
+            }
+
+            .equal-height-row>.col-md-6:last-child {
+                margin-bottom: 0;
+            }
         }
 
-        .btn-outline-gold:hover {
-            background: #f1c40f;
-            color: #0a2f6c;
-            border-color: #f1c40f;
-        }
-
-        /* 導航列 (簡化版) 只用來維持整體風格 */
+        /* 導航列 (簡化，保留風格) */
         .navbar-custom {
             background: linear-gradient(145deg, #0a2f6c 0%, #1b4a8a 100%);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
@@ -299,50 +313,63 @@
 </head>
 
 <body>
-    <!-- ===== 主內容 ===== -->
     <div class="container">
+
+        <!-- 標題區塊 (與烏牛欄教會一致) -->
         <div class="header-image">
-            <div class="header-title">⛪ 烏牛欄教會</div>
-            <div class="header-subtitle">巴宰族群 · 福音初臨 · 埔里第一禮拜堂</div>
+            <div class="header-title">🏪 季林商行</div>
+            <div class="header-subtitle">巴宰潘家老店 · 四十年傳承 · 升官發財</div>
             <div class="header-wave"></div>
         </div>
 
-        <!-- 上方兩個圖片 — 強制高度相同、圓角外框一致 -->
-        <div class="row g-4 mb-4">
-            <div class="col-md-4">
+        <!-- ===== 左右兩欄：左圖右文，強制等高 ===== -->
+        <div class="row g-4 equal-height-row mb-5">
+            <!-- 左欄：圖片 -->
+            <div class="col-md-6">
                 <div class="img-placeholder">
-                    <img src="img/烏牛欄教會1.jpg" alt="烏牛欄教會1">
+                    <img src="img/季林商行.jpg" alt="季林商行店面">
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="img-placeholder">
-                    <img src="img/烏牛欄教會2.jpg" alt="烏牛欄教會2">
+            <!-- 右欄：文字卡片 (等高) -->
+            <div class="col-md-6">
+                <div class="text-card">
+                    <h4 class="fw-bold text-primary mb-3"><i class="fas fa-store me-2"
+                            style="color:#f1c40f;"></i>季林商行・四十年老店</h4>
+                    <p>
+                        <span class="fw-bold">「季林商行」</span>是由巴宰族潘氏家族所經營的老字號商店，
+                        老闆潘先生的父親即開始經營，至今已有 <span class="UnderLine">四十年</span> 歷史。
+                    </p>
+                    <p>
+                        走進店內，最引人注目的是置物架上擺放的 <span class="fw-bold" style="color:#0a2f6c;">棺材</span>，
+                        這不是喪葬用品，而是取自諧音 <span class="fw-bold" style="color:#b07d4b;">「升官發財」</span> 的吉祥寓意，
+                        展現了巴宰族人樂觀幽默的生活智慧。
+                    </p>
+                    <p class="mt-2">
+                        <i class="fas fa-hand-holding-heart me-1" style="color:#b07d4b;"></i>
+                        從父親手中接棒，潘老闆延續這份在地人情味，讓<span class="fw-bold">季林商行</span>成為社區記憶的一部分。
+                    </p>
                 </div>
             </div>
         </div>
 
-        <!-- 文字內容 (完全取自使用者提供的描述) -->
+        <!-- 額外引用/補充區 (仿烏牛欄教會補充樣式) -->
         <div class="row g-4 mb-5">
             <div class="col-12">
                 <div class="card card-shadow p-4 p-md-5">
-                    <h4 class="fw-bold text-primary mb-3"><i class="fas fa-cross me-2" style="color:#f1c40f;"></i>歷史足跡
-                    </h4>
+                    <h5 class="fw-bold text-primary mb-3"><i class="fas fa-history me-2"
+                            style="color:#f1c40f;"></i>傳承・寓意</h5>
                     <p class="fs-6 lh-base" style="line-height: 2;">
-                        <span class="UnderLine">1870年</span>，巴宰族人<span
-                            class="fw-bold">潘開山．武干（Kaisan.Buhkan）</span>打獵時，被槍托的後座力所傷，到府城求醫，府城即現在的台南。醫師是來自英國長老教會蘇格蘭醫師<span
-                            class="fw-bold">馬雅各</span>主治外科，台灣的第一家西醫院即是他所創立。
+                        <span class="fw-bold">季林商行</span> 不僅是一家商店，更是巴宰潘氏家族在埔里落地生根的縮影。
+                        四十年來，從父親到兒子，一代一代守著這間店，也守著人與人之間的情感。
+                        置物架上的棺材，看似突兀，實則蘊含著 <span class="fw-bold">「升官發財」</span> 的祝福，
+                        這是屬於巴宰族人的幽默與智慧，也是這間老店最獨特的風景。
+                        每一件商品、每一句問候，都承載著這塊土地的故事。
                     </p>
-                    <p class="fs-6 lh-base" style="line-height: 2;">
-                        <span class="fw-bold">潘開山．武干</span>醫治半年後治癒，同時受福音感召，成為上帝的最佳見證人。他請求布道師隨他返鄉傳布福音，於是生於台南鹽水的傳道師<span
-                            class="fw-bold">李豹</span>就奉命與他同行，沿途宣教，烏牛欄庒的族人也因此都接受了耶穌基督的洗禮。後來，在<span
-                            class="UnderLine">1871年</span>，埔里的第一間禮拜堂就在烏牛欄落成。
-                    </p>                    
                 </div>
             </div>
         </div>
-
     </div>
-    <!-- Bootstrap 5 JS Bundle (無需互動, 但保留) -->
+    <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
     </script>
 </body>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>烏牛欄教會</title>
+    <title>天公廟 · 愛蘭台地</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -14,7 +14,7 @@
     <!-- Google Font (noto sans tc) -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* ===== 完全繼承旅讀船山.html 顏色風格 ===== */
+        /* ===== 完全繼承旅讀船山 / 烏牛欄教會 顏色風格 ===== */
         body {
             font-family: 'Noto Sans TC', 'Segoe UI', Roboto, sans-serif;
             background: #f0f6ff;
@@ -25,7 +25,7 @@
             background-color: #d9e9ff;
         }
 
-        /* 標題區塊 (header-image) 樣式與旅讀船山一致 */
+        /* 標題區塊 (header-image) 樣式與烏牛欄教會一致 */
         .header-image {
             background: #1b4a8a;
             width: 100%;
@@ -190,47 +190,61 @@
             text-decoration-thickness: 2px;
         }
 
-        /* 圖片區塊 — 強制高度相同、圓角外框一致 */
-        .img-placeholder {
-            background: #d9e9ff;
-            border-radius: 28px;
-            /* 與卡片圓角一致 */
-            padding: 12px;
-            border: 2px dashed #0a2f6c40;
-            /* 統一邊框 */
+        /* ===== 圖片兩欄等高 ===== */
+        .equal-height-row {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 200px;
-            height: 100%;
-            /* 讓容器撐滿父層 */
-            color: #0a2f6c;
-            font-weight: 700;
-            font-size: 1.2rem;
-            overflow: hidden;
-            /* 確保圖片不溢出圓角 */
+            flex-wrap: wrap;
         }
 
-        /* 圖片本身：填滿容器、保持比例、圓角繼承 */
-        .img-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* 裁切以填滿，同時維持比例 */
-            border-radius: 18px;
-            /* 內縮圓角，與外框呼應 */
-            display: block;
-        }
-
-        /* 讓兩個圖片的父層 col 高度一致 (Bootstrap grid 預設相同高度) */
-        .row.g-4 .col-md-6 {
+        .equal-height-row>[class*="col-"] {
             display: flex;
             flex-direction: column;
         }
 
-        .row.g-4 .col-md-6 .img-placeholder {
+        /* 圖片區塊 — 圓角、內邊距、背景與邊框（延續 img-placeholder 風格） */
+        .img-placeholder {
+            background: #d9e9ff;
+            border-radius: 28px;
+            padding: 12px;
+            border: 2px dashed #0a2f6c40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex: 1 1 auto;
-            /* 讓 placeholder 撐滿父層高度 */
+            min-height: 200px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        /* 文字卡片 */
+        .text-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            padding: 1.8rem 2rem;
+            flex: 1 1 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: none;
+        }
+
+        .text-card p {
+            line-height: 2;
+            margin-bottom: 0.8rem;
+        }
+
+        .text-card .fw-bold {
+            color: #0a2f6c;
         }
 
         .theme-badge {
@@ -243,23 +257,23 @@
             display: inline-block;
         }
 
-        .btn-outline-gold {
-            border: 2px solid #f1c40f;
-            color: #1b4a8a;
-            font-weight: 700;
-            border-radius: 50px;
-            padding: 6px 20px;
-            transition: 0.2s;
-            background: white;
+        /* 響應式調整 */
+        @media (max-width: 767.98px) {
+            .text-card {
+                padding: 1.5rem;
+                margin-top: 0;
+            }
+
+            .equal-height-row>[class*="col-"] {
+                margin-bottom: 16px;
+            }
+
+            .equal-height-row>.col-md-6:last-child {
+                margin-bottom: 0;
+            }
         }
 
-        .btn-outline-gold:hover {
-            background: #f1c40f;
-            color: #0a2f6c;
-            border-color: #f1c40f;
-        }
-
-        /* 導航列 (簡化版) 只用來維持整體風格 */
+        /* 導航列 (簡化，保留風格) */
         .navbar-custom {
             background: linear-gradient(145deg, #0a2f6c 0%, #1b4a8a 100%);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
@@ -295,54 +309,109 @@
             background: #ffd966;
             color: #0a2f6c !important;
         }
+
+        /* 兩張圖片等高的額外輔助 */
+        .img-equal-height {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .img-equal-height .img-placeholder {
+            height: 100%;
+            min-height: 220px;
+        }
+
+        @media (max-width: 576px) {
+            .img-equal-height .img-placeholder {
+                min-height: 180px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- ===== 主內容 ===== -->
     <div class="container">
+
+        <!-- 標題區塊 (與烏牛欄教會一致) -->
         <div class="header-image">
-            <div class="header-title">⛪ 烏牛欄教會</div>
-            <div class="header-subtitle">巴宰族群 · 福音初臨 · 埔里第一禮拜堂</div>
+            <div class="header-title">⛩️ 天公廟</div>
+            <div class="header-subtitle">愛蘭台地西側 · 信仰中心 · 錫蘭橄欖老樹</div>
             <div class="header-wave"></div>
         </div>
 
-        <!-- 上方兩個圖片 — 強制高度相同、圓角外框一致 -->
-        <div class="row g-4 mb-4">
-            <div class="col-md-4">
+        <!-- ===== 兩張圖片並排，強制等高 ===== -->
+        <div class="row g-4 mb-4 equal-height-row img-equal-height">
+            <div class="col-md-6">
                 <div class="img-placeholder">
-                    <img src="img/烏牛欄教會1.jpg" alt="烏牛欄教會1">
+                    <img src="img/天公廟-1.jpg" alt="天公廟 景觀一">
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="img-placeholder">
-                    <img src="img/烏牛欄教會2.jpg" alt="烏牛欄教會2">
+                    <img src="img/天公廟-2.jpg" alt="天公廟 景觀二">
                 </div>
             </div>
         </div>
 
-        <!-- 文字內容 (完全取自使用者提供的描述) -->
+        <!-- ===== 文字內容 (全寬卡片) ===== -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="text-card">
+                    <h4 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-temple me-2" style="color:#f1c40f;"></i>天公廟 · 愛蘭台地的信仰守護
+                    </h4>
+                    <p>
+                        <span class="fw-bold">天公廟</span> 位於愛蘭台地西側，是當地重要的信仰場所。
+                        廟前格局獨具特色，<span class="fw-bold" style="color:#0a2f6c;">青龍、白虎</span>分立兩側，
+                        中央則有「<span class="UnderLine">九龍戲水</span>」景觀，
+                        形成莊嚴而富有地方色彩的廟宇氣象。
+                    </p>
+                    <p>
+                        大庭前方有一株樹齡約 <span class="fw-bold" style="color:#0a2f6c;">60 年</span>的
+                        <span class="fw-bold">錫蘭橄欖巨木</span>，
+                        據說約於民國 <span class="fw-bold" style="color:#0a2f6c;">40 年（1951 年）</span>前後，
+                        由現今寺廟管理人潘先生的母親 <span class="fw-bold">潘氏</span> 親手種下。
+                        經過數十年的生長，巨木主幹分成六股，枝幹盤結、姿態雄偉，
+                        宛如 <span class="fw-bold" style="color:#0a2f6c;">六條巨龍</span> 盤繞柱間，
+                        十分壯觀，也成為天公廟前一處具有地方故事與特色的老樹景觀。
+                    </p>
+                    <p>
+                        這株老樹不僅見證天公廟周邊環境的變遷，
+                        也承載著當地居民的生活記憶，
+                        是愛蘭台地自然景觀與地方人文交織的特色之一。
+                    </p>
+                    <p class="mt-2">
+                        <i class="fas fa-leaf me-1" style="color:#2ecc71;"></i>
+                        老樹與廟宇相伴，靜靜守護著這片土地的信仰與記憶。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 額外補充區 (仿原頁面風格) ===== -->
         <div class="row g-4 mb-5">
             <div class="col-12">
                 <div class="card card-shadow p-4 p-md-5">
-                    <h4 class="fw-bold text-primary mb-3"><i class="fas fa-cross me-2" style="color:#f1c40f;"></i>歷史足跡
-                    </h4>
+                    <h5 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-tree me-2" style="color:#f1c40f;"></i>巨龍盤繞 · 老樹傳奇
+                    </h5>
                     <p class="fs-6 lh-base" style="line-height: 2;">
-                        <span class="UnderLine">1870年</span>，巴宰族人<span
-                            class="fw-bold">潘開山．武干（Kaisan.Buhkan）</span>打獵時，被槍托的後座力所傷，到府城求醫，府城即現在的台南。醫師是來自英國長老教會蘇格蘭醫師<span
-                            class="fw-bold">馬雅各</span>主治外科，台灣的第一家西醫院即是他所創立。
+                        天公廟前的錫蘭橄欖巨木，是愛蘭台地最富傳奇色彩的自然地標之一。
+                        潘氏當年親手種下這株樹苗時，或許未曾想到，六十餘年後它會長成
+                        如巨龍盤繞般的磅礴姿態。六股主幹相互依偎，枝葉繁茂，
+                        彷彿六條青龍護衛著廟宇，也護佑著這片土地上的子民。
+                        每逢節慶，居民們在老樹下乘涼、敘舊、祈福，
+                        人與樹的情感在歲月中逐漸沉澱，成為天公廟最溫暖的人文風景。
+                        老樹依然挺立，一如這座廟宇百年來對地方的守護，
+                        靜默而堅定。
                     </p>
-                    <p class="fs-6 lh-base" style="line-height: 2;">
-                        <span class="fw-bold">潘開山．武干</span>醫治半年後治癒，同時受福音感召，成為上帝的最佳見證人。他請求布道師隨他返鄉傳布福音，於是生於台南鹽水的傳道師<span
-                            class="fw-bold">李豹</span>就奉命與他同行，沿途宣教，烏牛欄庒的族人也因此都接受了耶穌基督的洗禮。後來，在<span
-                            class="UnderLine">1871年</span>，埔里的第一間禮拜堂就在烏牛欄落成。
-                    </p>                    
                 </div>
             </div>
         </div>
 
     </div>
-    <!-- Bootstrap 5 JS Bundle (無需互動, 但保留) -->
+
+    <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
     </script>
 </body>

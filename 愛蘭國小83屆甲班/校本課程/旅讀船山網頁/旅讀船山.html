@@ -693,7 +693,7 @@
                     <!-- 快速連結：本學期3項主題 -->
                     <li class="nav-item">
                         <a class="nav-quick-link" href="#themeSection" id="navTheme"><i class="fas fa-book-open"></i>
-                            本學期3項主題</a>
+                            五下3項主題</a>
                     </li>
                     <!-- 快速連結：高年級 -->
                     <li class="nav-item">
@@ -707,9 +707,9 @@
                     <li class="nav-item">
                         <a class="nav-quick-link" href="#" id="navLow"><i class="fas fa-seedling"></i> 低年級路線</a>
                     </li>
-                    <!-- 快速連結：學習單 -->
+                    <!-- 快速連結：統整學習單 -->
                     <li class="nav-item">
-                        <a class="nav-quick-link" href="#worksheet"><i class="fas fa-pencil-alt"></i> 統整學習單</a>
+                        <a class="nav-quick-link" href="#" id="navWorksheet"><i class="fas fa-pencil-alt"></i> 統整學習單</a>
                     </li>
                 </ul>
             </div>
@@ -745,7 +745,7 @@
         <!-- ===== 本學期 3 項主題 ===== -->
         <div class="mb-3" id="themeSection">
             <div class="d-flex flex-wrap align-items-center justify-content-between">
-                <h2 class="section-title mb-0"><i class="fas fa-book-open me-2" style="color:#f1c40f;"></i>本學期 3 項主題
+                <h2 class="section-title mb-0"><i class="fas fa-book-open me-2" style="color:#f1c40f;"></i>五下 3 項主題
                 </h2>
             </div>
         </div>
@@ -845,7 +845,7 @@
                         <i class="fas fa-walking fa-2x" style="color:#0a2f6c;"></i>
                         <span class="fw-bold">16個景點，約2km，步行時，每個景點以平均停留5～10分鐘計，共需約3小時完成。若以腳踏車進行，可在2.5小時內完成。</span>
                     </div>
-                    <div><img src="img/高年級路線.png" style="width:100%;" alt="高年級路線圖"></div>
+                    <div><img src="高年級旅遊路線/img/高年級路線.png" style="width:100%;" alt="高年級路線圖"></div>
                     <br>
                     <div class="row g-4" id="highSpots">
                         <!-- 每個景點卡片加入 data-page 屬性，指向對應的詳細頁面 -->
@@ -978,8 +978,8 @@
                                             class="fas fa-hand-pointer me-1"></i>點擊查看</span></div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-4 spot-card"
-                            onclick="openDetailPage('高年級旅遊路線/愛蘭國小及派出所.html')" data-name="愛蘭國小・派出所">
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('高年級旅遊路線/愛蘭國小及派出所.html')"
+                            data-name="愛蘭國小・派出所">
                             <div class="card card-shadow h-100 p-3">
                                 <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">15</span>愛蘭國小・派出所</h5>
                                 <p class="small">百年老樟樹、緬梔樹，派出所後方最大榕樹。</p>
@@ -1013,78 +1013,112 @@
                         <i class="fas fa-walking fa-2x" style="color:#0a2f6c;"></i>
                         <span class="fw-bold">14個景點，約1.5km，每個景點以平均停留5～10分鐘計，共需約2.5小時完成。若以腳踏車進行，可在2小時內完成。</span>
                     </div>
-                    <div><img src="img/中年級路線.png" style="width:100%;" alt="中年級路線圖"></div>
+                    <div><img src="中年級旅遊路線/img/中年級路線.png" style="width:100%;" alt="中年級路線圖"></div>
                     <br>
                     <div class="row g-3" id="medSpots">
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/季林商行.html')"
+                        <!-- 改為 col-md-6 col-lg-4，與高年級一致，3欄顯示 -->
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/季林商行.html')"
                             data-name="季林商行">
-                            <div class="card card-shadow p-2 h-100"><strong>1.季林商行</strong><small
-                                    class="d-block">40年老店，棺材象徵升官發財。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">1</span>季林商行</h5>
+                                <small class="d-block">40年老店，棺材象徵升官發財。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/瑞美理髮.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/瑞美理髮.html')"
                             data-name="瑞美理髮">
-                            <div class="card card-shadow p-2 h-100"><strong>2.瑞美理髮</strong><small
-                                    class="d-block">65年開業，保留手動推剪。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">2</span>瑞美理髮</h5>
+                                <small class="d-block">65年開業，保留手動推剪。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/王家古厝.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/王家古厝.html')"
                             data-name="王家古厝">
-                            <div class="card card-shadow p-2 h-100"><strong>3.王家古厝</strong><small
-                                    class="d-block">台地最早的診所。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">3</span>王家古厝</h5>
+                                <small class="d-block">台地最早的診所。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/慶昌碾米廠.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/慶昌碾米廠.html')"
                             data-name="慶昌碾米廠">
-                            <div class="card card-shadow p-2 h-100"><strong>4.慶昌碾米廠</strong><small
-                                    class="d-block">50年，木製米桶，豆餅碾碎機。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">4</span>慶昌碾米廠 <i
+                                        class="fas fa-file-pdf me-1 text-danger"></i></h5>
+
+                                <small class="d-block">50年，木製米桶，豆餅碾碎機。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/黎老師雜貨店.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/黎老師雜貨店.html')"
                             data-name="黎老師雜貨店">
-                            <div class="card card-shadow p-2 h-100"><strong>5.黎老師雜貨店</strong><small
-                                    class="d-block">30多年老雜貨店，阿嬤看店。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">5</span>黎老師雜貨店</h5>
+                                <small class="d-block">30多年老雜貨店，阿嬤看店。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/木匠.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/木匠.html')"
                             data-name="木匠">
-                            <div class="card card-shadow p-2 h-100"><strong>6.木匠</strong><small
-                                    class="d-block">第二代陳先生，傳統木工工具。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">6</span>木匠</h5>
+                                <small class="d-block">第二代陳先生，傳統木工工具。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/福安宮.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/福安宮.html')"
                             data-name="福安宮">
-                            <div class="card card-shadow p-2 h-100"><strong>7.福安宮</strong><small
-                                    class="d-block">居民關係密切的土地公廟。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">7</span>福安宮</h5>
+                                <small class="d-block">居民關係密切的土地公廟。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/天后宮.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/天后宮.html')"
                             data-name="天后宮">
-                            <div class="card card-shadow p-2 h-100"><strong>8.天后宮</strong><small
-                                    class="d-block">主祀媽祖。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">8</span>天后宮</h5>
+                                <small class="d-block">主祀媽祖。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/水水世界.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/水水世界.html')"
                             data-name="水水世界">
-                            <div class="card card-shadow p-2 h-100"><strong>9.水水世界</strong><small
-                                    class="d-block">人工浮島淨化水質，生態水培。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">9</span>水水世界 <i
+                                        class="fas fa-file-pdf me-1 text-danger"></i></h5>
+                                <small class="d-block">人工浮島淨化水質，生態水培。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/西鎮堂.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/西鎮堂.html')"
                             data-name="西鎮堂">
-                            <div class="card card-shadow p-2 h-100"><strong>10.西鎮堂</strong><small
-                                    class="d-block">主祀齊天大聖，黑狗精傳奇。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">10</span>西鎮堂</h5>
+                                <small class="d-block">主祀齊天大聖，黑狗精傳奇。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/天公廟.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/天公廟.html')"
                             data-name="天公廟">
-                            <div class="card card-shadow p-2 h-100"><strong>11.天公廟</strong><small
-                                    class="d-block">錫蘭橄欖巨木，六龍盤柱。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">11</span>天公廟</h5>
+                                <small class="d-block">錫蘭橄欖巨木，六龍盤柱。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/廣興紙寮.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/廣興紙寮.html')"
                             data-name="廣興紙寮">
-                            <div class="card card-shadow p-2 h-100"><strong>12.廣興紙寮</strong><small
-                                    class="d-block">體驗造紙，紙藝教室。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">12</span>廣興紙寮 <i
+                                        class="fas fa-file-pdf me-1 text-danger"></i></h5>
+                                <small class="d-block">體驗造紙，紙藝教室。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/黃家古厝.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/黃家古厝.html')"
                             data-name="黃家古厝">
-                            <div class="card card-shadow p-2 h-100"><strong>13.黃家古厝</strong><small
-                                    class="d-block">三級古蹟，番秀才望麒麟故居。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">13</span>黃家古厝</h5>
+                                <small class="d-block">三級古蹟，番秀才望麒麟故居。</small>
+                            </div>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-3 spot-card" onclick="openDetailPage('景點詳細頁/阿婆洗衣池.html')"
+                        <div class="col-md-6 col-lg-4 spot-card" onclick="openDetailPage('中年級旅遊路線/阿婆洗衣池.html')"
                             data-name="阿婆洗衣池">
-                            <div class="card card-shadow p-2 h-100"><strong>14.阿婆洗衣池</strong><small
-                                    class="d-block">天然湧泉，紹興池，婦女聚會所。</small></div>
+                            <div class="card card-shadow p-3 h-100">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">14</span>阿婆洗衣池 <i
+                                        class="fas fa-file-pdf me-1 text-danger"></i></h5>
+                                <small class="d-block">天然湧泉，紹興池，婦女聚會所。</small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1104,92 +1138,196 @@
                         <i class="fas fa-walking fa-2x" style="color:#0a2f6c;"></i>
                         <span class="fw-bold">6個景點</span>
                     </div>
-                    <div><img src="img/低年級路線.png" style="width:100%;" alt="低年級路線圖"></div>
+                    <div><img src="低年級旅遊路線/img/低年級路線.png" style="width:100%;" alt="低年級路線圖"></div>
                     <br>
                     <div class="row g-3" id="lowSpots">
-                        <div class="col-md-4 spot-card" onclick="openDetailPage('景點詳細頁/廣興紙寮.html')" data-name="廣興紙寮">
-                            <div class="card card-shadow p-3"><i class="bi bi-house-gear-fill fa-2x me-2"
-                                    style="color:#0a2f6c;"></i><strong>廣興紙寮</strong><br><small>水和紙的世界，手作體驗。</small>
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('低年級旅遊路線/廣興紙寮.html')" data-name="廣興紙寮">
+                            <div class="card card-shadow p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">1</span>廣興紙寮</h5>
+                                <small>水和紙的世界，手作體驗。</small>
                             </div>
                         </div>
-                        <div class="col-md-4 spot-card" onclick="openDetailPage('旅讀船山網頁/低年級旅遊路線/烏牛欄教會.html')"
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('低年級旅遊路線/烏牛欄教會.html')"
                             data-name="烏牛欄教會">
-                            <div class="card card-shadow p-3"><i class="fas fa-church fa-2x me-2"
-                                    style="color:#0a2f6c;"></i><strong>烏牛欄教會</strong><br><small>巴宰族信仰起源。</small></div>
-                        </div>
-                        <div class="col-md-4 spot-card" onclick="openDetailPage('景點詳細頁/水水世界.html')" data-name="水水世界">
-                            <div class="card card-shadow p-3"><i class="fas fa-water fa-2x me-2"
-                                    style="color:#0a2f6c;"></i><strong>水水世界</strong><br><small>生態浮島，認識水質淨化。</small>
+                            <div class="card card-shadow p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">2</span>烏牛欄教會</h5>
+                                <small>巴宰族信仰起源。</small>
                             </div>
                         </div>
-                        <div class="col-md-4 spot-card" onclick="openDetailPage('景點詳細頁/阿婆洗衣池.html')" data-name="阿婆洗衣池">
-                            <div class="card card-shadow p-3"><i class="fas fa-hand-sparkles fa-2x me-2"
-                                    style="color:#0a2f6c;"></i><strong>阿婆洗衣池</strong><br><small>湧泉洗衣池，社區記憶。</small>
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('低年級旅遊路線/水水世界.html')" data-name="水水世界">
+                            <div class="card card-shadow p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">3</span>水水世界</h5>
+                                <small>生態浮島，認識水質淨化。</small>
                             </div>
                         </div>
-                        <div class="col-md-4 spot-card" onclick="openDetailPage('景點詳細頁/西鎮堂.html')" data-name="西鎮堂">
-                            <div class="card card-shadow p-3"><i class="fas fa-place-of-worship fa-2x me-2"
-                                    style="color:#0a2f6c;"></i><strong>西鎮堂</strong><br><small>齊天大聖廟，傳奇故事。</small></div>
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('低年級旅遊路線/阿婆洗衣池.html')"
+                            data-name="阿婆洗衣池">
+                            <div class="card card-shadow p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">4</span>阿婆洗衣池</h5>
+                                <small>湧泉洗衣池，社區記憶。</small>
+                            </div>
                         </div>
-                        <div class="col-md-4 spot-card" onclick="openDetailPage('景點詳細頁/黃家古厝.html')" data-name="黃家古厝">
-                            <div class="card card-shadow p-3"><i class="fas fa-home fa-2x me-2"
-                                    style="color:#0a2f6c;"></i><strong>黃家古厝</strong><br><small>三級古蹟，番秀才故居。</small></div>
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('低年級旅遊路線/西鎮堂.html')" data-name="西鎮堂">
+                            <div class="card card-shadow p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">5</span>西鎮堂</h5>
+                                <small>齊天大聖廟，傳奇故事。</small>
+                            </div>
                         </div>
+                        <div class="col-md-4 spot-card" onclick="openDetailPage('低年級旅遊路線/黃家古厝.html')" data-name="黃家古厝">
+                            <div class="card card-shadow p-3">
+                                <h5><span class="badge bg-secondary bg-opacity-10 text-dark me-2">6</span>黃家古厝</h5>
+                                <small>三級古蹟，番秀才故居。</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-soft-sky rounded-4">
+                        <i class="fas fa-file-pdf me-1 text-danger"></i>
+                        <span class="fw-bold">《補充》低年級學習單：</span> <a href="../旅讀船山網頁/學習單/年級學習單/低年級學習單-探訪愛蘭台地.pdf"
+                            target=" _blank">探訪愛蘭台地.pdf</a>、<a href="../旅讀船山網頁/學習單/年級學習單/低年級學習單-拜訪水和紙的世界-1.pdf"
+                            target=" _blank">拜訪水和紙的世界-1.pdf</a>、<a href="../旅讀船山網頁/學習單/年級學習單/低年級學習單-拜訪水和紙的世界-2.pdf"
+                            target=" _blank">拜訪水和紙的世界-2.pdf</a>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- ========= 統整學習單 ========= -->
-        <div id="worksheet" class="mb-5">
-            <h2 class="section-title mb-4"><i class="fas fa-file-pdf me-2" style="color:#c0392b;"></i>統整學習單</h2>
-            <div class="row g-3">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
-                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
-                        <div><a href="#" onclick="alert('認識常見的民俗植物')" class="fw-bold text-decoration-none">認識常見的民俗植物</a>
+            <!-- ========= 統整學習單 ========= -->
+            <div class="mb-4 route-section" id="worksheetSection">
+                <div class="collapsible-header d-flex align-items-center justify-content-between"
+                    data-bs-toggle="collapse" data-bs-target="#collapseWorksheet" aria-expanded="false"
+                    aria-controls="collapseWorksheet">
+                    <h2 class="section-title mb-0"><i class="fas fa-file-pdf me-2" style="color:#c0392b;"></i>統整學習單</h2>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="collapse collapsible-body" id="collapseWorksheet" data-bs-parent="#accordionRoute">
+                    <div class="row g-3">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/我的觀察記錄.pdf" title="我的觀察記錄(植物)" target="_blank"
+                                        class="fw-bold text-decoration-none">我的觀察記錄(植物)</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/愛蘭台地自然觀察記錄單.pdf" title="愛蘭台地自然觀察記錄單" target="_blank"
+                                        class="fw-bold text-decoration-none">愛蘭台地自然觀察記錄單</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/阿嬤的寶貝-認識常見的民俗植物.pdf" title="阿嬤的寶貝-認識常見的民俗植物" target="_blank"
+                                        class="fw-bold text-decoration-none">阿嬤的寶貝-認識常見的民俗植物</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/我的家在樹上.pdf" title="大樹公寓" target="_blank"
+                                        class="fw-bold text-decoration-none">我的家在樹上</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/大樹公寓.pdf" title="大樹公寓" target="_blank"
+                                        class="fw-bold text-decoration-none">大樹公寓</a></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/愛蘭台地的自然資源─兩棲爬蟲類.pdf" title="愛蘭台地的自然資源─兩棲爬蟲類" target="_blank"
+                                        class="fw-bold text-decoration-none">愛蘭台地的自然資源─兩棲爬蟲類</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/愛蘭台地的動物資源.pdf" title="愛蘭台地的動物資源" target="_blank"
+                                        class="fw-bold text-decoration-none">愛蘭台地的動物資源</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/愛蘭台地的動物資源－鳥類.pdf" title="愛蘭台地的動物資源－鳥類" target="_blank"
+                                        class="fw-bold text-decoration-none">愛蘭台地的動物資源－鳥類</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/愛蘭台地的植物資源－愛蘭國小.pdf" title="愛蘭台地的植物資源－愛蘭國小" target="_blank"
+                                        class="fw-bold text-decoration-none">愛蘭台地的植物資源－愛蘭國小</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/愛蘭台地的植物資源－醒靈寺附近.pdf" title="愛蘭台地的植物資源－醒靈寺附近" target="_blank"
+                                        class="fw-bold text-decoration-none">愛蘭台地的植物資源－醒靈寺附近</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/愛蘭台地的植物資源－鐵山里南側往愛村橋叉路至涼亭.pdf" title="愛蘭台地的植物資源－鐵山里南側往愛村橋叉路至涼亭"
+                                        target="_blank"
+                                        class="fw-bold text-decoration-none">愛蘭台地的植物資源－鐵山里南側往愛村橋叉路至涼亭</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/愛蘭台地常見的民俗植物.pdf" title="愛蘭台地常見的民俗植物" target="_blank"
+                                        class="fw-bold text-decoration-none">愛蘭台地常見的民俗植物</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/愛蘭台地探索1.pdf" title="愛蘭台地探索1" target="_blank"
+                                        class="fw-bold text-decoration-none">愛蘭台地探索1</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/愛蘭台地探索2.pdf" title="愛蘭台地探索2" target="_blank"
+                                        class="fw-bold text-decoration-none">愛蘭台地探索2</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
+                                <i class="fas fa-file-pdf fa-2x text-danger"></i>
+                                <div><a href="學習單/統整學習單/愛蘭台地探索-認識植物朋友.pdf" title="愛蘭台地探索-認識植物朋友" target="_blank"
+                                        class="fw-bold text-decoration-none">愛蘭台地探索-認識植物朋友</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <p class="mt-2 text-muted small"><i class="fas fa-info-circle"></i> 點擊上方連結可瀏覽或下載PDF學習單</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
-                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
-                        <div><a href="#" onclick="alert('大樹公寓')" class="fw-bold text-decoration-none">大樹公寓</a></div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
-                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
-                        <div><a href="#" onclick="alert('愛蘭台地常見的民俗植物')"
-                                class="fw-bold text-decoration-none">愛蘭台地常見的民俗植物</a></div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
-                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
-                        <div><a href="#" onclick="alert('愛蘭台地的動物資源－兩爬類')" class="fw-bold text-decoration-none">兩爬類</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
-                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
-                        <div><a href="#" onclick="alert('愛蘭台地的動物資源－鳥類')" class="fw-bold text-decoration-none">鳥類</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card card-shadow p-3 h-100 d-flex flex-row align-items-center gap-3">
-                        <i class="fas fa-file-pdf fa-2x text-danger"></i>
-                        <div><a href="#" onclick="alert('愛蘭台地的植物資源－愛蘭國小')"
-                                class="fw-bold text-decoration-none">植物資源－愛蘭國小</a></div>
-                    </div>
-                </div>
-                <div class="col-12 mt-2">
-                    <p class="mt-2 text-muted small"><i class="fas fa-info-circle"></i> 點擊上方連結可瀏覽或下載PDF學習單 (此為示意)</p>
                 </div>
             </div>
-        </div>
+
+        </div><!-- /accordionRoute -->
 
         <!-- footer -->
         <footer class="container py-3 mt-3">
@@ -1229,28 +1367,25 @@
             });
         });
 
-        // ===== 輔助函式：展開摺疊並捲動至標題 =====
-        function expandAndScroll(targetId, sectionId) {
+        // ===== 輔助函式：切換摺疊並捲動（僅在展開時捲動） =====
+        function toggleCollapse(targetId, sectionId) {
             var header = document.querySelector('[data-bs-target="' + targetId + '"]');
             if (!header) return;
             var targetEl = document.querySelector(targetId);
             if (!targetEl) return;
 
-            // 如果已經展開，則不重複動作，但還是捲動至該區塊
             var isExpanded = header.getAttribute('aria-expanded') === 'true';
             var bsCollapse = bootstrap.Collapse.getInstance(targetEl);
+            if (!bsCollapse) {
+                bsCollapse = new bootstrap.Collapse(targetEl, { toggle: false });
+            }
 
             if (isExpanded) {
-                // 已展開，直接捲動
-                scrollToSection(sectionId);
+                // 已展開 → 收合
+                bsCollapse.hide();
             } else {
-                // 未展開，先展開再捲動
-                if (bsCollapse) {
-                    bsCollapse.show();
-                } else {
-                    header.click();
-                }
-                // 等待 collapse 動畫完成後再捲動 (Bootstrap 的 shown.bs.collapse 事件)
+                // 未展開 → 展開，並在展開後捲動
+                bsCollapse.show();
                 targetEl.addEventListener('shown.bs.collapse', function onShown() {
                     scrollToSection(sectionId);
                     targetEl.removeEventListener('shown.bs.collapse', onShown);
@@ -1267,35 +1402,43 @@
             }
         }
 
-        // 綁定導航按鈕
+        // 綁定導航按鈕（高、中、低、統整學習單）
         document.getElementById('navHigh').addEventListener('click', function (e) {
             e.preventDefault();
-            expandAndScroll('#collapseHigh', '#highSection');
+            toggleCollapse('#collapseHigh', '#highSection');
         });
 
         document.getElementById('navMed').addEventListener('click', function (e) {
             e.preventDefault();
-            expandAndScroll('#collapseMed', '#medSection');
+            toggleCollapse('#collapseMed', '#medSection');
         });
 
         document.getElementById('navLow').addEventListener('click', function (e) {
             e.preventDefault();
-            expandAndScroll('#collapseLow', '#lowSection');
+            toggleCollapse('#collapseLow', '#lowSection');
         });
 
-        // 點擊標題時捲動到該區塊 (原有的行為保留)
+        document.getElementById('navWorksheet').addEventListener('click', function (e) {
+            e.preventDefault();
+            toggleCollapse('#collapseWorksheet', '#worksheetSection');
+        });
+
+        // 點擊標題時捲動到該區塊（保留原有行為，但僅在展開時捲動）
         document.querySelectorAll('.collapsible-header').forEach(function (header) {
             header.addEventListener('click', function (e) {
                 var targetId = this.getAttribute('data-bs-target');
                 var targetEl = document.querySelector(targetId);
                 if (targetEl && !targetEl.classList.contains('show')) {
-                    setTimeout(function () {
-                        // 找到父層的 .route-section 進行捲動
-                        var section = header.closest('.route-section');
-                        if (section) {
+                    // 將在展開後捲動（利用 shown 事件）
+                    var section = header.closest('.route-section');
+                    if (section) {
+                        targetEl.addEventListener('shown.bs.collapse', function onShown() {
                             section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                    }, 350);
+                            targetEl.removeEventListener('shown.bs.collapse', onShown);
+                        });
+                    }
+                } else if (targetEl && targetEl.classList.contains('show')) {
+                    // 已展開，不額外動作（維持原有收合行為）
                 }
             });
         });

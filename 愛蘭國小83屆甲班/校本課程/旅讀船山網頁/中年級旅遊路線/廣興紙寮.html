@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>醒靈寺 · 埔里四大老廟</title>
+    <title>廣興紙寮 · 埔里手工紙的故鄉</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- Font Awesome 6 -->
+    <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Font (noto sans tc) -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* ===== 完全繼承水采田 / 旅讀船山 顏色風格 ===== */
+        /* ===== 完全繼承旅讀船山 / 烏牛欄教會 顏色風格 ===== */
         body {
             font-family: 'Noto Sans TC', 'Segoe UI', Roboto, sans-serif;
             background: #f0f6ff;
@@ -25,7 +25,7 @@
             background-color: #d9e9ff;
         }
 
-        /* 標題區塊 (header-image) 樣式與範本一致 */
+        /* 標題區塊 (header-image) 樣式與烏牛欄教會一致 */
         .header-image {
             background: #1b4a8a;
             width: 100%;
@@ -125,6 +125,10 @@
         }
 
         @media (max-width: 576px) {
+            body {
+                padding-top: 0;
+            }
+
             .header-image {
                 min-height: 110px;
                 padding: 14px 10px;
@@ -156,10 +160,6 @@
             .header-wave {
                 height: 30px;
             }
-
-            body {
-                padding-top: 66px;
-            }
         }
 
         /* 卡片樣式 (與主頁一致) */
@@ -190,7 +190,7 @@
             text-decoration-thickness: 2px;
         }
 
-        /* ===== 圖片與文字兩欄等高 (同範本) ===== */
+        /* ===== 圖片兩欄等高 ===== */
         .equal-height-row {
             display: flex;
             flex-wrap: wrap;
@@ -201,7 +201,7 @@
             flex-direction: column;
         }
 
-        /* 圖片區塊 — 圓角、內邊距、背景與邊框 */
+        /* 圖片區塊 — 圓角、內邊距、背景與邊框（延續 img-placeholder 風格） */
         .img-placeholder {
             background: #d9e9ff;
             border-radius: 28px;
@@ -224,12 +224,12 @@
             display: block;
         }
 
-        /* 右側文字卡片：與圖片等高 */
+        /* 文字卡片 (全寬版本) */
         .text-card {
             background: white;
             border-radius: 28px;
             box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
-            padding: 1.8rem 2rem;
+            padding: 2rem 2.2rem;
             flex: 1 1 auto;
             height: 100%;
             display: flex;
@@ -257,6 +257,23 @@
             display: inline-block;
         }
 
+        /* 引用／重點標示 */
+        .quote-block {
+            background: #eef6ff;
+            border-left: 6px solid #f9c74f;
+            padding: 1.2rem 1.8rem;
+            border-radius: 16px;
+            margin: 0.8rem 0 0.4rem 0;
+            font-style: normal;
+            line-height: 1.8;
+            color: #0a2f6c;
+        }
+
+        .quote-block i {
+            color: #f9c74f;
+            margin-right: 6px;
+        }
+
         @media (max-width: 767.98px) {
             .text-card {
                 padding: 1.5rem;
@@ -270,67 +287,10 @@
             .equal-height-row>.col-md-6:last-child {
                 margin-bottom: 0;
             }
-        }
 
-        /* 兩張圖片水平並排，高度一致 */
-        .two-img-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .two-img-row .img-col {
-            flex: 1 1 calc(50% - 8px);
-            min-width: 200px;
-        }
-
-        .two-img-row .img-placeholder {
-            height: 100%;
-            min-height: 200px;
-        }
-
-        /* 若螢幕太窄改為垂直 */
-        @media (max-width: 576px) {
-            .two-img-row .img-col {
-                flex: 1 1 100%;
+            .quote-block {
+                padding: 1rem 1.2rem;
             }
-        }
-
-        /* 導航列 (簡化，保留風格) */
-        .navbar-custom {
-            background: linear-gradient(145deg, #0a2f6c 0%, #1b4a8a 100%);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            border-bottom: 4px solid #ffd966;
-            border-radius: 0 0 2rem 2rem;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1050;
-        }
-
-        .navbar-custom .navbar-brand {
-            color: #ffffff !important;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-        }
-
-        .navbar-custom .navbar-brand i {
-            color: #ffd966;
-        }
-
-        .navbar-custom .nav-link {
-            color: rgba(255, 255, 255, 0.9) !important;
-            font-weight: 500;
-            margin: 0 4px;
-            border-radius: 30px;
-            padding: 8px 18px;
-            transition: 0.2s;
-        }
-
-        .navbar-custom .nav-link:hover {
-            background: #ffd966;
-            color: #0a2f6c !important;
         }
     </style>
 </head>
@@ -338,94 +298,109 @@
 <body>
     <div class="container">
 
-        <!-- 標題區塊 (與水采田一致) -->
+        <!-- ===== 標題區塊 (與烏牛欄教會一致) ===== -->
         <div class="header-image">
-            <div class="header-title">⛩️ 醒靈寺</div>
-            <div class="header-subtitle">埔里四大老廟 · 烏牛欄台地 · 三恩主公</div>
+            <div class="header-title">📄 廣興紙寮</div>
+            <div class="header-subtitle">埔里 · 手工紙的故鄉 · 傳統造紙文化</div>
             <div class="header-wave"></div>
         </div>
 
-        <!-- ===== 兩張圖片並排，高度一致 ===== -->
-        <div class="row g-4 mb-4 two-img-row">
-            <div class="col-md-6 img-col">
+        <!-- ===== 兩張圖片並排，強制等高 ===== -->
+        <div class="row g-4 equal-height-row mb-4">
+            <div class="col-md-6">
                 <div class="img-placeholder">
-                    <img src="img/醒靈寺1.jpg" alt="醒靈寺外觀">
+                    <img src="img/廣興紙寮-1.jpg" alt="廣興紙寮 造紙場景">
                 </div>
             </div>
-            <div class="col-md-6 img-col">
+            <div class="col-md-6">
                 <div class="img-placeholder">
-                    <img src="img/醒靈寺2.jpg" alt="醒靈寺廟埕與石獅">
+                    <img src="img/廣興紙寮-2.jpg" alt="廣興紙寮 手作紙藝">
                 </div>
             </div>
         </div>
 
-        <!-- ===== 左右兩欄：左圖右文，強制等高 (如同水采田) ===== -->
-        <div class="row g-4 equal-height-row mb-5">
-            <div class="col-md-12">
+        <!-- ===== 主要文字介紹 (全寬卡片) ===== -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
                 <div class="text-card">
-                    <h4 class="fw-bold text-primary mb-3"><i class="fas fa-temple me-2" style="color:#f1c40f;"></i>醒靈寺 ·
-                        百年風華</h4>
+                    <h4 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-scroll me-2" style="color:#f1c40f;"></i>廣興紙寮 · 埔里手工紙的故鄉
+                    </h4>
+
                     <p>
-                        <span class="fw-bold">民國5年</span>（1916）草創於日南，供奉關聖帝君，為埔里四大老廟之一。
-                        列為<span class="UnderLine">三級古蹟</span>（尚未申報）。民國36年奉天旨遷廟，民國40年於現址峻工。
+                        <span class="fw-bold">廣興紙寮</span> 創立於 <span class="UnderLine">1965年</span>（民國54年），
+                        由 <span class="fw-bold">黃耀東</span> 先生創辦。
+                        埔里擁有良好的水質與造紙環境，過去曾發展出興盛的造紙產業，
+                        廣興紙寮也曾生產高品質手工宣紙，外銷日本、韓國。
                     </p>
+
                     <p>
-                        廟址位於<span class="fw-bold" style="color:#0a2f6c;">烏牛欄台地</span>最東側，俯瞰愛蘭橋。
-                        愛蘭橋前身為烏牛欄吊橋，地形為隘口，易守難攻。
-                        <span class="fw-bold">「二二八事件」</span>時，台灣最後一波抵抗勢力在此集結，
-                        史稱「烏牛欄之役」，事件在此畫上休止符。
+                        早期以代工為主，後轉型生產手工宣紙。隨著時代變遷，
+                        埔里傳統造紙產業逐漸式微，廣興紙寮則轉型為結合
+                        <span class="fw-bold" style="color:#0a2f6c;">傳統工藝</span>、
+                        <span class="fw-bold" style="color:#0a2f6c;">文化保存</span>、
+                        <span class="fw-bold" style="color:#0a2f6c;">觀光</span> 與
+                        <span class="fw-bold" style="color:#0a2f6c;">教育</span> 的場所，
+                        保存手工造紙的技術與文化。
                     </p>
-                    <p class="mt-2">
-                        <i class="fas fa-feather-alt me-1" style="color:#b07d4b;"></i>
-                        主祀三恩主公：關公、呂洞賓、灶神。
-                        出入廟宇，由青龍方入（面向廟門右側），白虎方出。
+
+                    <p>
+                        <i class="fas fa-hand-paper me-1" style="color:#e67e22;"></i>
+                        參觀時可以認識傳統造紙的流程——蒸煮、漂洗、打漿、抄紙、壓水與烘乾，
+                        也能參加 <span class="fw-bold">手工造紙</span> 及
+                        <span class="fw-bold">紙藝DIY</span> 體驗，
+                        親手感受紙張從無到有的溫度。
                     </p>
+
+                    <p>
+                        <i class="fas fa-leaf me-1" style="color:#27ae60;"></i>
+                        廣興紙寮也將埔里在地的 <span class="fw-bold">茭白筍殼</span>、
+                        <span class="fw-bold">檳榔樹幹</span> 等農業剩餘資源轉化為手工紙，
+                        讓傳統造紙與環境永續、地方產業產生連結。
+                    </p>
+
+                    <!-- 一句話介紹 (引用樣式) -->
+                    <div class="quote-block">
+                        <i class="fas fa-quote-left fa-lg"></i>
+                        <span class="fw-bold">廣興紙寮</span> 是埔里重要的手工造紙文化據點，
+                        透過傳統造紙技藝、導覽與DIY體驗，讓人認識埔里
+                        <span class="fw-bold" style="color:#0a2f6c;">「手工紙的故鄉」</span> 文化。
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ===== 額外補充：歷史功能、文物、植物 ===== -->
+        <!-- ===== 補充區 (仿烏牛欄教會補充樣式) ===== -->
         <div class="row g-4 mb-5">
             <div class="col-12">
                 <div class="card card-shadow p-4 p-md-5">
-                    <h5 class="fw-bold text-primary mb-3"><i class="fas fa-history me-2"
-                            style="color:#f1c40f;"></i>地方記憶・文物與功能</h5>
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <p class="fs-6 lh-base" style="line-height: 2;">
-                                <span class="fw-bold">📖 漢學學堂</span><br>
-                                早期為漢學學堂，亦為民間求藥之處。現今仍維持農曆每月三日、十三日、廿三日可前往求藥。
-                            </p>
-                            <p class="fs-6 lh-base" style="line-height: 2;">
-                                <span class="fw-bold">🏮 神燈</span><br>
-                                入山門前，二側神燈為日據時代上虎頭山頂神社山路二旁之神燈。
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <p class="fs-6 lh-base" style="line-height: 2;">
-                                <span class="fw-bold">🪨 石獅</span><br>
-                                石獅為大埔城衙門之石獅，日據時地震後移至虎頭山神社，神社毀圮後移至此。
-                            </p>
-                            <p class="fs-6 lh-base" style="line-height: 2;">
-                                <span class="fw-bold">🌳 榕樹 & 香楠</span><br>
-                                廟前有榕樹，氣根發達，頂天立地。廟西側有台地最大的一株香楠。
-                            </p>
-                        </div>
-                    </div>
-                    <hr class="my-3">
-                    <p class="text-muted fst-italic" style="line-height: 2;">
-                        <i class="fas fa-tree me-2" style="color:#3b7a5a;"></i>
-                        醒靈寺不僅是信仰中心，更承載了埔里烏牛欄地區的歷史轉折與族群記憶，
-                        從日治、二二八到當代，始終是地方心靈與文化的燈塔。
+                    <h5 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-timeline me-2" style="color:#f1c40f;"></i>傳承 · 創新 · 永續
+                    </h5>
+                    <p class="fs-6 lh-base" style="line-height: 2;">
+                        <span class="UnderLine">廣興紙寮</span> 的歷史，是一部埔里造紙產業的縮影。
+                        從民國54年創立「廣興製紙加工所」，到民國62年開始手工宣紙內銷，
+                        民國80年成功研發高品質手工宣紙外銷日韓，達到巔峰。
+                        而後由第二代黃煥彰先生接手，順應時代潮流，
+                        將紙寮轉型為文化傳承與體驗教育的場域。
                     </p>
-                    <div class="mt-4 p-3 bg-soft-sky rounded-4">
-                        <i class="fas fa-file-pdf me-1 text-danger"></i>
-                        <span class="fw-bold">《補充》高年級學習單：</span> <a href="../學習單/年級學習單/高年級學習單-我所認識的醒靈寺.pdf" target=" _blank">我所認識的醒靈寺.pdf</a>
-                    </div>
-                </div>                
+                    <p class="fs-6 lh-base" style="line-height: 2; margin-top: 0.5rem;">
+                        如今，走進廣興紙寮，不僅能親眼見證一張紙的誕生，
+                        更能體會到職人對傳統工藝的堅持與熱情。
+                        從原料到成品，每一個步驟都蘊含著埔里這片土地的溫度，
+                        以及台灣手工造紙產業的韌性與生命力。
+                        <i class="fas fa-heart ms-1" style="color:#e74c3c;"></i>
+                    </p>
+                </div>
             </div>
-            
-        </div>        
+        </div>
+
+        <div class="mt-4 p-3 bg-soft-sky rounded-4">
+            <i class="fas fa-file-pdf me-1 text-danger"></i>
+            <span class="fw-bold">《補充》中年級學習單：</span> <a href="../學習單/年級學習單/《中年級學習單》廣興紙寮-中國偉大的發明術.pdf"
+                target=" _blank">廣興紙寮-中國偉大的發明術.pdf</a>、<a href="../學習單/年級學習單/《中年級學習單》廣興紙寮-愛蘭台地自然與人文探索.pdf" target=" _blank">廣興紙寮-愛蘭台地自然與人文探索.pdf</a>
+        </div>
+
     </div>
 
     <!-- Bootstrap 5 JS Bundle -->
