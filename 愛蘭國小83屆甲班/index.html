@@ -8,7 +8,6 @@
     <!-- Bootstrap 5 + Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- <link rel="stylesheet" href="css/83th.css"> -->
 </head>
 <style>
     /* ----- 明亮綠色系 對比鮮明 ----- */
@@ -308,11 +307,9 @@
         box-shadow: var(--card-hover-shadow);
     }
 
-    /* ===== 重點：強制圖片容器為 4:3 ===== */
     .card-img-top-wrapper {
         width: 100%;
         padding-top: 75%;
-        /* 4:3 比例 (3/4 = 0.75) */
         position: relative;
         background-color: #eef3f8;
         overflow: hidden;
@@ -504,9 +501,7 @@
         opacity: 0.6;
     }
 
-    /* ============================================================
-       公告表格 - 摺疊樣式 (修改)
-       ============================================================ */
+    /* 公告表格 - 摺疊樣式 */
     .announcement-table {
         width: 100%;
         border-collapse: collapse;
@@ -557,7 +552,6 @@
         color: var(--warm-orange);
     }
 
-    /* ---- 新增：公告摺疊樣式 ---- */
     .announcement-row {
         cursor: pointer;
         transition: background-color 0.2s;
@@ -605,8 +599,6 @@
         border-top: 2px dashed var(--soft-green);
         margin-top: 0.3rem;
         display: none;
-        /* 預設隱藏 */
-        ;
     }
 
     .announcement-detail.open {
@@ -626,7 +618,6 @@
         }
     }
 
-    /* 條列式列表 */
     .announcement-detail-list {
         padding-left: 1.6rem;
         margin-bottom: 0.2rem;
@@ -652,14 +643,13 @@
         margin-bottom: 0;
     }
 
-    /* 空狀態 */
     .empty-announcement {
         color: #7a8f72;
         font-size: 1.1rem;
         padding: 2rem 0;
     }
 
-    /* ===== 手機/平板：公告事項左右等距 + 強制斷行 ===== */
+    /* 手機/平板 */
     @media (max-width: 991.98px) {
         .announcement-table {
             table-layout: fixed;
@@ -701,7 +691,6 @@
             padding-right: 0.8rem;
         }
 
-        /* 手機版摺疊標題微調 */
         .announcement-title {
             font-size: 0.95rem;
         }
@@ -795,7 +784,6 @@
         }
     }
 
-    /* 桌機版保留圖示 */
     @media (min-width: 992px) {
 
         #digitalDropdown .dropdown-item i,
@@ -874,14 +862,12 @@
                             <li><a class="dropdown-item" href="班級經營/學藝競賽.html"><i class="bi bi-trophy me-2"></i>學藝競賽</a>
                             </li>
                             <li><a class="dropdown-item" href="班級經營/英語手牽手_學習扶助_原民語.html"><i
-                                        class="bi bi-chat-dots me-2"></i>英語手牽手、學習扶助、原民語</a>
-                            </li>
+                                        class="bi bi-chat-dots me-2"></i>英語手牽手、學習扶助、原民語</a></li>
                             <li><a class="dropdown-item" href="班級經營/學生各項帳號.html"><i
                                         class="bi bi-key me-2"></i>學生各項帳號</a></li>
                             <li><a class="dropdown-item"
                                     href="https://docs.google.com/spreadsheets/d/16qZ40y_JXktnOvBb9eSPUUMJ4lPb2JPLLW_oE5xS-2U/edit?usp=sharing"
-                                    target=" _blank"><i class="bi bi-lock me-2"></i>學生基本資料(不公開)</a>
-                            </li>
+                                    target="_blank"><i class="bi bi-lock me-2"></i>學生基本資料(不公開)</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -1048,17 +1034,15 @@
                 <div id="loadingMessage" class="text-center py-3 text-muted">
                     <i class="bi bi-arrow-repeat me-2 spinner-border spinner-border-sm"></i>載入公告中...
                 </div>
+                <div id="updateStatus" class="text-center small text-muted" style="display:none;">正在更新公告...</div>
             </div>
         </div>
 
         <!-- 下方 Card 3欄 -->
         <div class="row g-4">
-            <!-- Google 行事曆 -->
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">
-                        <i class="bi bi-calendar3"></i>Google 行事曆
-                    </div>
+                    <div class="card-header"><i class="bi bi-calendar3"></i>Google 行事曆</div>
                     <div class="card-body p-2 p-md-3">
                         <div class="calendar-wrapper" style="height:100%;">
                             <div class="ratio ratio-4x3" style="min-height:280px;">
@@ -1069,25 +1053,21 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 功課表 -->
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">
-                        <i class="bi bi-table"></i>功課表
-                    </div>
+                    <div class="card-header"><i class="bi bi-table"></i>功課表</div>
                     <div class="card-body p-2 p-md-3">
                         <div class="schedule-wrapper" style="height:100%;">
                             <div class="table-responsive" style="height:100%;">
                                 <table class="table table-bordered table-striped mb-0" style="height:100%;">
                                     <thead>
                                         <tr>
-                                            <th scope="col" style=" width:13.2%">節次</th>
-                                            <th scope="col" style=" width:17.36%">星期一</th>
-                                            <th scope="col" style=" width:17.36%">星期二</th>
-                                            <th scope="col" style=" width:17.36%">星期三</th>
-                                            <th scope="col" style=" width:17.36%">星期四</th>
-                                            <th scope="col" style=" width:17.36%">星期五</th>
+                                            <th scope="col" style="width:13.2%">節次</th>
+                                            <th scope="col" style="width:17.36%">星期一</th>
+                                            <th scope="col" style="width:17.36%">星期二</th>
+                                            <th scope="col" style="width:17.36%">星期三</th>
+                                            <th scope="col" style="width:17.36%">星期四</th>
+                                            <th scope="col" style="width:17.36%">星期五</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1154,68 +1134,49 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 提醒事項 -->
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">
-                        <i class="bi bi-bell-fill"></i>提醒事項
-                    </div>
+                    <div class="card-header"><i class="bi bi-bell-fill"></i>提醒事項</div>
                     <div class="card-body d-flex flex-column justify-content-center" style="padding: 0.6rem 1rem;">
                         <div class="reminder-item">
                             <div class="reminder-card">
-                                <div class="reminder-left">
-                                    <span class="reminder-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                <div class="reminder-left"><span class="reminder-icon"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                                             fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                                             <path fill-rule="evenodd"
                                                 d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                        </svg>
-                                    </span>
-                                    <span class="reminder-label">服裝</span>
-                                </div>
-                                <div class="reminder-right">
-                                    <span class="reminder-detail">星期二、四：體育服<br>星期一：制服<br>星期三、五：便服</span>
-                                </div>
+                                        </svg></span><span class="reminder-label">服裝</span></div>
+                                <div class="reminder-right"><span
+                                        class="reminder-detail">星期二、四：體育服<br>星期一：制服<br>星期三、五：便服</span></div>
                             </div>
                         </div>
                         <hr class="reminder-divider">
                         <div class="reminder-item">
                             <div class="reminder-card">
-                                <div class="reminder-left">
-                                    <span class="reminder-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                <div class="reminder-left"><span class="reminder-icon"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                                             fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
                                             <path
                                                 d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
                                             <path
                                                 d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
-                                        </svg>
-                                    </span>
-                                    <span class="reminder-label">上學時間</span>
-                                </div>
-                                <div class="reminder-right">
-                                    <span class="reminder-detail">上午 7:30 以前到校<br>最佳時間：7:15 ~ 7:25</span>
-                                </div>
+                                        </svg></span><span class="reminder-label">上學時間</span></div>
+                                <div class="reminder-right"><span class="reminder-detail">上午 7:30 以前到校<br>最佳時間：7:15 ~
+                                        7:25</span></div>
                             </div>
                         </div>
                         <hr class="reminder-divider">
                         <div class="reminder-item">
                             <div class="reminder-card">
-                                <div class="reminder-left">
-                                    <span class="reminder-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                                <div class="reminder-left"><span class="reminder-icon"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                                             fill="currentColor" class="bi bi-alarm-fill" viewBox="0 0 16 16">
                                             <path
                                                 d="M6 .5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1.07a7.001 7.001 0 0 1 3.274 12.474l.601.602a.5.5 0 0 1-.707.708l-.746-.746A6.97 6.97 0 0 1 8 16a6.97 6.97 0 0 1-3.422-.892l-.746.746a.5.5 0 0 1-.707-.708l.602-.602A7.001 7.001 0 0 1 7 2.07V1h-.5A.5.5 0 0 1 6 .5zm2.5 5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.035 8.035 0 0 0 .86 5.387zM11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.035 8.035 0 0 0-3.527-3.527z" />
-                                        </svg>
-                                    </span>
-                                    <span class="reminder-label">放學時間</span>
-                                </div>
-                                <div class="reminder-right">
-                                    <span class="reminder-detail">星期三：12:30<br>星期一、二、四、五：16:00</span>
-                                </div>
+                                        </svg></span><span class="reminder-label">放學時間</span></div>
+                                <div class="reminder-right"><span
+                                        class="reminder-detail">星期三：12:30<br>星期一、二、四、五：16:00</span></div>
                             </div>
                         </div>
                     </div>
@@ -1230,23 +1191,25 @@
         </p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
             // ============================================================
-            //  公告載入 + 摺疊功能 (修改)
+            //  公告載入 + 快取機制 (優化載入速度)
             // ============================================================
 
-            const url =
-                'https://script.google.com/macros/s/AKfycbxiSHa3UI3B-UMnoY1cBt1rvPGmXQZ42UqmRruz1gndc5-YkbEpBb74ppoTFEtZ0WP_kg/exec';
+            const url = 'https://script.google.com/macros/s/AKfycbxiSHa3UI3B-UMnoY1cBt1rvPGmXQZ42UqmRruz1gndc5-YkbEpBb74ppoTFEtZ0WP_kg/exec';
             const announcementList = document.getElementById('announcementList');
             const paginationEl = document.getElementById('announcementPagination');
             const loadingMessage = document.getElementById('loadingMessage');
+            const updateStatus = document.getElementById('updateStatus');
+
             let announcements = [];
             const itemsPerPage = 10;
             let currentPage = 1;
+            const CACHE_KEY = 'ailan_announcements';
+            const CACHE_TIME_KEY = 'ailan_announcements_time';
 
             // ---- 輔助函式 ----
             function formatDate(dateStr) {
@@ -1266,28 +1229,19 @@
                 return text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
             }
 
-            // ---- 將內容拆分為「標題」與「詳細內容」----
             function parseContent(content) {
-                if (!content || content.trim() === '') {
-                    return { title: '（無內容）', detail: '' };
-                }
+                if (!content || content.trim() === '') return { title: '（無內容）', detail: '' };
                 const lines = content.split('\n').filter(line => line.trim() !== '');
-                if (lines.length === 0) {
-                    return { title: '（無內容）', detail: '' };
-                }
+                if (lines.length === 0) return { title: '（無內容）', detail: '' };
                 const title = lines[0].trim();
                 const detail = lines.slice(1).join('\n');
                 return { title, detail };
             }
 
-            // ---- 將詳細內容轉為 HTML（支援條列式）----
             function formatDetailText(detail) {
                 if (!detail || detail.trim() === '') return '<p class="announcement-detail-text" style="color:#999;">（無詳細內容）</p>';
-
                 const lines = detail.split('\n').filter(line => line.trim() !== '');
-                // 判斷是否為列表格式：行首有 - 或 •
                 const isList = lines.some(line => /^[\s]*[-•]\s/.test(line));
-
                 if (isList) {
                     let html = '<ul class="announcement-detail-list">';
                     lines.forEach(line => {
@@ -1298,7 +1252,6 @@
                     html += '</ul>';
                     return html;
                 } else {
-                    // 一般文字，每行作為段落
                     return lines.map(line => {
                         const escaped = line.replace(/</g, '&lt;').replace(/>/g, '&gt;');
                         return `<p class="announcement-detail-text">${linkify(escaped)}</p>`;
@@ -1306,85 +1259,7 @@
                 }
             }
 
-            // ---- 載入公告 ----
-            function loadAnnouncements() {
-                loadingMessage.style.display = 'block';
-                loadingMessage.innerHTML =
-                    '<i class="bi bi-arrow-repeat me-2 spinner-border spinner-border-sm"></i>載入公告中...';
-                announcementList.innerHTML = '';
-
-                fetch(url)
-                    .then(response => {
-                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                        return response.json();
-                    })
-                    .then(data => {
-                        // 資料正規化
-                        let rawData = data;
-                        if (Array.isArray(data) && data.length > 0 && Array.isArray(data[0])) {
-                            const header = data[0];
-                            let dateIdx = -1,
-                                contentIdx = -1;
-                            header.forEach((col, idx) => {
-                                const colStr = String(col).toLowerCase();
-                                if (colStr.includes('日期') || colStr.includes('date')) dateIdx = idx;
-                                if (colStr.includes('內容') || colStr.includes('content') || colStr
-                                    .includes('公告')) contentIdx = idx;
-                            });
-                            if (dateIdx === -1) dateIdx = 0;
-                            if (contentIdx === -1) contentIdx = 1;
-                            const converted = [];
-                            for (let i = 1; i < data.length; i++) {
-                                const row = data[i];
-                                if (row && row.length > Math.max(dateIdx, contentIdx)) {
-                                    const dateVal = row[dateIdx] || '';
-                                    const contentVal = row[contentIdx] || '';
-                                    if (dateVal || contentVal) {
-                                        converted.push({
-                                            date: String(dateVal).trim(), content: String(
-                                                contentVal).trim()
-                                        });
-                                    }
-                                }
-                            }
-                            rawData = converted;
-                        }
-
-                        announcements = rawData.filter(item => {
-                            const date = item.date || item.Date || item.日期 || '';
-                            const content = item.content || item.Content || item.內容 || item.title || item
-                                .Title || '';
-                            return (date && date.length > 0) || (content && content.length > 0);
-                        });
-
-                        if (announcements.length === 0) {
-                            loadingMessage.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i>目前尚無公告資料';
-                            announcementList.innerHTML =
-                                `<div class="text-center py-4 text-muted empty-announcement"><i class="bi bi-inbox" style="font-size: 2rem;"></i><p class="mt-2">目前沒有公告</p></div>`;
-                            paginationEl.innerHTML = '';
-                            return;
-                        }
-
-                        // 依日期降冪排序（最新在前）
-                        announcements.sort((a, b) => {
-                            const dateA = new Date(a.date || a.Date || a.日期 || '2000-01-01');
-                            const dateB = new Date(b.date || b.Date || b.日期 || '2000-01-01');
-                            return dateB - dateA;
-                        });
-
-                        loadingMessage.style.display = 'none';
-                        showPage(1);
-                        renderPagination();
-                    })
-                    .catch(error => {
-                        loadingMessage.innerHTML =
-                            `<i class="bi bi-exclamation-triangle me-2 text-danger"></i>載入失敗，請檢查網路或 Google Apps Script 部署網址`;
-                        announcementList.innerHTML =
-                            `<div class="text-center py-4 text-danger"><i class="bi bi-cloud-slash" style="font-size: 2rem;"></i><p class="mt-2">無法載入公告資料，請稍後再試</p><p class="small text-muted">錯誤訊息：${error.message}</p></div>`;
-                    });
-            }
-
-            // ---- 顯示指定頁面 (修改：摺疊結構) ----
+            // ---- 顯示公告列表（摺疊結構） ----
             function showPage(page) {
                 currentPage = page;
                 const start = (page - 1) * itemsPerPage;
@@ -1392,8 +1267,7 @@
                 const pageItems = announcements.slice(start, end);
 
                 if (pageItems.length === 0) {
-                    announcementList.innerHTML =
-                        `<div class="text-center py-3 text-muted empty-announcement">📭 沒有公告</div>`;
+                    announcementList.innerHTML = `<div class="text-center py-3 text-muted empty-announcement">📭 沒有公告</div>`;
                     return;
                 }
 
@@ -1425,7 +1299,7 @@
                 html += `</table>`;
                 announcementList.innerHTML = html;
 
-                // ---- 綁定點擊事件（事件代理） ----
+                // 綁定點擊事件
                 announcementList.querySelectorAll('.announcement-header').forEach(header => {
                     header.addEventListener('click', function (e) {
                         e.stopPropagation();
@@ -1437,16 +1311,12 @@
                             detail.classList.remove('open');
                             detail.style.display = 'none';
                             const icon = this.querySelector('.toggle-icon .bi');
-                            if (icon) {
-                                icon.className = 'bi bi-chevron-down';
-                            }
+                            if (icon) icon.className = 'bi bi-chevron-down';
                         } else {
                             detail.classList.add('open');
                             detail.style.display = 'block';
                             const icon = this.querySelector('.toggle-icon .bi');
-                            if (icon) {
-                                icon.className = 'bi bi-chevron-up';
-                            }
+                            if (icon) icon.className = 'bi bi-chevron-up';
                         }
                     });
                 });
@@ -1464,55 +1334,164 @@
                     prevLi.innerHTML = `<a class="page-link" href="#" aria-label="上一頁">&laquo;</a>`;
                     prevLi.addEventListener('click', (e) => {
                         e.preventDefault();
-                        if (currentPage > 1) {
-                            showPage(currentPage - 1);
-                            renderPagination();
-                        }
+                        if (currentPage > 1) { showPage(currentPage - 1); renderPagination(); }
                     });
                     paginationEl.appendChild(prevLi);
                 }
-
                 for (let i = 1; i <= totalPages; i++) {
                     const li = document.createElement('li');
                     li.className = `page-item ${i === currentPage ? 'active' : ''}`;
                     li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
                     li.addEventListener('click', (e) => {
                         e.preventDefault();
-                        if (i !== currentPage) {
-                            showPage(i);
-                            renderPagination();
-                        }
+                        if (i !== currentPage) { showPage(i); renderPagination(); }
                     });
                     paginationEl.appendChild(li);
                 }
-
                 if (currentPage < totalPages) {
                     const nextLi = document.createElement('li');
                     nextLi.className = 'page-item';
                     nextLi.innerHTML = `<a class="page-link" href="#" aria-label="下一頁">&raquo;</a>`;
                     nextLi.addEventListener('click', (e) => {
                         e.preventDefault();
-                        if (currentPage < totalPages) {
-                            showPage(currentPage + 1);
-                            renderPagination();
-                        }
+                        if (currentPage < totalPages) { showPage(currentPage + 1); renderPagination(); }
                     });
                     paginationEl.appendChild(nextLi);
                 }
             }
 
-            // ---- 更新頁尾修改時間 ----
-            function updateLastModified() {
-                const lastModified = new Date(document.lastModified);
-                const formattedDateTime =
-                    `${lastModified.getFullYear()}-${String(lastModified.getMonth() + 1).padStart(2, '0')}-${String(lastModified.getDate()).padStart(2, '0')} ${String(lastModified.getHours()).padStart(2, '0')}:${String(lastModified.getMinutes()).padStart(2, '0')}`;
-                const el = document.getElementById('lastModified');
-                if (el) el.textContent = formattedDateTime;
+            // ---- 從快取載入 ----
+            function loadFromCache() {
+                const cached = localStorage.getItem(CACHE_KEY);
+                const cacheTime = localStorage.getItem(CACHE_TIME_KEY);
+                if (cached && cacheTime) {
+                    const age = Date.now() - parseInt(cacheTime);
+                    if (age < 5 * 60 * 1000) { // 5 分鐘內有效
+                        try {
+                            const data = JSON.parse(cached);
+                            if (data && data.length > 0) {
+                                announcements = data;
+                                loadingMessage.style.display = 'none';
+                                showPage(1);
+                                renderPagination();
+                                return true;
+                            }
+                        } catch (e) { }
+                    }
+                }
+                return false;
             }
 
-            // ---- 啟動 ----
-            updateLastModified();
-            loadAnnouncements();
+            // ---- 儲存快取 ----
+            function saveToCache(data) {
+                try {
+                    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+                    localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
+                } catch (e) { }
+            }
+
+            // ---- 從 Google 試算表載入（背景更新） ----
+            function fetchFromSheet(showLoading = true) {
+                if (showLoading) {
+                    loadingMessage.style.display = 'block';
+                    loadingMessage.innerHTML = '<i class="bi bi-arrow-repeat me-2 spinner-border spinner-border-sm"></i>載入公告中...';
+                }
+                updateStatus.style.display = 'none';
+
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                        return response.json();
+                    })
+                    .then(data => {
+                        // 正規化資料
+                        let rawData = data;
+                        if (Array.isArray(data) && data.length > 0 && Array.isArray(data[0])) {
+                            const header = data[0];
+                            let dateIdx = -1, contentIdx = -1;
+                            header.forEach((col, idx) => {
+                                const colStr = String(col).toLowerCase();
+                                if (colStr.includes('日期') || colStr.includes('date')) dateIdx = idx;
+                                if (colStr.includes('內容') || colStr.includes('content') || colStr.includes('公告')) contentIdx = idx;
+                            });
+                            if (dateIdx === -1) dateIdx = 0;
+                            if (contentIdx === -1) contentIdx = 1;
+                            const converted = [];
+                            for (let i = 1; i < data.length; i++) {
+                                const row = data[i];
+                                if (row && row.length > Math.max(dateIdx, contentIdx)) {
+                                    const dateVal = row[dateIdx] || '';
+                                    const contentVal = row[contentIdx] || '';
+                                    if (dateVal || contentVal) {
+                                        converted.push({ date: String(dateVal).trim(), content: String(contentVal).trim() });
+                                    }
+                                }
+                            }
+                            rawData = converted;
+                        }
+
+                        const newData = rawData.filter(item => {
+                            const date = item.date || item.Date || item.日期 || '';
+                            const content = item.content || item.Content || item.內容 || item.title || item.Title || '';
+                            return (date && date.length > 0) || (content && content.length > 0);
+                        });
+
+                        if (newData.length === 0) {
+                            if (announcements.length === 0) {
+                                loadingMessage.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i>目前尚無公告資料';
+                                announcementList.innerHTML = `<div class="text-center py-4 text-muted empty-announcement"><i class="bi bi-inbox" style="font-size: 2rem;"></i><p class="mt-2">目前沒有公告</p></div>`;
+                            }
+                            return;
+                        }
+
+                        // 排序
+                        newData.sort((a, b) => {
+                            const dateA = new Date(a.date || a.Date || a.日期 || '2000-01-01');
+                            const dateB = new Date(b.date || b.Date || b.日期 || '2000-01-01');
+                            return dateB - dateA;
+                        });
+
+                        // 更新資料
+                        announcements = newData;
+                        saveToCache(announcements);
+                        loadingMessage.style.display = 'none';
+                        updateStatus.style.display = 'none';
+                        showPage(1);
+                        renderPagination();
+                    })
+                    .catch(error => {
+                        // 若已有快取，不顯示錯誤，僅隱藏更新狀態
+                        if (announcements.length === 0) {
+                            loadingMessage.innerHTML = `<i class="bi bi-exclamation-triangle me-2 text-danger"></i>載入失敗，請檢查網路`;
+                            announcementList.innerHTML = `<div class="text-center py-4 text-danger"><i class="bi bi-cloud-slash" style="font-size: 2rem;"></i><p class="mt-2">無法載入公告資料</p><p class="small text-muted">${error.message}</p></div>`;
+                        }
+                        updateStatus.style.display = 'none';
+                    });
+            }
+
+            // ---- 主程序 ----
+            // 1. 嘗試從快取載入
+            const hasCache = loadFromCache();
+
+            if (hasCache) {
+                // 有快取：立即顯示，並在背景更新
+                updateStatus.style.display = 'block';
+                updateStatus.textContent = '正在更新公告...';
+                // 延遲一點點再更新，避免干擾初始渲染
+                setTimeout(() => {
+                    fetchFromSheet(false);
+                }, 300);
+            } else {
+                // 無快取：正常載入（顯示讀取中）
+                fetchFromSheet(true);
+            }
+
+            // 更新頁尾時間
+            const lastModified = new Date(document.lastModified);
+            const formattedDateTime =
+                `${lastModified.getFullYear()}-${String(lastModified.getMonth() + 1).padStart(2, '0')}-${String(lastModified.getDate()).padStart(2, '0')} ${String(lastModified.getHours()).padStart(2, '0')}:${String(lastModified.getMinutes()).padStart(2, '0')}`;
+            document.getElementById('lastModified').textContent = formattedDateTime;
+
         });
     </script>
 </body>
