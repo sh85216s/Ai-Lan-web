@@ -437,6 +437,7 @@
             }
         }
     </style> -->
+
 </head>
 
 <body>
@@ -636,7 +637,7 @@
         <div class="mb-4">
             <h3 class="fw-bold section-title"><i class="bi bi-person-gear me-2"></i>一、科任老師</h3>
             <div class="row g-3 mt-2">
-                <div class="col-lg-3 col-md-3 d-flex">
+                <div class="col-6 col-lg-3 d-flex">
                     <div class="duty-block w-100">
                         <h5><i class="bi bi-calendar2-week"></i> 五上</h5>
                         <p>
@@ -651,7 +652,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 d-flex">
+                <div class="col-6 col-lg-3 d-flex">
                     <div class="duty-block w-100">
                         <h5><i class="bi bi-calendar2-week"></i> 五下</h5>
                         <p>
@@ -665,7 +666,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 d-flex">
+                <div class="col-6 col-lg-3 d-flex">
                     <div class="duty-block w-100">
                         <h5><i class="bi bi-calendar2-week"></i> 六上</h5>
                         <p>
@@ -679,7 +680,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 d-flex">
+                <div class="col-6 col-lg-3 d-flex">
                     <div class="duty-block w-100">
                         <h5><i class="bi bi-calendar2-week"></i> 六下</h5>
                         <p>
@@ -700,7 +701,7 @@
         <div class="mb-4">
             <h3 class="fw-bold section-title"><i class="bi bi-person-gear me-2"></i>二、出題老師</h3>
             <div class="row g-3 mt-2">
-                <div class="col-lg-3 col-md-3 d-flex">
+                <div class="col-6 col-lg-3 d-flex">
                     <div class="duty-block w-100">
                         <h5><i class="bi bi-calendar2-week"></i> 五上</h5>
                         <p>
@@ -712,7 +713,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 d-flex">
+                <div class="col-6 col-lg-3 d-flex">
                     <div class="duty-block w-100">
                         <h5><i class="bi bi-calendar2-week"></i> 五下</h5>
                         <p>
@@ -725,7 +726,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 d-flex">
+                <div class="col-6 col-lg-3 d-flex">
                     <div class="duty-block w-100">
                         <h5><i class="bi bi-calendar2-week"></i> 六上</h5>
                         <p>
@@ -737,7 +738,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 d-flex">
+                <div class="col-6 col-lg-3 d-flex">
                     <div class="duty-block w-100">
                         <h5><i class="bi bi-calendar2-week"></i> 六下</h5>
                         <p>
@@ -770,10 +771,7 @@
                 const el = document.getElementById('lastModified');
                 if (el) el.textContent = formattedDateTime;
             }
-            updateLastModified();
-
-            // 選單行為完全由 CSS 控制（桌機 hover 用 opacity/visibility，手機用 .show 切換 display）
-            // 與 index.html 的機制完全一致，無需額外 JavaScript 控制 hover
+            updateLastModified();            
         });
     </script>
 </body>
