@@ -1916,3 +1916,27 @@ table.dataTable tbody td:last-child {
     margin: 0.2rem 0;
     opacity: 0.6;
 }
+
+/* ===== 🆕 功課表垂直顯示課程名稱 (桌機專用) ===== */
+@media (min-width: 992px) {
+    .vertical-course {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 100% !important;
+        padding: 0.15rem 0 !important;
+        line-height: 1.25 !important;
+    }
+
+    .vertical-course span {
+        display: block !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.5px !important;
+    }
+
+    /* 讓垂直課程的單元格維持與其他課程一致的大小 */
+    .table-bordered td.vertical-course {
+        padding: 0.2rem 0.1rem !important;
+    }
+}
