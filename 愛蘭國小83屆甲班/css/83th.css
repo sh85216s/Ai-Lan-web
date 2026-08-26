@@ -19,6 +19,11 @@ body {
     font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
 }
 
+/* 課表紅字 */
+#curriculum {
+    color: red;
+}
+
 /* ----- 導航列 (Navbar) 樣式 ----- */
 .navbar {
     background-color: #ffffffec !important;
