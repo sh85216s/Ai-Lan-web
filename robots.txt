@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sh85216s.github.io/Ai-Lan-web/sitemap.xml
