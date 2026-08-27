@@ -20,7 +20,7 @@ body {
 }
 
 /* 課表紅字 */
-#curriculum {
+.curriculum {
     color: red;
 }
 
