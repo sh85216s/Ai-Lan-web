@@ -9,417 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/83th.css">
-    <!-- <style>
-        /* ----- 明亮綠色系 (與 index.html 完全一致) ----- */
-        :root {
-            --main-green: #2E7D32;
-            --light-green: #66BB6A;
-            --soft-green: #C8E6C9;
-            --bg-green: #E8F5E9;
-            --cream-white: #F9FBF7;
-            --bright-accent: #FFB300;
-            --warm-orange: #FF8A65;
-            --dark-charcoal: #2C3E2F;
-            --card-shadow: 0 12px 30px rgba(46, 125, 50, 0.10);
-            --card-hover-shadow: 0 20px 40px rgba(46, 125, 50, 0.18);
-        }
 
-        body {
-            background-color: var(--bg-green);
-            color: var(--dark-charcoal);
-            font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
-        }
-
-        .navbar {
-            background-color: #ffffffec !important;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.12);
-            border-bottom: 4px solid var(--main-green);
-            border-radius: 0 0 2rem 2rem;
-            position: relative;
-            z-index: 1050;
-        }
-
-        .navbar-brand {
-            color: var(--main-green) !important;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            font-size: 1.5rem;
-        }
-
-        .navbar-brand i {
-            color: var(--bright-accent);
-            font-size: 1.8rem;
-            margin-right: 6px;
-        }
-
-        .nav-link {
-            color: var(--dark-charcoal) !important;
-            font-weight: 600;
-            border-radius: 2rem;
-            padding: 0.5rem 1rem;
-            transition: 0.2s;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background-color: var(--soft-green);
-            color: var(--main-green) !important;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        .dropdown-menu {
-            background-color: #fffffffa;
-            border: 2px solid var(--soft-green);
-            border-radius: 1.5rem;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-            padding: 0.5rem;
-            /* 桌機 hover 用 opacity/visibility 控制 */
-            display: block;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-            pointer-events: none;
-            z-index: 9999;
-            position: absolute;
-        }
-
-        /* 桌機：hover 或 .show 時顯示 */
-        @media (min-width: 992px) {
-
-            .dropdown:hover>.dropdown-menu,
-            .dropdown.show>.dropdown-menu {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0);
-                pointer-events: auto;
-            }
-
-            .dropdown:hover>.dropdown-toggle::after {
-                transform: rotate(180deg);
-                transition: transform 0.25s;
-            }
-        }
-
-        .dropdown-toggle::after {
-            transition: transform 0.25s;
-        }
-
-        .dropdown-item {
-            color: var(--dark-charcoal);
-            border-radius: 1.2rem;
-            font-weight: 500;
-            padding: 0.5rem 1.2rem;
-            font-size: 1rem;
-            border: none !important;
-            outline: none !important;
-        }
-
-        .dropdown-item:hover {
-            background-color: var(--bg-green);
-            color: var(--main-green);
-            border: none !important;
-            outline: none !important;
-        }
-
-        .dropdown-menu-end {
-            left: auto !important;
-            right: 0 !important;
-            min-width: 240px;
-            max-width: 360px;
-        }
-
-        /* 手機版樣式 - 與 index.html 完全一致 */
-        @media (max-width: 991.98px) {
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                pointer-events: auto;
-                display: none;
-                box-shadow: none;
-                border: none;
-                border-left: 3px solid var(--soft-green);
-                border-radius: 0 1.5rem 1.5rem 0;
-                background: transparent;
-                padding-left: 1rem;
-                margin-top: 0.2rem;
-                margin-bottom: 0.2rem;
-                width: 100%;
-                max-width: 100%;
-                min-width: unset;
-            }
-
-            .dropdown-menu.show {
-                display: block;
-            }
-
-            .navbar-nav .nav-link {
-                padding: 0.5rem 1rem;
-            }
-
-            .dropdown:hover>.dropdown-toggle::after {
-                transform: none;
-            }
-
-            .navbar-nav .dropdown {
-                margin-bottom: 0;
-            }
-
-            .navbar-nav .nav-item {
-                margin-bottom: 0;
-            }
-
-            #digitalDropdown .dropdown-menu,
-            #linkDropdown .dropdown-menu {
-                display: none;
-                padding: 0.5rem 0.5rem 0.2rem 0.5rem;
-                border-left: none;
-                background: #fffffffa;
-                border: 2px solid var(--soft-green);
-                border-radius: 1.5rem;
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-                margin-top: 0.2rem;
-                margin-bottom: 0.2rem;
-                width: 100%;
-                max-width: 100%;
-            }
-
-            #digitalDropdown .dropdown-menu.show,
-            #linkDropdown .dropdown-menu.show {
-                display: block;
-            }
-
-            #digitalDropdown .dropdown-menu .row,
-            #linkDropdown .dropdown-menu .row {
-                display: flex;
-                flex-wrap: nowrap;
-                margin: 0 -0.15rem;
-                gap: 0;
-            }
-
-            #digitalDropdown .dropdown-menu .col,
-            #linkDropdown .dropdown-menu .col {
-                flex: 0 0 50%;
-                max-width: 50%;
-                padding: 0 0.15rem;
-                display: flex;
-                flex-direction: column;
-                gap: 0.05rem;
-            }
-
-            #digitalDropdown .dropdown-item,
-            #linkDropdown .dropdown-item {
-                white-space: nowrap;
-                overflow: visible;
-                text-overflow: clip;
-                padding: 0.4rem 0.5rem;
-                font-size: 1rem;
-                border-radius: 0.5rem;
-                background: transparent;
-                border: none;
-                transition: 0.15s;
-                margin: 0;
-                box-sizing: border-box;
-                color: var(--dark-charcoal);
-                text-align: left;
-                min-height: 2.2rem;
-                line-height: 1.4;
-                display: flex;
-                align-items: center;
-                width: 100%;
-                font-weight: 500;
-            }
-
-            #digitalDropdown .dropdown-item:hover,
-            #linkDropdown .dropdown-item:hover {
-                background-color: var(--bg-green);
-                color: var(--main-green);
-            }
-
-            #digitalDropdown .dropdown-item i,
-            #linkDropdown .dropdown-item i {
-                display: none !important;
-            }
-
-            #digitalDropdown .dropdown-item,
-            #linkDropdown .dropdown-item {
-                padding-left: 0.8rem;
-            }
-
-            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu {
-                display: none;
-                flex-direction: column;
-                flex-wrap: nowrap;
-                padding-left: 1rem;
-                border-left: 3px solid var(--soft-green);
-                border-radius: 0 1.5rem 1.5rem 0;
-                background: transparent;
-                box-shadow: none;
-                border: none;
-                margin-top: 0.2rem;
-                margin-bottom: 0.2rem;
-                width: 100%;
-                max-width: 100%;
-            }
-
-            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu.show {
-                display: block;
-            }
-
-            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-item {
-                flex: unset;
-                max-width: 100%;
-                white-space: normal;
-                padding: 0.4rem 1rem;
-                font-size: 1rem;
-                border: none;
-                background: transparent;
-                min-height: auto;
-                width: 100%;
-            }
-
-            .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-item:hover {
-                background-color: var(--bg-green);
-                border-radius: 1.2rem;
-            }
-        }
-
-        @media (max-width: 991.98px) {
-            .dropdown-menu-end {
-                right: auto !important;
-                left: 0 !important;
-            }
-        }
-
-        /* ----- 卡片與圖片樣式 ----- */
-        .card {
-            border: none;
-            border-radius: 2.5rem 2.5rem 2rem 2rem;
-            background-color: #ffffff;
-            box-shadow: var(--card-shadow);
-            transition: all 0.25s;
-            overflow: hidden;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--card-hover-shadow);
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, #c8e6c9, #e8f5e9);
-            border-bottom: 3px dashed var(--light-green);
-            color: var(--main-green);
-            font-weight: 700;
-            padding: 1rem 1.5rem;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .card-header i {
-            color: var(--bright-accent);
-            font-size: 1.4rem;
-            margin-right: 8px;
-        }
-
-        .card-body {
-            flex: 1 1 auto;
-            padding: 1rem 1.25rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .card-footer {
-            background-color: #f6fbf5;
-            border-top: 2px dotted var(--soft-green);
-        }
-
-        /* 首頁按鈕永遠保持 active 樣式 */
-        .home-link {
-            background-color: var(--soft-green) !important;
-            color: var(--main-green) !important;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        .home-link:hover {
-            background-color: var(--soft-green) !important;
-            color: var(--main-green) !important;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        /* 其他連結的 hover 效果 */
-        .nav-link:not(.home-link):hover {
-            background-color: var(--soft-green);
-            color: var(--main-green) !important;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
-        footer {
-            color: var(--dark-charcoal);
-            opacity: 0.8;
-            border-top: 3px dotted var(--soft-green) !important;
-            padding-top: 1.2rem;
-        }
-
-        .container h2 {
-            color: var(--main-green);
-            font-weight: 700;
-            margin: 1.2rem 0 1rem 0;
-            border-left: 6px solid var(--bright-accent);
-            padding-left: 1.2rem;
-        }
-
-        /* ---------- 強制 4:3 比例 ---------- */
-        .card-img-top {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-            display: block;
-        }
-
-        .SM {
-            line-height: 0;
-            overflow: hidden;
-        }
-
-        @media (max-width: 576px) {
-            .navbar-brand {
-                font-size: 1.2rem;
-            }
-        }
-
-        /* 桌機版保留圖示 */
-        @media (min-width: 992px) {
-
-            #digitalDropdown .dropdown-item i,
-            #linkDropdown .dropdown-item i {
-                display: inline-block !important;
-                margin-right: 8px;
-            }
-        }
-    </style> -->
 </head>
 
 <body>
-    <!-- 導覽列 - 與 index.html 選單行為完全一致 -->
+    <!-- 導覽列 -->
     <nav class="navbar navbar-expand-lg py-2">
         <div class="container">
             <a class="navbar-brand" href="../index.html">
@@ -624,7 +218,7 @@
 
         <!-- 第1列 (4:3強制生效) -->
         <div class="row">
-            <div class="col-12 col-md-3">
+            <!-- <div class="col-12 col-md-3">
                 <div class="card h-100">
                     <div class="SM">
                         <a href="https://photos.app.goo.gl/Pwuzk7ogp7pepg6s9" target="blank"><img
@@ -632,7 +226,6 @@
                                 class="card-img-top" title="前往相簿" alt="期末同樂會"></a>
                     </div>
                     <div class="card-body">
-                        <!-- 可選填標題與內容，此處保留空白 -->
                     </div>
                 </div>
             </div>
@@ -645,7 +238,6 @@
                                 class="card-img-top" title="前往相簿" alt="78th畢業典禮"></a>
                     </div>
                     <div class="card-body">
-                        <!-- 可選填標題與內容 -->
                     </div>
                 </div>
             </div>
@@ -658,7 +250,6 @@
                                 class="card-img-top" title="前往相簿" alt="製作畢業證書封套"></a>
                     </div>
                     <div class="card-body">
-                        <!-- 可選填標題與內容 -->
                     </div>
                 </div>
             </div>
@@ -671,10 +262,9 @@
                                 class="card-img-top" title="前往相簿" alt="第78屆六乙畢業生-個人藝術照"></a>
                     </div>
                     <div class="card-body">
-                        <!-- 可選填標題與內容 -->
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div><br>
 
         <!-- 第2列 (預留未來擴充) -->
