@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竹編達人 · 埔里工藝</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font (noto sans tc) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== 完全繼承「水采田」顏色風格 ===== */
+        body {
+            font-family: 'Noto Sans TC', 'Segoe UI', Roboto, sans-serif;
+            background: #f0f6ff;
+            padding-top: 16px;
+        }
+
+        .bg-soft-sky {
+            background-color: #d9e9ff;
+        }
+
+        /* 標題區塊 (header-image) 樣式與水采田一致 */
+        .header-image {
+            background: #1b4a8a;
+            width: 100%;
+            min-height: 150px;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-image::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 80px;
+            background: #f9c74f;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .header-image::after {
+            content: '';
+            position: absolute;
+            right: 40px;
+            top: 30px;
+            width: 100px;
+            height: 100px;
+            background: #4a9e6b;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .header-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: #3b7a5a;
+            opacity: 0.7;
+            clip-path: ellipse(70% 100% at 50% 100%);
+        }
+
+        .header-title {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 4px;
+            z-index: 1;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .header-subtitle {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 18px;
+            color: #ffd966;
+            z-index: 1;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+
+            .header-subtitle {
+                font-size: 16px;
+            }
+
+            .header-image::before {
+                width: 60px;
+                height: 60px;
+                left: 30px;
+            }
+
+            .header-image::after {
+                width: 70px;
+                height: 70px;
+                right: 20px;
+                top: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-image {
+                min-height: 110px;
+                padding: 14px 10px;
+            }
+
+            .header-title {
+                font-size: 26px;
+                letter-spacing: 1px;
+            }
+
+            .header-subtitle {
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .header-image::before {
+                width: 40px;
+                height: 40px;
+                left: 15px;
+            }
+
+            .header-image::after {
+                width: 50px;
+                height: 50px;
+                right: 10px;
+                top: 12px;
+            }
+
+            .header-wave {
+                height: 30px;
+            }
+
+            body {
+                padding-top: 66px;
+            }
+        }
+
+        /* 卡片樣式 (與主頁一致) */
+        .card-shadow {
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            transition: 0.25s ease;
+            border: none;
+            background: white;
+        }
+
+        .card-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 35px rgba(0, 20, 60, 0.12);
+        }
+
+        .section-title {
+            border-left: 8px solid #ffb347;
+            padding-left: 20px;
+            font-weight: 900;
+            color: #0a2f6c;
+        }
+
+        .UnderLine {
+            text-decoration: underline;
+            text-underline-offset: 0.2rem;
+            text-decoration-color: #ffb347;
+            text-decoration-thickness: 2px;
+        }
+
+        /* ===== 圖片與文字兩欄等高 ===== */
+        .equal-height-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .equal-height-row>[class*="col-"] {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 圖片區塊 — 圓角、內邊距、背景與邊框（延續 img-placeholder 風格） */
+        .img-placeholder {
+            background: #d9e9ff;
+            border-radius: 28px;
+            padding: 12px;
+            border: 2px dashed #0a2f6c40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1 1 auto;
+            min-height: 200px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        /* 右側文字卡片：與圖片等高 */
+        .text-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            padding: 1.8rem 2rem;
+            flex: 1 1 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: none;
+        }
+
+        .text-card p {
+            line-height: 2;
+            margin-bottom: 0.8rem;
+        }
+
+        .text-card .fw-bold {
+            color: #0a2f6c;
+        }
+
+        .theme-badge {
+            background: #e8f0fe;
+            color: #0a2f6c;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        @media (max-width: 767.98px) {
+            .text-card {
+                padding: 1.5rem;
+                margin-top: 0;
+            }
+
+            .equal-height-row>[class*="col-"] {
+                margin-bottom: 16px;
+            }
+
+            .equal-height-row>.col-md-6:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        /* 簡潔導航列 (保留風格) */
+        .navbar-custom {
+            background: linear-gradient(145deg, #0a2f6c 0%, #1b4a8a 100%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            border-bottom: 4px solid #ffd966;
+            border-radius: 0 0 2rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1050;
+        }
+
+        .navbar-custom .navbar-brand {
+            color: #ffffff !important;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .navbar-custom .navbar-brand i {
+            color: #ffd966;
+        }
+
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 4px;
+            border-radius: 30px;
+            padding: 8px 18px;
+            transition: 0.2s;
+        }
+
+        .navbar-custom .nav-link:hover {
+            background: #ffd966;
+            color: #0a2f6c !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- 標題區塊 (與水采田一致) -->
+        <div class="header-image">
+            <div class="header-title">🎋 竹編達人</div>
+            <div class="header-subtitle">埔里 · 蔡師傅 · 傳統工藝</div>
+            <div class="header-wave"></div>
+        </div>
+       
+        <div class="row g-4 equal-height-row mb-5">           
+            <div class="col-md-6">
+                <div class="img-placeholder">
+                    <img src="img/竹編達人.jpg" alt="竹編達人">
+                </div>
+            </div>
+            <!-- 右欄：文字卡片 (等高) -->
+            <div class="col-md-6">
+                <div class="text-card">
+                    <h4 class="fw-bold text-primary mb-3"><i class="fas fa-bamboo me-2" style="color:#f1c40f;"></i>竹編匠人
+                        · 蔡先生</h4>
+                    <p>
+                        <span class="fw-bold">蔡先生</span>，民國27年（1938年）出生，彰化人，國小畢業後即投入竹編學徒生涯，
+                        後移居埔里鎮鐵山路98號，至今累積<span class="UnderLine">數十年</span>深厚傳統技藝。
+                    </p>
+                    <p>
+                        埔里及周邊竹山、鹿谷盛產孟宗竹、桂竹與麻竹，提供優質原物料；
+                        民國五、六十年代全盛時期，竹編製品大量外銷日本及歐美，是重要民生產業。
+                        隨著塑膠製品興起，產業雖漸式微，但蔡師傅堅守崗位，其「剖篾」與編織技法，
+                        已昇華為<span class="fw-bold" style="color:#0a2f6c;">珍貴的傳統工藝文化資產</span>。
+                    </p>
+                    <p class="mt-2">
+                        <i class="fas fa-hand-holding-heart me-1" style="color:#b07d4b;"></i>
+                        從日常竹籃、竹椅到精緻藝品，每一件作品都承載著職人對竹材的尊重與情感。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 額外引用/補充區 (仿水采田補充樣式) -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="card card-shadow p-4 p-md-5">
+                    <h5 class="fw-bold text-primary mb-3"><i class="fas fa-leaf me-2" style="color:#f1c40f;"></i>埔里 ·
+                        竹編記憶</h5>
+                    <p class="fs-6 lh-base" style="line-height: 2;">
+                        <span class="UnderLine">竹編達人</span> 蔡先生的身影，是埔里傳統工藝的縮影。
+                        從彰化到埔里，從學徒到國寶級匠師，他以雙手賦予竹子新的生命。
+                        在鐵山路的老宅裡，剖竹、起底、編織、收口，每一道工序都是時間的淬煉。
+                        儘管產業環境變遷，但這份技藝仍在地方文化的土壤中，靜靜發芽，等待被更多看見。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 額外資訊：歷史連結與產業變遷 (呼應原文) -->
+        <div class="row g-4 mb-5">
+            <div class="col-12 col-md-6">
+                <div class="card card-shadow p-4 h-100">
+                    <h5 class="fw-bold text-primary"><i class="fas fa-tree me-2" style="color:#3b7a5a;"></i>材料優勢</h5>
+                    <p class="mt-2" style="line-height: 2;">
+                        埔里、竹山、鹿谷等南投區域，盛產<span class="fw-bold">孟宗竹、桂竹、麻竹</span>，
+                        質地堅韌、彈性佳，為竹編工藝提供最理想的天然素材。
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="card card-shadow p-4 h-100">
+                    <h5 class="fw-bold text-primary"><i class="fas fa-clock me-2" style="color:#b07d4b;"></i>產業變遷</h5>
+                    <p class="mt-2" style="line-height: 2;">
+                        全盛時期（民國五、六十年代）台灣竹編大量外銷，後因塑膠製品興起而式微。
+                        如今，蔡師傅的技藝已從<span class="fw-bold">民生工藝</span>昇華為文化資產，
+                        見證了台灣產業的轉型與傳承。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+    </script>
+</body>
+
+</html>

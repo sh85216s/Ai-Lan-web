@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水水世界 · 生態水培與人工浮島</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font (noto sans tc) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== 完全繼承走讀船山 / 烏牛欄教會 顏色風格 ===== */
+        body {
+            font-family: 'Noto Sans TC', 'Segoe UI', Roboto, sans-serif;
+            background: #f0f6ff;
+            padding-top: 16px;
+        }
+
+        .bg-soft-sky {
+            background-color: #d9e9ff;
+        }
+
+        /* 標題區塊 (header-image) 樣式與烏牛欄教會一致 */
+        .header-image {
+            background: #1b4a8a;
+            width: 100%;
+            min-height: 150px;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-image::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 80px;
+            background: #4a9e6b;
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .header-image::after {
+            content: '';
+            position: absolute;
+            right: 40px;
+            top: 30px;
+            width: 100px;
+            height: 100px;
+            background: #f9c74f;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .header-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: #3b7a5a;
+            opacity: 0.7;
+            clip-path: ellipse(70% 100% at 50% 100%);
+        }
+
+        .header-title {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 4px;
+            z-index: 1;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .header-subtitle {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 18px;
+            color: #ffd966;
+            z-index: 1;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+
+            .header-subtitle {
+                font-size: 16px;
+            }
+
+            .header-image::before {
+                width: 60px;
+                height: 60px;
+                left: 30px;
+            }
+
+            .header-image::after {
+                width: 70px;
+                height: 70px;
+                right: 20px;
+                top: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-image {
+                min-height: 110px;
+                padding: 14px 10px;
+            }
+
+            .header-title {
+                font-size: 26px;
+                letter-spacing: 1px;
+            }
+
+            .header-subtitle {
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .header-image::before {
+                width: 40px;
+                height: 40px;
+                left: 15px;
+            }
+
+            .header-image::after {
+                width: 50px;
+                height: 50px;
+                right: 10px;
+                top: 12px;
+            }
+
+            .header-wave {
+                height: 30px;
+            }
+
+            body {
+                padding-top: 66px;
+            }
+        }
+
+        /* 卡片樣式 (與主頁一致) */
+        .card-shadow {
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            transition: 0.25s ease;
+            border: none;
+            background: white;
+        }
+
+        .card-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 35px rgba(0, 20, 60, 0.12);
+        }
+
+        .section-title {
+            border-left: 8px solid #ffb347;
+            padding-left: 20px;
+            font-weight: 900;
+            color: #0a2f6c;
+        }
+
+        .UnderLine {
+            text-decoration: underline;
+            text-underline-offset: 0.2rem;
+            text-decoration-color: #ffb347;
+            text-decoration-thickness: 2px;
+        }
+
+        /* ===== 圖片與文字兩欄等高 ===== */
+        .equal-height-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .equal-height-row>[class*="col-"] {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 圖片區塊 — 圓角、內邊距、背景與邊框 */
+        .img-placeholder {
+            background: #d9e9ff;
+            border-radius: 28px;
+            padding: 12px;
+            border: 2px dashed #0a2f6c40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1 1 auto;
+            min-height: 200px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        /* 雙圖片並排容器 */
+        .dual-img-wrapper {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .dual-img-wrapper .img-placeholder {
+            flex: 1 1 calc(50% - 8px);
+            min-height: 220px;
+            height: auto;
+        }
+
+        @media (max-width: 576px) {
+            .dual-img-wrapper .img-placeholder {
+                flex: 1 1 100%;
+                min-height: 180px;
+            }
+        }
+
+        /* 右側文字卡片：與圖片等高 */
+        .text-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            padding: 1.8rem 2rem;
+            flex: 1 1 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: none;
+        }
+
+        .text-card p {
+            line-height: 2;
+            margin-bottom: 0.8rem;
+        }
+
+        .text-card .fw-bold {
+            color: #0a2f6c;
+        }
+
+        .theme-badge {
+            background: #e8f0fe;
+            color: #0a2f6c;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 767.98px) {
+            .text-card {
+                padding: 1.5rem;
+                margin-top: 0;
+            }
+
+            .equal-height-row>[class*="col-"] {
+                margin-bottom: 16px;
+            }
+
+            .equal-height-row>.col-md-6:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        /* 特色標籤 */
+        .feature-tag {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #0a2f6c;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 6px;
+            margin-bottom: 8px;
+        }
+
+        .feature-tag i {
+            margin-right: 6px;
+            color: #f1c40f;
+        }
+
+        /* 導航列 (簡化) */
+        .navbar-custom {
+            background: linear-gradient(145deg, #0a2f6c 0%, #1b4a8a 100%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            border-bottom: 4px solid #ffd966;
+            border-radius: 0 0 2rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1050;
+        }
+
+        .navbar-custom .navbar-brand {
+            color: #ffffff !important;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .navbar-custom .navbar-brand i {
+            color: #ffd966;
+        }
+
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 4px;
+            border-radius: 30px;
+            padding: 8px 18px;
+            transition: 0.2s;
+        }
+
+        .navbar-custom .nav-link:hover {
+            background: #ffd966;
+            color: #0a2f6c !important;
+        }
+
+        /* 補充區內icon列表 */
+        .benefit-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .benefit-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eef3fa;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.7;
+        }
+
+        .benefit-list li:last-child {
+            border-bottom: none;
+        }
+
+        .benefit-list li i {
+            color: #4a9e6b;
+            font-size: 1.2rem;
+            margin-top: 4px;
+            min-width: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- ===== 標題區塊 ===== -->
+        <div class="header-image">
+            <div class="header-title">🌿 水水世界</div>
+            <div class="header-subtitle">生態水培 · 人工浮島 · 循環經濟</div>
+            <div class="header-wave"></div>
+        </div>
+
+        <!-- ===== 上方 2 張圖片並排 ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-12">
+                <div class="dual-img-wrapper">
+                    <div class="img-placeholder">
+                        <img src="img/水水世界-1.jpg" alt="水水世界 生態水培">
+                    </div>
+                    <div class="img-placeholder">
+                        <img src="img/水水世界-2.jpg" alt="水水世界 人工浮島">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 左右兩欄：左文右圖，強制等高 ===== -->
+        <div class="row g-4 equal-height-row mb-5">
+            <!-- 左欄：文字卡片 -->
+            <div class="col-md-12">
+                <div class="text-card">
+                    <h4 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-seedling me-2" style="color:#4a9e6b;"></i>水水團隊・十年深耕
+                    </h4>
+                    <p>
+                        <span class="fw-bold">水水世界</span>由「水水老師」黃世銘推動，
+                        專注於<span class="UnderLine">生態水培系統</span>的研究與推廣，
+                        至今已逾十年。合作案件遍及都市綠化、綠建築國際合作、
+                        國科會產學合作畜牧肥水再利用、溫室環控半鹹水魚菜共生等，
+                        跨領域整合是我們的核心能力。
+                    </p>
+                    <p>
+                        2014年2月，來自教育、建設、園藝、水耕、景觀、
+                        溫室環控、水產、資訊、工業設計等領域的專家
+                        齊聚埔里<span class="fw-bold">水水世界</span>，共同面對台灣的人口老化、環境污染、
+                        糧食危機與健康醫療等課題。我們相信，
+                        在都市叢林的樹冠層裡，透過魚菜共生的成功經驗，
+                        能為下一代找到永續的答案。
+                    </p>
+                    <p class="mt-2">
+                        <i class="fas fa-heart me-1" style="color:#e74c3c;"></i>
+                        <span class="fw-bold">水水團隊</span>傳達的不只是技術，更是對環境與土地的愛，
+                        以及對生命的關懷。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 技術優點與循環經濟（補充區） ===== -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="card card-shadow p-4 p-md-5">
+                    <h5 class="fw-bold text-primary mb-4">
+                        <i class="fas fa-recycle me-2" style="color:#4a9e6b;"></i>人工浮島・生態水培・循環經濟
+                    </h5>
+
+                    <div class="row g-4">
+                        <!-- 左側：優點列表 -->
+                        <div class="col-md-6">
+                            <h6 class="fw-bold mb-3" style="color:#0a2f6c;">
+                                <i class="fas fa-check-circle me-2" style="color:#4a9e6b;"></i>三大核心優點
+                            </h6>
+                            <ul class="benefit-list">
+                                <li>
+                                    <i class="fas fa-tint"></i>
+                                    <div><strong>淨化水質</strong> — 吸收水中過多營養鹽，改善水體優養化</div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-tree"></i>
+                                    <div><strong>美化水域</strong> — 增加景觀綠化效果，營造自然水岸風貌</div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-dove"></i>
+                                    <div><strong>創造棲地</strong> — 提供鳥類、魚類與昆蟲躲藏及繁殖空間</div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-cactus"></i>
+                                    <div><strong>特殊適應</strong> — 連耐旱的仙人掌也能在特定水培設計下存活</div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 右側：循環經濟 + 生物防治 -->
+                        <div class="col-md-6">
+                            <h6 class="fw-bold mb-3" style="color:#0a2f6c;">
+                                <i class="fas fa-sync-alt me-2" style="color:#f1c40f;"></i>循環經濟與生態防治
+                            </h6>
+                            <ul class="benefit-list">
+                                <li>
+                                    <i class="fas fa-water" style="color:#3498db;"></i>
+                                    <div><strong>廢水再利用</strong> — 農畜牧肥水轉化為植物養分，資源循環</div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-bolt" style="color:#f39c12;"></i>
+                                    <div><strong>節約與高效</strong> — 減少能源消耗，提高作物產量及品質</div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-bug" style="color:#27ae60;"></i>
+                                    <div><strong>生物防治</strong> — 自然抑制病蟲害，維護環境平衡</div>
+                                </li>
+                                <li>
+                                    <i class="fas fa-hand-holding-heart" style="color:#e74c3c;"></i>
+                                    <div><strong>永續共好</strong> — 兼顧生產、生活與生態，守護土地未來</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr class="my-4" style="border-color:#d9e9ff;">
+
+                    <!-- 底下敘述：水水團隊理念 -->
+                    <p class="fs-6 lh-base" style="line-height: 2; margin-bottom: 0;">
+                        <span class="fw-bold">水水世界</span>不僅是一項技術，更是一種生活態度。
+                        我們相信，家有魚菜，永續的信念就能在家庭裡滋長，
+                        並散播得更遠。在都市叢林的多層次樹冠層裡，
+                        有陽光、有水、有蔬菜、有果樹、有魚、有兔子、有搖搖椅、
+                        有爺爺奶奶、有孩子。那裡沒有「專家」頭銜，
+                        只有敞開的心與分享的喜悅。
+                        <span class="fw-bold">水水團隊</span>願將這份喜悅傳遞出去，
+                        讓更多人共享對環境與土地的愛。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 額外小結：理念與願景 ===== -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="card card-shadow p-4 p-md-5" style="background: #e8f4f0; border-left: 8px solid #4a9e6b;">
+                    <div class="d-flex flex-wrap align-items-center gap-3">
+                        <div style="font-size: 2.8rem; color: #4a9e6b;">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold text-primary mb-1">🌱 為下一代・守護水與綠</h5>
+                            <p class="mb-0" style="line-height: 1.8;">
+                                <span class="fw-bold">水水團隊</span>來自各領域，我們只有一個共同信念：
+                                讓環境更好，讓孩子的未來更有希望。
+                                透過生態水培與人工浮島，我們在都市與鄉村之間，
+                                找回人與自然和諧共處的平衡點。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>木匠 · 埔里台地</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font (noto sans tc) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== 完全繼承走讀船山 / 烏牛欄教會 顏色風格 ===== */
+        body {
+            font-family: 'Noto Sans TC', 'Segoe UI', Roboto, sans-serif;
+            background: #f0f6ff;
+            padding-top: 16px;
+        }
+
+        .bg-soft-sky {
+            background-color: #d9e9ff;
+        }
+
+        /* 標題區塊 (header-image) 樣式與烏牛欄教會一致 */
+        .header-image {
+            background: #1b4a8a;
+            width: 100%;
+            min-height: 150px;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-image::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 80px;
+            background: #f9c74f;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .header-image::after {
+            content: '';
+            position: absolute;
+            right: 40px;
+            top: 30px;
+            width: 100px;
+            height: 100px;
+            background: #4a9e6b;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .header-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: #3b7a5a;
+            opacity: 0.7;
+            clip-path: ellipse(70% 100% at 50% 100%);
+        }
+
+        .header-title {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 4px;
+            z-index: 1;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .header-subtitle {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 18px;
+            color: #ffd966;
+            z-index: 1;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+
+            .header-subtitle {
+                font-size: 16px;
+            }
+
+            .header-image::before {
+                width: 60px;
+                height: 60px;
+                left: 30px;
+            }
+
+            .header-image::after {
+                width: 70px;
+                height: 70px;
+                right: 20px;
+                top: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-image {
+                min-height: 110px;
+                padding: 14px 10px;
+            }
+
+            .header-title {
+                font-size: 26px;
+                letter-spacing: 1px;
+            }
+
+            .header-subtitle {
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .header-image::before {
+                width: 40px;
+                height: 40px;
+                left: 15px;
+            }
+
+            .header-image::after {
+                width: 50px;
+                height: 50px;
+                right: 10px;
+                top: 12px;
+            }
+
+            .header-wave {
+                height: 30px;
+            }
+
+            body {
+                padding-top: 66px;
+            }
+        }
+
+        /* 卡片樣式 (與主頁一致) */
+        .card-shadow {
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            transition: 0.25s ease;
+            border: none;
+            background: white;
+        }
+
+        .card-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 35px rgba(0, 20, 60, 0.12);
+        }
+
+        .section-title {
+            border-left: 8px solid #ffb347;
+            padding-left: 20px;
+            font-weight: 900;
+            color: #0a2f6c;
+        }
+
+        .UnderLine {
+            text-decoration: underline;
+            text-underline-offset: 0.2rem;
+            text-decoration-color: #ffb347;
+            text-decoration-thickness: 2px;
+        }
+
+        /* ===== 圖片與文字兩欄等高 (已廢棄，但保留樣式) ===== */
+        .equal-height-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .equal-height-row>[class*="col-"] {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 圖片區塊 — 圓角、內邊距、背景與邊框 */
+        .img-placeholder {
+            background: #d9e9ff;
+            border-radius: 28px;
+            padding: 12px;
+            border: 2px dashed #0a2f6c40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1 1 auto;
+            min-height: 200px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        /* 文字卡片 (獨立使用) */
+        .text-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            padding: 1.8rem 2rem;
+            border: none;
+        }
+
+        .text-card p {
+            line-height: 2;
+            margin-bottom: 0.8rem;
+        }
+
+        .text-card .fw-bold {
+            color: #0a2f6c;
+        }
+
+        .theme-badge {
+            background: #e8f0fe;
+            color: #0a2f6c;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 767.98px) {
+            .text-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* 導航列 */
+        .navbar-custom {
+            background: linear-gradient(145deg, #0a2f6c 0%, #1b4a8a 100%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            border-bottom: 4px solid #ffd966;
+            border-radius: 0 0 2rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1050;
+        }
+
+        .navbar-custom .navbar-brand {
+            color: #ffffff !important;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .navbar-custom .navbar-brand i {
+            color: #ffd966;
+        }
+
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 4px;
+            border-radius: 30px;
+            padding: 8px 18px;
+            transition: 0.2s;
+        }
+
+        .navbar-custom .nav-link:hover {
+            background: #ffd966;
+            color: #0a2f6c !important;
+        }
+
+        /* 圖片雙欄 */
+        .img-pair {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .img-pair .img-placeholder {
+            flex: 1 1 calc(50% - 8px);
+            min-height: 220px;
+            height: auto;
+        }
+
+        @media (max-width: 576px) {
+            .img-pair .img-placeholder {
+                flex: 1 1 100%;
+                min-height: 180px;
+            }
+        }
+
+        .tag-icon {
+            display: inline-block;
+            background: #f1c40f;
+            color: #0a2f6c;
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 2px 14px;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 固定導航列 -->
+    <nav class="navbar navbar-expand-md navbar-custom py-2">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-tools me-2"></i>木匠·埔里台地
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home me-1"></i>首頁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-hammer me-1"></i>木作</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-store me-1"></i>工坊</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 16px;">
+
+        <!-- ===== 標題區塊 ===== -->
+        <div class="header-image">
+            <div class="header-title">🪚 木匠 · 埔里台地</div>
+            <div class="header-subtitle">埔里台地 · 傳統木作 · 二代傳承</div>
+            <div class="header-wave"></div>
+        </div>
+
+        <!-- ===== 1. 兩張照片並排 (同一個 row, 2 個 col) ===== -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="img-placeholder" style="min-height:250px;">
+                    <img src="img/木匠-1.jpg" alt="木匠工具與工作場景">
+                </div>
+                <div class="text-center mt-2">
+                    <span class="tag-icon"><i class="fas fa-tag me-1"></i>傳統工具</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="img-placeholder" style="min-height:250px;">
+                    <img src="img/木匠-2.jpg" alt="木匠師傅與作品">
+                </div>
+                <div class="text-center mt-2">
+                    <span class="tag-icon"><i class="fas fa-tag me-1"></i>二代傳承</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 2. 下方文字區 (1 個 col) ===== -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="text-card">
+                    <h4 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-hammer me-2" style="color:#f1c40f;"></i>陳先生 · 二代木匠
+                    </h4>
+                    <p>
+                        <span class="fw-bold">陳先生</span>是埔里台地的<span class="UnderLine">第二代傳統木匠</span>，
+                        自幼跟隨父親學習木工技藝，至今已累積數十年的扎實功夫。
+                        他的工坊裡保留了許多<span class="fw-bold" style="color:#0a2f6c;">傳統木工工具</span>——
+                        從刨刀、鑿子、墨斗到手拉鋸，每一件都承載著歲月的痕跡
+                        與老一輩匠人的智慧。
+                    </p>
+                    <p>
+                        在機械化與量產當道的今日，陳先生依然堅持以<span class="fw-bold">手工</span>製作
+                        家具與木作製品。他相信，每一塊木頭都有獨特的紋理與個性，
+                        唯有透過雙手細細打磨，才能讓作品展現出最溫潤的質感。
+                    </p>
+                    <p class="mt-2">
+                        <i class="fas fa-heart me-1" style="color:#e74c3c;"></i>
+                        走進他的工坊，撲鼻而來的木頭香氣與滿牆的老工具，
+                        彷彿帶領人們回到那個講究工藝與耐心的美好年代。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 3. 額外引用/補充區 (守護 · 技藝) ===== -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="card card-shadow p-4 p-md-5">
+                    <h5 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-tools me-2" style="color:#f1c40f;"></i>守護 · 技藝
+                    </h5>
+                    <p class="fs-6 lh-base" style="line-height: 2;">
+                        <span class="UnderLine">陳先生的木工坊</span> 不僅是一處製作家具的場所，
+                        更是埔里台地傳統工藝的活化石。從選料、畫線、鋸切到榫接、打磨、
+                        上漆，每一個步驟都遵循著老一輩傳下來的工法。
+                        那些掛在牆上的<span class="fw-bold">老工具</span>——有些甚至已有超過
+                        五十年的歷史——見證了埔里台地木工業的興衰與變遷。
+                        在快速消費的時代裡，陳先生用他的雙手與堅持，
+                        繼續書寫著這塊土地上的<span class="fw-bold" style="color:#0a2f6c;">匠人精神</span>。
+                    </p>
+                    <p class="mt-2 mb-0">
+                        <i class="fas fa-quote-left me-2" style="color:#f1c40f;"></i>
+                        「做木工就像做人，要實在、要耐心，不能偷工減料。」
+                        —— 陳先生
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 版權/底部資訊 -->
+        <div class="text-center text-muted small py-3 border-top">
+            <i class="fas fa-tree me-1"></i> 埔里台地 · 傳統木作 · 二代傳承
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+    </script>
+</body>
+
+</html>

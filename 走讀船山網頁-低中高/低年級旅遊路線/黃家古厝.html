@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黃家古厝 · 埔里愛蘭台地</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Font (noto sans tc) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== 完全繼承走讀船山 / 烏牛欄教會 顏色風格 ===== */
+        body {
+            font-family: 'Noto Sans TC', 'Segoe UI', Roboto, sans-serif;
+            background: #f0f6ff;
+            padding-top: 16px;
+        }
+
+        .bg-soft-sky {
+            background-color: #d9e9ff;
+        }
+
+        /* 標題區塊 (header-image) 樣式與烏牛欄教會一致 */
+        .header-image {
+            background: #1b4a8a;
+            width: 100%;
+            min-height: 150px;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-image::before {
+            content: '';
+            position: absolute;
+            left: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 80px;
+            background: #f9c74f;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .header-image::after {
+            content: '';
+            position: absolute;
+            right: 40px;
+            top: 30px;
+            width: 100px;
+            height: 100px;
+            background: #4a9e6b;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .header-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: #3b7a5a;
+            opacity: 0.7;
+            clip-path: ellipse(70% 100% at 50% 100%);
+        }
+
+        .header-title {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 4px;
+            z-index: 1;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .header-subtitle {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 18px;
+            color: #ffd966;
+            z-index: 1;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+
+            .header-subtitle {
+                font-size: 16px;
+            }
+
+            .header-image::before {
+                width: 60px;
+                height: 60px;
+                left: 30px;
+            }
+
+            .header-image::after {
+                width: 70px;
+                height: 70px;
+                right: 20px;
+                top: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-image {
+                min-height: 110px;
+                padding: 14px 10px;
+            }
+
+            .header-title {
+                font-size: 26px;
+                letter-spacing: 1px;
+            }
+
+            .header-subtitle {
+                font-size: 13px;
+                white-space: nowrap;
+            }
+
+            .header-image::before {
+                width: 40px;
+                height: 40px;
+                left: 15px;
+            }
+
+            .header-image::after {
+                width: 50px;
+                height: 50px;
+                right: 10px;
+                top: 12px;
+            }
+
+            .header-wave {
+                height: 30px;
+            }
+
+            body {
+                padding-top: 66px;
+            }
+        }
+
+        /* 卡片樣式 (與主頁一致) */
+        .card-shadow {
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            transition: 0.25s ease;
+            border: none;
+            background: white;
+        }
+
+        .card-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 35px rgba(0, 20, 60, 0.12);
+        }
+
+        .section-title {
+            border-left: 8px solid #ffb347;
+            padding-left: 20px;
+            font-weight: 900;
+            color: #0a2f6c;
+        }
+
+        .UnderLine {
+            text-decoration: underline;
+            text-underline-offset: 0.2rem;
+            text-decoration-color: #ffb347;
+            text-decoration-thickness: 2px;
+        }
+
+        /* ===== 圖片兩欄等高 ===== */
+        .equal-height-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .equal-height-row>[class*="col-"] {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 圖片區塊 — 圓角、內邊距、背景與邊框（延續 img-placeholder 風格） */
+        .img-placeholder {
+            background: #d9e9ff;
+            border-radius: 28px;
+            padding: 12px;
+            border: 2px dashed #0a2f6c40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1 1 auto;
+            min-height: 200px;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        /* 圖片固定高度（兩張一致） */
+        .img-placeholder.fixed-height {
+            height: 320px;
+            min-height: 320px;
+        }
+
+        @media (max-width: 768px) {
+            .img-placeholder.fixed-height {
+                height: 260px;
+                min-height: 260px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .img-placeholder.fixed-height {
+                height: 200px;
+                min-height: 200px;
+            }
+        }
+
+        /* 右側文字卡片：與圖片等高 */
+        .text-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            padding: 1.8rem 2rem;
+            flex: 1 1 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: none;
+        }
+
+        .text-card p {
+            line-height: 2;
+            margin-bottom: 0.8rem;
+        }
+
+        .text-card .fw-bold {
+            color: #0a2f6c;
+        }
+
+        .theme-badge {
+            background: #e8f0fe;
+            color: #0a2f6c;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 767.98px) {
+            .text-card {
+                padding: 1.5rem;
+                margin-top: 0;
+            }
+
+            .equal-height-row>[class*="col-"] {
+                margin-bottom: 16px;
+            }
+
+            .equal-height-row>.col-md-6:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        /* 全寬文字卡片 */
+        .full-width-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 25px rgba(0, 20, 50, 0.08);
+            padding: 2rem 2.2rem;
+            border: none;
+        }
+
+        .full-width-card p {
+            line-height: 2;
+            margin-bottom: 0.8rem;
+        }
+
+        @media (max-width: 576px) {
+            .full-width-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* ===== 移除導覽列相關樣式 ===== */
+        /* (原本的 .navbar-custom 已刪除) */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- 標題區塊 (與烏牛欄教會一致) -->
+        <div class="header-image">
+            <div class="header-title">🏛️ 黃家古厝</div>
+            <div class="header-subtitle">埔里愛蘭台地 · 三級古蹟 · 百年風華</div>
+            <div class="header-wave"></div>
+        </div>
+
+        <!-- ===== 兩張圖片並排，高度一致 ===== -->
+        <div class="row g-4 equal-height-row mb-5">
+            <div class="col-md-6">
+                <div class="img-placeholder fixed-height">
+                    <img src="img/黃家古厝-1.jpg" alt="黃家古厝 外觀">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="img-placeholder fixed-height">
+                    <img src="img/黃家古厝-2.jpg" alt="黃家古厝 內部">
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 主文字卡片（全寬） ===== -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="full-width-card">
+                    <h4 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-landmark me-2" style="color:#f1c40f;"></i>黃家古厝・百年歷史建築
+                    </h4>
+                    <p>
+                        <span class="fw-bold">黃家古厝</span>位於埔里愛蘭台地湧泉井附近，
+                        是埔里少數歷史建築之一，被列為<span class="UnderLine">三級古蹟</span>。
+                        這座古厝已有八、九十年歷史，見證了埔里地區的開發與變遷，
+                        是地方重要的文化資產。
+                    </p>
+                    <p>
+                        古厝原為清代「番秀才」<span class="fw-bold">望麒麟</span>的宅第。
+                        望麒麟為埔社番人，幼年在埔里恆吉城讀書，後赴台南取得文秀才功名，
+                        時人稱為「番仔秀才」。光緒初年，他與總兵<span class="fw-bold">吳光亮</span>成為好友，
+                        吳光亮協助勘查地理、設計格局，選定現址建屋。
+                    </p>
+                    <p>
+                        望麒麟無子，獨生女<span class="fw-bold">望阿參</span>招贅漢人
+                        <span class="fw-bold">黃敦仁</span>為夫。為顧及兩家香火，
+                        生育八子中，長子姓望，其餘皆姓黃，
+                        成為埔里平埔族與漢人通婚的典型例子，
+                        也形成了望、黃兩姓的家族關係。
+                    </p>
+                    <p>
+                        光緒21年，望麒麟在前往國姓北港村迎接日軍來埔里時，
+                        回程被仇家買通原住民暗殺。
+                        大正6年（1917）地震時，房子被震毀。
+                        大正8年（1919），望麒麟的女婿黃敦仁聘請東勢角的
+                        <span class="fw-bold">劉沛師傅</span>，花三年時間於現址重建三合院建築，
+                        建材為土角、紅磚和木材，並施彩繪。
+                    </p>
+                    <p>
+                        1999年<span class="fw-bold">九二一大地震</span>時，除正身外，
+                        兩側土角厝建築傾倒，後代子孫請專家<span class="UnderLine">仿原貌重建</span>完成。
+                        如今，古厝以簡約古樸的風貌重新呈現，正廳保留傳統裝飾，
+                        是埔里地區重要的歷史見證。
+                    </p>
+                    <p class="mt-2">
+                        <i class="fas fa-heart me-1" style="color:#e74c3c;"></i>
+                        走進黃家古厝，彷彿穿越時空，每一磚一瓦都是滿滿的在地故事。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 補充區 ===== -->
+        <div class="row g-4 mb-5">
+            <div class="col-12">
+                <div class="card card-shadow p-4 p-md-5">
+                    <h5 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-clock me-2" style="color:#f1c40f;"></i>守護・傳承
+                    </h5>
+                    <p class="fs-6 lh-base" style="line-height: 2;">
+                        <span class="UnderLine">黃家古厝</span>不僅是一座老宅，
+                        更承載了埔里平埔族與漢人社會交流的歷史記憶。
+                        它見證了愛蘭地區的開發、地方家族的興衰，
+                        以及原住民族與漢人之間的文化融合。
+                        古厝以木材、紅磚與傳統合院形式為主要特色，
+                        在九二一地震後的重建過程中，後代子孫盡力保留原有風貌，
+                        使古厝得以延續其歷史價值。
+                        在快速變遷的時代裡，黃家古厝依然靜靜矗立，
+                        守護著埔里台地的鄉土記憶與文化傳承。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+    </script>
+</body>
+
+</html>
