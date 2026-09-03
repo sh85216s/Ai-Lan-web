@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>愛蘭國小第83屆班級網頁</title>
+    <title>愛蘭國小第83屆甲班班網</title>
     <!-- 設定 Favicon 圖示 -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -2280,7 +2280,7 @@
                         <span class="ms-auto">
                             <a href="https://docs.google.com/spreadsheets/d/1wjeAY0DqqG7qiw__03VOnuM2fz5zjlyj-qSygjotSd4/edit?usp=sharing"
                                 target="_blank" class="btn-add-announcement" title="點擊新增回家功課">
-                                <i class="bi bi-plus-circle-fill"></i>新增
+                                <i class="bi bi-plus-circle-fill"></i>新增功課
                             </a>
                         </span>
                     </div>
@@ -2297,7 +2297,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><br>
 
         <!-- 下方 Card 3欄 -->
         <div class="row g-4">
@@ -2535,7 +2535,6 @@
                         return response.text();
                     })
                     .then(function (jsonText) {
-                        // 解析 Google Sheets 的 JSON 格式
                         var jsonStr = jsonText;
                         var match = jsonStr.match(/google\.visualization\.Query\.setResponse\((.+)\);/);
                         if (match) {
@@ -2554,7 +2553,6 @@
                             return;
                         }
 
-                        // 找出時間和 homework 的欄位索引
                         var timeIdx = -1;
                         var contentIdx = -1;
                         for (var i = 0; i < cols.length; i++) {
@@ -2615,11 +2613,39 @@
                             return db - da;
                         });
 
+                        // ========== 新增日期格式化函数 ==========
+                        function formatDate(input) {
+                            if (!input) return '';
+                            var dateObj = null;
+                            // 处理 "Date(2026,8,3)" 格式
+                            var match = input.match(/Date\((\d+),\s*(\d+),\s*(\d+)\)/);
+                            if (match) {
+                                var year = parseInt(match[1], 10);
+                                var month = parseInt(match[2], 10) + 1; // 月份从0开始
+                                var day = parseInt(match[3], 10);
+                                dateObj = new Date(year, month - 1, day);
+                            } else {
+                                var d = new Date(input);
+                                if (!isNaN(d.getTime())) {
+                                    dateObj = d;
+                                }
+                            }
+                            if (dateObj && !isNaN(dateObj.getTime())) {
+                                var y = dateObj.getFullYear();
+                                var m = String(dateObj.getMonth() + 1).padStart(2, '0');
+                                var d = String(dateObj.getDate()).padStart(2, '0');
+                                return y + '-' + m + '-' + d;
+                            }
+                            return input; // 无法解析则原样返回
+                        }
+                        // ========================================
+
                         var count = Math.min(homeworkList.length, 5);
                         var html = '';
                         for (var i = 0; i < count; i++) {
                             var item = homeworkList[i];
-                            var displayTime = item.time || '無日期';
+                            var rawTime = item.time || '';
+                            var displayTime = rawTime ? formatDate(rawTime) : '無日期';
                             var rawContent = item.content || '（無內容）';
                             var contentHtml = escapeHtml(rawContent).replace(/\n/g, '<br>');
 
@@ -2670,7 +2696,6 @@
                             escapeHtml(err.message) + '</small></div>';
                     });
             }
-
             function escapeHtml(text) {
                 if (!text) return '';
                 var div = document.createElement('div');
