@@ -2456,66 +2456,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
     </script>
 
-    <!-- ========================================================== -->
-    <!-- 內建腳本：限制公告最多5則 + 回家功課獨立載入（最新5則）       -->
+       <!-- ========================================================== -->
+    <!-- 回家功課區塊 - 獨立載入並依時間倒序排列 (最新在前)         -->
     <!-- ========================================================== -->
     <script>
         (function () {
             'use strict';
 
             // =============================================================
-            // 1. 限制「公告」最多顯示 5 則
-            // =============================================================
-            function limitAnnouncementsToFive() {
-                var list = document.getElementById('announcementList');
-                if (!list) return;
-
-                var rows = list.querySelectorAll('.announcement-row');
-                if (rows.length <= 5) {
-                    var wrapper = document.getElementById('announcementPaginationWrapper');
-                    if (wrapper) wrapper.classList.add('hidden-pagination');
-                    return;
-                }
-
-                for (var i = 5; i < rows.length; i++) {
-                    rows[i].classList.add('hidden-announcement');
-                }
-
-                var wrapper = document.getElementById('announcementPaginationWrapper');
-                if (wrapper) wrapper.classList.add('hidden-pagination');
-
-                var loading = document.getElementById('loadingMessage');
-                if (loading) loading.style.display = 'none';
-            }
-
-            function observeAnnouncementList() {
-                var list = document.getElementById('announcementList');
-                if (!list) return;
-
-                var observer = new MutationObserver(function () {
-                    limitAnnouncementsToFive();
-                });
-
-                observer.observe(list, {
-                    childList: true,
-                    subtree: true
-                });
-
-                limitAnnouncementsToFive();
-                setTimeout(limitAnnouncementsToFive, 500);
-                setTimeout(limitAnnouncementsToFive, 1500);
-                setTimeout(limitAnnouncementsToFive, 3000);
-            }
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', observeAnnouncementList);
-            } else {
-                observeAnnouncementList();
-            }
-
-            // =============================================================
-            // 2. 「回家功課」獨立載入 — 使用 Google Sheets API v4 讀取資料
-            //    改用 JSON 格式，正確保留儲存格內的換行
+            // 回家功課獨立載入 — 使用 Google Sheets API v4 讀取資料
+            // 改用 JSON 格式，正確保留儲存格內的換行
             // =============================================================
             var HOMEWORK_SHEET_ID = '1wjeAY0DqqG7qiw__03VOnuM2fz5zjlyj-qSygjotSd4';
             // 使用 Google Sheets API v4 的 JSON 格式
@@ -2604,24 +2554,38 @@
                             return;
                         }
 
+                        // ========== 排序：將日期較新（時間較晚）的排在前面 ==========
                         homeworkList.sort(function (a, b) {
-                            var da = new Date(a.time);
-                            var db = new Date(b.time);
-                            if (isNaN(da.getTime()) && isNaN(db.getTime())) return 0;
-                            if (isNaN(da.getTime())) return 1;
-                            if (isNaN(db.getTime())) return -1;
-                            return db - da;
+                            // 嘗試解析日期字串，若無法解析則視為無效日期
+                            var getTime = function (dateStr) {
+                                if (!dateStr) return 0;
+                                // 處理 "Date(2026,8,3)" 格式
+                                var match = dateStr.match(/Date\((\d+),\s*(\d+),\s*(\d+)\)/);
+                                if (match) {
+                                    var year = parseInt(match[1], 10);
+                                    var month = parseInt(match[2], 10); // 月份從0開始
+                                    var day = parseInt(match[3], 10);
+                                    return new Date(year, month, day).getTime();
+                                }
+                                var d = new Date(dateStr);
+                                return isNaN(d.getTime()) ? 0 : d.getTime();
+                            };
+
+                            var timeA = getTime(a.time);
+                            var timeB = getTime(b.time);
+                            // 降序：日期較晚（數字較大）的在前
+                            return timeB - timeA;
                         });
 
-                        // ========== 新增日期格式化函数 ==========
+                        // ========== 日期格式化函數 ==========
                         function formatDate(input) {
                             if (!input) return '';
                             var dateObj = null;
-                            // 处理 "Date(2026,8,3)" 格式
+                            // 處理 "Date(2026,8,3)" 格式
                             var match = input.match(/Date\((\d+),\s*(\d+),\s*(\d+)\)/);
                             if (match) {
                                 var year = parseInt(match[1], 10);
-                                var month = parseInt(match[2], 10) + 1; // 月份从0开始
+                                var month = parseInt(match[2], 10) + 1; // 月份從0開始
                                 var day = parseInt(match[3], 10);
                                 dateObj = new Date(year, month - 1, day);
                             } else {
@@ -2636,10 +2600,11 @@
                                 var d = String(dateObj.getDate()).padStart(2, '0');
                                 return y + '-' + m + '-' + d;
                             }
-                            return input; // 无法解析则原样返回
+                            return input; // 無法解析則原樣返回
                         }
                         // ========================================
 
+                        // 最多顯示 5 則
                         var count = Math.min(homeworkList.length, 5);
                         var html = '';
                         for (var i = 0; i < count; i++) {
@@ -2660,6 +2625,7 @@
                         }
                         container.innerHTML = html;
 
+                        // 點擊展開/收合功能
                         var items = container.querySelectorAll('.homework-item');
                         items.forEach(function (item) {
                             item.addEventListener('click', function (e) {
@@ -2669,6 +2635,7 @@
 
                                 var isOpen = content.classList.contains('open');
 
+                                // 先關閉所有其他展開的項目
                                 var allItems = container.querySelectorAll('.homework-item');
                                 allItems.forEach(function (otherItem) {
                                     var otherContent = otherItem.querySelector('.homework-content');
@@ -2679,6 +2646,7 @@
                                     }
                                 });
 
+                                // 若原本是關閉的，則展開此項目
                                 if (!isOpen) {
                                     content.classList.add('open');
                                     icon.className = 'bi bi-chevron-up';
@@ -2696,6 +2664,7 @@
                             escapeHtml(err.message) + '</small></div>';
                     });
             }
+
             function escapeHtml(text) {
                 if (!text) return '';
                 var div = document.createElement('div');
@@ -2703,6 +2672,7 @@
                 return div.innerHTML;
             }
 
+            // 頁面載入時執行，並每 5 分鐘自動更新
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', loadHomework);
             } else {
@@ -2712,7 +2682,7 @@
             setInterval(loadHomework, 5 * 60 * 1000);
 
             // =============================================================
-            // 3. 最後更新時間
+            // 最後更新時間
             // =============================================================
             var lm = document.getElementById('lastModified');
             if (lm) {
