@@ -1,4 +1,4 @@
-/* ----- 明亮綠色系全域變數 (與 index.html 完全一致) ----- */
+/* ----- 明亮綠色系全域變數 ----- */
 :root {
     --main-green: #2E7D32;
     --light-green: #66BB6A;
@@ -59,7 +59,6 @@ body {
     box-shadow: none !important;
 }
 
-/* 導航連結 hover 及 active 狀態 */
 .nav-link:hover,
 .nav-link.active,
 .home-link,
@@ -78,7 +77,6 @@ body {
     border-radius: 1.5rem;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
     padding: 0.5rem;
-    /* 桌機 hover 用 opacity/visibility 控制 */
     display: block;
     opacity: 0;
     visibility: hidden;
@@ -117,7 +115,6 @@ body {
     max-width: 360px;
 }
 
-/* 桌機版：懸停時顯示下拉選單 */
 @media (min-width: 992px) {
 
     .dropdown:hover>.dropdown-menu,
@@ -133,7 +130,6 @@ body {
         transition: transform 0.25s;
     }
 
-    /* 桌機版顯示圖示 */
     #digitalDropdown .dropdown-item i,
     #linkDropdown .dropdown-item i {
         display: inline-block !important;
@@ -141,7 +137,6 @@ body {
     }
 }
 
-/* ----- 手機版導航與下拉選單專屬調整 ----- */
 @media (max-width: 991.98px) {
     .dropdown-menu {
         position: static;
@@ -185,7 +180,6 @@ body {
         left: 0 !important;
     }
 
-    /* 數位學習、常用連結的下拉選單手機版樣式 (雙欄) */
     #digitalDropdown .dropdown-menu,
     #linkDropdown .dropdown-menu {
         display: none;
@@ -259,7 +253,6 @@ body {
         display: none !important;
     }
 
-    /* 其他單層下拉選單手機版 */
     .navbar-nav .dropdown:not(#digitalDropdown):not(#linkDropdown) .dropdown-menu {
         display: none;
         flex-direction: column;
@@ -321,7 +314,7 @@ body {
     border-bottom: 3px dashed var(--light-green);
     color: var(--main-green);
     font-weight: 700;
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     font-size: 1.1rem;
     flex-shrink: 0;
 }
@@ -334,10 +327,10 @@ body {
 
 .card-body {
     flex: 1 1 auto;
-    padding: 1rem 1.25rem;
+    padding: 0.5rem 1.25rem 0.8rem 1.25rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .card-footer {
@@ -345,7 +338,6 @@ body {
     border-top: 2px dotted var(--soft-green);
 }
 
-/* 強制卡片圖片 4:3 比例 */
 .card-img-top {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -358,7 +350,6 @@ body {
     overflow: hidden;
 }
 
-/* ----- 頁面標題樣式 ----- */
 .container h2 {
     color: var(--main-green);
     font-weight: 700;
@@ -367,7 +358,6 @@ body {
     padding-left: 1.2rem;
 }
 
-/* ----- 頁尾樣式 ----- */
 footer {
     color: var(--dark-charcoal);
     opacity: 0.8;
@@ -375,7 +365,6 @@ footer {
     padding-top: 1.2rem;
 }
 
-/* ----- 全域響應式微調 ----- */
 @media (max-width: 576px) {
     .navbar-brand {
         font-size: 1.2rem;
@@ -447,7 +436,6 @@ footer {
     border-radius: 10px;
 }
 
-/* 職稱標籤 - 每個字獨立分散對齊 */
 .role-label-group {
     display: flex;
     align-items: center;
@@ -508,7 +496,6 @@ footer {
     }
 }
 
-/* 職責表格 (duty-table) 樣式 */
 .duty-table-wrap {
     background: #f9fbf7;
     padding: 0.6rem 0.4rem;
@@ -685,7 +672,6 @@ footer {
     margin: 0 2px;
 }
 
-/* 社團卡片 */
 .club-card {
     border: none;
     border-radius: 2.5rem;
@@ -771,7 +757,6 @@ footer {
     margin: 0 2px;
 }
 
-/* 各社團類型邊框顏色 */
 .club-card.type-language {
     border-left-color: #5C6BC0;
 }
@@ -1106,7 +1091,6 @@ footer {
     color: #856404 !important;
 }
 
-/* ===== 共用資訊卡片 (info-card) 樣式 ===== */
 .info-card {
     background: #f6fbf5;
     border-radius: 2rem;
@@ -1290,11 +1274,11 @@ footer {
 
     .card-header {
         font-size: 1rem;
-        padding: 0.8rem 1rem;
+        padding: 0.6rem 1rem;
     }
 
     .card-body {
-        padding: 0.8rem 0.8rem;
+        padding: 0.4rem 0.8rem 0.6rem 0.8rem;
     }
 }
 
@@ -1610,7 +1594,7 @@ table.dataTable tbody td:last-child {
 }
 
 .announcement-table td {
-    padding: 0.8rem 0.5rem;
+    padding: 0.5rem 0.5rem;
     vertical-align: top;
     line-height: 1.6;
     word-break: break-word;
@@ -1741,7 +1725,6 @@ table.dataTable tbody td:last-child {
     padding: 2rem 0;
 }
 
-/* 公告手機版響應式調整 */
 @media (max-width: 991.98px) {
     .announcement-table {
         table-layout: fixed;
@@ -1761,7 +1744,7 @@ table.dataTable tbody td:last-child {
     .announcement-table td {
         display: block;
         width: 100%;
-        padding: 0.5rem 0.8rem !important;
+        padding: 0.3rem 0.8rem !important;
         box-sizing: border-box;
         word-break: break-word !important;
         white-space: normal !important;
@@ -1803,7 +1786,7 @@ table.dataTable tbody td:last-child {
 
 @media (max-width: 576px) {
     .announcement-table td {
-        padding: 0.4rem 0.8rem !important;
+        padding: 0.3rem 0.8rem !important;
     }
 
     .announcement-title {
@@ -1917,7 +1900,6 @@ table.dataTable tbody td:last-child {
     opacity: 0.6;
 }
 
-/* ===== 🆕 功課表垂直顯示課程名稱 (桌機專用) ===== */
 @media (min-width: 992px) {
     .vertical-course {
         display: flex !important;
@@ -1935,8 +1917,122 @@ table.dataTable tbody td:last-child {
         letter-spacing: 0.5px !important;
     }
 
-    /* 讓垂直課程的單元格維持與其他課程一致的大小 */
     .table-bordered td.vertical-course {
         padding: 0.2rem 0.1rem !important;
+    }
+}
+
+/* ===== 回家功課專屬樣式 (Homework) - 與公告樣式一致 ===== */
+.homework-item {
+    padding: 0.2rem 0;
+    border-bottom: 2px dotted #d6e8ce;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.homework-item:last-child {
+    border-bottom: none;
+}
+
+.homework-item:hover {
+    background-color: #f0f7ec;
+}
+
+.homework-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.1rem 0;
+    user-select: none;
+}
+
+.homework-time {
+    font-weight: 600;
+    color: var(--main-green);
+    font-size: 0.85rem;
+    flex: 1;
+    margin: 0;
+}
+
+.homework-toggle-icon {
+    flex-shrink: 0;
+    color: var(--main-green);
+    transition: transform 0.3s;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.homework-toggle-icon .bi-chevron-up {
+    transform: rotate(180deg);
+}
+
+.homework-content {
+    padding-top: 0.6rem;
+    padding-left: 0.2rem;
+    border-top: 2px dashed var(--soft-green);
+    margin-top: 0.3rem;
+    display: none;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--dark-charcoal);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.homework-content.open {
+    display: block;
+    animation: fadeSlideIn 0.25s ease;
+}
+
+.homework-empty {
+    color: #7a8f72;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+.homework-loading {
+    color: #7a8f72;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+/* 限制公告條數：隱藏多餘的公告列 */
+.announcement-row.hidden-announcement {
+    display: none !important;
+}
+
+/* 公告卡片內的分頁容器，當資料少於5筆時隱藏 */
+.pagination-container.hidden-pagination {
+    display: none !important;
+}
+
+/* ============================================================= */
+/* 手機直立模式：公告事項與回家功課改為單欄顯示               */
+/* ============================================================= */
+@media (max-width: 767.98px) {
+    .row.gap-single-col {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .row.gap-single-col>.col-8,
+    .row.gap-single-col>.col-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .row.g-4 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .row.g-4>.col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        width: 100%;
     }
 }
