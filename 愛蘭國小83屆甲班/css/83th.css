@@ -1,3 +1,4 @@
+
 /* ----- 明亮綠色系全域變數 ----- */
 :root {
     --main-green: #2E7D32;
@@ -142,7 +143,6 @@ body {
         position: static;
         opacity: 1;
         visibility: visible;
-        transform: none;
         pointer-events: auto;
         display: none;
         box-shadow: none;
@@ -1277,9 +1277,9 @@ footer {
         padding: 0.6rem 1rem;
     }
 
-    .card-body {
-        padding: 0.4rem 0.8rem 0.6rem 0.8rem;
-    }
+    /* .card-body {
+            padding: 0.4rem 0.8rem 0.6rem 0.8rem;
+        } */
 }
 
 /* ===== DataTable 專屬綠色系美化 ===== */
@@ -2035,4 +2035,50 @@ table.dataTable tbody td:last-child {
         max-width: 100%;
         width: 100%;
     }
+}
+
+/* ============================================================= */
+/* 🟢 公告事項下邊界空白優化 (減少紅色標示區域空白)          */
+/* ============================================================= */
+/* 1. 分頁容器空時自動隱藏，且預設 padding 極小化 */
+#announcementPaginationWrapper {
+    padding-top: 0.1rem !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+}
+
+#announcementPaginationWrapper:empty {
+    display: none !important;
+}
+
+/* 2. 載入訊息內縮，避免佔用多餘空間 */
+#loadingMessage {
+    padding: 0.1rem 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+}
+
+/* 載入完成後隱藏 */
+#loadingMessage[style*="display: none"] {
+    display: none !important;
+}
+
+/* 3. 公告卡片 body 底部內縮 */
+.card:has(.bi-megaphone-fill) .card-body {
+    padding-bottom: 0.1rem !important;
+}
+
+/* 4. 公告列表底部不留多餘空間 */
+#announcementList {
+    margin-bottom: 0 !important;
+}
+
+#announcementList .announcement-table {
+    margin-bottom: 0 !important;
+}
+
+/* 5. 最後一則公告的下邊框與底部貼齊 */
+.announcement-table tr:last-child td {
+    padding-bottom: 0.1rem !important;
 }
