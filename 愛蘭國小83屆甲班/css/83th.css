@@ -1,4 +1,3 @@
-
 /* ----- 明亮綠色系全域變數 ----- */
 :root {
     --main-green: #2E7D32;
@@ -1950,7 +1949,7 @@ table.dataTable tbody td:last-child {
 .homework-time {
     font-weight: 600;
     color: var(--main-green);
-    font-size: 0.85rem;
+    font-size: 1rem;
     flex: 1;
     margin: 0;
 }
@@ -1973,7 +1972,7 @@ table.dataTable tbody td:last-child {
     border-top: 2px dashed var(--soft-green);
     margin-top: 0.3rem;
     display: none;
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.8;
     color: var(--dark-charcoal);
     white-space: pre-wrap;
@@ -2066,7 +2065,7 @@ table.dataTable tbody td:last-child {
 
 /* 3. 公告卡片 body 底部內縮 */
 .card:has(.bi-megaphone-fill) .card-body {
-    padding-bottom: 0.1rem !important;
+    padding-bottom: 0 !important;
 }
 
 /* 4. 公告列表底部不留多餘空間 */

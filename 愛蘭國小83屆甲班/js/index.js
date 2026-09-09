@@ -1,3 +1,4 @@
+
     // =============================================================
     // 整合檔案：公告 ＋ 回家功課 (皆支援快取、摺疊與自動更新)
     // =============================================================
@@ -8,11 +9,11 @@
     // ---------- 1. 公告系統 ----------
     document.addEventListener('DOMContentLoaded', function () {
 
-                // ============================================================
-                //  公告載入 + 快取機制 (優化載入速度)
-                // ============================================================
+                        // ============================================================
+                        //  公告載入 + 快取機制 (優化載入速度)
+                        // ============================================================
 
-                const url = 'https://script.google.com/macros/s/AKfycbxiSHa3UI3B-UMnoY1cBt1rvPGmXQZ42UqmRruz1gndc5-YkbEpBb74ppoTFEtZ0WP_kg/exec';
+                        const url = 'https://script.google.com/macros/s/AKfycbxiSHa3UI3B-UMnoY1cBt1rvPGmXQZ42UqmRruz1gndc5-YkbEpBb74ppoTFEtZ0WP_kg/exec';
     const announcementList = document.getElementById('announcementList');
     const paginationEl = document.getElementById('announcementPagination');
     const loadingMessage = document.getElementById('loadingMessage');
@@ -26,51 +27,51 @@
 
     // ---- 輔助函式 ----
     function formatDate(dateStr) {
-                    if (!dateStr) return '未標示日期';
+                            if (!dateStr) return '未標示日期';
     try {
-                        const d = new Date(dateStr);
+                                const d = new Date(dateStr);
     if (isNaN(d.getTime())) return dateStr;
     const year = d.getFullYear();
     const month = String(d.getMonth() + 1).padStart(2, '0');
     const day = String(d.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
-                    } catch (e) { return dateStr; }
-                }
+                            } catch (e) { return dateStr; }
+                        }
 
     function linkify(text) {
-                    if (!text) return '';
+                            if (!text) return '';
     return text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
-                }
+                        }
 
     function parseContent(content) {
-                    if (!content || content.trim() === '') return {title: '（無內容）', detail: '' };
-                    const lines = content.split('\n').filter(line => line.trim() !== '');
+                            if (!content || content.trim() === '') return {title: '（無內容）', detail: '' };
+                            const lines = content.split('\n').filter(line => line.trim() !== '');
     if (lines.length === 0) return {title: '（無內容）', detail: '' };
     const title = lines[0].trim();
     const detail = lines.slice(1).join('\n');
     return {title, detail};
-                }
+                        }
 
     function formatDetailText(detail) {
-                    if (!detail || detail.trim() === '') return '<p class="announcement-detail-text" style="color:#999;">（無詳細內容）</p>';
-                    const lines = detail.split('\n').filter(line => line.trim() !== '');
-                    const isList = lines.some(line => /^[\s]*[-•]\s/.test(line));
+                            if (!detail || detail.trim() === '') return '<p class="announcement-detail-text" style="color:#999;">（無詳細內容）</p>';
+                            const lines = detail.split('\n').filter(line => line.trim() !== '');
+                            const isList = lines.some(line => /^[\s]*[-•]\s/.test(line));
     if (isList) {
         let html = '<ul class="announcement-detail-list">';
-                        lines.forEach(line => {
-                            const cleaned = line.replace(/^[\s]*[-•]\s*/, '');
+                                lines.forEach(line => {
+                                    const cleaned = line.replace(/^[\s]*[-•]\s*/, '');
         const escaped = cleaned.replace(/</g, '&lt;').replace(/>/g, '&gt;');
     html += `<li>${linkify(escaped)}</li>`;
-                        });
+                                });
     html += '</ul>';
 return html;
-                    } else {
+                            } else {
     return lines.map(line => {
         const escaped = line.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         return `<p class="announcement-detail-text">${linkify(escaped)}</p>`;
     }).join('');
 }
-                }
+                        }
 
 // ---- 顯示公告列表（摺疊結構） ----
 function showPage(page) {
@@ -326,7 +327,7 @@ const formattedDateTime =
     `${lastModified.getFullYear()}-${String(lastModified.getMonth() + 1).padStart(2, '0')}-${String(lastModified.getDate()).padStart(2, '0')} ${String(lastModified.getHours()).padStart(2, '0')}:${String(lastModified.getMinutes()).padStart(2, '0')}`;
 document.getElementById('lastModified').textContent = formattedDateTime;
 
-            });
+                    });
 
 // ---------- 2. 回家功課獨立系統 ----------
 (function () {
@@ -555,4 +556,4 @@ document.getElementById('lastModified').textContent = formattedDateTime;
 
 })();
 
-        }) ();
+                }) ();
