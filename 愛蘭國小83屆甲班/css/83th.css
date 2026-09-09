@@ -1509,9 +1509,11 @@ table.dataTable tbody td:last-child {
 .pagination .page-link {
     color: var(--dark-charcoal);
     border: 2px solid transparent;
-    margin: 0 5px;
+    margin: 0 10px;
+    /* border-radius: 3rem; */
+    /* padding: 0.4rem 1.2rem; */
     border-radius: 3rem;
-    padding: 0.4rem 1.2rem;
+    padding: 0 0.6rem;
     background-color: #eaf5e8;
     font-weight: 600;
     transition: 0.2s;
