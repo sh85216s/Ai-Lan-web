@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>埔里鎮愛蘭國民小學115學年度第一學期重點行事曆</title>
+    <title>愛蘭國小115學年度第一學期重點行事曆</title>
     <style>
         body {
             font-family: "Microsoft JhengHei", "微軟正黑體", Arial, sans-serif;
@@ -15,7 +15,7 @@
 
         h1 {
             font-size: 1.8rem;
-            text-align: center;
+            text-align: left;
             margin-bottom: 10px;
             color: #2c3e50;
             letter-spacing: 1px;
@@ -94,6 +94,15 @@
         td.date.sun {
             background-color: #f0f3f4;
             color: #7f8c8d;
+            align-items: center;
+        }
+
+        .date_sun,
+        .date_sat {
+            color: red;
+            text-align: center;
+            vertical-align: middle;
+            /* 新增：讓紅字日期垂直置中 */
         }
 
         /* 重點行事欄 */
@@ -182,7 +191,7 @@
 </head>
 
 <body>
-    <h1>埔里鎮愛蘭國民小學 115 學年度 第一學期重點行事曆</h1> 
+    <h1>愛蘭國小115學年度第一學期重點行事曆</h1>
     <div class="table-wrapper">
         <table>
             <colgroup>
@@ -211,15 +220,15 @@
             <tbody>
                 <!-- 8月/9月 第1週 -->
                 <tr>
-                    <td class="month" rowspan="5">9</td>
+                    <td class="month" rowspan="4">9</td>
                     <td class="week">1</td>
-                    <td class="date sun">30</td>
+                    <td class="date_sun">30</td>
                     <td class="date">31</td>
                     <td class="date">1</td>
                     <td class="date">2</td>
                     <td class="date">3</td>
                     <td class="date">4</td>
-                    <td class="date sat">5</td>
+                    <td class="date_sat">5</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">8/31</span> 開學、<span
                                 class="event-date">9/2</span> 選社團、<span class="event-date">9/2</span> 開學典禮、<span
@@ -229,13 +238,13 @@
                 <!-- 第2週 -->
                 <tr>
                     <td class="week">2</td>
-                    <td class="date sun">6</td>
+                    <td class="date_sun">6</td>
                     <td class="date">7</td>
                     <td class="date">8</td>
                     <td class="date">9</td>
                     <td class="date">10</td>
                     <td class="date">11</td>
-                    <td class="date sat">12</td>
+                    <td class="date_sat">12</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">9/9</span> 社團上課、<span
                                 class="event-date">9/9</span> THSD 家長說明會 19:00~20:00</span>
@@ -244,13 +253,13 @@
                 <!-- 第3週 -->
                 <tr>
                     <td class="week">3</td>
-                    <td class="date sun">13</td>
+                    <td class="date_sun">13</td>
                     <td class="date">14</td>
                     <td class="date">15</td>
                     <td class="date">16</td>
                     <td class="date">17</td>
                     <td class="date">18</td>
-                    <td class="date sat">19</td>
+                    <td class="date_sat">19</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">9/14</span> 防災預演、<span
                                 class="event-date">9/17</span> 學生分組照(下午)</span>
@@ -263,13 +272,13 @@
                 <!-- 第4週 -->
                 <tr>
                     <td class="week">4</td>
-                    <td class="date sun">20</td>
+                    <td class="date_sun">20</td>
                     <td class="date">21</td>
                     <td class="date">22</td>
                     <td class="date">23</td>
                     <td class="date">24</td>
                     <td class="date">25</td>
-                    <td class="date sat">26</td>
+                    <td class="date_sat">26</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">9/21</span> 防災演練、<span
                                 class="event-date">9/25</span> 中秋節</span>
@@ -277,14 +286,15 @@
                 </tr>
                 <!-- 第5週 (跨10月) -->
                 <tr>
+                    <td class="month" rowspan="5">10</td>
                     <td class="week">5</td>
-                    <td class="date sun">27</td>
+                    <td class="date_sun">27</td>
                     <td class="date">28</td>
                     <td class="date">29</td>
                     <td class="date">30</td>
                     <td class="date">1</td>
                     <td class="date">2</td>
-                    <td class="date sat">3</td>
+                    <td class="date_sat">3</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">9/28</span> 教師節、<span
                                 class="event-date">9/30</span> 廢電池回收</span>
@@ -293,15 +303,15 @@
 
                 <!-- 10月 第1週 (實際上是10月第一週，但月欄改為10) -->
                 <tr>
-                    <td class="month" rowspan="4">10</td>
-                    <td class="week">1</td>
-                    <td class="date sun">4</td>
+                    <!-- <td class="month" rowspan="4">10</td> -->
+                    <td class="week">6</td>
+                    <td class="date_sun">4</td>
                     <td class="date">5</td>
                     <td class="date">6</td>
                     <td class="date">7</td>
                     <td class="date">8</td>
                     <td class="date">9</td>
-                    <td class="date sat">10</td>
+                    <td class="date_sat">10</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">10/6</span> 打流感、<span
                                 class="event-date">10/9</span> 補假、<span class="event-date">10/10</span> 國慶日</span>
@@ -309,38 +319,38 @@
                 </tr>
                 <!-- 10月 第2週 -->
                 <tr>
-                    <td class="week">2</td>
-                    <td class="date sun">11</td>
+                    <td class="week">7</td>
+                    <td class="date_sun">11</td>
                     <td class="date">12</td>
                     <td class="date">13</td>
                     <td class="date">14</td>
                     <td class="date">15</td>
                     <td class="date">16</td>
-                    <td class="date sat">17</td>
+                    <td class="date_sat">17</td>
                     <td class="events"></td>
                 </tr>
                 <!-- 10月 第3週 -->
                 <tr>
-                    <td class="week">3</td>
-                    <td class="date sun">18</td>
+                    <td class="week">8</td>
+                    <td class="date_sun">18</td>
                     <td class="date">19</td>
                     <td class="date">20</td>
                     <td class="date">21</td>
                     <td class="date">22</td>
                     <td class="date">23</td>
-                    <td class="date sat">24</td>
+                    <td class="date_sat">24</td>
                     <td class="events"></td>
                 </tr>
                 <!-- 10月 第4週 -->
                 <tr>
-                    <td class="week">4</td>
-                    <td class="date sun">25</td>
+                    <td class="week">9</td>
+                    <td class="date_sun">25</td>
                     <td class="date">26</td>
                     <td class="date">27</td>
                     <td class="date">28</td>
                     <td class="date">29</td>
                     <td class="date">30</td>
-                    <td class="date sat">31</td>
+                    <td class="date_sat">31</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">10/25</span> 光復節、<span
                                 class="event-date">10/26</span> 補假、<span class="event-date">10/30</span> 搶成功、<span
@@ -350,29 +360,29 @@
 
                 <!-- 11月 第1週 -->
                 <tr>
-                    <td class="month" rowspan="5">11</td>
-                    <td class="week">1</td>
-                    <td class="date sun">1</td>
+                    <td class="month" rowspan="4">11</td>
+                    <td class="week">10</td>
+                    <td class="date_sun">1</td>
                     <td class="date">2</td>
                     <td class="date">3</td>
                     <td class="date">4</td>
                     <td class="date">5</td>
                     <td class="date">6</td>
-                    <td class="date sat">7</td>
+                    <td class="date_sat">7</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">11/5-6</span> 期中評量</span>
                     </td>
                 </tr>
                 <!-- 11月 第2週 -->
                 <tr>
-                    <td class="week">2</td>
-                    <td class="date sun">8</td>
+                    <td class="week">11</td>
+                    <td class="date_sun">8</td>
                     <td class="date">9</td>
                     <td class="date">10</td>
                     <td class="date">11</td>
                     <td class="date">12</td>
                     <td class="date">13</td>
-                    <td class="date sat">14</td>
+                    <td class="date_sat">14</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">11/11~13</span> 畢業旅行、<span
                                 class="event-date">11/13</span> 秋季校外教學</span>
@@ -380,40 +390,41 @@
                 </tr>
                 <!-- 11月 第3週 -->
                 <tr>
-                    <td class="week">3</td>
-                    <td class="date sun">15</td>
+                    <td class="week">12</td>
+                    <td class="date_sun">15</td>
                     <td class="date">16</td>
                     <td class="date">17</td>
                     <td class="date">18</td>
                     <td class="date">19</td>
                     <td class="date">20</td>
-                    <td class="date sat">21</td>
+                    <td class="date_sat">21</td>
                     <td class="events"></td>
                 </tr>
                 <!-- 11月 第4週 -->
                 <tr>
-                    <td class="week">4</td>
-                    <td class="date sun">22</td>
+                    <td class="week">13</td>
+                    <td class="date_sun">22</td>
                     <td class="date">23</td>
                     <td class="date">24</td>
                     <td class="date">25</td>
                     <td class="date">26</td>
                     <td class="date">27</td>
-                    <td class="date sat">28</td>
+                    <td class="date_sat">28</td>
                     <td class="events">
                         <span class="event-item">提醒家長申請各項證明書</span>
                     </td>
                 </tr>
                 <!-- 11月 第5週 (跨12月) -->
                 <tr>
-                    <td class="week">5</td>
-                    <td class="date sun">29</td>
+                    <td class="month" rowspan="4">12</td>
+                    <td class="week">14</td>
+                    <td class="date_sun">29</td>
                     <td class="date">30</td>
                     <td class="date">1</td>
                     <td class="date">2</td>
                     <td class="date">3</td>
                     <td class="date">4</td>
-                    <td class="date sat">5</td>
+                    <td class="date_sat">5</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">11/30</span> 廢電池回收、<span
                                 class="event-date">12/2</span> 路跑、<span class="event-date">12/5</span> 校慶運動會</span>
@@ -422,55 +433,55 @@
 
                 <!-- 12月 第1週 -->
                 <tr>
-                    <td class="month" rowspan="5">12</td>
-                    <td class="week">1</td>
-                    <td class="date sun">6</td>
+                    <td class="week">15</td>
+                    <td class="date_sun">6</td>
                     <td class="date">7</td>
                     <td class="date">8</td>
                     <td class="date">9</td>
                     <td class="date">10</td>
                     <td class="date">11</td>
-                    <td class="date sat">12</td>
+                    <td class="date_sat">12</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">12/7</span> 運動會補假</span>
                     </td>
                 </tr>
                 <!-- 12月 第2週 -->
                 <tr>
-                    <td class="week">2</td>
-                    <td class="date sun">13</td>
+                    <td class="week">16</td>
+                    <td class="date_sun">13</td>
                     <td class="date">14</td>
                     <td class="date">15</td>
                     <td class="date">16</td>
                     <td class="date">17</td>
                     <td class="date">18</td>
-                    <td class="date sat">19</td>
+                    <td class="date_sat">19</td>
                     <td class="events"></td>
                 </tr>
                 <!-- 12月 第3週 -->
                 <tr>
-                    <td class="week">3</td>
-                    <td class="date sun">20</td>
+                    <td class="week">17</td>
+                    <td class="date_sun">20</td>
                     <td class="date">21</td>
                     <td class="date">22</td>
                     <td class="date">23</td>
                     <td class="date">24</td>
                     <td class="date">25</td>
-                    <td class="date sat">26</td>
+                    <td class="date_sat">26</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">12/25</span> 行憲紀念日</span>
                     </td>
                 </tr>
                 <!-- 12月 第4週 (跨1月) -->
                 <tr>
-                    <td class="week">4</td>
-                    <td class="date sun">27</td>
+                    <td class="month" rowspan="4">1</td>
+                    <td class="week">18</td>
+                    <td class="date_sun">27</td>
                     <td class="date">28</td>
                     <td class="date">29</td>
                     <td class="date">30</td>
                     <td class="date">31</td>
                     <td class="date">1</td>
-                    <td class="date sat">2</td>
+                    <td class="date_sat">2</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">12/31</span> 廢電池回收、<span
                                 class="event-date">1/1</span> 元旦</span>
@@ -478,14 +489,14 @@
                 </tr>
                 <!-- 12月 第5週 (實際已跨到1月，但依原表歸在12月第5週) -->
                 <tr>
-                    <td class="week">5</td>
-                    <td class="date sun">3</td>
+                    <td class="week">19</td>
+                    <td class="date_sun">3</td>
                     <td class="date">4</td>
                     <td class="date">5</td>
                     <td class="date">6</td>
                     <td class="date">7</td>
                     <td class="date">8</td>
-                    <td class="date sat">9</td>
+                    <td class="date_sat">9</td>
                     <td class="events">
                         <span class="event-item">第69期愛蘭悅報出刊</span>
                     </td>
@@ -493,49 +504,37 @@
 
                 <!-- 1月 第1週 -->
                 <tr>
-                    <td class="month" rowspan="3">1</td>
-                    <td class="week">1</td>
-                    <td class="date sun">10</td>
+                    <!-- <td class="month" rowspan="3">1</td> -->
+                    <td class="week">20</td>
+                    <td class="date_sun">10</td>
                     <td class="date">11</td>
                     <td class="date">12</td>
                     <td class="date">13</td>
                     <td class="date">14</td>
                     <td class="date">15</td>
-                    <td class="date sat">16</td>
+                    <td class="date_sat">16</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">1/13-14</span> 期末評量</span>
                     </td>
                 </tr>
                 <!-- 1月 第2週 -->
                 <tr>
-                    <td class="week">2</td>
-                    <td class="date sun">17</td>
+                    <td class="week">21</td>
+                    <td class="date_sun">17</td>
                     <td class="date">18</td>
                     <td class="date">19</td>
                     <td class="date">20</td>
                     <td class="date">21</td>
                     <td class="date">22</td>
-                    <td class="date sat">23</td>
+                    <td class="date_sat">23</td>
                     <td class="events">
                         <span class="event-item"><span class="event-date">1/20</span> 休業式、<span
                                 class="event-date">1/21-2/10</span> 寒假、<span class="event-date">2/11</span> 四開學日</span>
                     </td>
                 </tr>
-                <!-- 補一列空白以符合原始表格結構 (原表最後一列可能只有月/週/日期，但無重點) -->
-                <tr>
-                    <td class="week">3</td>
-                    <td class="date sun">24</td>
-                    <td class="date">25</td>
-                    <td class="date">26</td>
-                    <td class="date">27</td>
-                    <td class="date">28</td>
-                    <td class="date">29</td>
-                    <td class="date sat">30</td>
-                    <td class="events"></td>
-                </tr>
             </tbody>
         </table>
-    </div>    
+    </div>
 </body>
 
 </html>
