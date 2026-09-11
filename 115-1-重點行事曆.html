@@ -14,10 +14,8 @@
         }
 
         h1 {
-            /* 使用 clamp 讓字級隨視窗寬度自動縮放，並保持單行 */
             font-size: clamp(1rem, 5vw, 1.8rem);
             white-space: nowrap;
-            /* 禁止換行 */
             text-align: left;
             margin-bottom: 10px;
             color: #2c3e50;
@@ -57,7 +55,6 @@
             color: white;
             text-align: center;
             vertical-align: middle;
-            /* 讓「月」「週」「重點行事」等表頭文字垂直置中 */
             font-weight: 600;
             font-size: 0.9rem;
             padding: 10px 4px;
@@ -67,7 +64,6 @@
             background-color: #fff;
         }
 
-        /* 月與週的欄位 */
         td.month,
         td.week {
             text-align: center;
@@ -84,8 +80,9 @@
             font-size: 1.1rem;
         }
 
-        /* 日期欄 */
-        td.date {
+        td.date,
+        .date_sun,
+        .date_sat {
             text-align: center;
             vertical-align: middle;
             background-color: #f8f9fa;
@@ -94,22 +91,17 @@
             font-size: 0.9rem;
         }
 
-        /* 週六、週日稍微淡色 */
+        .date_sun,
+        .date_sat {
+            color: red;
+        }
+
         td.date.sat,
         td.date.sun {
             background-color: #f0f3f4;
             color: #7f8c8d;
-            align-items: center;
         }
 
-        .date_sun,
-        .date_sat {
-            color: red;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        /* 重點行事欄 */
         td.events {
             background-color: #fef9e7;
             color: #1e1e1e;
@@ -141,7 +133,6 @@
             display: inline-block;
         }
 
-        /* 讓表格在手機上可以滾動 */
         .table-wrapper {
             overflow-x: auto;
             border-radius: 12px;
@@ -154,7 +145,6 @@
             color: #7f8c8d;
         }
 
-        /* 特定欄位寬度調整 */
         col.month-col {
             width: 4%;
         }
@@ -182,6 +172,12 @@
                 padding: 3px 2px;
             }
 
+            td.date,
+            .date_sun,
+            .date_sat {
+                font-size: 0.7rem;
+            }
+
             td.events {
                 font-size: 0.7rem;
                 padding: 4px;
@@ -191,7 +187,6 @@
                 font-size: 0.7rem;
             }
 
-            /* 若仍覺得標題稍寬，可再微調最小字級 */
             h1 {
                 font-size: clamp(0.9rem, 5vw, 1.4rem);
             }
@@ -227,7 +222,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- 8月/9月 第1週 -->
                 <tr>
                     <td class="month" rowspan="4">9</td>
                     <td class="week">1</td>
@@ -244,7 +238,6 @@
                                 class="event-date">9/2</span> 校務會議</span>
                     </td>
                 </tr>
-                <!-- 第2週 -->
                 <tr>
                     <td class="week">2</td>
                     <td class="date_sun">6</td>
@@ -259,7 +252,6 @@
                                 class="event-date">9/9</span> THSD 家長說明會 19:00~20:00</span>
                     </td>
                 </tr>
-                <!-- 第3週 -->
                 <tr>
                     <td class="week">3</td>
                     <td class="date_sun">13</td>
@@ -278,7 +270,6 @@
                                 class="event-date">9/18</span> 英語手牽手開訓</span>
                     </td>
                 </tr>
-                <!-- 第4週 -->
                 <tr>
                     <td class="week">4</td>
                     <td class="date_sun">20</td>
@@ -293,7 +284,6 @@
                                 class="event-date">9/25</span> 中秋節</span>
                     </td>
                 </tr>
-                <!-- 第5週 (跨10月) -->
                 <tr>
                     <td class="month" rowspan="5">10</td>
                     <td class="week">5</td>
@@ -309,8 +299,6 @@
                                 class="event-date">9/30</span> 廢電池回收</span>
                     </td>
                 </tr>
-
-                <!-- 10月 第1週 -->
                 <tr>
                     <td class="week">6</td>
                     <td class="date_sun">4</td>
@@ -325,7 +313,6 @@
                                 class="event-date">10/9</span> 補假、<span class="event-date">10/10</span> 國慶日</span>
                     </td>
                 </tr>
-                <!-- 10月 第2週 -->
                 <tr>
                     <td class="week">7</td>
                     <td class="date_sun">11</td>
@@ -337,7 +324,6 @@
                     <td class="date_sat">17</td>
                     <td class="events"></td>
                 </tr>
-                <!-- 10月 第3週 -->
                 <tr>
                     <td class="week">8</td>
                     <td class="date_sun">18</td>
@@ -349,7 +335,6 @@
                     <td class="date_sat">24</td>
                     <td class="events"></td>
                 </tr>
-                <!-- 10月 第4週 -->
                 <tr>
                     <td class="week">9</td>
                     <td class="date_sun">25</td>
@@ -365,8 +350,6 @@
                                 class="event-date">10/30</span> 廢電池回收、<span class="event-date">68</span> 期愛蘭悅報出刊</span>
                     </td>
                 </tr>
-
-                <!-- 11月 第1週 -->
                 <tr>
                     <td class="month" rowspan="4">11</td>
                     <td class="week">10</td>
@@ -381,7 +364,6 @@
                         <span class="event-item"><span class="event-date">11/5-6</span> 期中評量</span>
                     </td>
                 </tr>
-                <!-- 11月 第2週 -->
                 <tr>
                     <td class="week">11</td>
                     <td class="date_sun">8</td>
@@ -396,7 +378,6 @@
                                 class="event-date">11/13</span> 秋季校外教學</span>
                     </td>
                 </tr>
-                <!-- 11月 第3週 -->
                 <tr>
                     <td class="week">12</td>
                     <td class="date_sun">15</td>
@@ -408,7 +389,6 @@
                     <td class="date_sat">21</td>
                     <td class="events"></td>
                 </tr>
-                <!-- 11月 第4週 -->
                 <tr>
                     <td class="week">13</td>
                     <td class="date_sun">22</td>
@@ -422,7 +402,6 @@
                         <span class="event-item">提醒家長申請各項證明書</span>
                     </td>
                 </tr>
-                <!-- 11月 第5週 (跨12月) -->
                 <tr>
                     <td class="month" rowspan="4">12</td>
                     <td class="week">14</td>
@@ -438,8 +417,6 @@
                                 class="event-date">12/2</span> 路跑、<span class="event-date">12/5</span> 校慶運動會</span>
                     </td>
                 </tr>
-
-                <!-- 12月 第1週 -->
                 <tr>
                     <td class="week">15</td>
                     <td class="date_sun">6</td>
@@ -453,7 +430,6 @@
                         <span class="event-item"><span class="event-date">12/7</span> 運動會補假</span>
                     </td>
                 </tr>
-                <!-- 12月 第2週 -->
                 <tr>
                     <td class="week">16</td>
                     <td class="date_sun">13</td>
@@ -465,7 +441,6 @@
                     <td class="date_sat">19</td>
                     <td class="events"></td>
                 </tr>
-                <!-- 12月 第3週 -->
                 <tr>
                     <td class="week">17</td>
                     <td class="date_sun">20</td>
@@ -479,7 +454,6 @@
                         <span class="event-item"><span class="event-date">12/25</span> 行憲紀念日</span>
                     </td>
                 </tr>
-                <!-- 12月 第4週 (跨1月) -->
                 <tr>
                     <td class="month" rowspan="4">1</td>
                     <td class="week">18</td>
@@ -495,7 +469,6 @@
                                 class="event-date">1/1</span> 元旦</span>
                     </td>
                 </tr>
-                <!-- 12月 第5週 (實際已跨到1月，但依原表歸在12月第5週) -->
                 <tr>
                     <td class="week">19</td>
                     <td class="date_sun">3</td>
@@ -509,8 +482,6 @@
                         <span class="event-item">第69期愛蘭悅報出刊</span>
                     </td>
                 </tr>
-
-                <!-- 1月 第1週 -->
                 <tr>
                     <td class="week">20</td>
                     <td class="date_sun">10</td>
@@ -524,7 +495,6 @@
                         <span class="event-item"><span class="event-date">1/13-14</span> 期末評量</span>
                     </td>
                 </tr>
-                <!-- 1月 第2週 -->
                 <tr>
                     <td class="week">21</td>
                     <td class="date_sun">17</td>
