@@ -14,7 +14,10 @@
         }
 
         h1 {
-            font-size: 1.8rem;
+            /* 使用 clamp 讓字級隨視窗寬度自動縮放，並保持單行 */
+            font-size: clamp(1rem, 5vw, 1.8rem);
+            white-space: nowrap;
+            /* 禁止換行 */
             text-align: left;
             margin-bottom: 10px;
             color: #2c3e50;
@@ -54,7 +57,7 @@
             color: white;
             text-align: center;
             vertical-align: middle;
-            /* ← 新增：讓「月」「週」「重點行事」等表頭文字垂直置中 */
+            /* 讓「月」「週」「重點行事」等表頭文字垂直置中 */
             font-weight: 600;
             font-size: 0.9rem;
             padding: 10px 4px;
@@ -104,7 +107,6 @@
             color: red;
             text-align: center;
             vertical-align: middle;
-            /* 新增：讓紅字日期垂直置中 */
         }
 
         /* 重點行事欄 */
@@ -187,6 +189,11 @@
 
             .event-date {
                 font-size: 0.7rem;
+            }
+
+            /* 若仍覺得標題稍寬，可再微調最小字級 */
+            h1 {
+                font-size: clamp(0.9rem, 5vw, 1.4rem);
             }
         }
     </style>
@@ -303,9 +310,8 @@
                     </td>
                 </tr>
 
-                <!-- 10月 第1週 (實際上是10月第一週，但月欄改為10) -->
+                <!-- 10月 第1週 -->
                 <tr>
-                    <!-- <td class="month" rowspan="4">10</td> -->
                     <td class="week">6</td>
                     <td class="date_sun">4</td>
                     <td class="date">5</td>
@@ -506,7 +512,6 @@
 
                 <!-- 1月 第1週 -->
                 <tr>
-                    <!-- <td class="month" rowspan="3">1</td> -->
                     <td class="week">20</td>
                     <td class="date_sun">10</td>
                     <td class="date">11</td>
