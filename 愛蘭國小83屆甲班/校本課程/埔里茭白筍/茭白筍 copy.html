@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>自然環境 · 茭白筍</title>
+    <!-- Bootstrap 5 + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --main-green: #2E7D32;
+            --light-green: #66BB6A;
+            --soft-green: #C8E6C9;
+            --bg-green: #E8F5E9;
+            --cream-white: #F9FBF7;
+            --bright-accent: #FFB300;
+            --warm-orange: #FF8A65;
+            --dark-charcoal: #2C3E2F;
+            --card-shadow: 0 12px 30px rgba(46, 125, 50, 0.10);
+            --card-hover-shadow: 0 20px 40px rgba(46, 125, 50, 0.18);
+        }
+
+        body {
+            background-color: var(--bg-green);
+            color: var(--dark-charcoal);
+            font-family: 'Segoe UI', 'Quicksand', system-ui, sans-serif;
+        }
+
+        .card {
+            border: none;
+            border-radius: 2.5rem 2.5rem 2rem 2rem;
+            background-color: #ffffff;
+            box-shadow: var(--card-shadow);
+            transition: all 0.25s;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        /* 活動卡片 */
+        .activity-card .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--main-green);
+        }
+
+        .activity-card .card-text {
+            font-size: 0.95rem;
+        }
+
+        .activity-card .card-text p {
+            font-size: 1.1rem;
+        }
+
+        .activity-card .pill-tag {
+            font-size: 0.9rem;
+        }
+
+        .activity-card .small {
+            font-size: 0.95rem;
+        }
+
+        /* 資訊徽章 */
+        .info-badge {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.2rem 1.8rem;
+            box-shadow: var(--card-shadow);
+            border-left: 8px solid var(--bright-accent);
+            transition: 0.2s;
+        }
+
+        /* 表格視覺 */
+        .table-visual {
+            background: white;
+            border-radius: 2.5rem;
+            padding: 0.8rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #e3f0e0;
+            overflow-x: auto;
+        }
+
+        .table-visual table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 6px;
+            min-width: 500px;
+        }
+
+        .table-visual th {
+            background: var(--main-green);
+            color: white;
+            border-radius: 2rem 2rem 0 0;
+            padding: 0.7rem 0.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .table-visual td {
+            background: #fafff8;
+            padding: 0.7rem 0.5rem;
+            border-bottom: 1px solid #d6e8ce;
+            vertical-align: middle;
+        }
+
+        .table-visual tr:last-child td {
+            border-bottom: 2px solid var(--main-green);
+        }
+
+        .table-visual td:first-child {
+            border-left: 4px solid var(--main-green);
+            border-radius: 1.5rem 0 0 1.5rem;
+            font-weight: 700;
+            color: var(--main-green);
+            background: #eaf3e0;
+        }
+
+        .table-visual td:last-child {
+            border-right: 4px solid var(--main-green);
+            border-radius: 0 1.5rem 1.5rem 0;
+        }
+
+        .table-visual .badge {
+            font-size: 1rem;
+        }
+
+        .table-visual .small {
+            font-size: 0.95rem;
+        }
+
+        /* 藥丸標籤 */
+        .pill-tag {
+            background: var(--soft-green);
+            border-radius: 3rem;
+            padding: 0.2rem 1rem;
+            font-weight: 600;
+            color: var(--main-green);
+            display: inline-block;
+        }
+
+        /* 連結按鈕 */
+        .link-btn-nav {
+            color: var(--dark-charcoal) !important;
+            font-weight: 600;
+            border-radius: 2rem;
+            padding: 0.5rem 1rem;
+            transition: 0.2s;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: transparent !important;
+            text-decoration: none !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .link-btn-nav:hover {
+            background-color: var(--soft-green) !important;
+            color: var(--main-green) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .link-btn-nav:visited {
+            color: var(--dark-charcoal) !important;
+        }
+
+        .link-btn-nav:active {
+            background-color: var(--soft-green) !important;
+            color: var(--main-green) !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .link-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem 0.5rem;
+        }
+
+        /* 標題區 */
+        .hero-title-wrapper {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: auto;
+        }
+
+        .hero-title-wrapper .title-block {
+            text-align: left;
+            width: 100%;
+        }
+
+        .hero-title-wrapper .title-block h2 {
+            margin-bottom: 0.1rem;
+            font-size: 2.6rem;
+            color: var(--main-green);
+            font-weight: 700;
+        }
+
+        .hero-title-wrapper .sub-block {
+            text-align: center;
+            width: 100%;
+            margin-top: 0.2rem;
+        }
+
+        .hero-title-wrapper .sub-block p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #3a5e3a;
+            letter-spacing: 0.5px;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .sub-block .sep {
+            margin: 0 0.15rem;
+        }
+
+        /* 心得區 */
+        .insight-block {
+            font-size: 1.05rem;
+        }
+
+        .insight-block p,
+        .insight-block li {
+            line-height: 1.8;
+        }
+
+        footer {
+            color: var(--dark-charcoal);
+            opacity: 0.8;
+            border-top: 3px dotted var(--soft-green) !important;
+            padding-top: 1.2rem;
+        }
+
+        @media (max-width: 576px) {
+            .hero-title-wrapper .title-block h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <base target="_blank">
+    <base target="_blank">
+</head>
+
+<body>
+    <!-- ===== 主內容：自然環境-茭白筍 ===== -->
+    <div class="container py-4">
+        <!-- 標題區：副標題對齊標題中間 -->
+        <div class="hero-title-wrapper mb-4 pt-4 mt-3">
+            <div class="title-block">
+                <h2>🌱 茭白筍 · 埔里水田寶藏</h2>
+            </div>
+            <div class="sub-block">
+                <p>
+                    <span class="subtitle-text">自然環境</span>
+                    <span class="sep">·</span>
+                    <span class="subtitle-text">產業生態</span>
+                    <span class="sep">·</span>
+                    <span class="subtitle-text">手作小書</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="info-badge mb-4">
+            <div class="d-flex align-items-center gap-3 flex-wrap">
+                <span class="mb-0 fw-semibold" style="font-size:1.05rem;">
+                    埔里盆地因氣候宜人、水質純淨，孕育出優質的「茭白筍」（俗稱美人腿），成為當地極具代表性的農業特產。埔里的茭白筍產量高居全台之冠，不僅口感鮮甜脆嫩，更是許多在地家庭的經濟支柱，不少學生家長以種植茭白筍維生。<br><br>
+                    為了讓這份土地的情感代代相傳，在地教育透過課程設計，探討產業與生態，並以實作方式讓孩子更加瞭解家鄉文化，體驗這片土地的自然之美。學童走入筍田，親手觀察生態與水質，學習友善耕作對環境的永續效益。這樣的在地化學習，不僅打破了教室的邊界，更將產業知識、環境教育與鄉土情懷緊密結合，讓孩子在產地實踐中深刻感受家鄉農業的價值與魅力。
+                </span>
+            </div>
+        </div>
+
+        <!-- ===== 本學期2項活動 ===== -->
+        <div class="mb-4">
+            <h4 class="fw-bold"
+                style="color: var(--main-green); border-bottom: 3px solid var(--soft-green); padding-bottom: 0.4rem;">
+                <i class="bi bi-calendar-check me-2"></i>本學期 3 項活動
+            </h4>
+            <div class="row g-4 mt-2">
+                <!-- 活動1：「最佳主茭」茭白筍課程體驗 -->
+                <div class="col-md-4">
+                    <div class="card activity-card h-100 w-100 p-2"
+                        style="background:#f6fbf5; border:2px solid var(--main-green); border-radius: 2rem;">
+                        <div class="card-title d-flex align-items-center gap-2">
+                            <i class="bi bi-flower1" style="color: var(--main-green); font-size: 1.8rem;"></i>
+                            <span>「最佳主茭」體驗課程</span>
+                            <span class="link-group">
+                                <a href="115.09.15-校本課程行前通知單.pdf" target="_blank" class="link-btn-nav">
+                                    <i class="bi bi-file-earmark-pdf text-danger"></i> 行前通知
+                                </a>
+                            </span>
+                        </div>
+                        <div class="card-text">
+                            <p><span class="pill-tag"><i class="bi bi-calendar3"></i> 2026/09/21 12:30~15:30</span>
+                                <span class="pill-tag"><i class="bi bi-geo-alt"></i> 最佳主茭腳白筍農場</span>
+                            </p>
+                            <p class="text-secondary">走進茭白筍農場，實地觀察茭白筍的生長環境，體驗田間採收的樂趣，認識友善耕作與在地農業。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 活動2：茭白筍簡報介紹 -->
+                <div class="col-md-4">
+                    <div class="card activity-card h-100 w-100 p-2"
+                        style="background:#f6fbf5; border:2px solid var(--main-green); border-radius: 2rem;">
+                        <div class="card-title d-flex align-items-center gap-2 flex-wrap">
+                            <i class="bi bi-easel2" style="color: var(--main-green); font-size: 1.8rem;"></i>
+                            <span>茭白筍簡報介紹&nbsp;</span>
+                            <span class="link-group">
+                                <a href="茭白筍-115.07.30修正.pdf" target="_blank" class="link-btn-nav">
+                                    <i class="bi bi-file-earmark-pdf text-danger"></i> 簡報
+                                </a>
+                            </span>
+                        </div>
+                        <div class="card-text">
+                            <p><span class="pill-tag"><i class="bi bi-calendar3"></i> OO/OO(一)09:00~11:00</span>
+                                <span class="pill-tag"><i class="bi bi-geo-alt"></i> 學生活動中心</span>
+                            </p>
+                            <p class="text-secondary">邀請農會專家與在地青農分享，認識茭白筍的一生。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 活動3：茭白筍小書製作 -->
+                <div class="col-md-4">
+                    <div class="card activity-card h-100 w-100 p-2"
+                        style="background:#f6fbf5; border:2px solid var(--main-green); border-radius: 2rem;">
+                        <div class="card-title d-flex align-items-center gap-2">
+                            <i class="bi bi-book" style="color: var(--main-green); font-size: 1.8rem;"></i>
+                            <span>茭白筍小書製作</span>
+                        </div>
+                        <div class="card-text">
+                            <p class="text-secondary">將所學整理成創意小書，涵蓋種植、生態、料理與心得。</p>
+                            <div class="mt-2">
+                                <span class="pill-tag"><i class="bi bi-pencil"></i> 12 頁</span>
+                                <span class="pill-tag"><i class="bi bi-star-fill"
+                                        style="color:var(--bright-accent);"></i> 300字心得</span>
+                            </div>
+                            <div class="mt-2 small text-secondary">
+                                <i class="bi bi-dot"></i> 封面・內頁10項主題・封底插畫
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 其餘內容 (小書結構、簡報等) -->
+        <div class="table-visual mb-4">
+            <h4 class="fw-bold" style="color:var(--main-green); padding:5px 0;">📘 茭白筍小書 · 完整結構</h4>
+            <table class="table mb-0">
+                <thead>
+                    <tr>
+                        <th style="border-radius:2rem 0 0 0;">項目</th>
+                        <th>說明</th>
+                        <th style="border-radius:0 2rem 0 0;">備註 / 細項</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="bi bi-file-image me-1"></i> 封面</td>
+                        <td>幫小書取個名稱(主題)</td>
+                        <td>包含班級、座號、姓名</td>
+                    </tr>
+                    <tr>
+                        <td><i class="bi bi-layout-text-window"></i> 內頁</td>
+                        <td><span class="fw-semibold">10 頁</span><br><small>P1~P10</small></td>
+                        <td>
+                            <div class="d-flex flex-wrap gap-1">
+                                <span class="badge bg-light text-dark border">P1 什麼是茭白筍</span><span
+                                    class="badge bg-light text-dark border">P2 環境</span>
+                                <span class="badge bg-light text-dark border">P3 種植</span><span
+                                    class="badge bg-light text-dark border">P4 生長發育</span>
+                                <span class="badge bg-light text-dark border">P5 品種</span><span
+                                    class="badge bg-light text-dark border">P6 病蟲害</span>
+                                <span class="badge bg-light text-dark border">P7 生物防治</span><span
+                                    class="badge bg-light text-dark border">P8 料理</span>
+                                <span class="badge bg-light text-dark border">P9 加工</span><span
+                                    class="badge bg-light text-dark border">P10 心得</span>
+                            </div>
+                            <div class="mt-2 small text-secondary"><i class="bi bi-dot"></i> P1 營養、花、菰米 · P2 日照/土壤/水/浮萍
+                                · P3 欉根選苗/育苗/定植 · P4 萌芽/分蘗/孕茭/休眠 · P5 青殼/白殼/赤殼</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="bi bi-palette"></i> 封底</td>
+                        <td>畫圖</td>
+                        <td>簡單的圖畫裝飾</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info-badge mb-4 insight-block" style="border-left-color: var(--main-green);">
+            <i class="bi bi-pencil-square me-3" style="font-size:1.8rem; color:var(--main-green);"></i>
+            <span class="fw-bold">P10 心得 · 至少 300 字</span>
+            <p class="text-secondary ms-2">
+                心得不是抄資料，而是寫出自己的想法。可以從「學到什麼、最有趣的是什麼、印象最深刻的內容、茭白筍對埔里的重要性、未來想嘗試或分享的事情」來描述，並舉例說明自己的感受，完整寫滿300字以上。</p>
+            <p>「舉例說明自己的感受」就是不要只寫「我覺得很有趣」、「我很喜歡」，而是要寫出為什麼會有這種感受，並舉一個具體的例子。</p>
+
+            <p>例如：<br>我原本以為茭白筍和竹筍一樣，後來才知道它是因為菰黑穗菌的作用才會形成可以食用的茭白筍，讓我覺得非常神奇。我以前吃茭白筍時從來沒有想過它是這樣長大的，以後看到茭白筍時，我一定會想到它特殊的生長方式，也會更珍惜農民種植的辛勞。
+            </p>
+            <br>
+            <p>
+                這段心得不只是寫「很神奇」，還說明了：
+            <ul>
+                <li>學到什麼：知道茭白筍形成的原因。</li>
+                <li>自己的感受：覺得很神奇。</li>
+                <li>舉例說明：以前不知道，現在吃茭白筍時會想到它的生長方式，也更珍惜農民的努力。</li>
+            </ul>
+            這樣的心得會比只寫「我覺得很有趣」更具體、更有內容。
+            </p>
+        </div>
+
+        <footer class="container py-3 mt-3">
+            <p class="text-center small mb-0" style="color: var(--dark-charcoal); opacity: 0.95;">
+                © 2026 愛蘭國民小學．向志賢老師 All Rights Reserved. ｜ 最後更新：<span id="lastModified"></span>
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const lm = document.getElementById('lastModified');
+            if (lm) {
+                const d = new Date(document.lastModified);
+                lm.textContent = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+            }
+        });
+    </script>
+</body>
+
+</html>
