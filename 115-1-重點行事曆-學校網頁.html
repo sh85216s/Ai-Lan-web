@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>愛蘭國小115學年度第一學期重點行事曆</title>
+    <style>
+        /* .body-115-1 {
+            font-family: "Microsoft JhengHei", "微軟正黑體", Arial, sans-serif;
+            margin: 30px 20px;
+            background-color: #f9f9f9;
+            color: #1e1e1e;
+        } */
+
+        .h1-115-1 {
+            font-size: clamp(1rem, 5vw, 1.8rem);
+            white-space: nowrap;
+            text-align: left;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #a0a0a0;
+            padding-bottom: 10px;
+        }
+
+        .Table-115-1 {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .th-115-1,
+        .td-115-1 {
+            border: 1px solid #b0b0b0;
+            padding: 6px 4px;
+            vertical-align: top;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .th-115-1 {
+            background-color: #34495e;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 10px 4px;
+        }
+
+        .td-115-1 {
+            background-color: #fff;
+        }
+
+        .td-115-1.month,
+        .td-115-1.week {
+            text-align: center;
+            vertical-align: middle;
+            font-weight: 600;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            font-size: 1rem;
+            width: 4%;
+        }
+
+        .td-115-1.month {
+            background-color: #d5dbdb;
+            font-size: 1.1rem;
+        }
+
+        .td-115-1.date,
+        .date_sun,
+        .date_sat {
+            text-align: center;
+            vertical-align: middle;
+            background-color: #f8f9fa;
+            font-weight: 500;
+            width: 3.2%;
+            font-size: 0.9rem;
+        }
+
+        .date_sun,
+        .date_sat {
+            color: red;
+        }
+
+        .td-115-1.date.sat,
+        .td-115-1.date.sun {
+            background-color: #f0f3f4;
+            color: #7f8c8d;
+        }
+
+        .td-115-1.events {
+            background-color: #fef9e7;
+            color: #1e1e1e;
+            vertical-align: top;
+            font-size: 0.8rem;
+            padding: 6px 8px;
+        }
+
+        .event-item {
+            display: block;
+            margin-bottom: 4px;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .event-date {
+            font-weight: 700;
+            color: #c0392b;
+            margin-right: 4px;
+        }
+
+        .note {
+            background-color: #e8f6f3;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #0e6251;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+        }
+
+        /* .footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            text-align: right;
+            color: #7f8c8d;
+        } */
+
+        col.month-col {
+            width: 4%;
+        }
+
+        col.week-col {
+            width: 4%;
+        }
+
+        col.day-col {
+            width: 3.2%;
+        }
+
+        col.event-col {
+            width: 35%;
+        }
+
+        @media (max-width: 800px) {
+            .body-115-1 {
+                margin: 10px 5px;
+            }
+
+            .th-115-1,
+            .td-115-1 {
+                font-size: 0.7rem;
+                padding: 3px 2px;
+            }
+
+            .td-115-1.date,
+            .date_sun,
+            .date_sat {
+                font-size: 0.7rem;
+            }
+
+            .td-115-1.events {
+                font-size: 0.7rem;
+                padding: 4px;
+            }
+
+            .event-date {
+                font-size: 0.7rem;
+            }
+
+            .h1-115-1 {
+                font-size: clamp(0.9rem, 5vw, 1.4rem);
+            }
+        }
+    </style>
+</head>
+
+<body class="body-115-1">
+    <h1 class="h1-115-1">愛蘭國小115學年度第一學期重點行事曆</h1>
+    <div class="table-wrapper">
+        <table class="Table-115-1">
+            <colgroup>
+                <col class="month-col">
+                <col class="week-col">
+                <col span="7" class="day-col">
+                <col class="event-col">
+            </colgroup>
+            <thead>
+                <tr class="tr-115-1">
+                    <th class="th-115-1" rowspan="2">月</th>
+                    <th class="th-115-1" rowspan="2">週</th>
+                    <th class="th-115-1" colspan="7">日 曆</th>
+                    <th class="th-115-1" rowspan="2">重 點 行 事</th>
+                </tr>
+                <tr class="tr-115-1">
+                    <th class="th-115-1">日</th>
+                    <th class="th-115-1">一</th>
+                    <th class="th-115-1">二</th>
+                    <th class="th-115-1">三</th>
+                    <th class="th-115-1">四</th>
+                    <th class="th-115-1">五</th>
+                    <th class="th-115-1">六</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tr-115-1">
+                    <td class="month td-115-1" rowspan="4">9</td>
+                    <td class="week td-115-1">1</td>
+                    <td class="date_sun td-115-1">30</td>
+                    <td class="date td-115-1 td-115-1">31</td>
+                    <td class="date td-115-1 td-115-1">1</td>
+                    <td class="date td-115-1 td-115-1">2</td>
+                    <td class="date td-115-1 td-115-1">3</td>
+                    <td class="date td-115-1 td-115-1">4</td>
+                    <td class="date_sat td-115-1">5</td>
+                    <td class="events td-115-1 td-115-1">
+                        <span class="event-item"><span class="event-date">8/31</span> 開學、<span
+                                class="event-date">9/2</span> 選社團、<span class="event-date">9/2</span> 開學典禮、<span
+                                class="event-date">9/2</span> 校務會議</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">2</td>
+                    <td class="date_sun td-115-1">6</td>
+                    <td class="date td-115-1 td-115-1">7</td>
+                    <td class="date td-115-1 td-115-1">8</td>
+                    <td class="date td-115-1">9</td>
+                    <td class="date td-115-1">10</td>
+                    <td class="date td-115-1">11</td>
+                    <td class="date_sat td-115-1">12</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">9/9</span> 社團上課、<span
+                                class="event-date">9/9</span> THSD 家長說明會 19:00~20:00</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">3</td>
+                    <td class="date_sun td-115-1">13</td>
+                    <td class="date td-115-1">14</td>
+                    <td class="date td-115-1">15</td>
+                    <td class="date td-115-1">16</td>
+                    <td class="date td-115-1">17</td>
+                    <td class="date td-115-1">18</td>
+                    <td class="date_sat td-115-1">19</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">9/14</span> 防災預演、<span
+                                class="event-date">9/17</span> 學生分組照(下午)</span>
+                        <span class="event-item"><span class="event-date">9/16</span> 科展上課、<span
+                                class="event-date">9/16</span> 科技營隊上課、<span class="event-date">9/16</span> 班親會</span>
+                        <span class="event-item"><span class="event-date">9/18</span> 全體師生團體照(上午)、<span
+                                class="event-date">9/18</span> 英語手牽手開訓</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">4</td>
+                    <td class="date_sun td-115-1">20</td>
+                    <td class="date td-115-1">21</td>
+                    <td class="date td-115-1">22</td>
+                    <td class="date td-115-1">23</td>
+                    <td class="date td-115-1">24</td>
+                    <td class="date_sat td-115-1">25</td>
+                    <td class="date_sat td-115-1">26</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">9/21</span> 防災演練、<span
+                                class="event-date">9/25</span> 中秋節</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="month td-115-1" rowspan="5">10</td>
+                    <td class="week td-115-1">5</td>
+                    <td class="date_sun td-115-1">27</td>
+                    <td class="date_sun td-115-1">28</td>
+                    <td class="date td-115-1">29</td>
+                    <td class="date td-115-1">30</td>
+                    <td class="date td-115-1">1</td>
+                    <td class="date td-115-1">2</td>
+                    <td class="date_sat td-115-1">3</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">9/28</span> 教師節、<span
+                                class="event-date">9/30</span> 廢電池回收</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">6</td>
+                    <td class="date_sun td-115-1">4</td>
+                    <td class="date td-115-1">5</td>
+                    <td class="date td-115-1">6</td>
+                    <td class="date td-115-1">7</td>
+                    <td class="date td-115-1">8</td>
+                    <td class="date_sat td-115-1">9</td>
+                    <td class="date_sat td-115-1">10</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">10/6</span> 打流感、<span
+                                class="event-date">10/9</span> 補假、<span class="event-date">10/10</span> 國慶日</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">7</td>
+                    <td class="date_sun td-115-1">11</td>
+                    <td class="date td-115-1">12</td>
+                    <td class="date td-115-1">13</td>
+                    <td class="date td-115-1">14</td>
+                    <td class="date td-115-1">15</td>
+                    <td class="date td-115-1">16</td>
+                    <td class="date_sat td-115-1">17</td>
+                    <td class="events td-115-1"></td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">8</td>
+                    <td class="date_sun td-115-1">18</td>
+                    <td class="date td-115-1">19</td>
+                    <td class="date td-115-1">20</td>
+                    <td class="date td-115-1">21</td>
+                    <td class="date td-115-1">22</td>
+                    <td class="date td-115-1">23</td>
+                    <td class="date_sat td-115-1">24</td>
+                    <td class="events td-115-1"></td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">9</td>
+                    <td class="date_sun td-115-1">25</td>
+                    <td class="date_sun td-115-1">26</td>
+                    <td class="date td-115-1">27</td>
+                    <td class="date td-115-1">28</td>
+                    <td class="date td-115-1">29</td>
+                    <td class="date td-115-1">30</td>
+                    <td class="date_sat td-115-1">31</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">10/25</span> 光復節、<span
+                                class="event-date">10/26</span> 補假、<span class="event-date">10/30</span> 搶成功、<span
+                                class="event-date">10/30</span> 廢電池回收、第 68 期愛蘭悅報出刊</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="month td-115-1" rowspan="4">11</td>
+                    <td class="week td-115-1">10</td>
+                    <td class="date_sun td-115-1">1</td>
+                    <td class="date td-115-1">2</td>
+                    <td class="date td-115-1">3</td>
+                    <td class="date td-115-1">4</td>
+                    <td class="date td-115-1">5</td>
+                    <td class="date td-115-1">6</td>
+                    <td class="date_sat td-115-1">7</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">11/5-6</span> 期中評量</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">11</td>
+                    <td class="date_sun td-115-1">8</td>
+                    <td class="date td-115-1">9</td>
+                    <td class="date td-115-1">10</td>
+                    <td class="date td-115-1">11</td>
+                    <td class="date td-115-1">12</td>
+                    <td class="date td-115-1">13</td>
+                    <td class="date_sat td-115-1">14</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">11/11~13</span> 畢業旅行、<span
+                                class="event-date">11/13</span> 秋季校外教學</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">12</td>
+                    <td class="date_sun td-115-1">15</td>
+                    <td class="date td-115-1">16</td>
+                    <td class="date td-115-1">17</td>
+                    <td class="date td-115-1">18</td>
+                    <td class="date td-115-1">19</td>
+                    <td class="date td-115-1">20</td>
+                    <td class="date_sat td-115-1">21</td>
+                    <td class="events td-115-1"></td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">13</td>
+                    <td class="date_sun td-115-1">22</td>
+                    <td class="date td-115-1">23</td>
+                    <td class="date td-115-1">24</td>
+                    <td class="date td-115-1">25</td>
+                    <td class="date td-115-1">26</td>
+                    <td class="date td-115-1">27</td>
+                    <td class="date_sat td-115-1">28</td>
+                    <td class="events td-115-1">
+                        <span class="event-item">提醒家長申請各項證明書</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="month td-115-1" rowspan="4">12</td>
+                    <td class="week td-115-1">14</td>
+                    <td class="date_sun td-115-1">29</td>
+                    <td class="date td-115-1">30</td>
+                    <td class="date td-115-1">1</td>
+                    <td class="date td-115-1">2</td>
+                    <td class="date td-115-1">3</td>
+                    <td class="date td-115-1">4</td>
+                    <td class="date_sat td-115-1">5</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">11/30</span> 廢電池回收、<span
+                                class="event-date">12/2</span> 路跑、<span class="event-date">12/5</span> 校慶運動會</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">15</td>
+                    <td class="date_sun td-115-1">6</td>
+                    <td class="date_sun td-115-1">7</td>
+                    <td class="date td-115-1">8</td>
+                    <td class="date td-115-1">9</td>
+                    <td class="date td-115-1">10</td>
+                    <td class="date td-115-1">11</td>
+                    <td class="date_sat td-115-1">12</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">12/7</span> 運動會補假</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">16</td>
+                    <td class="date_sun td-115-1">13</td>
+                    <td class="date td-115-1">14</td>
+                    <td class="date td-115-1">15</td>
+                    <td class="date td-115-1">16</td>
+                    <td class="date td-115-1">17</td>
+                    <td class="date td-115-1">18</td>
+                    <td class="date_sat td-115-1">19</td>
+                    <td class="events td-115-1"></td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">17</td>
+                    <td class="date_sun td-115-1">20</td>
+                    <td class="date td-115-1">21</td>
+                    <td class="date td-115-1">22</td>
+                    <td class="date td-115-1">23</td>
+                    <td class="date td-115-1">24</td>
+                    <td class="date_sat td-115-1">25</td>
+                    <td class="date_sat td-115-1">26</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">12/25</span> 行憲紀念日</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="month td-115-1" rowspan="4">1</td>
+                    <td class="week td-115-1">18</td>
+                    <td class="date_sun td-115-1">27</td>
+                    <td class="date td-115-1">28</td>
+                    <td class="date td-115-1">29</td>
+                    <td class="date td-115-1">30</td>
+                    <td class="date td-115-1">31</td>
+                    <td class="date_sat td-115-1">1</td>
+                    <td class="date_sat td-115-1">2</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">12/31</span> 廢電池回收、<span
+                                class="event-date">1/1</span> 元旦</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">19</td>
+                    <td class="date_sun td-115-1">3</td>
+                    <td class="date td-115-1">4</td>
+                    <td class="date td-115-1">5</td>
+                    <td class="date td-115-1">6</td>
+                    <td class="date td-115-1">7</td>
+                    <td class="date td-115-1">8</td>
+                    <td class="date_sat td-115-1">9</td>
+                    <td class="events td-115-1">
+                        <span class="event-item">第69期愛蘭悅報出刊</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">20</td>
+                    <td class="date_sun td-115-1">10</td>
+                    <td class="date td-115-1">11</td>
+                    <td class="date td-115-1">12</td>
+                    <td class="date td-115-1">13</td>
+                    <td class="date td-115-1">14</td>
+                    <td class="date td-115-1">15</td>
+                    <td class="date_sat td-115-1">16</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">1/13-14</span> 期末評量</span>
+                    </td>
+                </tr>
+                <tr class="tr-115-1">
+                    <td class="week td-115-1">21</td>
+                    <td class="date_sun td-115-1">17</td>
+                    <td class="date td-115-1">18</td>
+                    <td class="date td-115-1">19</td>
+                    <td class="date td-115-1">20</td>
+                    <td class="date td-115-1">21</td>
+                    <td class="date td-115-1">22</td>
+                    <td class="date_sat td-115-1">23</td>
+                    <td class="events td-115-1">
+                        <span class="event-item"><span class="event-date">1/20</span> 休業式、<span
+                                class="event-date">1/21-2/10</span> 寒假、<span class="event-date">2/11</span> 開學日</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
