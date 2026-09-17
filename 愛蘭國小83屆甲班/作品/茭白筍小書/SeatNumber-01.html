@@ -50,10 +50,15 @@
             </div>
         </div><br>
 
-        <!-- 以下第一列 -->
+        <!-- 作者標題列 -->
         <div class="row">
-            <h4 class="card-title">作者：01-冠樑</h4>
+            <div class="col-12">
+                <h4 class="card-title">作者：01-冠樑</h4>
+            </div>
+        </div>
 
+        <!-- 以下第一列 (封面到P5) -->
+        <div class="row">
             <div class="col-md-2">
                 <div class="card">
                     <img src="https://lh3.googleusercontent.com/pw/AP1GczOA7tnYaKE7fVoutD1BmCrU7BZyggCmVikmExU8GaxvALZFYJ8w2pqxn1ZF62eVmeBMbcYsxFic8h8OqiBDbbHrAkj5h5UlBOh0PY0pV7QfgYRUNAtZTOpcdvxFKDHEL_Li-JMprUUAeE8DeCNZnUj86g=w635-h911-s-no-gm?authuser=0"
@@ -103,7 +108,7 @@
             </div>
         </div><br>
 
-        <!-- 以下第二列 -->
+        <!-- 以下第二列 (P6到封底) -->
         <div class="row">
             <div class="col-md-2">
                 <div class="card">
@@ -155,12 +160,9 @@
         </div><br>
     </div>
 
-
-
     <script>
         click_resize = () => {
             if (document.documentElement.clientWidth > 768) {
-                // data-bs-toggle="dropdown"
                 $("span.nav-link").removeAttr("data-bs-toggle")
             } else {
                 $("span.nav-link").attr("data-bs-toggle", "dropdown")

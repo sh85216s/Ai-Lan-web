@@ -10,7 +10,6 @@ h1 {
     text-shadow: 0 1px 0 #fff;
 }
 
-/* ===== 2. 縮圖外圍紅色虛線框 ===== */
 .card {
     border: none;
     background-color: transparent;
@@ -29,7 +28,6 @@ h1 {
 
 .card .card-img-top:hover {
     border-color: rgb(238, 43, 59);
-    /* box-shadow: 0 0 0 3px rgba(230, 0, 18, .15); */
 }
 
 img[data-action="zoom"] {
