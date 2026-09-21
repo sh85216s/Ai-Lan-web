@@ -293,7 +293,8 @@ body {
 /* ----- 卡片與圖片樣式 ----- */
 .card {
     border: none;
-    border-radius: 2.5rem 2.5rem 2rem 2rem;
+    /* border-radius: 2.5rem 2.5rem 2rem 2rem; */
+    border-radius: 1rem 1rem 1rem 1rem;
     background-color: #ffffff;
     box-shadow: var(--card-shadow);
     transition: all 0.25s;
