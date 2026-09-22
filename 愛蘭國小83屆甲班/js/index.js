@@ -557,4 +557,17 @@
 
     })();
 
+    // 更新頁尾日期
+    document.addEventListener('DOMContentLoaded', function () {
+        
+        function updateLastModified() {
+            const lastModified = new Date(document.lastModified);
+            const formattedDateTime =
+                `${lastModified.getFullYear()}-${String(lastModified.getMonth() + 1).padStart(2, '0')}-${String(lastModified.getDate()).padStart(2, '0')} ${String(lastModified.getHours()).padStart(2, '0')}:${String(lastModified.getMinutes()).padStart(2, '0')}`;
+            const el = document.getElementById('lastModified');
+            if (el) el.textContent = formattedDateTime;
+        }
+        updateLastModified();
+    });
+
 })();

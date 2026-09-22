@@ -2,95 +2,95 @@ document.addEventListener('DOMContentLoaded', function () {
     // ================================================================
     // 1. 行動裝置下拉選單控制 (原生，無 jQuery 依賴)
     // ================================================================
-    function isMobile() {
-        return window.innerWidth < 992;
-    }
+    // function isMobile() {
+    //     return window.innerWidth < 992;
+    // }
 
-    let currentOpenMenu = null;
+    // let currentOpenMenu = null;
 
-    function closeAllDropdowns() {
-        document.querySelectorAll('.navbar-nav .dropdown-menu.show').forEach(function (menu) {
-            menu.classList.remove('show');
-        });
-        document.querySelectorAll('.navbar-nav .dropdown-toggle').forEach(function (toggle) {
-            toggle.setAttribute('aria-expanded', 'false');
-        });
-        currentOpenMenu = null;
-    }
+    // function closeAllDropdowns() {
+    //     document.querySelectorAll('.navbar-nav .dropdown-menu.show').forEach(function (menu) {
+    //         menu.classList.remove('show');
+    //     });
+    //     document.querySelectorAll('.navbar-nav .dropdown-toggle').forEach(function (toggle) {
+    //         toggle.setAttribute('aria-expanded', 'false');
+    //     });
+    //     currentOpenMenu = null;
+    // }
 
-    function toggleDropdown(dropdownElement) {
-        const menu = dropdownElement.querySelector('.dropdown-menu');
-        if (!menu) return;
+    // function toggleDropdown(dropdownElement) {
+    //     const menu = dropdownElement.querySelector('.dropdown-menu');
+    //     if (!menu) return;
 
-        if (menu.classList.contains('show')) {
-            menu.classList.remove('show');
-            dropdownElement.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
-            currentOpenMenu = null;
-            return;
-        }
+    //     if (menu.classList.contains('show')) {
+    //         menu.classList.remove('show');
+    //         dropdownElement.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
+    //         currentOpenMenu = null;
+    //         return;
+    //     }
 
-        closeAllDropdowns();
-        menu.classList.add('show');
-        dropdownElement.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'true');
-        currentOpenMenu = dropdownElement;
-    }
+    //     closeAllDropdowns();
+    //     menu.classList.add('show');
+    //     dropdownElement.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'true');
+    //     currentOpenMenu = dropdownElement;
+    // }
 
-    function handleDropdownClick(e) {
-        if (e.target.closest('.dropdown-item')) {
-            const dropdown = e.currentTarget;
-            const menu = dropdown.querySelector('.dropdown-menu');
-            if (menu) {
-                menu.classList.remove('show');
-                dropdown.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
-                if (currentOpenMenu === dropdown) currentOpenMenu = null;
-            }
-            return;
-        }
-        const dropdown = e.currentTarget;
-        toggleDropdown(dropdown);
-        e.preventDefault();
-        e.stopPropagation();
-    }
+    // function handleDropdownClick(e) {
+    //     if (e.target.closest('.dropdown-item')) {
+    //         const dropdown = e.currentTarget;
+    //         const menu = dropdown.querySelector('.dropdown-menu');
+    //         if (menu) {
+    //             menu.classList.remove('show');
+    //             dropdown.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
+    //             if (currentOpenMenu === dropdown) currentOpenMenu = null;
+    //         }
+    //         return;
+    //     }
+    //     const dropdown = e.currentTarget;
+    //     toggleDropdown(dropdown);
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    // }
 
-    function bindMobileEvents() {
-        document.querySelectorAll('.navbar-nav .dropdown').forEach(function (dd) {
-            dd.removeEventListener('click', handleDropdownClick);
-        });
-        if (isMobile()) {
-            document.querySelectorAll('.navbar-nav .dropdown').forEach(function (dd) {
-                dd.addEventListener('click', handleDropdownClick);
-            });
-        }
-    }
+    // function bindMobileEvents() {
+    //     document.querySelectorAll('.navbar-nav .dropdown').forEach(function (dd) {
+    //         dd.removeEventListener('click', handleDropdownClick);
+    //     });
+    //     if (isMobile()) {
+    //         document.querySelectorAll('.navbar-nav .dropdown').forEach(function (dd) {
+    //             dd.addEventListener('click', handleDropdownClick);
+    //         });
+    //     }
+    // }
 
     // 點擊外部關閉所有下拉選單（僅手機）
-    document.addEventListener('click', function (e) {
-        if (isMobile()) {
-            const nav = document.querySelector('.navbar-collapse');
-            if (nav && !nav.contains(e.target)) {
-                closeAllDropdowns();
-            }
-        }
-    });
+    // document.addEventListener('click', function (e) {
+    //     if (isMobile()) {
+    //         const nav = document.querySelector('.navbar-collapse');
+    //         if (nav && !nav.contains(e.target)) {
+    //             closeAllDropdowns();
+    //         }
+    //     }
+    // });
 
     // 視窗縮放時重新綁定事件
-    let resizeTimer;
-    window.addEventListener('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
-            if (!isMobile()) {
-                closeAllDropdowns();
-                document.querySelectorAll('.navbar-nav .dropdown').forEach(function (dd) {
-                    dd.removeEventListener('click', handleDropdownClick);
-                });
-            } else {
-                bindMobileEvents();
-            }
-        }, 200);
-    });
+    // let resizeTimer;
+    // window.addEventListener('resize', function () {
+    //     clearTimeout(resizeTimer);
+    //     resizeTimer = setTimeout(function () {
+    //         if (!isMobile()) {
+    //             closeAllDropdowns();
+    //             document.querySelectorAll('.navbar-nav .dropdown').forEach(function (dd) {
+    //                 dd.removeEventListener('click', handleDropdownClick);
+    //             });
+    //         } else {
+    //             bindMobileEvents();
+    //         }
+    //     }, 200);
+    // });
 
     // 初始綁定（若為手機）
-    if (isMobile()) bindMobileEvents();
+    // if (isMobile()) bindMobileEvents();
 
 
     // ================================================================
