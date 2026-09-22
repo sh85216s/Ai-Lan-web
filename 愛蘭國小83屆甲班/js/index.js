@@ -569,5 +569,37 @@
         }
         updateLastModified();
     });
+    
 
 })();
+
+// 學期折疊選單切換功能（新增） 
+
+document.addEventListener('DOMContentLoaded', function () {
+    var accordion = document.getElementById('semesterAccordion');
+    if (!accordion) return;
+
+    var toggles = accordion.querySelectorAll('.semester-toggle');
+    var panels = document.querySelectorAll('.semester-panel');
+
+    toggles.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var targetPanel = document.getElementById(btn.dataset.target);
+            if (!targetPanel) return;
+
+            // 判斷「點擊的項目是否已經開啟」
+            var isAlreadyOpen = btn.classList.contains('active') &&
+                targetPanel.classList.contains('open');
+
+            // 先全部關閉
+            toggles.forEach(function (b) { b.classList.remove('active'); });
+            panels.forEach(function (p) { p.classList.remove('open'); });
+
+            // 若不是關閉自己，就開啟被點擊的項目
+            if (!isAlreadyOpen) {
+                btn.classList.add('active');
+                targetPanel.classList.add('open');
+            }
+        });
+    });
+});
