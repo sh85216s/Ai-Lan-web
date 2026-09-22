@@ -340,14 +340,59 @@ body {
 
 .card-img-top {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    /* aspect-ratio: 4 / 3; */
+    aspect-ratio: 3 / 2;
     object-fit: cover;
     display: block;
 }
 
+/* ===== 相簿縮圖：預設略暗，滑鼠移入時恢復亮度並從中心放大 1.2 倍 ===== */
 .SM {
+    position: relative;
     line-height: 0;
     overflow: hidden;
+    /* 關鍵：放大時超出的部分自動裁切，不溢出框架 */
+    isolation: isolate;
+    /* 避免 transform 影響到其他堆疊 */
+}
+
+.SM>a {
+    display: block;
+    /* 讓 <a> 不殘留 inline 空隙，方便裁切 */
+    line-height: 0;
+}
+
+.SM img.card-img-top {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    /* 預設稍微變暗 */
+    filter: brightness(0.82);
+    transform: scale(1);
+    transform-origin: center center;
+    /* 從中心點放大 */
+    transition: transform 0.45s ease, filter 0.45s ease;
+    will-change: transform, filter;
+    /* 防止行動裝置長按跳出圖片選單 */
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+/* 滑鼠移入：恢復亮度 + 放大 1.2 倍 */
+.SM:hover img.card-img-top,
+.SM>a:focus-visible img.card-img-top {
+    filter: brightness(1);
+    transform: scale(1.05);
+}
+
+/* 只在真正支援 hover 的裝置才啟動「移入變亮、放大」效果
+   （觸控裝置不會誤觸，圖片保持原狀但預設仍稍微變暗） */
+@media (hover: none) {
+    .SM img.card-img-top {
+        filter: brightness(1);
+    }
 }
 
 .container h2 {
