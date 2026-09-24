@@ -1,0 +1,402 @@
+<style>
+    .h1-115-1-WIS {
+        font-size: 24px;
+    }
+
+    .Table-115-1-WIS {
+        width: 100%;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .th-115-1-WIS {
+        background-color: #4a6fa5;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        padding: 12px 8px;
+        border: 1px solid #ddd;
+        vertical-align: middle;
+    }
+
+    .td-115-1-WIS {
+        padding: 10px 8px;
+        border: 1px solid #ddd;
+        vertical-align: middle;
+    }
+
+    /* 偶數列背景 #f8f9fa，奇數列背景 #ffffff，滑鼠移入 #e9f2f9 */
+    tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    tbody tr:hover {
+        background-color: #e9f2f9;
+    }
+
+    /* 週次、日期、時間、研習時數、主講者、承辦處室 - 垂直居中，水平居中 */
+    .week-col,
+    .date-col,
+    .time-col,
+    .hours-col,
+    .speaker-col,
+    .office-col {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .week-col {
+        background-color: #f0f4f8;
+        font-weight: bold;
+        width: 5%;
+    }
+
+    .date-col {
+        width: 7%;
+    }
+
+    .time-col {
+        width: 10%;
+    }
+
+    .hours-col {
+        width: 7%;
+    }
+
+    .speaker-col {
+        width: 7%;
+    }
+
+    .office-col {
+        width: 8%;
+    }
+
+    /* 研習地點、活動主題名稱、內容概述 - 垂直居中，水平靠左對齊 */
+    .location-col,
+    .topic-col,
+    .content-col {
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    .location-col {
+        width: 7%;
+    }
+
+    .topic-col {
+        width: 15%;
+    }
+
+    .content-col {
+        width: 30%;
+    }
+
+    .total-hours {
+        background-color: #e9f2f9;
+        font-weight: bold;
+        padding: 10px;
+        text-align: right;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+
+        .th-115-1-WIS,
+        .td-115-1-WIS {
+            padding: 0px;
+            font-size: 12px;
+        }
+
+        .total-hours {
+            padding: 0px;
+            margin-top: 0px;
+        }
+
+        .h1-115-1-WIS {
+            font-size: 15px !important;
+            line-height: 1.4;
+            margin: 0.5em 0;
+        }
+    }
+
+    .highlight {
+        background-color: #fff8e1;
+        font-weight: bold;
+    }
+
+    /* 保留 holiday 文字顏色，但不再設定背景色 */
+    .holiday {
+        color: #c62828;
+        font-weight: bold;
+    }
+
+    /* 特殊事件不再設定背景色，由奇偶列規則決定 */
+    .special-event {
+        /* 無背景色 */
+    }
+</style>
+
+<h1 class="h1-115-1-WIS">愛蘭國小115學年度第一學期以學校為中心教師進修表</h1>
+
+<table class="Table-115-1-WIS">
+    <thead>
+        <tr class="tr-115-1-WIS">
+            <th class="week-col th-115-1-WIS" style="background-color: #4a6fa5;">週次</th>
+            <th class="date-col th-115-1-WIS">日期</th>
+            <th class="time-col th-115-1-WIS">時間</th>
+            <th class="hours-col th-115-1-WIS">研習時數</th>
+            <th class="location-col th-115-1-WIS">研習地點</th>
+            <th class="topic-col th-115-1-WIS" style="text-align: center;">活動主題名稱</th>
+            <th class="content-col th-115-1-WIS" style="text-align: center;">內容概述</th>
+            <th class="speaker-col th-115-1-WIS">主講者</th>
+            <th class="office-col th-115-1-WIS">承辦處室</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">1</td>
+            <td class="date-col td-115-1-WIS">09/02</td>
+            <td class="time-col td-115-1-WIS">13:30-15:30</td>
+            <td class="hours-col td-115-1-WIS">0</td>
+            <td class="location-col td-115-1-WIS">地板教室</td>
+            <td class="topic-col td-115-1-WIS">校務會議</td>
+            <td class="content-col td-115-1-WIS">研討本校重大議題與行事，全校教師共同研討形成願景共識</td>
+            <td class="speaker-col td-115-1-WIS">校長</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">2</td>
+            <td class="date-col td-115-1-WIS">09/09</td>
+            <td class="time-col td-115-1-WIS">13:00-16:00</td>
+            <td class="hours-col td-115-1-WIS">3</td>
+            <td class="location-col td-115-1-WIS">書藝教室</td>
+            <td class="topic-col td-115-1-WIS">素養導向教學與評量-學共共備專家指導</td>
+            <td class="content-col td-115-1-WIS">校內教師學共共備增能（一）教學課學共三星二架命題策略與教案設計</td>
+            <td class="speaker-col td-115-1-WIS">姜宏尚主任</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">3</td>
+            <td class="date-col td-115-1-WIS">09/16</td>
+            <td class="time-col td-115-1-WIS">13:30-15:30</td>
+            <td class="hours-col td-115-1-WIS">0</td>
+            <td class="location-col td-115-1-WIS">教室</td>
+            <td class="topic-col td-115-1-WIS">班親會</td>
+            <td class="content-col td-115-1-WIS">增加親師溝通機會</td>
+            <td class="speaker-col td-115-1-WIS">各師</td>
+            <td class="office-col td-115-1-WIS">輔導處</td>
+        </tr>
+        <tr class="special-event">
+            <td class="week-col td-115-1-WIS">4</td>
+            <td class="date-col td-115-1-WIS">09/23</td>
+            <td class="time-col td-115-1-WIS">13:30-15:30</td>
+            <td class="hours-col td-115-1-WIS">0</td>
+            <td class="location-col td-115-1-WIS">創客教室</td>
+            <td class="topic-col td-115-1-WIS">課程發展委員會</td>
+            <td class="content-col td-115-1-WIS">
+                1.修正正確認新學年度課程計畫<br>
+                2.確認各領域教學研究會召集人<br>
+                3.第一學期公開授課表規劃表
+            </td>
+            <td class="speaker-col td-115-1-WIS">校長</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="special-event">
+            <td class="week-col td-115-1-WIS">5</td>
+            <td class="date-col td-115-1-WIS">09/30</td>
+            <td class="time-col td-115-1-WIS">13:30-15:30</td>
+            <td class="hours-col td-115-1-WIS">2</td>
+            <td class="location-col td-115-1-WIS">社群教室</td>
+            <td class="topic-col td-115-1-WIS">教師專業社群<br>共備觀課課研討</td>
+            <td class="content-col td-115-1-WIS">學共共備-公開授課應用成效（一）教學課融入學共的課堂學習歷程觀察研討</td>
+            <td class="speaker-col td-115-1-WIS">召集人</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">6</td>
+            <td class="date-col td-115-1-WIS">10/07</td>
+            <td class="time-col td-115-1-WIS">13:00-16:00</td>
+            <td class="hours-col td-115-1-WIS">3</td>
+            <td class="location-col td-115-1-WIS">書藝教室</td>
+            <td class="topic-col td-115-1-WIS">素養導向教學與評量-學共共備專家指導</td>
+            <td class="content-col td-115-1-WIS">校內教師學共共備增能（二）國語課學共策略共備與觀課課設計</td>
+            <td class="speaker-col td-115-1-WIS">姜宏尚主任</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">7</td>
+            <td class="date-col td-115-1-WIS">10/14</td>
+            <td class="time-col td-115-1-WIS">13:30-15:30</td>
+            <td class="hours-col td-115-1-WIS">0</td>
+            <td class="location-col td-115-1-WIS">教室</td>
+            <td class="topic-col td-115-1-WIS">學年會議</td>
+            <td class="content-col td-115-1-WIS">學年評量命題技巧研討並審題</td>
+            <td class="speaker-col td-115-1-WIS">學年主任</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="special-event">
+            <td class="week-col td-115-1-WIS">8</td>
+            <td class="date-col td-115-1-WIS">10/21</td>
+            <td class="time-col td-115-1-WIS">13:30-15:30</td>
+            <td class="hours-col td-115-1-WIS">2</td>
+            <td class="location-col td-115-1-WIS">社群教室</td>
+            <td class="topic-col td-115-1-WIS">教師專業社群<br>共備觀課課研討</td>
+            <td class="content-col td-115-1-WIS">學共共備-公開授課應用成效（二）國語課融入學共的課堂學習歷程觀察研討</td>
+            <td class="speaker-col td-115-1-WIS">召集人</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">9</td>
+            <td class="date-col td-115-1-WIS">10/28</td>
+            <td class="time-col td-115-1-WIS">13:00-16:00</td>
+            <td class="hours-col td-115-1-WIS">3</td>
+            <td class="location-col td-115-1-WIS">電腦教室</td>
+            <td class="topic-col td-115-1-WIS">教師AI數位教學<br>增能研習</td>
+            <td class="content-col td-115-1-WIS">Notebook LM實作備課</td>
+            <td class="speaker-col td-115-1-WIS">阿亮校長</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">10</td>
+            <td class="date-col td-115-1-WIS">11/04</td>
+            <td class="time-col td-115-1-WIS">13:30-16:00</td>
+            <td class="hours-col td-115-1-WIS">0</td>
+            <td class="location-col td-115-1-WIS">教室</td>
+            <td class="topic-col td-115-1-WIS">級務處理</td>
+            <td class="content-col td-115-1-WIS">各班處理級務事宜</td>
+            <td class="speaker-col td-115-1-WIS">各師</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">11</td>
+            <td class="date-col td-115-1-WIS">11/11</td>
+            <td class="time-col td-115-1-WIS">13:00-16:00</td>
+            <td class="hours-col td-115-1-WIS">3</td>
+            <td class="location-col td-115-1-WIS">書藝教室</td>
+            <td class="topic-col td-115-1-WIS">素養導向教學與評量-學共共備專家指導</td>
+            <td class="content-col td-115-1-WIS">校內教師學共共備增能（三）Jump題-各科伸展跳躍挑戰題設計與實作</td>
+            <td class="speaker-col td-115-1-WIS">姜宏尚主任</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="special-event">
+            <td class="week-col td-115-1-WIS">12</td>
+            <td class="date-col td-115-1-WIS">11/18</td>
+            <td class="time-col td-115-1-WIS">13:30-15:30</td>
+            <td class="hours-col td-115-1-WIS">2</td>
+            <td class="location-col td-115-1-WIS">社群教室</td>
+            <td class="topic-col td-115-1-WIS">教師專業社群<br>共備觀課課研討</td>
+            <td class="content-col td-115-1-WIS">學共共備-公開授課應用成效（三）Jump題導向教學設計與觀課課實踐反思</td>
+            <td class="speaker-col td-115-1-WIS">各師</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="special-event">
+            <td class="week-col td-115-1-WIS">13</td>
+            <td class="date-col td-115-1-WIS">11/25</td>
+            <td class="time-col td-115-1-WIS">下午</td>
+            <td class="hours-col td-115-1-WIS">0</td>
+            <td class="location-col td-115-1-WIS"></td>
+            <td class="topic-col td-115-1-WIS">校慶路跑場勘、說明</td>
+            <td class="content-col td-115-1-WIS"></td>
+            <td class="speaker-col td-115-1-WIS">各師</td>
+            <td class="office-col td-115-1-WIS">學務處</td>
+        </tr>
+        <tr class="special-event">
+            <td class="week-col td-115-1-WIS">14</td>
+            <td class="date-col td-115-1-WIS">12/02</td>
+            <td class="time-col td-115-1-WIS"></td>
+            <td class="hours-col td-115-1-WIS">0</td>
+            <td class="location-col td-115-1-WIS"></td>
+            <td class="topic-col td-115-1-WIS">校慶準備</td>
+            <td class="content-col td-115-1-WIS"></td>
+            <td class="speaker-col td-115-1-WIS">各師</td>
+            <td class="office-col td-115-1-WIS">學務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">15</td>
+            <td class="date-col td-115-1-WIS">12/09</td>
+            <td class="time-col td-115-1-WIS">13:00-16:00</td>
+            <td class="hours-col td-115-1-WIS">0</td>
+            <td class="location-col td-115-1-WIS">教室</td>
+            <td class="topic-col td-115-1-WIS">學年會議</td>
+            <td class="content-col td-115-1-WIS">學年評量命題技巧研討並審題</td>
+            <td class="speaker-col td-115-1-WIS">學年主任</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">16</td>
+            <td class="date-col td-115-1-WIS">12/16</td>
+            <td class="time-col td-115-1-WIS">13:00-16:00</td>
+            <td class="hours-col td-115-1-WIS">3</td>
+            <td class="location-col td-115-1-WIS">書藝教室</td>
+            <td class="topic-col td-115-1-WIS">教師數位教學<br>增能研習</td>
+            <td class="content-col td-115-1-WIS">數位學習成果（一）Keynote玩出新課堂</td>
+            <td class="speaker-col td-115-1-WIS">Robin</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">17</td>
+            <td class="date-col td-115-1-WIS">12/23</td>
+            <td class="time-col td-115-1-WIS">13:30-16:00</td>
+            <td class="hours-col td-115-1-WIS">3</td>
+            <td class="location-col td-115-1-WIS">語言教室</td>
+            <td class="topic-col td-115-1-WIS">班級經營共識與<br>增能工作坊</td>
+            <td class="content-col td-115-1-WIS">SEL班級經營應用</td>
+            <td class="speaker-col td-115-1-WIS">李淑慧老師</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">18</td>
+            <td class="date-col td-115-1-WIS">12/30</td>
+            <td class="time-col td-115-1-WIS">13:00-17:00</td>
+            <td class="hours-col td-115-1-WIS">4</td>
+            <td class="location-col td-115-1-WIS">活動中心</td>
+            <td class="topic-col td-115-1-WIS">自衛消防編組</td>
+            <td class="content-col td-115-1-WIS">為儘量降低人命、財產損失之目的而預先編組訓練之消防體制</td>
+            <td class="speaker-col td-115-1-WIS">總務主任</td>
+            <td class="office-col td-115-1-WIS">總務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">19</td>
+            <td class="date-col td-115-1-WIS">01/06</td>
+            <td class="time-col td-115-1-WIS">13:00-16:00</td>
+            <td class="hours-col td-115-1-WIS">3</td>
+            <td class="location-col td-115-1-WIS">書藝教室</td>
+            <td class="topic-col td-115-1-WIS">教師數位教學<br>增能研習</td>
+            <td class="content-col td-115-1-WIS">數位學習成果（二）Keynote互動式學習單</td>
+            <td class="speaker-col td-115-1-WIS">Robin</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="special-event">
+            <td class="week-col td-115-1-WIS">20</td>
+            <td class="date-col td-115-1-WIS">01/13</td>
+            <td class="time-col td-115-1-WIS">13:30-15:30</td>
+            <td class="hours-col td-115-1-WIS">0</td>
+            <td class="location-col td-115-1-WIS">創客教室</td>
+            <td class="topic-col td-115-1-WIS">課程發展委員會</td>
+            <td class="content-col td-115-1-WIS">
+                1.第一學期課程實施檢討(含課程評鑑)<br>
+                2.修正並確認第二學期課程計畫<br>
+                3.第二學期公開授課規劃表
+            </td>
+            <td class="speaker-col td-115-1-WIS">校長</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+        <tr class="tr-115-1-WIS">
+            <td class="week-col td-115-1-WIS">21</td>
+            <td class="date-col td-115-1-WIS">01/20</td>
+            <td class="time-col td-115-1-WIS">13:30-15:30</td>
+            <td class="hours-col td-115-1-WIS">0</td>
+            <td class="location-col td-115-1-WIS">教室</td>
+            <td class="topic-col td-115-1-WIS">級務處理</td>
+            <td class="content-col td-115-1-WIS">各班處理級務事宜</td>
+            <td class="speaker-col td-115-1-WIS">各師</td>
+            <td class="office-col td-115-1-WIS">教務處</td>
+        </tr>
+    </tbody>
+</table>
