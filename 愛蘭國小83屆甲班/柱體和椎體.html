@@ -44,6 +44,7 @@
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
         }
     </style>
+    <base target="_blank">
 </head>
 
 <body class="min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
@@ -72,7 +73,6 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-            <!-- Sidebar: Shape Selector & Info Panel -->
             <div class="lg:col-span-4 space-y-6">
                 <div
                     class="bg-slate-800/60 backdrop-blur border border-slate-700/60 p-2 rounded-2xl flex space-x-2 shadow-xl">
@@ -203,32 +203,22 @@
         </div>
     </main>
 
-    <!-- <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
-        <p>立體幾合教育互動平台 &copy; 2026 | 支援 3D 互動旋轉、透視與動態展開</p>
-    </footer> -->
-
     <script>
-        // ============================================================
-        //  資料結構
-        // ============================================================
         const shapesData = {
             prism: [
                 { id: 'triangular_prism', name: '三角柱', v: 6, e: 9, f: 5, desc: '上下底面為全等的三角形，側面為三個長方形組成。', tip: '三角柱具有 6 個頂點、9 條邊與 5 個面。其側面展開後為一個大長方形。' },
                 { id: 'square_prism', name: '四角柱 (長方體)', v: 8, e: 12, f: 6, desc: '上下底面為全等的四邊形（此處以正方形為例），側面為四個長方形。', tip: '四角柱最常見的例子就是長方體或正方體，擁有 8 個頂點、12 條邊與 6 個面。' },
                 { id: 'pentagonal_prism', name: '五角柱', v: 10, e: 15, f: 7, desc: '上下底面為全等的五邊形，側面由五個長方形環繞而成。', tip: '五角柱的底面是五邊形，共有 10 個頂點、15 條邊與 7 個面。展開圖中央為五邊形底面，周圍環繞五個長方形側面。' },
-                { id: 'cylinder', name: '圓柱', v: 0, e: 2, f: 3, desc: '上下底面為全等的圓形，側面為一個曲面（展開後為長方形）。', tip: '圓柱展開圖的長方形寬度等於底面圓周長 (2πr)，高度等於柱高。上下兩個圓形分別與長方形的上下邊相切。' }
+                { id: 'cylinder', name: '圓柱', v: 0, e: 2, f: 3, desc: '上下底面為全等的圓形，側面為一個曲面（展開後為長方形）。', tip: '圓柱展開圖的長方形寬度等於底面圓周長 (2πr)，高度等於柱高。拖曳滑桿可看到側面由捲曲的圓筒慢慢展開成長方形，過程中上下兩個圓形底面始終與曲面邊緣相連並相切，另一側則向外掀開，最終與長方形的上下邊相切。' }
             ],
             pyramid: [
                 { id: 'triangular_pyramid', name: '三角錐 (四面體)', v: 4, e: 6, f: 4, desc: '底面為三角形，側面由三個三角形匯聚於頂點。', tip: '三角錐（又稱四面體）是邊數最少的錐體，展開圖由中央底面三角形與三個側面三角形組成。' },
                 { id: 'square_pyramid', name: '四角錐', v: 5, e: 8, f: 5, desc: '底面為正方形，側面由四個三角形匯聚於頂點。', tip: '埃及金字塔即為典型四角錐，展開圖由中央正方形與四個外翻的等腰三角形組成。' },
                 { id: 'pentagonal_pyramid', name: '五角錐', v: 6, e: 10, f: 6, desc: '底面為五邊形，側面由五個三角形匯聚於頂點。', tip: '五角錐展開圖為中央五邊形底面，外圍環繞五個三角形側面。' },
-                { id: 'cone', name: '圓錐', v: 1, e: 1, f: 2, desc: '底面為圓形，側面為扇形曲面匯聚於錐頂。圓錐沒有像正方體那樣「一條一條的直線邊」，但是它有一條曲線形成的邊。', tip: '圓錐展開圖由一個扇形（側面）與一個圓形（底面）組成。扇形半徑等於母線長(頂點到圓周的斜線距離)，弧長等於底面圓周長。' }
+                { id: 'cone', name: '圓錐', v: 1, e: 1, f: 2, desc: '底面為圓形，側面為扇形曲面匯聚於錐頂。圓錐沒有像正方體那樣「一條一條的直線邊」，但是它有一條曲線形成的邊。', tip: '圓錐展開圖由一個扇形（側面）與一個圓形（底面）組成。拖曳滑桿可看到側面由立體錐面慢慢向兩側對稱展開成扇形，過程中圓形底面的一側始終連著曲面並相切，另一側向外向下掀開，最終與扇形的弧長外側相切。' }
             ]
         };
 
-        // ============================================================
-        //  狀態
-        // ============================================================
         let currentCategory = 'prism';
         let currentShapeId = 'triangular_prism';
         let currentViewMode = 'solid';
@@ -239,9 +229,6 @@
         let isMouseDown = false;
         let previousMousePosition = { x: 0, y: 0 };
 
-        // ============================================================
-        //  初始化
-        // ============================================================
         window.addEventListener('DOMContentLoaded', () => {
             initThreeJS();
             renderShapeButtons();
@@ -359,9 +346,6 @@
             rebuildModel();
         }
 
-        // ============================================================
-        //  Three.js 初始化
-        // ============================================================
         function initThreeJS() {
             const container = document.getElementById('three-canvas-target');
             scene = new THREE.Scene();
@@ -458,13 +442,24 @@
             rebuildModel();
         }
 
-        // ============================================================
-        //  模型重建
-        // ============================================================
+        function disposeObject(obj) {
+            if (!obj) return;
+            if (obj.geometry) obj.geometry.dispose();
+            if (obj.material) {
+                if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
+                else obj.material.dispose();
+            }
+            if (obj.children && obj.children.length) {
+                obj.children.slice().forEach(disposeObject);
+            }
+        }
+
         function rebuildModel() {
             if (!modelContainerGroup) return;
             while (modelContainerGroup.children.length > 0) {
-                modelContainerGroup.remove(modelContainerGroup.children[0]);
+                const child = modelContainerGroup.children[0];
+                modelContainerGroup.remove(child);
+                disposeObject(child);
             }
 
             modelContainerGroup.rotation.set(0, 0, 0);
@@ -493,9 +488,14 @@
             });
         }
 
-        // ============================================================
-        //  立體 / 透視模式
-        // ============================================================
+        function getNetMaterial(color) {
+            return new THREE.MeshStandardMaterial({
+                color, roughness: 0.35, metalness: 0.15,
+                side: THREE.DoubleSide,
+                transparent: true, opacity: 0.92
+            });
+        }
+
         function buildSolidOrXrayModel(shapeId, isXray) {
             const group = new THREE.Group();
             const matColor = 0x6366f1;
@@ -561,13 +561,8 @@
             group.add(line);
         }
 
-        // ============================================================
-        //  ★ 展開圖建構（已修正）
-        // ============================================================
-
         const NET_EDGE_COLOR = 0x818cf8;
 
-        // ---- 通用工具 ----
         function polygonVerts(n, R, startAngle) {
             const arr = [];
             for (let i = 0; i < n; i++) {
@@ -596,7 +591,6 @@
             return new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat);
         }
 
-        // ---- 展開圖主入口 ----
         function buildNetModel(shapeId, progress) {
             const group = new THREE.Group();
             const prismColor = 0x6366f1;
@@ -635,10 +629,6 @@
             modelContainerGroup.add(group);
         }
 
-        // ============================================================
-        //  1) 錐體展開圖（三角錐 / 四角錐 / 五角錐）
-        //     底面多邊形固定於中央，側面三角形沿底邊向外翻折
-        // ============================================================
         function buildPyramidNet(n, baseR, height, progress, color) {
             const group = new THREE.Group();
             const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.35, metalness: 0.15, side: THREE.DoubleSide });
@@ -648,16 +638,9 @@
             const apothem = baseR * Math.cos(Math.PI / n);
             const slantH = Math.sqrt(apothem * apothem + height * height);
 
-            // 底面
             group.add(makePolygonFace(verts, mat));
             group.add(makePolygonOutline(verts, lineMat));
 
-            // 側面折疊角
-            // 平放時頂點位於 (0, slantH, 0)（相對底邊中點）
-            // 摺起時頂點位於 (0, -apothem, height)
-            // 繞底邊（x 軸）旋轉角 β：
-            //   slantH·cosβ = -apothem ， slantH·sinβ = height
-            //   => β = atan2(-height, -apothem)（負角，確保往內上方摺）
             const betaMax = Math.atan2(-height, -apothem);
             const angle = (1 - progress) * betaMax;
 
@@ -669,7 +652,6 @@
                 const outward = mid.clone().normalize();
                 const apex = mid.clone().add(outward.clone().multiplyScalar(slantH));
 
-                // 三角形面
                 const geo = new THREE.BufferGeometry();
                 geo.setAttribute('position', new THREE.Float32BufferAttribute([
                     p1.x, p1.y, p1.z,
@@ -678,7 +660,6 @@
                 ], 3));
                 geo.computeVertexNormals();
 
-                // 摺疊矩陣：繞通過 mid、方向為 edgeDir 的軸旋轉 angle
                 const toOrigin = new THREE.Matrix4().makeTranslation(-mid.x, -mid.y, -mid.z);
                 const rot = new THREE.Matrix4().makeRotationAxis(edgeDir, angle);
                 const back = new THREE.Matrix4().makeTranslation(mid.x, mid.y, mid.z);
@@ -687,7 +668,6 @@
                 geo.applyMatrix4(hinge);
                 group.add(new THREE.Mesh(geo, mat));
 
-                // 輪廓線
                 const lg = new THREE.BufferGeometry().setFromPoints([
                     p1.clone(), p2.clone(), apex.clone(), p1.clone()
                 ]);
@@ -698,11 +678,6 @@
             return group;
         }
 
-        // ============================================================
-        //  2) 柱體展開圖（三角柱 / 四角柱 / 五角柱）
-        //     底面多邊形固定於中央，側面長方形沿底邊向外翻折成筒狀
-        //     頂面多邊形接在其中一個長方形的遠端邊上
-        // ============================================================
         function buildPrismNet(n, baseR, prismH, progress, color) {
             const group = new THREE.Group();
             const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.35, metalness: 0.15, side: THREE.DoubleSide });
@@ -712,34 +687,29 @@
             const apothem = baseR * Math.cos(Math.PI / n);
             const sideLen = 2 * baseR * Math.sin(Math.PI / n);
 
-            // 底面
             group.add(makePolygonFace(verts, mat));
             group.add(makePolygonOutline(verts, lineMat));
 
-            // 側面摺疊角：0（平放）→ -π/2（立起）
             const beta = (1 - progress) * (-Math.PI / 2);
 
             for (let i = 0; i < n; i++) {
                 const p1 = verts[i];
                 const p2 = verts[(i + 1) % n];
                 const mid = p1.clone().add(p2).multiplyScalar(0.5);
-                const e1 = p2.clone().sub(p1).normalize();      // 沿底邊
-                const e2 = mid.clone().normalize();              // 向外
-                const e3 = new THREE.Vector3().crossVectors(e1, e2); // 垂直（指向下方）
+                const e1 = p2.clone().sub(p1).normalize();
+                const e2 = mid.clone().normalize();
+                const e3 = new THREE.Vector3().crossVectors(e1, e2);
 
                 const basisMat = new THREE.Matrix4().makeBasis(e1, e2, e3);
 
-                // 鉸鏈組
                 const A = new THREE.Group();
                 A.position.copy(mid);
                 A.quaternion.setFromRotationMatrix(basisMat);
 
-                // 摺疊旋轉組
                 const A2 = new THREE.Group();
                 A2.rotation.x = beta;
                 A.add(A2);
 
-                // --- 側面長方形（局部座標：x 沿邊，y 向外，z 垂直） ---
                 const rectGeo = new THREE.PlaneGeometry(sideLen, prismH);
                 const rectMesh = new THREE.Mesh(rectGeo, mat);
                 rectMesh.position.set(0, prismH / 2, 0);
@@ -754,15 +724,12 @@
                 ];
                 A2.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(rectPts), lineMat));
 
-                // --- 頂面多邊形（僅掛在第一個側面上） ---
                 if (i === 0) {
                     const B = new THREE.Group();
                     B.position.set(0, prismH, 0);
-                    B.rotation.x = beta;   // 與側面同步再摺一次，確保摺起後呈水平
+                    B.rotation.x = beta;
                     A2.add(B);
 
-                    // 頂面多邊形：讓一條邊的中點落在 B 的原點，
-                    // 多邊形中心位於 (0, apothem, 0)
                     const topVerts = [];
                     for (let k = 0; k < n; k++) {
                         const ang = -Math.PI / 2 + Math.PI / n + (k * 2 * Math.PI) / n;
@@ -783,105 +750,228 @@
         }
 
         // ============================================================
-        //  3) 圓柱展開圖
-        //     中央長方形（寬 = 2πr，高 = h）＋ 上下兩個圓
+        //  圓柱展開圖 ★ 修改版
+        //  側面由捲曲的圓筒慢慢展開成長方形
+        //  上下兩個圓形底面：一側始終與曲面邊緣相連並相切，
+        //  另一側向外掀開，最終與長方形上下邊相切。
         // ============================================================
         function buildCylinderNet(r, h, progress, color) {
             const group = new THREE.Group();
-            const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.35, metalness: 0.15, side: THREE.DoubleSide });
+            const mat = getNetMaterial(color);
             const lineMat = new THREE.LineBasicMaterial({ color: NET_EDGE_COLOR });
 
-            const rectW = 2 * Math.PI * r;
+            const W = 2 * Math.PI * r;       // 側面展開寬度 = 底面圓周長
+            const halfH = h / 2;
+            const N = 160;
+            const p = progress;              // 0 → 捲曲（圓筒），1 → 平面
 
-            // 側面長方形
-            const rectGeo = new THREE.PlaneGeometry(rectW, h);
-            group.add(new THREE.Mesh(rectGeo, mat));
+            // 沿弧長參數取得側面點
+            const sidePoint = (u) => {
+                const s = (u - 0.5) * W;
+                const phi = s / r;
+                const curveX = r * Math.sin(phi);
+                const curveZ = r * Math.cos(phi);
+                return {
+                    x: (1 - p) * curveX + p * s,
+                    z: (1 - p) * curveZ
+                };
+            };
 
-            const rectPts = [
-                new THREE.Vector3(-rectW / 2, -h / 2, 0),
-                new THREE.Vector3(rectW / 2, -h / 2, 0),
-                new THREE.Vector3(rectW / 2, h / 2, 0),
-                new THREE.Vector3(-rectW / 2, h / 2, 0),
-                new THREE.Vector3(-rectW / 2, -h / 2, 0)
-            ];
-            group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(rectPts), lineMat));
+            // --- 側面網格 ---
+            const positions = [];
+            const indices = [];
+            for (let i = 0; i <= N; i++) {
+                const pt = sidePoint(i / N);
+                positions.push(pt.x, -halfH, pt.z);
+                positions.push(pt.x, halfH, pt.z);
+            }
+            for (let i = 0; i < N; i++) {
+                const a = i * 2;
+                const b = a + 1;
+                const c = a + 2;
+                const d = a + 3;
+                indices.push(a, c, d, a, d, b);
+            }
+            const sideGeo = new THREE.BufferGeometry();
+            sideGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+            sideGeo.setIndex(indices);
+            sideGeo.computeVertexNormals();
+            group.add(new THREE.Mesh(sideGeo, mat));
 
-            // 上下兩個圓（展開動畫：從貼齊邊緣滑出至相切位置）
-            const circGeo = new THREE.CircleGeometry(r, 64);
-            const circleOutlinePts = [];
+            // --- 側面輪廓線 ---
+            const outline = [];
+            for (let i = 0; i <= N; i++) {
+                const pt = sidePoint(i / N);
+                outline.push(new THREE.Vector3(pt.x, -halfH, pt.z));
+            }
+            for (let i = N; i >= 0; i--) {
+                const pt = sidePoint(i / N);
+                outline.push(new THREE.Vector3(pt.x, halfH, pt.z));
+            }
+            outline.push(outline[0].clone());
+            group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(outline), lineMat));
+
+            // --- 上下兩個圓形底面 ---
+            const circleGeo = new THREE.CircleGeometry(r, 64);
+            const circlePts = [];
             for (let i = 0; i <= 64; i++) {
                 const a = (i / 64) * Math.PI * 2;
-                circleOutlinePts.push(new THREE.Vector3(Math.cos(a) * r, Math.sin(a) * r, 0));
+                circlePts.push(new THREE.Vector3(Math.cos(a) * r, Math.sin(a) * r, 0));
             }
+            const circleLineGeo = new THREE.BufferGeometry().setFromPoints(circlePts);
 
-            const slideDist = r * progress;   // 0 → r
-            const yTop = h / 2 + slideDist;
-            const yBot = -h / 2 - slideDist;
+            // 關鍵：接觸點固定在曲面上 u=0.5 處（展開時為長方形上/下邊中點）
+            // 圓心以接觸點為支點，繞 X 軸向外旋轉 90°
+            const beta = p * Math.PI / 2;
+            const sinB = Math.sin(beta);
+            const cosB = Math.cos(beta);
+            const rotX = (p - 1) * Math.PI / 2;
 
-            const topCircle = new THREE.Mesh(circGeo, mat);
-            topCircle.position.set(0, yTop, 0);
-            group.add(topCircle);
+            // 頂面：接觸點 (0, halfH, (1-p)*r)
+            // 底面：接觸點 (0, -halfH, (1-p)*r)
+            const topY = halfH + r * sinB;
+            const topZ = (1 - p) * r - r * cosB;
+            const botY = -halfH - r * sinB;
+            const botZ = (1 - p) * r - r * cosB;
 
-            const botCircle = new THREE.Mesh(circGeo, mat);
-            botCircle.position.set(0, yBot, 0);
-            group.add(botCircle);
+            // 頂面繞接觸線向上方掀起；底面為頂面繞鉛直軸轉 180° 的鏡像，
+            // 旋轉方向相反，使接觸點在整個展開過程中始終固定在圓周上（鉸鏈效果）
+            const topRotX = (p - 1) * Math.PI / 2;
+            const botRotX = (1 - p) * Math.PI / 2;
 
-            const topLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(circleOutlinePts), lineMat);
-            topLine.position.copy(topCircle.position);
-            group.add(topLine);
+            [[topY, topZ, topRotX], [botY, botZ, botRotX]].forEach(([cy, cz, rx]) => {
+                const cm = new THREE.Mesh(circleGeo, mat);
+                cm.position.set(0, cy, cz);
+                cm.rotation.x = rx;
+                group.add(cm);
 
-            const botLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(circleOutlinePts), lineMat);
-            botLine.position.copy(botCircle.position);
-            group.add(botLine);
+                const cl = new THREE.Line(circleLineGeo, lineMat);
+                cl.position.set(0, cy, cz);
+                cl.rotation.x = rx;
+                group.add(cl);
+            });
 
             return group;
         }
 
         // ============================================================
-        //  4) 圓錐展開圖
-        //     側面為扇形（半徑 = 母線長，圓心角 = 2πr / 母線）
-        //     底面為圓形
+        //  圓錐展開圖 ★ 修改版
+        //  側面由立體錐面慢慢向兩側對稱展開成扇形平面
+        //  底面圓：一側始終與曲面邊緣相連並相切，
+        //  另一側向外向下掀開，最終與扇形弧長外側相切。
         // ============================================================
         function buildConeNet(r, h, progress, color) {
             const group = new THREE.Group();
-            const mat = new THREE.MeshStandardMaterial({ color, roughness: 0.35, metalness: 0.15, side: THREE.DoubleSide });
+            const mat = getNetMaterial(color);
             const lineMat = new THREE.LineBasicMaterial({ color: NET_EDGE_COLOR });
 
-            const slantL = Math.sqrt(r * r + h * h);
-            const sectorAngle = (2 * Math.PI * r) / slantL;   // 展開扇形圓心角
+            const L = Math.sqrt(r * r + h * h);          // 母線長 = 扇形半徑
+            const sectorAngle = 2 * Math.PI * r / L;    // 扇形圓心角
+            const p = progress;                         // 0 → 錐面，1 → 扇形
 
-            // 扇形：頂點在原點，朝上展開（以 +Y 為對稱軸）
-            const startAngle = Math.PI / 2 - sectorAngle / 2;
-            const sectorGeo = new THREE.CircleGeometry(slantL, 96, startAngle, sectorAngle);
-            group.add(new THREE.Mesh(sectorGeo, mat));
+            const Nt = 24;
+            const Nθ = 120;
 
-            // 扇形輪廓：頂點 → 弧 → 頂點
-            const sectorPts = [new THREE.Vector3(0, 0, 0)];
-            for (let i = 0; i <= 96; i++) {
-                const a = startAngle + (i / 96) * sectorAngle;
-                sectorPts.push(new THREE.Vector3(slantL * Math.cos(a), slantL * Math.sin(a), 0));
+            const pointAt = (s, t) => {
+                const theta = (t - 0.5) * 2 * Math.PI;
+                const cx = s * r * Math.sin(theta);
+                const cy = -s * h;
+                const cz = s * r * Math.cos(theta);
+
+                const alpha = (t - 0.5) * sectorAngle;
+                const fx = s * L * Math.sin(alpha);
+                const fy = -s * L * Math.cos(alpha);
+                const fz = 0;
+
+                return new THREE.Vector3(
+                    (1 - p) * cx + p * fx,
+                    (1 - p) * cy + p * fy,
+                    (1 - p) * cz + p * fz
+                );
+            };
+
+            // --- 側面網格 ---
+            const positions = [];
+            for (let i = 0; i <= Nt; i++) {
+                for (let j = 0; j <= Nθ; j++) {
+                    const pt = pointAt(i / Nt, j / Nθ);
+                    positions.push(pt.x, pt.y, pt.z);
+                }
             }
-            sectorPts.push(new THREE.Vector3(0, 0, 0));
-            group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(sectorPts), lineMat));
+            const indices = [];
+            for (let i = 0; i < Nt; i++) {
+                for (let j = 0; j < Nθ; j++) {
+                    const a = i * (Nθ + 1) + j;
+                    const b = a + 1;
+                    const c = (i + 1) * (Nθ + 1) + j;
+                    const d = c + 1;
+                    indices.push(a, c, b, b, c, d);
+                }
+            }
+            const sideGeo = new THREE.BufferGeometry();
+            sideGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+            sideGeo.setIndex(indices);
+            sideGeo.computeVertexNormals();
+            group.add(new THREE.Mesh(sideGeo, mat));
 
-            // 底面圓（展開時往下滑出）
-            const circGeo = new THREE.CircleGeometry(r, 64);
-            const circleOutlinePts = [];
+            // --- 底面邊緣線 ---
+            const bottomPts = [];
+            for (let j = 0; j <= Nθ; j++) {
+                bottomPts.push(pointAt(1, j / Nθ));
+            }
+            group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(bottomPts), lineMat));
+
+            // --- 兩側母線 ---
+            [0, 1].forEach(t => {
+                const pts = [];
+                for (let i = 0; i <= 20; i++) {
+                    pts.push(pointAt(i / 20, t));
+                }
+                group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), lineMat));
+            });
+
+            // --- 底面圓形 ---
+            const circleGeo = new THREE.CircleGeometry(r, 64);
+            const circlePts = [];
             for (let i = 0; i <= 64; i++) {
                 const a = (i / 64) * Math.PI * 2;
-                circleOutlinePts.push(new THREE.Vector3(Math.cos(a) * r, Math.sin(a) * r, 0));
+                circlePts.push(new THREE.Vector3(Math.cos(a) * r, Math.sin(a) * r, 0));
             }
+            const circleLineGeo = new THREE.BufferGeometry().setFromPoints(circlePts);
 
-            const dropDist = (r + 0.25) * progress;
-            const circleY = -dropDist;
+            // 接觸點固定在曲面上 (s=1, t=0.5)，即底面圓上離接縫最遠的點
+            // 捲曲時：(0, -h, r)  ── 與底面圓周重合
+            // 展開時：(0, -L, 0)  ── 位於扇形弧長中點
+            const contactY = (1 - p) * (-h) + p * (-L);
+            const contactZ = (1 - p) * r;
 
-            const baseCircle = new THREE.Mesh(circGeo, mat);
-            baseCircle.position.set(0, circleY, 0);
+            // 圓心由接觸點沿著與圓平面垂直的方向偏移 r
+            // 方向由 (0,0,-1) 旋轉到 (0,-1,0)
+            const beta = p * Math.PI / 2;
+            const sinB = Math.sin(beta);
+            const cosB = Math.cos(beta);
+
+            const centerY = contactY - r * sinB;
+            const centerZ = contactZ - r * cosB;
+
+            // 圓平面：以接觸點為鉸鏈、繞 x 軸方向的接觸線向外掀開。
+            // rotation.x 由 -90°（水平，p=0）均勻轉到 -270°（豎直朝下，p=1，
+            // 與 90° 等效）；這樣接觸點全程固定在圓周上，與扇形弧保持相切
+            const rotX = -Math.PI / 2 - p * Math.PI / 2;
+
+            const baseCircle = new THREE.Mesh(circleGeo, mat);
+            baseCircle.position.set(0, centerY, centerZ);
+            baseCircle.rotation.x = rotX;
             group.add(baseCircle);
 
-            const baseLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints(circleOutlinePts), lineMat);
-            baseLine.position.copy(baseCircle.position);
+            const baseLine = new THREE.Line(circleLineGeo, lineMat);
+            baseLine.position.set(0, centerY, centerZ);
+            baseLine.rotation.x = rotX;
             group.add(baseLine);
+
+            // 垂直置中
+            const shiftY = (1 - p) * (h / 2) + p * ((L + 2 * r) / 2);
+            group.position.y = shiftY;
 
             return group;
         }
