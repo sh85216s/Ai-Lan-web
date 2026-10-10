@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>算出三角形的內角度數</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 24px 16px;
+            color: #1e2b3c;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 28px 30px;
+            border-radius: 24px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0b3b5c;
+            letter-spacing: 2px;
+            margin-top: 0;
+            margin-bottom: 28px;
+            border-bottom: 3px solid #cbd5e1;
+            padding-bottom: 14px;
+        }
+
+        /* 題目卡片 */
+        .problem {
+            background-color: #ffffff;
+            border-left: 6px solid #3b82f6;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+            border-radius: 0 16px 16px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .problem h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1e4a6b;
+            margin-top: 0;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .problem h2 .num {
+            background-color: #3b82f6;
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* 兩欄等高佈局 */
+        .two-column {
+            display: flex;
+            gap: 28px;
+            align-items: stretch;
+            flex-wrap: wrap;
+        }
+
+        /* 左欄：圖片 */
+        .col-figure {
+            flex: 0 0 420px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .figure {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 8px 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .figure img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            border-radius: 8px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* 右欄：解答 */
+        .col-solution {
+            flex: 1 1 300px;
+            min-width: 280px;
+            display: flex;
+        }
+
+        .solution {
+            background-color: #f0f7ff;
+            border-radius: 16px;
+            padding: 18px 22px;
+            border: 1px solid #d9e8f5;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .solution h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #0b4d6e;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .solution h3::before {
+            content: "📐";
+            font-size: 1.3rem;
+        }
+
+        .solution p {
+            margin: 8px 0;
+            font-size: 1.05rem;
+            word-break: break-word;
+        }
+
+        /* 一般數學符號（非紅色） */
+        .math {
+            font-family: 'Cambria Math', 'Times New Roman', serif;
+            font-size: 1.1rem;
+            background: #ffffffb8;
+            padding: 1px 6px;
+            border-radius: 6px;
+            white-space: normal;
+            word-break: keep-all;
+            display: inline-block;
+            margin: 2px 0;
+        }
+
+        /* 關鍵：只讓指定角度或符號變紅色，不整行紅 */
+        .red-text {
+            color: #c00000;
+            /* 深紅色 */
+            font-weight: 700;
+            font-family: 'Cambria Math', 'Times New Roman', serif;
+            font-size: 1.1rem;
+            padding: 1px 4px;
+            border-radius: 4px;
+            background: #fff4f4;
+            /* 非常淡的紅底，增加辨識度但不像整行 */
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        /* 保留原本的淡底效果給非紅色 math */
+        .final-answer {
+            background: #d9f0e1;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 30px;
+            color: #0b4d2e;
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 1.1rem;
+        }
+
+        /* 如果最終答案內也要紅字，可另外包裝 */
+        .final-answer .red-text {
+            background: transparent;
+            padding: 0 2px;
+            font-weight: 800;
+        }
+
+        /* 線段 AB 的頂線效果 */
+        .segment-ab {
+            display: inline-block;
+            position: relative;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #0b4d6e;
+            line-height: 1;
+            font-family: 'Times New Roman', 'Georgia', serif;
+            letter-spacing: 1.5px;
+            padding-top: 0.2em;
+            margin: 0 2px;
+        }
+
+        .segment-ab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #0b4d6e;
+            border-radius: 1px;
+        }
+
+        .page-divider {
+            margin: 36px 0 24px 0;
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, #dbe3ec, #a0b8cc, #dbe3ec);
+        }
+
+        /* 小螢幕：兩欄垂直堆疊 */
+        @media (max-width: 750px) {
+            .two-column {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .col-figure {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+
+            .col-solution {
+                width: 100%;
+            }
+
+            .container {
+                padding: 20px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .problem {
+                padding: 16px 14px;
+            }
+
+            .problem h2 {
+                font-size: 1.2rem;
+            }
+
+            .solution p {
+                font-size: 1rem;
+            }
+
+            .red-text {
+                font-size: 1rem;
+            }
+        }
+
+        .math .segment-ab {
+            font-size: 1.2em;
+        }
+
+        .note {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #6f7e8f;
+            margin-top: 12px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>算出三角形內角度數</h1>        
+        <div class="problem">
+            <h2><span class="num">1</span> 算算看，∠1 是幾度？</h2>
+            <div class="two-column">
+                <div class="col-figure">
+                    <div class="figure">
+                        <img src="img/3-2-01.png" alt="題目1圖形：三角形ABD與平角">
+                    </div>
+                </div>
+                <div class="col-solution">
+                    <div class="solution">
+                        <h3>解答</h3>
+                        <p>因為 ∠ABD + <span class="red-text">45°</span> = 180°（平角），</p>
+                        <p>而以 △ABD 來說，三個內角和為 180°，</p>
+                        <p>也就是 ∠ABD + <span class="red-text">30°</span> + <span class="red-text">∠1</span> = 180°。</p>
+                        <p>綜合以上 2 個等式，可以得出 <span class="red-text">30°</span> + <span class="red-text">∠1</span> = <span
+                                class="red-text">45°</span>，</p>
+                        <p>所以 <span class="final-answer"><span class="red-text">∠1</span> = <span class="red-text">45°</span> − <span
+                                    class="red-text">30°</span> = 15°</span>。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="problem">
+            <h2><span class="num">2</span> 在等腰三角形 ABC 中，<span class="math"><span class="segment-ab">AB</span> = <span
+                        class="segment-ab">AC</span></span>，∠D 是幾度？</h2>
+            <div class="two-column">
+                <div class="col-figure">
+                    <div class="figure">
+                        <img src="img/3-2-02.png" alt="題目2">
+                    </div>
+                </div>
+                <div class="col-solution">
+                    <div class="solution">
+                        <h3>解答</h3>
+                        <p>△ABC 是等腰三角形，所以 ∠ACB = <span class="red-text">70°</span>。</p>
+                        <p>∠1 + ∠ACB (<span class="red-text">70°</span>) = 180°（平角），</p>
+                        <p>而以 △ACD 來說，<span class="red-text">∠D</span> + <span class="red-text">20°</span> + ∠1 = 180°。
+                        </p>
+                        <p>綜合以上 2 個等式，可以得出 <span class="red-text">∠D</span> + <span class="red-text">20°</span> = <span
+                                class="red-text">70°</span>，</p>
+                        <p>所以 <span class="final-answer"><span class="red-text">∠D</span> = <span class="red-text">70°</span> − <span
+                                    class="red-text">20°</span> = 50°</span>。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="page-divider">
+        <div class="problem">
+            <h2><span class="num">3</span> 算算看，∠1 是幾度？</h2>
+            <div class="two-column">
+                <div class="col-figure">
+                    <div class="figure">
+                        <img src="img/3-2-03.png" alt="圖形3">
+                    </div>
+                </div>
+                <div class="col-solution">
+                    <div class="solution">
+                        <h3>解答</h3>
+                        <p>因為 ∠ADC + <span class="red-text">120°</span> = 180°（平角），</p>
+                        <p>而以 △ADC 來說，三個內角和為 180°，</p>
+                        <p>也就是 ∠ADC + <span class="red-text">60°</span> + <span class="red-text">∠1</span> = 180°。</p>
+                        <p>綜合以上 2 個等式，可以得出 <span class="red-text">60°</span> + <span class="red-text">∠1</span> = <span
+                                class="red-text">120°</span>，</p>
+                        <p>所以 <span class="final-answer"><span class="red-text">∠1</span> = <span class="red-text">120°</span> − <span
+                                    class="red-text">60°</span> = 60°</span>。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

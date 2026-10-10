@@ -240,23 +240,7 @@
             font-size: 0.9rem;
             color: #62778b;
             margin-top: 0.2rem;
-        }
-
-        /* 修正原本 PDF 的小錯誤：16和24的公因數答案應為 1,2,4,8 而非 1,2,4,16=38 */
-        .corrected {
-            background-color: #fff6e5;
-            border-left-color: #f5b042;
-        }
-
-        .corrected .answer {
-            background-color: #fef1d6;
-            border-color: #f7d9a0;
-            color: #7a5200;
-        }
-
-        .corrected .answer::before {
-            color: #9e6d00;
-        }
+        }        
 
         /* 確保兩欄中卡片高度自適應，內容不溢出 */
         .exercise {
@@ -329,8 +313,8 @@
         <section class="sub-section">
             <h2><span class="section-num">三</span> 找出公因數</h2>
             <div class="two-col-grid">
-                <!-- 題目 1 (已修正) -->
-                <div class="exercise corrected">
+                <!-- 題目 1 -->
+                <div class="exercise">
                     <div class="problem">1. 找出 16 和 24 的公因數</div>
                     <div class="math-block">
                         <span class="eq">16 = 1 × 16</span>
@@ -376,10 +360,13 @@
                         先寫 24 的倍數，每寫 1 個 24 的倍數就檢視是否為 16 的倍數，直到第 1 次符合條件的數字便是最小公倍數。
                     </div>
                     <div class="math-block">
-                        <span class="eq">24 的倍數：24、48、…</span>
+                        <span class="eq">24 的倍數：24、48、……</span>
                         <span class="eq">48 ÷ 16 = 3 ✅</span>
                     </div>
                     <div class="answer">48</div>
+                    <div class="small-note" style="margin-top: 0.5rem;">
+                        （最小公倍數為 48，後續公倍數為 96、144、……）
+                    </div>
                 </div>
                 <!-- 題目 2 -->
                 <div class="exercise">
@@ -388,12 +375,12 @@
                         先寫 18 的倍數，每寫 1 個 18 的倍數就檢視是否為 12 的倍數，直到第 1 次符合條件的數字便是最小公倍數。
                     </div>
                     <div class="math-block">
-                        <span class="eq">18 的倍數：18、36、…</span>
+                        <span class="eq">18 的倍數：18、36、……</span>
                         <span class="eq">36 ÷ 12 = 3 ✅</span>
                     </div>
                     <div class="answer">36</div>
                     <div class="small-note" style="margin-top: 0.5rem;">
-                        （最小公倍數為 36，後續公倍數為 72、108…）
+                        （最小公倍數為 36，後續公倍數為 72、108、……）
                     </div>
                 </div>
             </div>
