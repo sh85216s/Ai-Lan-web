@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>因數、倍數、公因數和公倍數 · 兩欄呈現</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans TC', sans-serif;
+            background-color: #f5f7fa;
+            color: #1e2b3c;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            /* 稍加寬以容納兩欄 */
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -12px rgba(0, 20, 30, 0.15);
+            padding: 2.5rem 2rem;
+            transition: box-shadow 0.3s;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.75rem;
+            }
+
+            .container {
+                padding: 1.75rem 1.25rem;
+                border-radius: 16px;
+            }
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #0b2b44;
+            border-left: 8px solid #3b82f6;
+            padding-left: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7rem;
+                padding-left: 0.9rem;
+                border-left-width: 6px;
+            }
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #1e4a6b;
+            margin-top: 2.2rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #dbeafe;
+            display: flex;
+            align-items: center;
+        }
+
+        h2:first-of-type {
+            margin-top: 0.5rem;
+        }
+
+        h2 .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #3b82f6;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 1.9rem;
+            height: 1.9rem;
+            border-radius: 12px;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        /* 兩欄網格 —— 每個 section 內的 exercise 並排 */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            /* 讓卡片各自獨立高度 */
+        }
+
+        /* 如果螢幕太窄，自動切換為單欄 */
+        @media (max-width: 680px) {
+            .two-col-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .sub-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .exercise {
+            background-color: #fafcff;
+            border-radius: 18px;
+            padding: 1.5rem 1.5rem 1.2rem 1.5rem;
+            border: 1px solid #e6edf5;
+            transition: background 0.2s, border-color 0.2s;
+            height: 100%;
+            /* 讓同排卡片盡量等高 (可選) */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .exercise:hover {
+            background-color: #ffffff;
+            border-color: #b9d3f0;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+        }
+
+        .exercise p {
+            margin: 0.6rem 0;
+        }
+
+        .exercise .problem {
+            font-weight: 600;
+            font-size: 1.12rem;
+            color: #0b2b44;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+
+        .exercise .problem .badge {
+            background-color: #e0edff;
+            color: #1e4a6b;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.1rem 0.7rem;
+            border-radius: 20px;
+            margin-left: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .math-block {
+            background-color: #ffffff;
+            padding: 0.9rem 1.2rem;
+            border-radius: 14px;
+            margin: 0.9rem 0;
+            border-left: 4px solid #9bc0f0;
+            font-family: 'Cambria', 'Times New Roman', 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #0a1e2e;
+            overflow-x: auto;
+            white-space: nowrap;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        @media (max-width: 500px) {
+            .math-block {
+                font-size: 0.98rem;
+                padding: 0.8rem 0.9rem;
+                white-space: normal;
+                word-break: break-word;
+            }
+        }
+
+        .math-block .eq {
+            display: block;
+            margin: 0.1rem 0;
+        }
+
+        .math-block .eq:first-child {
+            margin-top: 0;
+        }
+
+        .math-block .eq:last-child {
+            margin-bottom: 0;
+        }
+
+        .answer {
+            font-weight: 600;
+            color: #0b4a2e;
+            background-color: #e6f7ec;
+            display: inline-block;
+            padding: 0.25rem 1.2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            margin-top: 0.6rem;
+            border: 1px solid #b8e0c8;
+            letter-spacing: 0.3px;
+        }
+
+        .answer::before {
+            content: "答：";
+            font-weight: 600;
+            color: #1f6e43;
+        }
+
+        .note {
+            font-size: 0.95rem;
+            color: #4a5f73;
+            background-color: #f0f5fb;
+            padding: 0.7rem 1.2rem;
+            border-radius: 40px;
+            margin: 0.5rem 0 0.8rem 0;
+            display: inline-block;
+        }
+
+        .method {
+            font-style: italic;
+            color: #2f5575;
+            background-color: #eef6ff;
+            padding: 0.8rem 1.2rem;
+            border-radius: 14px;
+            margin: 0.8rem 0 0.4rem;
+            font-size: 1rem;
+            border-left: 4px solid #6aa6e0;
+        } 
+
+        .small-note {
+            font-size: 0.9rem;
+            color: #62778b;
+            margin-top: 0.2rem;
+        }
+
+        /* 修正原本 PDF 的小錯誤：16和24的公因數答案應為 1,2,4,8 而非 1,2,4,16=38 */
+        .corrected {
+            background-color: #fff6e5;
+            border-left-color: #f5b042;
+        }
+
+        .corrected .answer {
+            background-color: #fef1d6;
+            border-color: #f7d9a0;
+            color: #7a5200;
+        }
+
+        .corrected .answer::before {
+            color: #9e6d00;
+        }
+
+        /* 確保兩欄中卡片高度自適應，內容不溢出 */
+        .exercise {
+            min-width: 0;
+            /* 防止 grid 子項溢出 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>因數、倍數、公因數和公倍數</h1>
+
+        <!-- 一、找因數：兩欄 -->
+        <section class="sub-section">
+            <h2><span class="section-num">一</span> 找因數</h2>
+            <div class="two-col-grid">
+                <!-- 題目 1 -->
+                <div class="exercise">
+                    <div class="problem">1. 找出 16 的因數</div>
+                    <div class="math-block">
+                        <span class="eq">16 = 1 × 16</span>
+                        <span class="eq">　 = 2 × 8</span>
+                        <span class="eq">　 = 4 × 4</span>
+                    </div>
+                    <div class="answer">1、2、4、8、16</div>
+                </div>
+                <!-- 題目 2 -->
+                <div class="exercise">
+                    <div class="problem">2. 找出 24 的因數</div>
+                    <div class="math-block">
+                        <span class="eq">24 = 1 × 24</span>
+                        <span class="eq">　 = 2 × 12</span>
+                        <span class="eq">　 = 3 × 8</span>
+                        <span class="eq">　 = 4 × 6</span>
+                    </div>
+                    <div class="answer">1、2、3、4、6、8、12、24</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 二、找倍數：兩欄 -->
+        <section class="sub-section">
+            <h2><span class="section-num">二</span> 找倍數</h2>
+            <div class="two-col-grid">
+                <!-- 題目 1 -->
+                <div class="exercise">
+                    <div class="problem">1. 寫出 3 個 12 的倍數</div>
+                    <div class="math-block">
+                        <span class="eq">12 × 1 = 12</span>
+                        <span class="eq">12 × 2 = 24</span>
+                        <span class="eq">12 × 3 = 36</span>
+                    </div>
+                    <div class="answer">12、24、36</div>
+                </div>
+                <!-- 題目 2 -->
+                <div class="exercise">
+                    <div class="problem">2. 寫出 3 個 18 的倍數</div>
+                    <div class="math-block">
+                        <span class="eq">18 × 1 = 18</span>
+                        <span class="eq">18 × 2 = 36</span>
+                        <span class="eq">18 × 3 = 54</span>
+                    </div>
+                    <div class="answer">18、36、54</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 三、找出公因數：兩欄 -->
+        <section class="sub-section">
+            <h2><span class="section-num">三</span> 找出公因數</h2>
+            <div class="two-col-grid">
+                <!-- 題目 1 (已修正) -->
+                <div class="exercise corrected">
+                    <div class="problem">1. 找出 16 和 24 的公因數</div>
+                    <div class="math-block">
+                        <span class="eq">16 = 1 × 16</span>
+                        <span class="eq">　 = 2 × 8</span>
+                        <span class="eq">　 = 4 × 4</span>
+                    </div>
+                    <div class="math-block">
+                        <span class="eq">24 = 1 × 24</span>
+                        <span class="eq">　 = 2 × 12</span>
+                        <span class="eq">　 = 3 × 8</span>
+                        <span class="eq">　 = 4 × 6</span>
+                    </div>
+                    <div class="method">共同因數：1、2、4、8</div>
+                    <div class="answer">1、2、4、8</div>
+                </div>
+                <!-- 題目 2 -->
+                <div class="exercise">
+                    <div class="problem">2. 找出 12 和 18 的公因數</div>
+                    <div class="math-block">
+                        <span class="eq">12 = 1 × 12</span>
+                        <span class="eq">　 = 2 × 6</span>
+                        <span class="eq">　 = 3 × 4</span>
+                    </div>
+                    <div class="math-block">
+                        <span class="eq">18 = 1 × 18</span>
+                        <span class="eq">　 = 2 × 9</span>
+                        <span class="eq">　 = 3 × 6</span>
+                    </div>
+                    <div class="method">共同因數：1、2、3、6</div>
+                    <div class="answer">1、2、3、6</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 四、公倍數：兩欄 -->
+        <section class="sub-section">
+            <h2><span class="section-num">四</span> 公倍數</h2>
+            <div class="two-col-grid">
+                <!-- 題目 1 -->
+                <div class="exercise">
+                    <div class="problem">1. 找出 16 和 24 的最小公倍數</div>
+                    <div class="method">
+                        先寫 24 的倍數，每寫 1 個 24 的倍數就檢視是否為 16 的倍數，直到第 1 次符合條件的數字便是最小公倍數。
+                    </div>
+                    <div class="math-block">
+                        <span class="eq">24 的倍數：24、48、…</span>
+                        <span class="eq">48 ÷ 16 = 3 ✅</span>
+                    </div>
+                    <div class="answer">48</div>
+                </div>
+                <!-- 題目 2 -->
+                <div class="exercise">
+                    <div class="problem">2. 找出 12 和 18 的 3 個公倍數</div>
+                    <div class="method">
+                        先寫 18 的倍數，每寫 1 個 18 的倍數就檢視是否為 12 的倍數，直到第 1 次符合條件的數字便是最小公倍數。
+                    </div>
+                    <div class="math-block">
+                        <span class="eq">18 的倍數：18、36、…</span>
+                        <span class="eq">36 ÷ 12 = 3 ✅</span>
+                    </div>
+                    <div class="answer">36</div>
+                    <div class="small-note" style="margin-top: 0.5rem;">
+                        （最小公倍數為 36，後續公倍數為 72、108…）
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
