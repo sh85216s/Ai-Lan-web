@@ -54,15 +54,14 @@
             position: relative;
             margin-right: 15px;
             flex-shrink: 0;
-            /* 關鍵：阻止瀏覽器將觸控視為滾動/縮放手勢 */
             touch-action: none;
+            z-index: 1;
         }
 
         svg {
             width: 100%;
             height: 100%;
             overflow: visible;
-            /* 關鍵：SVG 內也阻止觸控滾動 */
             touch-action: none;
         }
 
@@ -227,6 +226,7 @@
             }
         }
     </style>
+    <base target="_blank">
 </head>
 
 <body>
@@ -394,14 +394,14 @@
             baseLine.setAttribute("stroke-linecap", "round");
             svg.appendChild(baseLine);
 
-            // 底邊長度標籤
+            // 底邊長度標籤（固定在線條下方）
             const baseLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
             baseLabel.setAttribute("class", "edge-label");
             baseLabel.setAttribute("text-anchor", "middle");
             baseLabel.setAttribute("dominant-baseline", "middle");
             baseLabel.textContent = data.base;
             baseLabel.setAttribute("x", (startX + endX) / 2);
-            baseLabel.setAttribute("y", baseY + 16);
+            baseLabel.setAttribute("y", baseY + 18);
             svg.appendChild(baseLabel);
 
             // 左邊 (side1)
@@ -442,20 +442,22 @@
             label2.textContent = data.side2;
             svg.appendChild(label2);
 
+            // 可見灰點
             const handle1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            handle1.setAttribute("r", "8");
+            handle1.setAttribute("r", "4");
             handle1.setAttribute("fill", "#888");
             handle1.setAttribute("cursor", "grab");
             handle1.style.touchAction = "none";
             svg.appendChild(handle1);
 
             const handle2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            handle2.setAttribute("r", "8");
+            handle2.setAttribute("r", "4");
             handle2.setAttribute("fill", "#888");
             handle2.setAttribute("cursor", "grab");
             handle2.style.touchAction = "none";
             svg.appendChild(handle2);
-            
+
+            // 透明的加大感應區
             const hit1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
             hit1.setAttribute("r", "22");
             hit1.setAttribute("fill", "transparent");
@@ -475,38 +477,115 @@
             let angle1 = Math.PI / 2;
             let angle2 = Math.PI / 2;
 
-            function placeLabel(labelEl, x1, y1, x2, y2, offset) {
+            // 圖層置頂
+            let topZ = 100;
+            function bringToFront() {
+                topZ++;
+                container.style.zIndex = topZ;
+            }
+
+            // 吸附機制
+            const SNAP_DISTANCE = 16;
+            const UNSNAP_DISTANCE = 22;
+            let snapped = false;
+            let snapX = 0;
+            let snapY = 0;
+
+            function getSnapPoint(curX1, curY1, curX2, curY2) {
+                const d = endX - startX;
+                const r1 = side1Len;
+                const r2 = side2Len;
+                if (d >= Math.abs(r1 - r2) && d <= r1 + r2) {
+                    const a = (r1 * r1 - r2 * r2 + d * d) / (2 * d);
+                    const h2 = r1 * r1 - a * a;
+                    if (h2 >= 0) {
+                        return { x: startX + a, y: baseY - Math.sqrt(h2) };
+                    }
+                }
+                return { x: (curX1 + curX2) / 2, y: (curY1 + curY2) / 2 };
+            }
+
+            // 將標籤放在線段外側的通用函式
+            // 外側方向：從線段中點往「遠離圖形內部」的方向偏移
+            function placeLabelOutside(labelEl, x1, y1, x2, y2) {
                 const mx = (x1 + x2) / 2;
                 const my = (y1 + y2) / 2;
                 const dx = x2 - x1;
                 const dy = y2 - y1;
                 const len = Math.hypot(dx, dy) || 1;
+                // 法向量
                 const nx = -dy / len;
                 const ny = dx / len;
-                labelEl.setAttribute("x", mx + nx * offset);
-                labelEl.setAttribute("y", my + ny * offset);
+
+                // 圖形內部參考點：取三角形三邊中點的平均（重心附近）
+                const insideX = (startX + endX + mx) / 3;
+                const insideY = (baseY + baseY + my) / 3;
+
+                // 判斷法向量指向內側還是外側
+                const toInsideX = insideX - mx;
+                const toInsideY = insideY - my;
+                const dot = nx * toInsideX + ny * toInsideY;
+
+                // 若法向量指向內側，則反向
+                const dir = dot > 0 ? -1 : 1;
+
+                const offset = 16; // 偏移距離
+                labelEl.setAttribute("x", mx + nx * dir * offset);
+                labelEl.setAttribute("y", my + ny * dir * offset);
             }
 
             function updatePositions() {
-                const x1 = startX + side1Len * Math.cos(angle1);
-                const y1 = baseY - side1Len * Math.sin(angle1);
+                let x1 = startX + side1Len * Math.cos(angle1);
+                let y1 = baseY - side1Len * Math.sin(angle1);
+                let x2 = endX + side2Len * Math.cos(angle2);
+                let y2 = baseY - side2Len * Math.sin(angle2);
+
+                // 已吸附時：任一拖曳端拖離吸附點夠遠就解除吸附
+                if (snapped) {
+                    const dragDist1 = Math.hypot(x1 - snapX, y1 - snapY);
+                    const dragDist2 = Math.hypot(x2 - snapX, y2 - snapY);
+                    if (dragDist1 > UNSNAP_DISTANCE || dragDist2 > UNSNAP_DISTANCE) {
+                        snapped = false;
+                    }
+                }
+
+                // 未吸附時：兩灰點碰觸則自動吸附
+                if (!snapped) {
+                    const dist = Math.hypot(x2 - x1, y2 - y1);
+                    if (dist < SNAP_DISTANCE) {
+                        const point = getSnapPoint(x1, y1, x2, y2);
+                        snapX = point.x;
+                        snapY = point.y;
+                        snapped = true;
+                        angle1 = Math.atan2(baseY - snapY, snapX - startX);
+                        angle2 = Math.atan2(baseY - snapY, snapX - endX);
+                        x1 = snapX; y1 = snapY;
+                        x2 = snapX; y2 = snapY;
+                    }
+                } else {
+                    x1 = snapX; y1 = snapY;
+                    x2 = snapX; y2 = snapY;
+                }
+
                 line1.setAttribute("x2", x1);
                 line1.setAttribute("y2", y1);
                 handle1.setAttribute("cx", x1);
                 handle1.setAttribute("cy", y1);
                 hit1.setAttribute("cx", x1);
                 hit1.setAttribute("cy", y1);
-                placeLabel(label1, startX, baseY, x1, y1, -14);
 
-                const x2 = endX + side2Len * Math.cos(angle2);
-                const y2 = baseY - side2Len * Math.sin(angle2);
                 line2.setAttribute("x2", x2);
                 line2.setAttribute("y2", y2);
                 handle2.setAttribute("cx", x2);
                 handle2.setAttribute("cy", y2);
                 hit2.setAttribute("cx", x2);
                 hit2.setAttribute("cy", y2);
-                placeLabel(label2, endX, baseY, x2, y2, -14);
+
+                // ===== 修改：標籤保持在線條外側 =====
+                // 左邊線段：(startX, baseY) → (x1, y1)
+                placeLabelOutside(label1, startX, baseY, x1, y1);
+                // 右邊線段：(endX, baseY) → (x2, y2)
+                placeLabelOutside(label2, endX, baseY, x2, y2);
             }
 
             updatePositions();
@@ -514,9 +593,9 @@
             let activePointerId1 = null;
             let activePointerId2 = null;
 
-            // 使用 Pointer Events 取代 mouse events，同時支援滑鼠、觸控、觸控筆
             function startDrag1(e) {
                 e.preventDefault();
+                bringToFront();
                 activePointerId1 = e.pointerId;
                 hit1.setPointerCapture(e.pointerId);
                 handle1.setAttribute("cursor", "grabbing");
@@ -524,6 +603,7 @@
 
             function startDrag2(e) {
                 e.preventDefault();
+                bringToFront();
                 activePointerId2 = e.pointerId;
                 hit2.setPointerCapture(e.pointerId);
                 handle2.setAttribute("cursor", "grabbing");
@@ -531,7 +611,7 @@
 
             hit1.addEventListener("pointerdown", startDrag1);
             hit2.addEventListener("pointerdown", startDrag2);
-            
+
             handle1.addEventListener("pointerdown", startDrag1);
             handle2.addEventListener("pointerdown", startDrag2);
 
@@ -570,11 +650,11 @@
                     handle2.setAttribute("cursor", "grab");
                 }
             }
-            
+
             window.addEventListener("pointermove", onPointerMove);
             window.addEventListener("pointerup", onPointerUp);
             window.addEventListener("pointercancel", onPointerUp);
-            
+
             svg.addEventListener("touchstart", (e) => {
                 if (e.target === hit1 || e.target === hit2 || e.target === handle1 || e.target === handle2) {
                     e.preventDefault();

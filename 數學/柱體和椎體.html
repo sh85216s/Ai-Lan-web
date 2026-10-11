@@ -45,6 +45,7 @@
         }
     </style>
     <base target="_blank">
+    <base target="_blank">
 </head>
 
 <body class="min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
@@ -209,13 +210,13 @@
                 { id: 'triangular_prism', name: '三角柱', v: 6, e: 9, f: 5, desc: '上下底面為全等的三角形，側面為三個長方形組成。', tip: '三角柱具有 6 個頂點、9 條邊與 5 個面。其側面展開後為一個大長方形。' },
                 { id: 'square_prism', name: '四角柱 (長方體)', v: 8, e: 12, f: 6, desc: '上下底面為全等的四邊形（此處以正方形為例），側面為四個長方形。', tip: '四角柱最常見的例子就是長方體或正方體，擁有 8 個頂點、12 條邊與 6 個面。' },
                 { id: 'pentagonal_prism', name: '五角柱', v: 10, e: 15, f: 7, desc: '上下底面為全等的五邊形，側面由五個長方形環繞而成。', tip: '五角柱的底面是五邊形，共有 10 個頂點、15 條邊與 7 個面。展開圖中央為五邊形底面，周圍環繞五個長方形側面。' },
-                { id: 'cylinder', name: '圓柱', v: 0, e: 2, f: 3, desc: '上下底面為全等的圓形，側面為一個曲面（展開後為長方形）。', tip: '圓柱展開圖的長方形寬度等於底面圓周長 (2πr)，高度等於柱高。拖曳滑桿可看到側面由捲曲的圓筒慢慢展開成長方形，過程中上下兩個圓形底面始終與曲面邊緣相連並相切，另一側則向外掀開，最終與長方形的上下邊相切。' }
+                { id: 'cylinder', name: '圓柱', v: 0, e: 2, f: 3, desc: '上下底面為全等的圓形，側面為一個曲面（展開後為長方形）。圓柱沒有像正方體那樣「一條一條的直線邊」，但是它有2條曲線形成的邊。', tip: '圓柱展開圖的長方形寬度等於底面圓周長 (2πr)，高度等於柱高。拖曳滑桿可看到側面由捲曲的圓筒慢慢展開成長方形，過程中上下兩個圓形底面始終與曲面邊緣相連並相切，另一側則向外掀開，最終與長方形的上下邊相切。' }
             ],
             pyramid: [
                 { id: 'triangular_pyramid', name: '三角錐 (四面體)', v: 4, e: 6, f: 4, desc: '底面為三角形，側面由三個三角形匯聚於頂點。', tip: '三角錐（又稱四面體）是邊數最少的錐體，展開圖由中央底面三角形與三個側面三角形組成。' },
                 { id: 'square_pyramid', name: '四角錐', v: 5, e: 8, f: 5, desc: '底面為正方形，側面由四個三角形匯聚於頂點。', tip: '埃及金字塔即為典型四角錐，展開圖由中央正方形與四個外翻的等腰三角形組成。' },
                 { id: 'pentagonal_pyramid', name: '五角錐', v: 6, e: 10, f: 6, desc: '底面為五邊形，側面由五個三角形匯聚於頂點。', tip: '五角錐展開圖為中央五邊形底面，外圍環繞五個三角形側面。' },
-                { id: 'cone', name: '圓錐', v: 1, e: 1, f: 2, desc: '底面為圓形，側面為扇形曲面匯聚於錐頂。圓錐沒有像正方體那樣「一條一條的直線邊」，但是它有一條曲線形成的邊。', tip: '圓錐展開圖由一個扇形（側面）與一個圓形（底面）組成。拖曳滑桿可看到側面由立體錐面慢慢向兩側對稱展開成扇形，過程中圓形底面的一側始終連著曲面並相切，另一側向外向下掀開，最終與扇形的弧長外側相切。' }
+                { id: 'cone', name: '圓錐', v: 1, e: 1, f: 2, desc: '底面為圓形，側面為扇形曲面匯聚於錐頂。圓錐沒有像正方體那樣「一條一條的直線邊」，但是它有1條曲線形成的邊。', tip: '圓錐展開圖由一個扇形（側面）與一個圓形（底面）組成。拖曳滑桿可看到側面由立體錐面慢慢向兩側對稱展開成扇形，過程中圓形底面的一側始終連著曲面並相切，另一側向外向下掀開，最終與扇形的弧長外側相切。' }
             ]
         };
 
@@ -262,7 +263,7 @@
 
             renderShapeButtons();
             updateShapeInfo();
-            rebuildModel();
+            rebuildModel(false); // 切換分類時重置視角
         }
 
         function renderShapeButtons() {
@@ -284,7 +285,7 @@
                     currentShapeId = shape.id;
                     renderShapeButtons();
                     updateShapeInfo();
-                    rebuildModel();
+                    rebuildModel(false); // 切換形體時重置視角
                 };
                 grid.appendChild(btn);
             });
@@ -343,7 +344,7 @@
                 indText.innerText = "目前模式：展開圖展示";
             }
 
-            rebuildModel();
+            rebuildModel(false); // 切換檢視模式時重置視角
         }
 
         function initThreeJS() {
@@ -439,7 +440,7 @@
             netProgress = 0;
             document.getElementById('net-progress-slider').value = 0;
             document.getElementById('net-progress-val').innerText = '0%';
-            rebuildModel();
+            rebuildModel(false);
         }
 
         function disposeObject(obj) {
@@ -454,7 +455,7 @@
             }
         }
 
-        function rebuildModel() {
+        function rebuildModel(keepRotation = true) {
             if (!modelContainerGroup) return;
             while (modelContainerGroup.children.length > 0) {
                 const child = modelContainerGroup.children[0];
@@ -462,7 +463,9 @@
                 disposeObject(child);
             }
 
-            modelContainerGroup.rotation.set(0, 0, 0);
+            if (!keepRotation) {
+                modelContainerGroup.rotation.set(0, 0, 0);
+            }
 
             if (currentViewMode === 'net') {
                 buildNetModel(currentShapeId, netProgress / 100);
@@ -755,7 +758,7 @@
         //  上下兩個圓形底面：一側始終與曲面邊緣相連並相切，
         //  另一側向外掀開，最終與長方形上下邊相切。
         // ============================================================
-        
+
         function buildCylinderNet(r, h, progress, color) {
             const group = new THREE.Group();
             const mat = getNetMaterial(color);
